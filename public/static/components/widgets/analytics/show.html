@@ -1,0 +1,3 @@
+{% if widget.optimizely_id.value and widget.optimizely_id.value != blank %}
+<script type="text/javascript" src="//cdn.optimizely.com/js/{{ widget.optimizely_id.value }}.js"></script>
+{% endif %}

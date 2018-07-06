@@ -1,0 +1,439 @@
+// ********************************************
+//
+//  Broadway Blueprint Theme
+//  - Classic Variation
+//
+// ********************************************
+
+// -------------------------------------
+//  Variables and Mixins
+// -------------------------------------
+
+$info-sheet-breakpoint: 737px;
+
+$border-radius: 0.5rem;
+$border-radius-small: 0.25rem;
+
+@mixin border-radius { border-radius: $border-radius; }
+@mixin border-radius-small { border-radius: $border-radius-small; }
+
+@mixin widget-button-decal {
+  &:after { border-radius: 0 $border-radius $border-radius 0; }
+}
+
+@mixin simple-background { background-color: rgba($primaryColor, .8); }
+
+@mixin theme-button {
+  border-right-width: 3px;
+  &:hover {
+    border-right-width: 3px;
+  }
+}
+
+
+// -------------------------------------
+//  Header
+// -------------------------------------
+
+@include at-least($min-medium) {
+  [role=banner] {
+    .navigation { border-color: rgba($white, 0.5); }
+
+    .buttons .btn:not(.collapsable-btn) {
+      @include border-radius;
+      @include theme-button;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Hero Image & Widget Options
+// -------------------------------------
+
+.web-home-template:not(first-of-type),
+.web-page-template {
+  .bg-col {
+    @include simple-background;
+    @include border-radius;
+
+    &:before { display: none; }
+  }
+}
+
+.web-home-template .row:first-of-type .hero-widget-container .inner-widget-container {
+  @include simple-background;
+  @include border-radius;
+
+  &:before { display: none; }
+}
+
+
+// -------------------------------------
+//  CTAs
+// -------------------------------------
+
+.action-calls {
+  li { @include border-radius; }
+  a { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Home MF IUI
+// -------------------------------------
+
+.home-multifamily-iui,
+.home-multifamily-iui-v2 {
+  .btn {
+    @include border-radius;
+    @include widget-button-decal;
+  }
+}
+
+
+// -------------------------------------
+//  Self Storage Home IUI
+// -------------------------------------
+
+.self-storage-search-home {
+  .sss-search-criteria,
+  .sss-search-input,
+  .sss-search-storage-categories-select,
+  .sss-search-btn { @include border-radius; }
+
+  .sss-search-btn,
+  .sss-search-select { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Self Storage Featured Unit Categories
+// -------------------------------------
+
+.ss-featured-unit-categories {
+  a {
+    @include border-radius;
+    @include widget-button-decal;
+  }
+}
+
+
+// -------------------------------------
+//  MF Mini Search (Corp)
+// -------------------------------------
+
+.multifamily-mini-search .corpSearchWrapper .search-form {
+  select,
+  .search-button button { @include border-radius; }
+
+  select,
+  .city,
+  .state,
+  .search-button button { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  MF Mini Search VERSION 2
+// -------------------------------------
+
+.multifamily-mini-search-v2 {
+  .mf-search-input,
+  select,
+  .btn { @include border-radius; }
+
+  select,
+  .city,
+  .state,
+  .btn, { @include widget-button-decal; }
+}
+
+
+// ------------------------------------
+//  MF IUI (full version)
+// ------------------------------------
+
+.corpSearchWrapper .search-form span {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// --------------------------------------------
+//  Floor Plans Cards
+// --------------------------------------------
+
+.floorplans-cards {
+  .floorplan-card,
+  .unit-cta-button {
+    @include border-radius;
+  }
+}
+
+
+// ---------------------------------------
+//  Simple Form (aka Skip Step Lead Form)
+// ---------------------------------------
+
+.g5-enhanced-form {
+  button[type=submit],
+  input[type=submit] {
+    @include border-radius;
+  }
+}
+
+
+// -------------------------------------
+//  City, Search, Zip Search
+// -------------------------------------
+
+.city-state-zip-search {
+  .zip-search-input { @include border-radius; }
+  .zip-search-button { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Locations Navigation
+// -------------------------------------
+
+.locations-navigation h3.locations-navigation-title {
+  @include border-radius;
+  @include widget-button-decal;
+}
+
+
+// ---------------------------------------------
+//  Location Search
+// ---------------------------------------------
+
+.location-search {
+  .search-form {
+    @include border-radius;
+  }
+
+  .search-filter,
+  a.loc-search-btn,
+  #location-search-container .resultAvailability {
+    @include border-radius;
+  }
+
+  .xlarge {
+    .search-filter {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .loc-search-btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Galleries
+// -------------------------------------
+
+.gallery-only {
+  .mini-gallery {
+    .flex-direction-nav {
+      a,
+      .flex-pref:before,
+      .flex-next:after { @include border-radius; }
+    }
+
+    .flex-control-thumbs img { @include border-radius; }
+  }
+
+  .full-gallery:not(.gallery-carousel) {
+    .flex-direction-nav a { @include border-radius; }
+    .flex-control-thumbs img { @include border-radius; }
+  }
+}
+
+.gallery .gallery-carousel {
+  .slides .flex-caption,
+  .slides li img:nth-last-child(2),
+  .flex-direction-nav a { @include border-radius; }
+}
+
+.featured-properties .gallery-carousel .slides a img:nth-last-child(2) {
+  @include border-radius;
+}
+
+
+// -------------------------------------
+//  Buttons
+// -------------------------------------
+
+.button .btn {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  News Feed
+// -------------------------------------
+
+[class*=blog-feed] {
+  .news-item-link,
+  .all-news-link,
+  .post-expand,
+  .all-posts {
+    @include border-radius;
+  }
+
+  .news-item-link { @include theme-button; }
+}
+
+
+// --------------------------------------------
+//  HTML
+// --------------------------------------------
+
+.html .html-content {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Social Feed
+// --------------------------------------------
+
+.social-feed {
+  .feed-section { border-radius: 0 $border-radius $border-radius $border-radius; }
+  .feed-switch:first-of-type { border-top-left-radius: $border-radius; }
+  .feed-switch:last-of-type { border-top-right-radius: $border-radius; }
+}
+
+
+// --------------------------------------------
+//  Accordion
+// --------------------------------------------
+
+.accordion {
+  .accordion-section:first-of-type {
+    .accordion-section-title {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+  }
+
+  .accordion-section:last-of-type {
+    .accordion-section-title {
+      border-radius: 0 0 $border-radius $border-radius;
+
+      &.active {
+        border-radius: 0;
+      }
+    }
+
+    .accordion-section-content {
+      border-radius: 0 0 $border-radius $border-radius;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Directions
+// -------------------------------------
+
+.directions .directions-submit {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  Contact Info Sheet
+// -------------------------------------
+
+.contact-info-sheet {
+  @include at-least($info-sheet-breakpoint) {
+    &.default,
+    &.left {
+      .info-sheet-nav { border-radius: 0 $border-radius $border-radius 0; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child { border-top-right-radius: $border-radius; }
+        &:last-child { border-bottom-right-radius: $border-radius; }
+      }
+    }
+
+    &.right {
+      .info-sheet-nav { border-radius: $border-radius 0 0 $border-radius; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child { border-top-left-radius: $border-radius; }
+        &:last-child { border-bottom-left-radius: $border-radius; }
+      }
+    }
+
+    &.b-left,
+    &.b-right {
+      .info-sheet-nav { border-radius: $border-radius $border-radius 0 0; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child {
+          border-top-left-radius: $border-radius;
+        }
+        &:last-child { border-top-right-radius: $border-radius; }
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Contact Info
+// -------------------------------------
+
+[role=main] .contact-info {
+  @include simple-background;
+  @include border-radius;
+
+  &:before { display: none; }
+}
+
+
+// -------------------------------------
+//  Promoted Reviews
+// -------------------------------------
+
+.promoted-reviews .review-body a {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  Coupon
+// -------------------------------------
+
+.coupon {
+  button,
+  .coupon-info { @include border-radius; }
+
+  button { @include theme-button; }
+}
+
+
+// -------------------------------------
+//  Social Links
+// -------------------------------------
+
+.social-links .icon { @include border-radius-small; }
+
+
+// -------------------------------------
+//  Footer
+// -------------------------------------
+
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px;
+}
+

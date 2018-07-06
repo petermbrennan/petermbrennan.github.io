@@ -1,0 +1,58 @@
+{% capture widgetId %}row-{{ widget.id }}{% endcapture %}
+
+{% if widget.row_divider_image.value != blank %}
+  <div class="row-divider content {{widget.row_divider_position.value_or_default}}" id="row-divider-{{widget.id}}">
+    <img src="{{ widget.row_divider_image.value }}" class="divider-image" alt=""/>
+  </div>
+{% endif %}
+
+<div class="row row-widget{% if widget.row_divider_image.value != blank %} row-divider-padding{% endif %}{% if widget.row_text_color.value != 'default' %} text-{{widget.row_text_color.value}}{% endif %}{% if widget.row_css_custom.value != blank %} {{widget.row_css_custom.value}}{% endif %} bg-{{widget.row_bg_position.value_or_default}}{% if widget.row_bg_overlay_color.value != blank %} row-overlay{% endif %} {{widget.row_bg_behavior.value_or_default}}-bg {{widgetId}}"
+      style="{% if widget.row_bg_color.value != '' %}background-color: {{widget.row_bg_color.value_or_default_parsed}};{% endif %}{% if widget.row_bg_image.value != '' %}background-image: url({{widget.row_bg_image.value}});{% endif %}">
+
+  <style>
+    {% if widget.row_bg_overlay_color.value != blank %}
+      .{{widgetId}}::before {
+        background-color: {{widget.row_bg_overlay_color.value_or_default_parsed}};
+        opacity: {{widget.row_bg_overlay_opacity.value_or_default}};
+      }
+    {% endif %}
+    {% if widget.link_color.value != blank %}
+      .{{widgetId}} .html a {
+        color:{{widget.link_color.value_or_default_parsed}} !important;
+      }
+    {% endif %}
+
+    {% if widget.top_row_padding.value != blank %}
+      .{{widgetId}} {
+        padding-top: {{widget.top_row_padding.value}} !important;
+      }
+    {% endif %}
+
+    {% if widget.bottom_row_padding.value != blank %}
+      .{{widgetId}} {
+        padding-bottom: {{widget.bottom_row_padding.value}} !important;
+      }
+    {% endif %}
+  </style>
+
+
+  <div class="content row-{{ widget.row_layout.value }}">
+    <div class="row-grid">
+
+      <div class="col col-1" id="drop-target-1-column-{{widget.id}}"></div>
+
+      {% if widget.row_layout.value != "single" %}
+        <div class="col col-2" id="drop-target-2-column-{{widget.id}}"></div>
+      {% endif %}
+
+      {% if widget.row_layout.value == "thirds" or widget.row_layout.value == "quarters" %}
+        <div class="col col-3" id="drop-target-3-column-{{widget.id}}"></div>
+      {% endif %}
+
+      {% if widget.row_layout.value == "quarters" %}
+        <div class="col col-4" id="drop-target-4-column-{{widget.id}}"></div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

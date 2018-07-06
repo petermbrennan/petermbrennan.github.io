@@ -1,0 +1,73 @@
+{% capture widgetId %}lead-form-{{ widget.id }}{% endcapture %}
+{% capture multiForms %}{{ widget.user_select_forms.value }}{% endcapture %}
+<div class="widget lead-form {{widget.form_alignment.value_or_default}}-form {{widgetId}}" id="{{widgetId}}">
+  {% if widget.hack_urn.value_or_default == 'true' %}
+  <script class="lead-configs" type="application/json">
+      {
+        "secure_cls_url" : "{{ widget.secure_cls_url }}",
+        "location_urn" : "{{ widget.location_urn.value_or_default }}",
+        "widgetId": "{{widgetId}}",
+        "hack_urn" : "{{ widget.hack_urn.value_or_default }}",
+        "form_to_append_location_select" : "{{ widget.form_to_append_location_select.value }}"
+        {% if multiForms != blank %}
+        ,"user_select_forms" : {{ widget.user_select_forms.value }}
+        {% endif %}
+      }
+  </script>
+  {% endif %}
+
+  {% if widget.hack_urn.value_or_default == 'true'  %}
+    {% assign select_ordering = widget.select_ordering.value_or_default  %}
+
+    {% if widget.show_pending.value_or_default == 'true'  %}
+      {% if select_ordering == 'order_by_state' %}
+        {% assign location_select = widget.live_locations_without_corp_including_pending_by_state %}
+      {% else %}
+        {% assign location_select = widget.live_locations_without_corp_including_pending_by_city %}
+      {% endif %}
+    {% else %} <!-- Dont include Pending locs. -->
+      {% if select_ordering == 'order_by_state' %}
+        {% assign location_select = widget.live_locations_without_corp_by_state %}
+      {% else %}
+        {% assign location_select = widget.live_locations_without_corp_by_city %}
+      {% endif %}
+    {% endif %}
+    <div class="location-select" style="display:none; padding: 0 0 10px 0" >
+      <h3>{{ widget.select_dropdown_label.value_or_default }}</h3>
+      <select required name="location-list-select" class="location-list-urn" id="location-list">
+        <option disabled selected="true" value="">{{ widget.disabled_option_label.value_or_default }}*</option>
+          {{ location_select }}
+      </select>
+    </div>
+  {% endif %}
+
+  {% if widget.form_heading.value_or_default != blank or widget.form_note.value != blank %}
+  <div class="form-text">
+    <div class="form-text">
+      {% if widget.form_heading.value_or_default != blank %}
+        <h2 class="form-heading" style="text-align: {{widget.form_heading_position.value_or_default }}">{{ widget.form_heading.value_or_default }}</h2>
+      {% endif %}
+
+      {% if widget.form_note.value != blank %}
+        <p class="form-note">{{ widget.form_note.value }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="g5-enhanced-form">
+    <script class="config" type="application/json">
+      {
+        {% if widget.success_redirect_url.value != blank %}
+          "successRedirectUrl": "{{ widget.success_redirect_url.value}}",
+        {% endif %}
+        "formUrl": "{{ widget.secure_cls_url }}/api/v1/locations/{{ widget.location_urn.value_or_default }}/html_forms/{{ widget.form_type.value }}"
+      }
+    </script>
+
+    <p>Loading...</p>
+
+    <noscript>
+      You have either disabled Javascript or are using an older, unsupported browser. Please <a href="{{ widget.secure_cls_url }}/api/v1/locations/{{ widget.location_urn.value_or_default }}/html_forms/{{ widget.form_type.value }}.html" target="_blank">visit this link</a> to contact us.
+    </noscript>
+  </div>
+</div>

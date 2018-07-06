@@ -1,0 +1,26 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <fieldset class="display-settings">
+      <legend>Display Settings</legend>
+      <!-- Display Navigation -->
+      {{ widget.display_navigation | edit_toggle_field: "Display Navigation" }}
+
+      <!-- Display Corporate Navigation -->
+      {{ widget.display_corporate_navigation | edit_toggle_field: "Display Corporate Navigation (Locations only)" }}
+    </fieldset>
+
+    <!-- Page selection -->
+    {{ widget.web_templates | edit_navigation_field: "Choose which pages you would like to display" }}
+
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>
+

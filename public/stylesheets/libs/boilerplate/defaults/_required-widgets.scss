@@ -1,0 +1,56 @@
+// *************************************
+//
+//  Required Widget CSS
+//  - CSS Related to Widget Options
+//
+// *************************************
+
+// =====================================
+//  Content Stripe
+// =====================================
+
+// Padding Options
+// -------------------------------------
+
+.extra-padding .col {
+  @include until($max-layout) {
+    &:first-of-type { padding-top: 4em !important; }
+    &:last-of-type { padding-bottom: 4em !important; }
+  }
+
+  @include at-least($min-layout) {
+    padding-top: 9em !important;
+    padding-bottom: 9em !important;
+  }
+}
+
+.light-padding .col {
+  @include until($max-layout) {
+    &:first-of-type { padding-top: 1em !important; }
+    &:last-of-type { padding-bottom: 1em !important; }
+  }
+
+  @include at-least($min-layout) {
+    padding-top: 1.5em !important;
+    padding-bottom: 1.5em !important;
+  }
+}
+
+.no-padding .col {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.custom-padding {
+  @include until($max-layout) {
+    .col:first-of-type { padding-top: 0 !important; }
+    .col:last-of-type { padding-bottom: 0 !important; }
+  }
+
+  @include at-least($min-layout) {
+    .col {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+  }
+}

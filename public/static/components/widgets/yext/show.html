@@ -1,0 +1,33 @@
+{% capture widgetId %}yext-{{ widget.id }}{% endcapture %}
+<div class="yext widget {{widgetId}}" id="{{widgetId}}">
+     <script class="config" type="application/json">
+      {
+        "widgetId": "{{ widgetId }}",
+        "form_action_link": "{{ widget.form_action_link.value_or_default }}"
+      }
+    </script>
+
+  <form action="#" method="post">
+    <fieldset class="disabled-exception">
+      <div class="{{widgetId}}-row">
+        <label for="name">Business Name</label>
+        <div class="text"><input type="text" name="name" value=""/></div>
+      </div>
+      <div class="{{widgetId}}-row">
+        <label for="phone">Business Phone</label>
+        <div class="text"><input type="text" name="phone" value=""/></div>
+      </div>
+      <div class="{{widgetId}}-row">
+        <label for="address">Business Address</label>
+        <div class="text"><input type="text" name="address" value=""/></div>
+      </div>
+      <div class="{{widgetId}}-row">
+        <label for="zip">Business Zip</label>
+        <div class="text"><input type="text" name="zip" value=""/></div>
+      </div>
+      <div>
+        <input type="submit" value="Scan Now"/>
+      </div>
+    </fieldset>
+  </form>
+</div>

@@ -1,0 +1,111 @@
+{% capture widgetId %}mf-mini-search-{{ widget.id }}{% endcapture %}
+<div class="corporate-search multifamily-mini-search multifamily-mini-search-v1 widget {{widgetId}}" id="{{widgetId}}">
+
+  <script class="config" type="application/json">
+    {
+      "clientID": "{{ widget.core_client_id.value }}",
+      "serviceURL": "{{ widget.core_service_url.value }}",
+      "corpSearchPage": "{{ widget.corp_search_page.value }}",
+      "externalSearchURL": "{{ widget.external_search_url.value }}",
+      "defaultSearchOption": "{{ widget.default_search_option.value }}",
+      "alternateSearchOption": "{{ widget.alternate_search_option.value }}",
+      "alternateSearchButtonText": "{{ widget.alternate_search_button_text.value }}",
+      "alternateCoreClientID": "{{ widget.alternate_core_client_id.value }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    {% if widget.text_color.value != blank %}
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form label,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form h2 {color:{{widget.text_color.value}}}
+    {% endif %}
+    {% if widget.search_button_color.value != '' %}
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .search-button,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .search-button button{background-color:{{widget.search_button_color.value}}}
+    {% endif %}
+    {% if widget.search_background.value != blank %}
+    .multifamily-mini-search.corporate-search.{{widgetId}} {background-color:{{widget.search_background.value}}}
+    {% endif %}
+
+    {% if widget.city_state_button_bg_color.value != blank %}
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .state,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .city{
+      background: {{widget.city_state_button_bg_color.value}};
+    }
+    {% endif %}
+
+    {% if widget.city_state_button_text_color.value != blank %}
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .state,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .city {
+      background: none;
+      color: {{widget.city_state_button_text_color.value}};
+    }
+
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .state select,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .city select{
+      color: inherit;
+    }
+
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .state:after,
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form .city:after{
+      top: 45%;
+      right: 5%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(136, 183, 213, 0);
+      border-top-color: {{widget.city_state_button_text_color.value}};
+      border-width: 6px;
+      margin-left: -6px;
+    }
+    {% endif %}
+
+    {% if widget.search_button_text_color.value != blank %}
+    .multifamily-mini-search.{{widgetId}} .corpSearchWrapper .search-form button{
+      color: {{widget.search_button_text_color.value}};
+    }
+    {% endif %}
+  </style>
+
+  <div class="corp-search-container">
+    <div class="corpSearchWrapper">
+      <div class="search-form">
+        <div class="search-form-center">
+          <div class="search-form-inner">
+            <div class="multifamily-mini-search-wrapper">
+              {% if widget.heading_text.value != blank %}
+                <h2>{{ widget.heading_text.value }}</h2>
+              {% endif %}
+              <div class="multifamily-mini-search-fields">
+                <span class="state">
+                  <select class="mf-search-states default-select">
+                    <option value="">State</option>
+                  </select>
+                  <select class="mf-search-states alternate-select">
+                    <option value="">State</option>
+                  </select>
+                </span>
+                <span class="city">
+                  <select class="mf-search-cities default-select">
+                    <option value="">City</option>
+                  </select>
+                  <select class="mf-search-cities alternate-select">
+                    <option value="">City</option>
+                  </select>
+                </span>
+                <span class="search-button">
+                  <button class="mf-search-go-button search default-submit-button">{{ widget.search_button_text.value_or_default }}</button>
+                  <button class="mf-search-go-button search alternate-submit-button">{{ widget.alternate_search_button_text.value }}</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

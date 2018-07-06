@@ -1,0 +1,38 @@
+{% capture widgetId %}cinemagraph-{{ widget.id }}{% endcapture %}
+<div class="cinemagraph {{widget.cinemagraph_position.value_or_default}} {% if widget.cinemagraph_full_width.value != 'no' %}cinemagraph-full-width{% endif %} {{widgetId}} fluid-video widget h-media" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "sourceRatioWidth": "{{widget.source_ratio_width.value_or_default}}",
+      "sourceRatioHeight": "{{widget.source_ratio_height.value_or_default}}",
+      "videoId":  "{{widget.cinemagraph_id.value}}",
+      "videoSrc": "{{widget.source.value}}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  {% if widget.cinemagraph_id.value != blank %}
+  	{% assign youtube = '//www.youtube.com/embed/' %}
+  	{% assign flixel = '//media.flixel.com/cinemagraph/' %}
+    {% if widget.cinemagraph_title.value != blank %}
+      <h2>{{ widget.cinemagraph_title.value }}</h2>
+    {% endif %}
+
+   	<div class="cinemagraph-container">
+   	  <div class="filter {{widget.filter_opacity.value_or_default}}" style="{% if widget.cinemagraph_filter.value != '' %}background: {{widget.cinemagraph_filter.value}};{% endif %}"></div>
+
+   	  {% if widget.source.value == flixel %}
+   	    <iframe src="{{ widget.source.value }}{{ widget.cinemagraph_id.value }}?hd=true&forceGif=false" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="cinemagraph-frame"></iframe>
+   	  {% endif %}
+
+   	  {% if widget.source.value == youtube %}
+        <div class="fallback-image">
+          <img src="{{ widget.cinemagraph_fallback_image.value }}" class="fallback" alt="{{ widget.fallback_photo_alt_tag.value }}">
+        </div>
+
+        <div id="ytplayer-{{widgetId}}" class="ytplayer"></div>
+   	  {% endif %}
+
+   	</div>
+
+  {% endif %}
+</div>

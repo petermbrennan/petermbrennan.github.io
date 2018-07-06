@@ -1,0 +1,22 @@
+{
+  "theme_id": 19,
+  "name": "StorQuest",
+  "summary": "Private theme for StorQuest",
+  "primary_color": "#e1261c",
+  "secondary_color": "#3c3d3e",
+  "tertiary_color": "#c13630",
+  "primary_font": "museo-sans",
+  "secondary_font": "museo-sans",
+  "primary_font_variations": ["n3"],
+  "secondary_font_variations": ["n3"],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-1t5t8rc1-storquest-self-storage"
+  ],
+  "pending": false,
+  "group": "StorQuest",
+  "theme_type": "location",
+  "verticals": [
+    "self-storage"
+  ]
+}

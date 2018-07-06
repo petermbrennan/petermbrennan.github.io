@@ -1,0 +1,10 @@
+.img-thumbnail-preview .fa-crop {
+  display: none !important;
+}
+iframe.image-thumb {
+  width: 110px !important;
+  height: 110px !important;
+}
+.cropping-style, .form-field-cropping-style {
+  display: none !important;
+}

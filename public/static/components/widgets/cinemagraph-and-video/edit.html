@@ -1,0 +1,80 @@
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <fieldset>
+        <!-- Fallback Still Photo for Mobile -->
+        {{ widget.cinemagraph_fallback_image | edit_image_field: "Fallback Image URL for mobile (Youtube)", "", "value_or_default", "", "cinemagraph-fallback" }}
+        <div class="col s5">
+          {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+          {{ widget.cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+        </div>
+
+        <div class="max-width-max-height">
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+          </div>
+
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+          </div>
+          <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+        </div>
+    </fieldset>
+
+  <legend>Cinemagraph and Video Settings</legend>
+  <!-- Cinemagraph Title -->
+  {{ widget.cinemagraph_title | edit_text_field: "Cinemagraph and Video Title" }}
+
+  <!-- Cinemagraph ID -->
+  {{ widget.cinemagraph_id | edit_text_field: "Cinemagraph and Video ID" }}
+
+  <!-- Cinemagraph Source -->
+  {% assign source_opts = '{"//media.flixel.com/cinemagraph/":"Flixel","//www.youtube.com/embed/":"YouTube"}' %}
+  {{ widget.source | edit_select_field: "Cinemagraph and Video Source", source_opts, "value_or_default" }}
+
+  <!-- Fallback Still Photo Alt Tag -->
+  {{ widget.fallback_photo_alt_tag | edit_url_field: "Fallback Photo Alt Tag" }}
+
+  <fieldset>
+
+    <legend>Cinemagraph Source Dimension Ratio (W/H)</legend>
+
+    <!-- Cinemagraph Source Ratio Width -->
+    <div class="col s5">
+      {{ widget.source_ratio_width | edit_integer_field: "Source Ratio Width", "16", "value_or_default", "", 1, 100000 }}
+    </div>
+
+    <!-- Cinemagraph Source Ratio Height -->
+    <div class="col s5 offset-s1">
+      {{ widget.source_ratio_height | edit_integer_field: "Source Ratio Height", "9", "value_or_default", "", 1, 100000 }}
+    </div>
+
+  </fieldset>
+
+  <!-- Cinemagraph position -->
+  {% assign position_opts = '{"cinemagraph-absolute":"As Hero", "cinemagraph-normal":"Normal"}' %}
+  {{ widget.cinemagraph_position | edit_radio_field: "Cinemagraph and Video Position", position_opts, "value_or_default" }}
+
+  <!-- Cinemagraph width -->
+  {{ widget.cinemagraph_full_width | edit_toggle_field: "Full Browser Width (will crop top and bottom)", "value_or_default", "", true }}
+  </fieldset>
+{{ widget | end_tab }}
+
+
+{{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+  <legend>Style Settings</legend>
+  <!-- Cinemagraph Filter Color (Optional) -->
+  {{ widget.cinemagraph_filter | edit_text_field: "Filter Color", "example: #fff", "value_or_default" }}
+
+  <!-- Filter Opacity Start -->
+  {% assign filter_opts = '{"filter-quarter":"25% Opacity", "filter-half":"50% Opacity", "filter-three-quarters":"75% Opacity"}' %}
+  {{ widget.filter_opacity | edit_radio_field: "Filter Opacity", filter_opts, "value_or_default" }}
+  </fieldset>
+{{ widget | end_tab }}
+
+
+{{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+{{ widget | end_tab: true }}
+</form>

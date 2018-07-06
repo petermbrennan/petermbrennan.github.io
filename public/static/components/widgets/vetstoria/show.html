@@ -1,0 +1,9 @@
+<div class="vetstoria widget">
+
+	<div id="oabp-widget" data-mode="html5" data-domain="nva.vetstoria.com" data-site-hash="{{ widget.vetstoria_id.value }}" data-mobile-message="Touch Here to Make an Appointment" data-theme-customisation="{{ widget.vetstoria_theme.value }}"></div>
+
+	{% if widget.vetstoria_id.value != blank %}
+		<script src="https://nva.vetstoria.com/js/oabp-widget.min.js"></script>
+	{% endif %}
+
+</div>

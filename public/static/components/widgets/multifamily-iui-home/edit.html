@@ -1,0 +1,42 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <div class="form-field">
+      {{ widget.mf_iui_home_heading | edit_text_field: "MF IUI Heading", "", "value" }}
+
+      {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+      {{ widget.mf_iui_home_heading_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+    </div>
+
+    <!-- Core Store ID -->
+    {{ widget.core_store_id | edit_text_field: "Core Store ID", "example: 1234" }}
+
+    <!-- Floorplans Service Host -->
+    {{ widget.floorplans_service_host | edit_url_field: "Floorplans Service Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Floorplans Page Url -->
+    {{ widget.floorplan_page_url | edit_url_field: "Floorplans Page URL" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <!-- Button Background Color -->
+    {{ widget.btn_bg | edit_color_field: "Button Background Color", "", "value" }}
+
+    <!-- View All Button Background Color -->
+    {{ widget.view_all_btn_bg | edit_color_field: "View All Button Background Color", "", "value" }}
+
+    <!-- Button Hover Background Color -->
+    {{ widget.btn_hover_bg | edit_color_field: "Button Hover Background Color", "", "value" }}
+
+    <!-- Button Text Background Color -->
+    {{ widget.btn_text_color | edit_color_field: "Button Text Color", "", "value" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

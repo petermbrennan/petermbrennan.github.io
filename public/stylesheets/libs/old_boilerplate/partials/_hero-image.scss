@@ -1,0 +1,55 @@
+// ********************************************
+//
+//  Hero Image
+//
+// ********************************************
+
+// ============================================
+//  Home page large hero image
+// ============================================
+
+// Use this for large photo on home page at the top
+//
+// @import "hero-image";
+// Web builder must use the class "hero" on the row
+//
+// Use this widget configruation in the CMS:
+// Content Stripe (single col) > Column > (.row-1 > photo ) + .row-2 + .row-3...
+
+// Top padding will need to be added to .hero for positioning widgets
+
+.hero {
+  @extend %relative;
+  padding: 0;
+  overflow: hidden;
+
+  .content {
+    margin: 0 auto;
+    max-width: $site-width;
+    position: static;
+  }
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  img {
+    border: none;
+  }
+
+  @include at-least($min-hero) {
+    height: 60vw; // maintains aspect ratio of 3:5
+    max-height: em(900);
+
+    .content {
+      padding: 0 $half-whitespace;
+    }
+
+    img {
+      @include transform(translateX(-50%) translateY(-50%));
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+  }
+}

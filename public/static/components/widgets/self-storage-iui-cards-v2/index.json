@@ -1,0 +1,117 @@
+{
+  "name": "Self Storage IUI Cards v2",
+  "widget_id": 666,
+  "widget_type": null,
+  "summary": "Self Storage IUI Cards v2",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/220560427' target='_blank'>Self Storage IUI Cards v2 Documentation</a>",
+  "remote_javascripts": [
+    "show.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "eol": true,
+  "settings": [
+    {
+      "name": "store_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "service_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "move_in_cost_service_host",
+      "default_value": "https://vendor-leads.g5marketingcloud.com"
+    },
+    {
+      "name": "unit_size_help_url",
+      "default_value": ""
+    },
+    {
+      "name": "unit_size_help_label",
+      "default_value": ""
+    },
+    {
+      "name": "max_lease_days",
+      "default_value": "7"
+    },
+    {
+      "name": "no_units_heading_text",
+      "default_value": "Our Units"
+    },
+    {
+      "name": "no_units_sub_heading_text",
+      "default_value": "Contact us today for our available units!"
+    },
+    {
+      "name": "no_units_form_type",
+      "default_value": "contact"
+    },
+    {
+      "name": "disclaimer_text",
+      "default_value": "Costs do not include insurance or lock."
+    },
+    {
+      "name": "final_instructions_1",
+      "default_value": "Thank you for choosing {{location_name | google_no_translate}}. We appreciate your business and look forward to serving your self storage needs."
+    },
+    {
+      "name": "final_instructions_2",
+      "default_value": "Our manager will contact you shortly with your gate code information."
+    },
+    {
+      "name": "final_instructions_3",
+      "default_value": "If you need a lock or moving boxes, we sell both."
+    },
+    {
+      "name": "page_slug_1",
+      "default_value": ""
+    },
+    {
+      "name": "page_slug_2",
+      "default_value": ""
+    },
+    {
+      "name": "primary_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "secondary_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "accent_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "button_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "toggle_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "amenity_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "elease_nav_color_1",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "elease_nav_color_2",
+      "default_value": "{{theme_secondary_color}}"
+    }
+  ]
+}

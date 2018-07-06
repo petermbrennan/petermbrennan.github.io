@@ -1,0 +1,14 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <!-- Typekit File Name ## DEPRECATED -->
+    {{ widget.typekit_filename | edit_hidden_field: "value", "typekit_filename"}}
+
+    <!-- Typekit ID -->
+    {{ widget.theme_typekit_id | edit_text_field: "Typekit ID", "theme_typekit_id", "value_or_default", "", true }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+</form>

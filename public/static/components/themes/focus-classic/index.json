@@ -1,0 +1,24 @@
+{
+  "theme_id": 34,
+  "parent_theme_id": 33,
+  "name": "Focus - Classic",
+  "summary": "Classic variation of Focus family",
+  "primary_color": "#db6251",
+  "secondary_color": "#0072bc",
+  "tertiary_color": "#f9c230",
+  "primary_font": "proxima-nova",
+  "secondary_font": "proxima-nova",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Focus",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

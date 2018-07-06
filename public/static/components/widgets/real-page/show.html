@@ -1,0 +1,13 @@
+{% capture widgetId %}realpage-{{ widget.id }}{% endcapture %}
+{% capture iframeId %}realpage-iframe-{{ widget.id }}{% endcapture %}
+<div class="realpage widget" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "realpage_id": "{{ widget.realpage_id.value }}",
+      "realpage_stylesheet": "{{ widget.realpage_stylesheet.value }}",
+      "widgetId": "{{widgetId}}",
+      "iframeId": "{{iframeId}}"
+    }
+  </script>
+  <div id="{{iframeId}}" class="realpage-iframe"></div>
+</div>

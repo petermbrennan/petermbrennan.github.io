@@ -1,0 +1,86 @@
+{% capture widgetId %}my-widget-{{ widget.id }}{% endcapture %}
+<div class="storage-size-calculator widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+  {
+     "widgetId":"{{widgetId}}",
+     "headingText": "Recommended Unit Size",
+     "s3BucketLink": "https://s3-us-west-2.amazonaws.com/g5-widget-garden/storage-calculator/",
+     "tabsURL": "https://s3-us-west-2.amazonaws.com/g5-widget-garden/storage-calculator/tabs.json",
+     "imageColor": "{{widget.use_colored_images.value_or_default}}",
+     "useCustomFont": "{{widget.use_custom_font.value_or_default}}",
+     "instructionalText": "{{widget.instructional_text.value_or_default}}",
+     "disclaimerText": "{{widget.disclaimer_text.value_or_default}}",
+     "firstTabOpen": "{{widget.first_tab_open.value_or_default}}"
+  }
+  </script>
+  <style>
+    .{{widgetId}} .storage-calc-wrapper .storage-calc-heading-text {
+      background-color: {{ widget.heading_background_color.value_or_default }};
+      color: {{ widget.heading_text_color.value_or_default }};
+      border-color: {{ widget.heading_border_color.value_or_default }} !important;
+    }
+    .{{widgetId}} .storage-calc-border {
+      border-color: {{ widget.calculator_border_color.value_or_default }};
+      color: {{ widget.calculator_border_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-wrapper {
+      background-color: {{ widget.calculator_inner_color.value_or_default }};
+      border-color: {{ widget.calculator_border_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-heading {
+      border-color: {{ widget.heading_container_border_color.value_or_default }} !important;
+      background-color: {{ widget.heading_container_background_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-category-name h3 {
+      color: {{ widget.tab_heading_text_color.value_or_default }};
+    }
+    .{{widgetId}} .disclaimer-text-wrapper {
+      color: {{ widget.disclaimer_text_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-category-name hr {
+      border: 0;
+      border-top: 1px solid {{ widget.tab_divider_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-item {
+      background: {{ widget.item_background_color.value_or_default }};
+      border-color: {{ widget.item_border_color.value_or_default }} !important;
+    }
+    .{{widgetId}} .storage-calc-item-counter {
+      background-color: {{ widget.counter_background_color.value_or_default }};
+    }
+    .{{widgetId}} path {
+      stroke: {{ widget.counter_arrow_color.value_or_default }};
+    }
+    .{{widgetId}} .unit-count {
+      color: {{ widget.counter_text_color.value_or_default }};
+      background: {{ widget.counter_text_background_color.value_or_default }};
+    }
+    .{{widgetId}} .storage-calc-item-info span {
+      color: {{ widget.item_text_color.value_or_default }};
+    }
+    .{{widgetId}} .instructional-text {
+      color: {{ widget.instructional_text_color.value_or_default }};
+    }
+  </style>
+
+  <div class="storage-calc-border">
+    <div class="storage-calc-wrapper">
+      <div class="storage-calc-innerds">
+        <div class="storage-calc-heading">
+          <div class="storage-calc-heading-text">
+            <div class="recommended-text-container">
+              <h3 class="recommended-text"></h3>
+              <h3 class="calculated-size"></h3>
+            </div>
+          </div>
+          <h3 style="text-align:center" class="instructional-text"></h3>
+        </div>
+        <div class="storage-calc-accordian-wrapper">
+          <div class="storage-calc-sections">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 class="disclaimer-text-wrapper"></h3>
+</div>

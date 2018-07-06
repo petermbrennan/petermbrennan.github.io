@@ -1,0 +1,24 @@
+{
+  "theme_id": 23,
+  "name": "Broadway - Bold",
+  "summary": "This is a new year. A new beginning. And things will change.",
+  "primary_color": "#ff3800",
+  "secondary_color": "#009393",
+  "tertiary_color": "#00585f",
+  "primary_font": "museo-sans",
+  "secondary_font": "georgia",
+  "primary_font_variations": ["n3"],
+  "secondary_font_variations": ["n4"],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Broadway",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "aliases": ["broadway"]
+}

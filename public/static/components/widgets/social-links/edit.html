@@ -1,0 +1,16 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- Display Social Links -->
+    {{ widget.display_social_links | edit_toggle_field: "Display Social Links", "value_or_default", }}
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

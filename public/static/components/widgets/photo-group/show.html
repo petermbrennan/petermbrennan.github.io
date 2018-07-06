@@ -1,0 +1,52 @@
+{% capture widgetId %}photo-group-{{ widget.id }}{% endcapture %}
+
+<div class="photo-group widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config photo-group-config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+
+  <style type="text/css">
+    {% if widget.photo_filter.value != 'false' %}
+      {% if widget.photo_filter_color.value != '' %}
+        .{{ widgetId }} .filter {
+          background: {{widget.photo_filter_color.value}};
+        }
+      {% endif %}
+
+      {% if widget.photo_label.value != '' %}
+      .{{ widgetId }} .label {
+          background: {{widget.photo_label.value_or_default}};
+        }
+      {% endif %}
+    {% endif %}
+  </style>
+
+  <div class="photo-group-container">
+    {% assign loader = "https://themes.g5dxm.com/shared/blank.png" %}
+    {% assign use_lazy_load = widget.use_lazy_load.value_or_default %}
+
+    {% for i in (1..3) %}
+      {% capture photo_url %}photo{{i}}_url{% endcapture %}
+      {% capture photo_alt %}photo{{i}}_alt{% endcapture %}
+
+      {% if widget[photo_url].value != blank %}
+        {% if use_lazy_load == "true" %}
+          {% capture src %}class="u-photo lazy-load" src="{{loader}}" data-src="{{ widget[photo_url].value }}"{% endcapture %}
+        {% else %}
+          {% capture src %}class="u-photo" src="{{ widget[photo_url].value }}"{% endcapture %}
+        {% endif %}
+        <figure class="h-media">
+          <div class="photo-wrapper">
+            {% if widget.photo_filter.value == 'true' %}
+            <div class="filter {{widget.photo_opacity.value}}"></div>
+            {% endif %}
+            <img {{src}} alt="{{ widget[photo_alt].value }}" {{ widget[photo_url].value| srcset }} />
+          </div>
+        </figure>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</div>

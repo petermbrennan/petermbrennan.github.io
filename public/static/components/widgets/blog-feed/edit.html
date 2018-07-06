@@ -1,0 +1,74 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>News Feed Settings</legend>
+    <!-- News Service Domain -->
+    {{ widget.news_service_domain | edit_url_field: "News Service Domain", "client_nae_url", "best_value", "", true }}
+
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "best_value", "", true }}
+
+    <!-- Number of Posts-->
+    {{ widget.number_of_posts | edit_integer_field: "Posts Per Page", "5", "best_value", "", 1, 20 }}
+
+    <!-- Heading Text -->
+    {{ widget.heading_text | edit_text_field: "Heading Text" }}
+
+    <!-- Back To List Text -->
+    {{ widget.return_to_list_text | edit_text_field: "Return To List Text", "Return To Blog", "value_or_default" }}
+
+    <!-- UI Type -->
+    {% assign ui_type_opts = '{"full-page":"Full Page","accordion":"Accordion"}' %}
+    {{ widget.ui_type | edit_radio_field: "UI Type", ui_type_opts, "best_value" }}
+
+    <!-- Show Share Buttons -->
+    {% assign share_buttons_opts = '{"true":"On","false":"Off"}' %}
+    {{ widget.share_buttons | edit_radio_field: "Social Share Buttons", share_buttons_opts, "best_value" }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset>
+      <legend>Style Settings</legend>
+      <!-- Default Image -->
+      {{ widget.default_image | edit_image_field: "Default Image", "Used only when an article's image is empty", "value_or_default", "", "blog-feed" }}
+
+      <!-- Button Background Color - See More News -->
+      {{ widget.background_color | edit_color_field: "Button Background Color - See More News", "#ffffff", "best_value" }}
+
+      <!-- Button Background Color - Read More -->
+      {{ widget.read_more_background_color | edit_color_field: "Button Background Color - Read More", "#ffffff", "best_value" }}
+
+      <!-- Display Photos Toggle -->
+      {{ widget.display_photos | edit_toggle_field: "Display Photos", "best_value" }}
+    </fieldset>
+
+    <fieldset>
+      <legend>Pagination Settings</legend>
+
+      <!-- Pagination Text Color -->
+      {{ widget.pagination_text_color | edit_color_field: "Text Color", "#ffffff", "value_or_default" }}
+
+      <!-- Pagination Background Color -->
+      {{ widget.pagination_background_color | edit_color_field: "Background Color", "#ffffff", "value_or_default" }}
+
+      <!-- Pagination Active State Background Color -->
+      {{ widget.pagination_active_background_color | edit_color_field: "Active Background Color", "#ffffff", "value_or_default" }}
+
+    </fieldset>
+
+    <!-- Design Options -->
+    {% assign design_opts = '{"legacy":"Legacy","modern":"Modern"}' %}
+    {{ widget.design | edit_radio_field: "Design Options", design_opts, "value_or_default" }}
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

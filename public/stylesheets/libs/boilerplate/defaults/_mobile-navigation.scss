@@ -1,0 +1,86 @@
+// *************************************
+//
+//  Mobile Navigation
+//
+// *************************************
+
+// This controls the showing/hiding of mobile navigation
+.collapsable-content {
+  clear:both;
+
+  &, &.collapse {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &.collapse {
+    @include transition(height 0.35s ease);
+  }
+
+  &.collapse.in {
+    height: auto;
+  }
+
+  @include at-least($min-nav) {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+// Button to show/hide navigation
+.collapsable-btn {
+  @extend %float-right;
+  background-color: transparent;
+  color: $base-color;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+    color: $base-color;
+  }
+
+  .text,
+  .bars {
+    @extend %inline;
+    vertical-align: middle;
+  }
+
+  .text {
+    @extend %text-shout;
+    margin-right: .5em;
+  }
+
+  .bars {
+    span {
+      @extend %block;
+      @include backface-visibility(hidden);
+      @include transition-property(transform);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease);
+      border-bottom: 4px solid $headerTextColor;
+      margin: 4px 0;
+      width: $base-whitespace;
+    }
+  }
+
+  &.on .bars span {
+    &:nth-child(2) {
+      border-color: transparent;
+    }
+
+    &:first-child {
+      @include transform(rotate(45deg) translate(5px, 5px));
+    }
+
+    &:last-child {
+      @include transform(rotate(-45deg) translate(6px, -7px));
+    }
+  }
+
+  @include at-least($min-nav) {
+    display: none !important;
+  }
+}

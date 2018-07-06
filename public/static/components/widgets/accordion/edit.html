@@ -1,0 +1,45 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+  <!-- Show first item open by default -->
+  {{ widget.start_open | edit_toggle_field: "Have first item open by default", "value_or_default" }}
+
+  {% for i in (1..10) %}
+    {% capture widget_title %}title_{{i}}{% endcapture %}
+    {% capture widget_section %}section_{{i}}{% endcapture %}
+
+    <fieldset>
+      <legend>Section {{i}}</legend>
+      {{ widget[widget_title] | edit_text_field: "Title", "", "value" }}
+      {{ widget[widget_section] | edit_ckeditor_field: "Content" }}
+    </fieldset>
+  {% endfor %}
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Accordion Styles</legend>
+      <!-- Title background color -->
+      {{ widget.title_background | edit_text_field: "Title Background Color", "", "value_or_default" }}
+
+      <!-- Title text color -->
+      {{ widget.title_color | edit_text_field: "Title Text Color", "", "value" }}
+
+      <!-- Content background color -->
+      {{ widget.content_background | edit_text_field: "Content Background Color", "", "value" }}
+
+      <!-- Content text color -->
+      {{ widget.content_color | edit_text_field: "Content Text Color", "", "value" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

@@ -1,0 +1,39 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <!-- Gallery Title -->
+      {{ widget.gallery_title | edit_text_field: "Gallery Title" }}
+
+      <!-- Gallery Thumbnails checkbox -->
+      {{ widget.gallery_thumbnails | edit_toggle_field: "Show Thumbnails", "value_or_default", "", true }}
+
+      <!-- Gallery Mini checkbox -->
+      {{ widget.gallery_mini | edit_toggle_field: "Mini Gallery", "value_or_default", "", true }}
+
+      <!-- Gallery Carousel checkbox -->
+      {{ widget.gallery_carousel | edit_toggle_field: "Carousel", "value_or_default", "", true }}
+
+      {{ widget.max_width | edit_integer_field: "Max Width", "667", "value_or_default", "gallery-image-max-width", 1, 100000 }}
+
+      {{ widget.max_height | edit_integer_field: "Max Height", "1000", "value_or_default", "gallery-image-max-height", 1, 100000 }}
+
+      <a href="#" data-tags="gallery" data-location-urn='{{ widget.location_urn.value }}' data-client-urn='{{ widget.client_urn.value }}' class="publish-button cloudinary-asset-btn cloudinary-bulk-asset btn confirm cloudinary-upload">Quick Image Upload <i class="fa fa-upload" aria-hidden="true"></i></a>
+      <br />
+    </fieldset>
+
+    <!-- Time between slide transitions -->
+    {{ widget.slideshow_speed | edit_integer_field: "Time between slide transitions - milliseconds", "6000", "value_or_default", "", 1, 1000000 }}
+
+
+    {% assign photo_opts = "url,alt_tag,title,caption" %}
+    <!-- Gallery photo fields - max 20 photos -->
+    {{ widget | edit_gallery_fields: 20, photo_opts, "value", "", "gallery_photo", "gallery, photo" }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

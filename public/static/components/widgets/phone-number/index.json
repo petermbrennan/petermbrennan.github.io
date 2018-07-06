@@ -1,0 +1,52 @@
+{
+  "name": "Phone Number",
+  "widget_id": 33,
+  "widget_type": null,
+  "summary": "The phone number for customers to call",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469087-Phone-Number-Widget' target='_blank'>Phone Number Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "phone_number",
+      "default_value": "{{location_phone_number}}"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "display_phone",
+      "default_value": "true"
+    },
+    {
+      "name": "append_phone",
+      "default_value": "false"
+    },
+    {
+      "name": "prepend_phone",
+      "default_value": "false"
+    },
+    {
+      "name": "append_elements",
+      "default_value": ""
+    },
+    {
+      "name": "phone_color",
+      "default_value": ""
+    }
+  ]
+}

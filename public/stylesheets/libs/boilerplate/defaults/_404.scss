@@ -1,0 +1,81 @@
+// *************************************
+//
+//  404 Error Pages
+//
+// *************************************
+
+.not-found-404 #drop-target-main .row{
+
+  background-color: #fff;
+
+  .content{
+    padding: rem(25) rem(25) rem(50);
+    text-align: center;
+  }
+  h1, h2, p{
+    color: #5e5e5e;
+  }
+  h2, p{
+    margin-bottom: rem(45);
+  }
+  h1{
+    margin-bottom: 0;
+  }
+  h2{
+    font-weight: normal;
+  }
+  p{
+    font-size: rem(17);
+    margin-top: 0;
+  }
+  .button{
+    margin-bottom: 0;
+  }
+
+  // Until
+
+  @include until(rem(699)) {
+    h1{
+      font-size: rem(150);
+    }
+    h2{
+      font-size: rem(20);
+    }
+  }
+
+  @include until(rem(479)) {
+    h1{
+      font-size: rem(120);
+    }
+    h2{
+      font-size: rem(17);
+    }
+  }
+
+  // At Least
+
+  @include at-least(rem(700)) {
+    .content{
+      max-width: rem(700);
+    }
+    h1{
+      font-size: rem(176);
+    }
+    h2{
+      font-size: rem(24);
+    }
+  }
+
+  @include at-least(rem(2000)) {
+    h1{
+      font-size: rem(225);
+    }
+    h2{
+      font-size: rem(30);
+    }
+    p{
+      font-size: rem(19);
+    }
+  }
+
+}

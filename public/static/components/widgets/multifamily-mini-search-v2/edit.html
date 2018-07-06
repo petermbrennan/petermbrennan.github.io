@@ -1,0 +1,58 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily Mini Search Settings</legend>
+  <!-- Client URN -->
+  {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true }}
+
+  <!-- Corp Search Page -->
+  {{ widget.corp_search_page | edit_text_field: "Corp Search Page", "/relative/path/to/search_page" }}
+
+  <!-- Cloud API Domain -->
+  {{ widget.cloud_service_url | edit_text_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Heading Text -->
+  {{ widget.heading_text | edit_text_field: "Heading Text", "Find an Apartment" }}
+
+  <!-- Search Button Text -->
+  {{ widget.search_button_text | edit_text_field: "Search Button Text", "Search", "value_or_default", "", true }}
+
+  <!-- Use Typeahead -->
+  {{ widget.universal_search_enabled | edit_toggle_field: "Use Universal Search", "value_or_default" }}
+
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+
+  <!-- Heading Text Positioning-->
+  {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+  {{ widget.heading_text_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+  <!-- Search / Widget Background -->
+  {{ widget.search_background | edit_color_field: "Search / Widget Background", "theme_primary_color", "value_or_default", "", true }}
+
+  <!-- Text Color -->
+  {{ widget.text_color | edit_color_field: "Heading Color", "#fff", "value_or_default" }}
+
+  <!-- Search Button BG Color -->
+  {{ widget.search_button_color | edit_color_field: "Search Button Background Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+  <!-- Search Button Text Color -->
+  {{ widget.search_button_text_color | edit_color_field: "Search Button Text Color","#fff", "value_or_default" }}
+
+  <!-- City / State Button BG Color -->
+  {{ widget.city_state_button_bg_color | edit_color_field: "City / State Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+  <!-- City / State Button Text Color -->
+  {{ widget.city_state_button_text_color | edit_color_field: "City / State text Color","#fff", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

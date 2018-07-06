@@ -1,0 +1,43 @@
+{
+  "name": "Map",
+  "widget_id": 26,
+  "widget_type": null,
+  "summary": "Google map of business",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7181' target='_blank'>Map Documentation</a>",
+  "lib_javascripts": [
+    "google-maps-api.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "deprecated"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "map_type",
+      "default_value": "ROADMAP"
+    },
+    {
+      "name": "map_allow_pan_zoom",
+      "default_value": "true"
+    }
+  ]
+}

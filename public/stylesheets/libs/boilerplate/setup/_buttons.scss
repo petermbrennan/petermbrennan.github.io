@@ -1,0 +1,67 @@
+// *************************************
+//
+//  Buttons
+//
+// *************************************
+
+@mixin btn-base {
+  @include transition(background-color 0.2s ease, color 0.2s ease);
+  border: none;
+  font-family: $primary-font;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  padding: .5em 1em;
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+// Standard buttons with white text on 2nd custom color
+@mixin btn-standard {
+  @include btn-base;
+  background-color: $secondaryColor;
+  color: $white;
+
+  &:focus,
+  &:hover {
+    background-color: $secondary-light;
+    color: $white;
+  }
+}
+
+
+@mixin btn-alt {
+  @include btn-base;
+  background-color: $white;
+  color: $grey;
+  padding: .5em 2em;
+
+  &:focus,
+  &:hover {
+    background-color: $primaryColor;
+    color: $white;
+  }
+}
+
+
+// Adds right arrow icon to button
+@mixin btn-arrow {
+  @extend %icon;
+  @extend .icn-angle-right;
+  padding-right: 2em;
+  position: relative;
+
+  &:before {
+    font-size: 1.5em;
+    position: absolute;
+    right: $half-whitespace;
+    top: .3em;
+  }
+}
+

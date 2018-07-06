@@ -1,0 +1,81 @@
+{
+  "name": "Lead Form",
+  "widget_id": 23,
+  "widget_type": null,
+  "summary": "Form for customer to contact a location",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-6850' target='_blank'>Lead Form Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": ["edit-form-types.js"],
+  "lib_stylesheets": ["pikaday.css"],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "form_heading",
+      "default_value": ""
+    },
+    {
+      "name": "form_heading_position",
+      "default_value": "left"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "form_endpoint",
+      "default_value": "html_forms"
+    },
+    {
+      "name": "form_note",
+      "default_value": ""
+    },
+    {
+      "name": "form_type",
+      "default_value": ""
+    },
+    {
+      "name": "form_alignment",
+      "default_value": "vertical"
+    },
+    {
+      "name": "success_redirect_url",
+      "default_value": ""
+    },
+    {
+      "name": "user_select_forms",
+      "default_value": ""
+    },
+    {
+      "name": "hack_urn",
+      "default_value": "false"
+    },
+    {
+      "name": "form_to_append_location_select",
+      "default_value": ""
+    },
+    {
+      "name": "show_pending",
+      "default_value": "false"
+    },
+    {
+      "name": "select_ordering",
+      "default_value": "order_by_state"
+    },
+    {
+      "name": "select_dropdown_label",
+      "default_value": "Send this form to specific Location?"
+    },
+    {
+      "name": "disabled_option_label",
+      "default_value": "Choose a Location"
+    }
+  ]
+}

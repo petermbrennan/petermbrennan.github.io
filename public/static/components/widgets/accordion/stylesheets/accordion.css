@@ -1,0 +1,49 @@
+.accordion {
+  overflow: hidden;
+}
+
+.accordion-section {
+  margin-bottom: 2px;
+}
+
+.accordion-section-title {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+}
+
+.acc-arrow::before {
+  content: '';
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAZCAQAAABNuxw9AAAAhklEQVR4AYWSsaEBYAyE//ce6AEMAR2DgBJGAS0ogT2ggyVooAfAZ4DDuy5JkiR3MeyoGAUdIKNuOzOORDUQYMMKjwZiXJhg1UAOaBkFdaCgbgsjrsQ14GLJlqAGwhxY4NBAEhgYBSWgqm4bO/gnW3r/s4nurVcqJ8rgv3yrOqrl/8q//5MXn0CE9KC6MNgAAAAASUVORK5CYII=');
+  background-position: right center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 12.5px;
+  width: 11px;
+  margin-right: 0.5em;
+  transition: transform 200ms ease;
+}
+
+.active .acc-arrow::before {
+  transform: rotate(90deg);
+}
+
+.accordion-section-content {
+  display: none;
+  overflow: hidden;
+  padding: 0.5em 1em 2em;
+}
+
+.accordion ul,
+.accordion ol {
+  padding-left: 1em;
+}
+
+.accordion ul {
+  list-style-type: disc;
+}
+
+.accordion ol {
+  list-style-type: decimal;
+}

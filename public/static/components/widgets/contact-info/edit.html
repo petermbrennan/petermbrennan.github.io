@@ -1,0 +1,54 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <!-- Location Name -->
+    {{ widget.location_name | edit_text_field: "Location Name", "location_name", "best_value", "", true }}
+
+    <!-- Street Address -->
+    {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "best_value", "", true }}
+
+    <!-- City -->
+    {{ widget.location_city | edit_text_field: "City", "location_city", "best_value", "", true }}
+
+    <!-- State -->
+    {{ widget.location_state | edit_text_field: "State", "location_state", "best_value", "", true }}
+
+    <!-- Postal Code -->
+    {{ widget.location_postal_code | edit_text_field: "Postal Code", "location_postal_code", "best_value", "", true }}
+
+    <!-- Country -->
+    {{ widget.location_country | edit_text_field: "Country", "location_country", "best_value", "", true }}
+
+    <!-- Open Map and Directions in new tab or app -->
+    {{ widget.maps_new_tab | edit_toggle_field: "Open Map in New Window", "value_or_default" }}
+
+    <!-- Map and Directions URL -->
+    {{ widget.maps_url | edit_url_field: "Map and Directions URL", "", "best_value"  }}
+
+    <!-- Phone -->
+    {{ widget.location_tel | edit_tel_field: "Phone", "location_phone_number", "best_value", "", true }}
+
+    <!-- Email / Leads URL -->
+    {{ widget.location_email | edit_text_field: "Email / Leads URL", "location_email", "best_value" }}
+
+    <!-- Fax -->
+    {{ widget.fax_number | edit_text_field: "Fax Number", "location_fax", "value", "", true }}
+
+    <!-- Chat URL -->
+    {{ widget.location_chat_url | edit_url_field: "Chat URL", "", "best_value" }}
+
+    <!-- Client URN -->
+    {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true  }}
+
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default", "", true  }}
+
+    <!-- Display Social Links -->
+    {{ widget.display_social_links | edit_toggle_field: "Display Social Links", "value_or_default" }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

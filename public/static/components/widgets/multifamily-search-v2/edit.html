@@ -1,0 +1,255 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily Search V2 Settings</legend>
+
+      <!-- Cloud Client URN-->
+      {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true }}
+
+      <!-- Cloud Service Url -->
+      {{ widget.cloud_service_url | edit_text_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+      <!-- Pagination Per Page -->
+      {{ widget.per_page | edit_text_field: "Pagination Per Page", "per_page", "value_or_default" }}
+
+      <!-- Heading Text -->
+      {{ widget.heading_text | edit_text_field: "Heading Text", "heading_text", "value_or_default" }}
+
+      <!-- Heading Text Positioning-->
+      {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+      {{ widget.heading_text_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+
+      <!-- Available Threshold -->
+      {{ widget.available_threshold | edit_text_field: "CTA Available Threshold", "available_threshold", "value_or_default"}}
+
+      <!-- CTA Available Text -->
+      {{ widget.cta_available_text | edit_text_field: "CTA Available Text", "cta_available_text", "value_or_default"}}
+
+      <!-- CTA Available Text Threshold -->
+      {{ widget.cta_available_text_threshold | edit_text_field: "CTA Limited Threshold", "cta_available_text_threshold", "value_or_default" }}
+
+      <!-- CTA Limited Text -->
+      {{ widget.cta_limited_text | edit_text_field: "CTA Limited Text", "cta_limited_text", "value_or_default" }}
+
+      <!-- CTA Limited Text Threshold -->
+      {{ widget.cta_limited_text_threshold | edit_text_field: "CTA Low Threshold", "cta_limited_text_threshold", "value_or_default" }}
+
+      <!-- CTA Low Text -->
+      {{ widget.cta_low_text | edit_text_field: "CTA Low Text", "cta_low_text", "value_or_default" }}
+
+      <!-- No Search Results Message -->
+      {% assign msg_placeholder = "Leave blank for default No Results Message." %}
+      {{ widget.search_results_message | edit_text_field: "Search Results Message For No Communities Found", msg_placeholder, "value_or_default" }}
+
+      <fieldset>
+        <legend>Radius Search Settings</legend>
+        <!-- Default Search Radius -->
+        {{ widget.default_search_radius | edit_text_field : "Default Search Radius", "20", "value_or_default" }}
+
+        <!-- Search Slider Min -->
+        {{ widget.search_slider_min | edit_text_field : "Search Slider Min", "10", "value_or_default" }}
+
+        <!-- Search Slider Max -->
+        {{ widget.search_slider_max | edit_text_field : "Search Slider Max", "50", "value_or_default" }}
+
+        <!-- Search Slider - Increment Distance -->
+        {{ widget.search_slider_step | edit_text_field: "Search Slider - Increment Distance", "10", "value_or_default" }}
+      </fieldset>
+
+      <!-- Show Filters -->
+      {{widget.show_filters | edit_toggle_field : "Show Filters", "value_or_default"}}
+
+      <!-- Show Sorting Options -->
+      {{widget.show_sort_options | edit_toggle_field : "Show Sort By Menu", "value_or_default"}}
+
+      <!-- Open location links in a new tab -->
+      {{widget.location_link_in_new_tab | edit_toggle_field : "Open Location Links in New Tab", "value_or_default"}}
+
+      <!-- Show Pending Locations -->
+      {{ widget.show_pending_locations | edit_toggle_field : "Show Pending Locations", "value_or_default" }}
+
+        <!-- Show Locations -->
+      {{ widget.show_locations | edit_toggle_field : "Display All Search Results by Default", "value_or_default" }}
+
+      <!-- Enable Universal Search? -->
+      {{ widget.enable_universal_search | edit_toggle_field: "Enable Universal Search", "value_or_default" }}
+
+      <!-- Enable Neigborhood Filter? -->
+      {{ widget.display_neighborhood_filter | edit_toggle_field: "Enable Neigborhood Filter", "value_or_default" }}
+
+      <!-- Display Map Marker Numbers by Default -->
+      {{ widget.toggle_marker_numbers | edit_toggle_field: "Display Map Marker Numbers by Default", "value_or_default" }}
+
+      <!-- Enable Map Marker Highlighting -->
+      {{ widget.enable_marker_highlight | edit_toggle_field: "Enable Map Marker Highlighting", "value_or_default" }}
+
+      <!-- Enable Geolocation? -->
+      {{ widget.enable_geolocation | edit_toggle_field: "Enable Geolocation", "value_or_default" }}
+
+       <!-- Geolocation Button Text -->
+      {{ widget.geolocation_button_text | edit_text_field: "Geolocation Button Text", "geolocation_button_text", "value_or_default" }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>STYLE SETTINGS</legend>
+
+    <fieldset>
+      <legend>Search Form</legend>
+
+      <!-- Search Form Background -->
+      {{ widget.search_background | edit_color_field: "Search Form Background", "theme_primary_color", "value_or_default", "", true }}
+
+      <!-- Heading Text Color -->
+      {{ widget.header_text_color | edit_color_field: "Heading Text Color", "#fff", "value_or_default" }}
+
+      <!-- Geolocation Link Color -->
+      {{ widget.geolocation_link_color | edit_color_field: "Geolocation Link Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Button Border Color (turns border on) -->
+      {{  widget.button_border_color | edit_color_field: "Button Border Color (turns border on)", "", "value_or_default" }}
+
+      <!-- Button Border Radius -->
+      {{  widget.button_border_radius | edit_text_field: "Button Border Radius", "0px", "value_or_default" }}
+
+      <!-- General Search Text Color -->
+      {{ widget.text_color | edit_color_field: "General Search Text Color", "#fff", "value_or_default" }}
+
+      <!-- Input Field Placeholder Text Color -->
+      {{ widget.input_placeholder_color | edit_color_field: "Input Field Placeholder Text Color", "", "value_or_default" }}
+
+      <!-- Search Button BG Color -->
+      {{ widget.search_button_color | edit_color_field: "Search Button Background Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+      <!-- Search Button Text Color -->
+      {{ widget.search_color | edit_color_field: "Search Button Text Color", "#fff", "value_or_default" }}
+
+      <!-- Search Button Icon URL -->
+      {{ widget.search_button_icon | edit_url_field: "Search Button Icon URL", "", "value_or_default", "custom-icon-field" }}
+
+      <!-- Filter Button Text Color -->
+      {{ widget.search_filter_text_color | edit_color_field: "Filter Button Text Color", "#fff", "value_or_default"}}
+
+      <!-- Filter Button Border Color -->
+      {{  widget.filter_button_border | edit_color_field: "Filter Button Border Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Filter Button BG Color -->
+      {{ widget.filter_background | edit_color_field: "Filter Button Background Color", "transparent", "value_or_default" }}
+
+      <!-- Filter Button Icon URL -->
+      {{ widget.filter_icon | edit_url_field: "Filter Button Icon URL", "", "value_or_default", "custom-icon-field" }}
+
+      <!-- Search Results Message for No Communities Found Color -->
+      {{ widget.search_results_message_color | edit_color_field: "Search Results Message for No Communities Found Color", "#000", "value_or_default" }}
+
+      <!-- Dropdown BG Color -->
+      {{ widget.dropdown_color | edit_color_field: "Dropdown Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Dropdown Text Color -->
+      {{ widget.dropdown_text_color | edit_color_field: "Dropdown Text Color", "#fff", "value_or_default" }}
+
+      <!-- Type of Arrow Desired -->
+      <div class="form-field">
+        {% assign arrow_opts = '{"standard-arrow": "Standard Arrow", "custom-arrow": "Custom Arrow"}' %}
+        {{ widget.dropdown_arrow_type | edit_select_field: "What type of dropdown arrow?", arrow_opts, "value", "select-arrow-type" }}
+      </div>
+
+      <!-- Dropdown Arrow -->
+      {{ widget.dropdown_arrow | edit_url_field: "Dropdown Arrow URL", "", "value_or_default", "custom-arrow-field" }}
+
+    </fieldset>
+
+    <fieldset>
+      <legend>Search Radius and Amenities Section</legend>
+
+      <!-- Filter Box Border Color - Mobile Only (turns border on) -->
+      {{  widget.filter_box_border | edit_color_field: "Filter Box Border Color (turns border on)", "", "value_or_default" }}
+
+      <!-- Amenities Box BG Color -->
+      {{ widget.amenities_box_background | edit_color_field: "Amenities Box Background Color", "transparent", "value_or_default" }}
+
+      <!-- Amenities Box Text Color -->
+      {{ widget.amenities_box_text | edit_color_field: "Amenities Box Text Color", "#fff", "value_or_default" }}
+
+      <!-- Radius Slider Track Color -->
+      {{ widget.radius_slider_track | edit_color_field: "Radius Slider Track Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+      <!-- Radius Slider Handle Color -->
+      {{ widget.radius_slider_handle | edit_color_field: "Radius Slider Handle Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Radius Slider Warning Text Color -->
+      {{ widget.radius_slider_warning | edit_color_field: "Radius Slider Warning Text Color", "", "value" }}
+
+    </fieldset>
+
+    <fieldset>
+    <legend>Search Results Section</legend>
+
+      <!-- Pagination Background Color -->
+      {{ widget.pagination_background_color | edit_text_field: "Pagination Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Pagination Text Color -->
+      {{ widget.pagination_text_color | edit_text_field: "Pagination Text Color", "#fff", "value_or_default" }}
+
+      <!-- Sort By Button Border -->
+      {{ widget.unit_info_border | edit_color_field: "Sort By Button Border Color (turns border on)", "", "value_or_default" }}
+
+      <!-- Sort By Button Background Color -->
+      {{ widget.sort_by_background_color | edit_text_field: "Sort By Button Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Sort By Button Text Color -->
+      {{ widget.sort_by_text_color | edit_color_field: "Sort By Button Text Color", "#fff", "value_or_default" }}
+
+      <!-- Card Background Color -->
+      {{ widget.card_background_color | edit_color_field: "Card Background Color", "theme_primary_color", "value_or_default", "", true }}
+
+      <!-- Card Text Color -->
+      {{ widget.card_text_color | edit_color_field: "Card Text Color", "#fff", "value_or_default" }}
+
+      <!-- Card Address Background Color -->
+      {{ widget.card_address_bar | edit_color_field: "Card Address Background Color", "theme_primary_color | lighten: '15%'", "value_or_default", "", true }}
+
+      <!-- Amenity Icon Background Color -->
+      {{ widget.amenity_icon_bg | edit_color_field: "Amenity Icon Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Amenity Icon Color -->
+      {{ widget.amenity_icon_color | edit_color_field: "Amenity Icon Color", "#fff", "value_or_default" }}
+
+      <!-- CTA BG Color -->
+      {{ widget.cta_color | edit_color_field: "CTA Background Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+      <!-- CTA Text Color -->
+      {{ widget.cta_text_color | edit_color_field: "CTA Text Color", "#fff", "value_or_default" }}
+
+      <!-- Available Locations Map Pin Color -->
+      {{ widget.map_pin_available_color | edit_color_field: "Available Locations Map Pin Color", "#fd7b72", "value_or_default" }}
+
+      <!-- Available Locations Map Pin Hover Color -->
+      {{ widget.map_pin_available_hover | edit_color_field: "Available Locations Map Pin Hover Color", "#db6a62", "value_or_default" }}
+
+      <!-- Limited Locations Map Pin Color -->
+      {{ widget.map_pin_limited_color | edit_color_field: "Limited Locations Map Pin Color", "#828282", "value_or_default" }}
+
+      <!-- Limited Locations Map Pin Hover Color -->
+      {{ widget.map_pin_limited_hover | edit_color_field: "Limited Locations Map Pin Hover Color", "#666666", "value_or_default" }}
+
+      <!-- Cluster Map Marker Color -->
+      {{ widget.cluster_pin_color | edit_color_field: "Cluster Map Marker Color", "#828282", "value_or_default" }}
+
+      <!-- Cluster Map Marker Hover Color -->
+      {{ widget.cluster_pin_hover | edit_color_field: "Cluster Map Marker Hover Color", "#666666", "value_or_default" }}
+
+    </fieldset>
+
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

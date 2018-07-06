@@ -1,0 +1,57 @@
+{% capture widgetDesign %}{{ widget.design.value_or_default }}{% endcapture %}
+{% capture widgetId %}blog-feed-{{ widget.id }}{% endcapture %}
+
+{% capture widgetPhotos %}{{ widget.display_photos.value }}{% endcapture %}
+{% if widgetPhotos == "true" %}
+  {% capture widgetPhotosClass %}photos{% endcapture %}
+{% else %}
+  {% capture widgetPhotosClass %}no-photos{% endcapture %}
+{% endif %}
+
+<div class="blog-feed-v2 widget {{widgetId}} {{widgetDesign}} {{widgetPhotosClass}}" id="{{widgetId}}">
+  <script id="blog-feed-v2-config" class="config" type="application/json">
+  { "newsServiceDomain": "{{ widget.news_service_domain.value_or_default }}",
+    "locationURN":       "{{ widget.location_urn.value_or_default }}",
+    "numberOfPosts":     "{{ widget.number_of_posts.value_or_default }}",
+    "headingText":       "{{ widget.heading_text.value }}",
+    "shareButtons":      "{{ widget.share_buttons.value_or_default }}",
+    "backgroundColor":   "{{ widget.background_color.value }}",
+    "displayPhotos":     "{{ widgetPhotos }}",
+    "defaultImage":      "{{ widget.default_image.value }}",
+    "returnToListText":  "{{ widget.return_to_list_text.value }}",
+    "seeMoreNewsText":   "{{ widget.see_more_news_text.value_or_default }}",
+    "widgetId":          "{{ widgetId }}"
+  }
+  </script>
+
+  <style>
+    {% if widget.background_color.value != blank %}
+      .{{widgetId}}.blog-feed-v2 .posts-nav .all-posts,
+      .{{widgetId}}.blog-feed-v2 .news-feed-single-post .article-tag{ background:{{ widget.background_color.value }}; }
+    {% endif %}
+    {% if widget.read_more_background_color.value != blank %}
+      .{{widgetId}}.blog-feed-v2 .news-feed-post a.post-toggle.toggle-button{ background-color:{{ widget.read_more_background_color.value }}; }
+    {% endif %}
+
+    {% if widget.pagination_text_color.value != blank %}
+      .{{widgetId}}.blog-feed-v2 .blog-pagination .page-button{ color: {{ widget.pagination_text_color.value }}; }
+    {% endif %}
+
+    {% if widget.pagination_background_color.value != blank %}
+      .{{widgetId}}.blog-feed-v2 .pagination-button { background-color: {{ widget.pagination_background_color.value }}; }
+    {% endif %}
+
+    {% if widget.pagination_active_background_color.value != blank %}
+      .{{widgetId}}.blog-feed-v2 .pagination-button.active-page { background-color: {{ widget.pagination_active_background_color.value }}; }
+      a:hover.pagination-button.page-button {background-color: {{ widget.pagination_active_background_color.value }};}
+    {% endif %}
+
+  </style>
+
+  <h2 class="news-feed-top">{{ widget.heading_text.value }}</h2>
+
+  <div class="blog-loading">
+    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+  </div>
+
+</div>

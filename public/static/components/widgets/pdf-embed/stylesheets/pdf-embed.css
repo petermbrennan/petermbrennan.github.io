@@ -1,0 +1,10 @@
+.objectwrapper {
+  width: 100%;
+  text-align: center;
+}
+.pdf-embed iframe {
+  width: 90%;
+  height: 900px;
+  max-width: 1280px;
+  max-height: 990px;
+}

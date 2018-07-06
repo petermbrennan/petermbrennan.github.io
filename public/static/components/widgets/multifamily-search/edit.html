@@ -1,0 +1,106 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily Search Settings</legend>
+  <!-- Core Client ID -->
+  {{ widget.core_client_id | edit_text_field: "Core Client ID", " 1234" }}
+
+  <!-- Core Service Url -->
+  {{ widget.core_service_url | edit_text_field: "Core Service URL", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Domain Type -->
+  {{ widget.orion_single_domain | edit_toggle_field: "Single Domain URL", "value_or_default" }}
+
+  <!-- Pagination Per Page -->
+  {{ widget.per_page | edit_text_field: "Pagination Per Page", "per_page", "value_or_default" }}
+
+  <!-- Available Threshold -->
+  {{ widget.available_threshold | edit_text_field: "Available Threshold", "available_threshold", "value_or_default"}}
+
+  <!-- CTA Available Text Threshold -->
+  {{ widget.cta_available_text_threshold | edit_text_field: "CTA Available Text Threshold", "cta_available_text_threshold", "value_or_default" }}
+
+  <!-- CTA Limited Text Threshold -->
+  {{ widget.cta_limited_text_threshold | edit_text_field: "CTA Limited Text Threshold", "cta_limited_text_threshold", "value_or_default" }}
+
+  <!-- Heading Text -->
+  {{ widget.heading_text | edit_text_field: "Heading Text", "heading_text", "value_or_default" }}
+
+  <!-- CTA Available Text -->
+  {{ widget.cta_available_text | edit_text_field: "CTA Available Text", "cta_available_text", "value_or_default"}}
+
+  <!-- CTA Limited Text -->
+  {{ widget.cta_limited_text | edit_text_field: "CTA Limited Text", "cta_limited_text", "value_or_default" }}
+
+  <!-- CTA Low Text -->
+  {{ widget.cta_low_text | edit_text_field: "CTA Low Text", "cta_low_text", "value_or_default" }}
+
+   <!-- Override Client Vertical -->
+  {{ widget.client_vertical_slug | edit_text_field: "Client Vertical for Link Slug", "client_vertical_slug", "value_or_default", "", true }}
+
+  <!-- Links Use Target _blank -->
+  {{ widget.links_use_target_blank | edit_toggle_field: "Open locations in new browser tab", "value_or_default" }}
+
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Text Color -->
+  {{ widget.text_color | edit_color_field: "Text Color" }}
+
+  <!-- Photo Border Color -->
+  {{ widget.photo_border_color | edit_color_field: "Photo Border Color" }}
+
+  <!-- Pagination Background Color -->
+  {{ widget.pagination_background_color | edit_text_field: "Pagination Background Color", "#hex", "value" }}
+
+  <!-- Pagination Active Text Color -->
+  {{ widget.pagination_text_color | edit_text_field: "Pagination Active Text Color", "#hex", "value" }}
+
+  <!-- Card Background Color -->
+  {{ widget.card_background_color | edit_color_field: "Card Background Color" }}
+
+  <!-- Card Text Color -->
+  {{ widget.card_text_color | edit_color_field: "Card Text Color" }}
+
+  <!-- Unit Info Border -->
+  {{ widget.unit_info_border | edit_color_field: "Unit Info Border" }}
+
+  <!-- CTA BG Color -->
+  {{ widget.cta_color | edit_color_field: "CTA Background Color" }}
+
+  <!-- CTA Text Color -->
+  {{ widget.cta_text_color | edit_color_field: "CTA Text Color" }}
+
+  <!-- Header Text Color -->
+  {{ widget.header_text_color | edit_color_field: "Header Text Color" }}
+
+  <!-- Search Button BG Color -->
+  {{ widget.search_button_color | edit_color_field: "Search Button Background Color" }}
+
+  <!-- Search Button Text Color -->
+  {{ widget.search_color | edit_color_field: "Search Button Text Color" }}
+
+  <!-- Search Filter Text -->
+  {{ widget.search_filter_text_color | edit_color_field: "Search Filter Text Color"}}
+
+  <!-- Dropdown BG Color -->
+  {{ widget.dropdown_color | edit_color_field: "Dropdown Background Color" }}
+
+  <!-- Dropdown Text Color -->
+  {{ widget.dropdown_text_color | edit_color_field: "Dropdown Text Color" }}
+
+  <!-- Search Background -->
+  {{ widget.search_background | edit_color_field: "Search Background" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

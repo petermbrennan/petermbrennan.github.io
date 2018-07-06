@@ -1,0 +1,288 @@
+{% capture widgetId %}multifamily-search-v2-{{ widget.id }}{% endcapture %}
+
+<div class="mf-search-cloud widget {{widgetId}}">
+  <style>
+    .mf-search-cloud-wrapper .radius-slider .slider.slider-disabled:before { color: #f00; }
+
+    .mf-search-cloud-wrapper,
+    .mf-search-cloud-wrapper .search-bottom-section .range-message,
+    .mf-search-cloud-wrapper .search-bottom-section .results-message {color:{{widget.text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .slider-selection,
+    .mf-search-cloud-wrapper .search-form .tt-suggestion:hover,
+    .mf-search-cloud-wrapper .search-form .tt-suggestion.tt-cursor{
+      background:{{widget.search_button_color.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .search-form-inner .btn.search-button{background: {{widget.search_button_color.value_or_default}} url({{widget.search_button_icon.value_or_default}}) left 5% center no-repeat !important;}
+
+    {% if widget.input_placeholder_color.value != "" %}
+      .mf-search-cloud-wrapper ::-webkit-input-placeholder {color: {{widget.input_placeholder_color.value}} !important;}
+      .mf-search-cloud-wrapper ::-moz-placeholder {color: {{widget.input_placeholder_color.value}} !important;}
+      .mf-search-cloud-wrapper :-ms-input-placeholder {color: {{widget.input_placeholder_color.value}} !important;}
+      .mf-search-cloud-wrapper :-moz-placeholder {color: {{widget.input_placeholder_color.value}} !important;}
+    {% endif %}
+
+    .mf-search-cloud-wrapper .search-form h2,
+    .mf-search-cloud-wrapper .range-message,
+    .mf-search-cloud-wrapper .tooltip,
+    .mf-search-cloud-wrapper .results-message {color:{{widget.header_text_color.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .search-form .geolocation-link {color:{{widget.geolocation_link_color.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .search-form span,
+    .mf-search-cloud-wrapper .search-form .search-form-inner .search-button a {color:{{widget.search_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form button{color:{{widget.search_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner span.locations-loading > select{color: {{widget.dropdown_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner .loading-gray{background-color: {{widget.dropdown_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner .btn {background: {{widget.dropdown_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner span select {color: {{widget.dropdown_text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner span option {color: {{widget.dropdown_text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form-inner span label {color: {{widget.dropdown_text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-form {background:{{widget.search_background.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .search-form .search-form-inner .cp-Panel .cp-Panel-toggle {
+      background: {{widget.filter_background.value_or_default}} url("{{widget.filter_icon.value_or_default}}") left 5% center no-repeat !important;
+      color:{{widget.search_filter_text_color.value_or_default}} !important;
+      border: 2px solid {{widget.filter_button_border.value_or_default}} !important;
+    }
+
+    .mf-search-cloud-wrapper .search-form .search-form-inner .top-section button.geolocation-link {
+      color:{{widget.search_filter_text_color.value_or_default}} !important;
+      border: 2px solid {{widget.filter_button_border.value_or_default}} !important;
+    }
+
+    {% if widget.filter_box_border.value != "" %}
+      .mf-search-cloud-wrapper.narrow .search-form-inner .cp-Panel.cp-is-open {
+        border: 2px solid {{widget.filter_box_border.value}};
+      }
+    {% endif %}
+
+    {% if widget.button_border_color.value != "" %}
+      .mf-search-cloud-wrapper .search-form-inner .btn,
+      .mf-search-cloud-wrapper .store-summary .result-location-info .result-cta a,
+      .mf-search-cloud-wrapper #map-show,
+      .mf-search-cloud-wrapper .search-bottom-section .amenities-section {
+        border: 2px solid {{widget.button_border_color.value}} !important;
+      }
+    {% endif %}
+
+    {% if widget.unit_info_border.value != "" %}
+      .mf-search-cloud-wrapper .filter-results .filter-select{border:2px solid {{widget.unit_info_border.value}} !important;}
+    {% endif %}
+    .mf-search-cloud-wrapper .filter-results select {background: {{widget.sort_by_background_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .filter-results span select { color: {{widget.sort_by_text_color.value_or_default}} !important;}
+
+    {% if widget.button_border_radius.value != blank %}
+      .mf-search-cloud-wrapper .search-form-inner .btn,
+      .mf-search-cloud-wrapper .search-form .search-form-inner .cp-Panel .cp-Panel-toggle,
+      .mf-search-cloud-wrapper .filter-results .filter-select,
+      .mf-search-cloud-wrapper .filter-results .filter-select select,
+      .mf-search-cloud-wrapper .store-summary .result-location-info .result-cta a,
+      .mf-search-cloud-wrapper #map-show {
+        border-radius: {{widget.button_border_radius.value}} !important;
+      }
+    {% endif %}
+
+    {% if widget.dropdown_arrow_type.value == "standard-arrow" %}
+      .mf-search-cloud-wrapper .search-form .state:after,
+      .mf-search-cloud-wrapper .search-form .city:after,
+      .mf-search-cloud-wrapper .search-form .neighborhood:after,
+      .mf-search-cloud-wrapper .search-form .bedrooms:after,
+      .mf-search-cloud-wrapper .search-form .bathrooms:after,
+      .mf-search-cloud-wrapper .filter-results .filter-select:after {
+        border-top-color: {{widget.dropdown_text_color.value_or_default}} !important;
+      }
+    {% endif %}
+    {% if widget.dropdown_arrow_type.value == "custom-arrow" %}
+      .mf-search-cloud-wrapper .search-form .state:after,
+      .mf-search-cloud-wrapper .search-form .city:after,
+      .mf-search-cloud-wrapper .search-form .neighborhood:after,
+      .mf-search-cloud-wrapper .search-form .bedrooms:after,
+      .mf-search-cloud-wrapper .search-form .bathrooms:after,
+      .mf-search-cloud-wrapper .filter-results .filter-select:after {
+        border: 0 !important;
+      }
+      .mf-search-cloud-wrapper .search-form-inner .state select,
+      .mf-search-cloud-wrapper .search-form-inner .city select,
+      .mf-search-cloud-wrapper .search-form-inner .neighborhood select,
+      .mf-search-cloud-wrapper .search-form-inner .bedrooms select,
+      .mf-search-cloud-wrapper .search-form-inner .bathrooms select {
+        background: url("{{widget.dropdown_arrow.value_or_default}}") no-repeat !important;
+        background-position: right 10px center !important;
+      }
+      .mf-search-cloud-wrapper .filter-results .filter-select select  {
+        background: {{widget.sort_by_background_color.value_or_default}} url("{{widget.dropdown_arrow.value_or_default}}") no-repeat !important;
+        background-position: right 10px center !important;
+      }
+    {% endif %}
+    .mf-search-cloud-wrapper .search-form select {
+      background: none;
+    }
+
+    .mf-search-cloud-wrapper .search-bottom-section .slider-selection {background: {{widget.radius_slider_track.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .search-bottom-section .radius-slider .slider .slider-handle {background-color: {{widget.radius_slider_handle.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .search-bottom-section .amenities-section {background: {{widget.amenities_box_background.value_or_default}};}
+    .mf-search-cloud-wrapper .search-bottom-section .amenities-section .amenities-message,
+    .mf-search-cloud-wrapper .search-bottom-section .amenities-section label {color: {{widget.amenities_box_text.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .pagination-nav span.next,
+    .mf-search-cloud-wrapper .pagination-nav a.next{border-left: 15px solid {{widget.pagination_background_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .pagination-nav span.previous,
+    .mf-search-cloud-wrapper .pagination-nav a.previous{border-right: 15px solid {{widget.pagination_background_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .pagination-nav a.page,
+    .mf-search-cloud-wrapper .pagination-nav .range,
+    .mf-search-cloud-wrapper .filter-results label{color:{{widget.pagination_background_color.value_or_default}}}
+    .mf-search-cloud-wrapper .pagination-nav span.page,
+    .mf-search-cloud-wrapper .pagination-nav span.elipsis a{background:{{widget.pagination_background_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .pagination-nav span.page.current,
+    .mf-search-cloud-wrapper .pagination-nav span.previous.disabled,
+    .mf-search-cloud-wrapper .pagination-nav span.next.disabled{opacity: 0.7;cursor: default !important;}
+    .mf-search-cloud-wrapper .pagination-nav span.page a {color:{{widget.pagination_text_color.value_or_default}} !important;}
+
+    .mf-search-cloud-wrapper .store-summary {background:{{widget.card_background_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .store-summary {color:{{widget.card_text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .store-summary .result-contact-info {background:{{widget.card_address_bar.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .store-summary .result-availability{background-color:{{widget.cta_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .store-summary .result-availability{color:{{widget.cta_text_color.value_or_default}} !important;}
+    .mf-search-cloud-wrapper .store-summary .result-location-info .location-amenities .fa{
+      background:{{widget.amenity_icon_bg.value_or_default}} !important;
+      color:{{widget.amenity_icon_color.value_or_default}} !important;
+    }
+
+    .mf-search-cloud-wrapper .searchResultsInfo { color: {{ widget.search_results_message_color.value_or_default }} !important;}
+    .mf-search-cloud-wrapper .store-summary .resultMarkerLegend { background: url("{{widget.map_pin_active.value_or_default}}") no-repeat; }
+    .mf-search-cloud-wrapper .store-summary .resultMarkerLegend.not-available { background: url("{{widget.map_pin_not_active.value_or_default}}") no-repeat; }
+    .mf-search-cloud-wrapper .search-form h2 { text-align: {{ widget.heading_text_position.value_or_default }}; }
+
+    {% if widget.radius_slider_warning.value != blank %}
+      .mf-search-cloud-wrapper .radius-slider .slider.slider-disabled:before { color: {{widget.radius_slider_warning.value}} !important; }
+    {% endif %}
+
+    {% if widget.toggle_marker_numbers.value == "false" %}
+      .mf-search-cloud-wrapper .leaflet-div-icon .number { display: none !important;}
+    {% endif %}
+
+    .mf-search-cloud-wrapper .leaflet-div-icon.available img {
+      background: {{widget.map_pin_available_color.value_or_default}} !important;
+    }
+    .mf-search-cloud-wrapper .leaflet-div-icon.limited img {
+      background: {{widget.map_pin_limited_color.value_or_default}} !important;
+    }
+    .mf-search-cloud-wrapper .cluster {
+      background: {{widget.cluster_pin_color.value_or_default}} !important;
+    }
+    .mf-search-cloud-wrapper .cluster:after {
+      border-top: 10px solid {{widget.cluster_pin_color.value_or_default}} !important;
+    }
+    .mf-search-cloud-wrapper .store-summary .result-contact-info .result-marker-legend {
+      background: {{widget.map_pin_available_color.value_or_default}} !important;
+    }
+    .mf-search-cloud-wrapper .store-summary .result-contact-info .result-marker-legend.not-available {
+      background: {{widget.map_pin_limited_color.value_or_default}} !important;
+    }
+    {% if widget.enable_marker_highlight.value == "true" %}
+      .mf-search-cloud-wrapper .leaflet-div-icon.available img:hover {
+        background: {{widget.map_pin_available_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .leaflet-div-icon.limited img:hover {
+        background: {{widget.map_pin_limited_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .cluster:hover {
+        background: {{widget.cluster_pin_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .cluster:hover:after {
+        border-top: 10px solid {{widget.cluster_pin_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .store-summary:hover .result-contact-info .result-marker-legend {
+        background: {{widget.map_pin_available_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .store-summary:hover .result-contact-info .result-marker-legend.not-available {
+        background: {{widget.map_pin_limited_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .leaflet-div-icon.available img.target {
+        background: {{widget.map_pin_available_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .leaflet-div-icon.limited img.target {
+        background: {{widget.map_pin_limited_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .cluster.target {
+        background: {{widget.cluster_pin_hover.value_or_default}} !important;
+      }
+      .mf-search-cloud-wrapper .cluster.target:after {
+        border-top: 10px solid {{widget.cluster_pin_hover.value_or_default}} !important;
+      }
+    {% endif %}
+
+  </style>
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+  <script src="https://use.fortawesome.com/26805d78.js"></script>
+
+  <script>
+    var EmberAppConfig = {
+     "modulePrefix":"multi-family-search-cloud",
+     "environment":"production",
+     "rootURL":"/",
+     "locationType":"auto",
+     "exportApplicationGlobal":false,
+     "ember-cli-mirage": { enabled: false },
+     "ember-collapsible-panel": {
+       "hasLiquidFire": false
+     },
+     "EmberENV":{
+        "PAGINATION":{"PER_PAGE":"{{ widget.per_page.best_value }}"},
+        "THRESHOLD": {
+          "AVAILABLE": "{{ widget.available_threshold.best_value }}",
+          "CTA_AVAILABLE_TEXT": "{{ widget.cta_available_text_threshold.best_value }}",
+          "CTA_LIMITED_TEXT": "{{ widget.cta_limited_text_threshold.best_value }}"
+        },
+        "CTAS":{
+          "CTA_AVAILABLE_TEXT": "{{ widget.cta_available_text.best_value }}",
+          "CTA_LIMITED_TEXT": "{{ widget.cta_limited_text.best_value }}",
+          "CTA_LOW_TEXT": "{{ widget.cta_low_text.best_value }}"
+        },
+        "HEADING_TEXT": "{{ widget.heading_text.best_value }}",
+        "FEATURES":{},
+        "SERVICE_HOST": "{{ widget.cloud_service_url.value }}",
+        "LOCATION_LINK_IN_NEW_TAB" : "{{widget.location_link_in_new_tab.value}}",
+        "SHOW_PENDING_LOCATIONS": "{{widget.show_pending_locations.value}}",
+        "CLIENT_URN": "{{ widget.client_urn.value }}",
+        "OPEN_FILTER_PANEL": "{{ widget.show_filters.value_or_default }}",
+        "SHOW_LOCATIONS" : "{{ widget.show_locations.value }}",
+        "SHOW_SORT_OPTIONS" : "{{ widget.show_sort_options.value }}",
+        "GEO_SEARCH": {
+          "DEFAULT_SEARCH_RADIUS": "{{ widget.default_search_radius.value_or_default }}",
+          "SEARCH_SLIDER_MIN": "{{ widget.search_slider_min.value_or_default }}",
+          "SEARCH_SLIDER_MAX": "{{ widget.search_slider_max.value_or_default }}",
+          "SEARCH_SLIDER_STEP": "{{ widget.search_slider_step.value_or_default }}"
+        },
+        "ENABLE_UNIVERSAL_SEARCH": "{{ widget.enable_universal_search.value_or_default }}",
+        "DISPLAY_NEIGHBORHOOD_SEARCH": "{{ widget.display_neighborhood_filter.value_or_default }}",
+        "GEOLOCATION_ENABLED": "{{ widget.enable_geolocation.value_or_default }}",
+        "GEOLOCATION_BUTTON_TEXT": "{{ widget.geolocation_button_text.value_or_default }}",
+        "SEARCH_RESULTS_MESSAGE": "{{ widget.search_results_message.value_or_default }}",
+        "CLIENT_URN": "{{ widget.client_urn.value_or_default }}",
+        "cpnsUrl": "{{widget.client_cpns_url.value_or_default}}"
+     },
+     "APP":{
+      "rootElement": '#mf-search-cloud-container'
+     }
+    }
+
+    var mfMetaConfig = document.createElement('meta');
+    mfMetaConfig.id="ember-meta";
+    mfMetaConfig.name = "multi-family-search-cloud/config/environment";
+    mfMetaConfig.content = JSON.stringify(EmberAppConfig);
+    document.getElementsByTagName('head')[0].appendChild(mfMetaConfig);
+  </script>
+
+  <div id="mf-search-cloud-container">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
+</div>

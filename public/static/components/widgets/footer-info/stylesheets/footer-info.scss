@@ -1,0 +1,73 @@
+.footer-info {
+  float: right;
+  text-align: right;
+
+  .social-links,
+  .nav {
+    margin-bottom: .5em;
+  }
+  .social-links a {
+    display: inline-block;
+  }
+  .copyright {
+    margin-top: 0;
+  }
+  .corporate-logo {
+    display: inline-block;
+    max-width: 200px;
+  }
+  .icon {
+    background-color: #000;
+    height: 40px;
+    width: 40px;
+  }
+  .hours-wrapper {
+    margin-bottom: 10px;
+    .label {
+      display: block;
+    }
+  }
+  .office-hours-condensed label {
+    display: inline;
+    margin-right: 0.25em;
+    text-align: right;
+    font-weight: normal;
+  }
+
+  .office-hours-list label {
+    margin-right: 0.25em;
+    font-weight: normal;
+  }
+
+  .office-hours-list label,
+  .office-hours-list span {
+    display: inline;
+  }
+
+  .footer-info, .office-hours-note, p {
+    margin-top: 0;
+  }
+
+  .access-hours {
+    .label {
+      margin-bottom: 0;
+    }
+    .access-hours-value {
+      margin-top: 0;
+    }
+  }
+
+  .access {
+    display: inline-block;
+    width: 31px;
+    height: 23px;
+    text-align: left;
+    background: url(https://themes.g5dxm.com/shared/access-icons.png) 0 0 no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    &.handicap-icon {
+      background-position: -38px 0;
+    }
+  }
+}

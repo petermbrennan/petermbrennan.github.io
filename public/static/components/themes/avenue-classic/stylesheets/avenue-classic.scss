@@ -1,0 +1,506 @@
+// ********************************************
+//
+//  Avenue Blueprint Theme
+//  - Classic Variation
+//
+// ********************************************
+
+// -------------------------------------
+//  Variables and Mixins
+// -------------------------------------
+
+// Boilerplate variables and mixins
+@import 'boilerplate/setup';
+
+$max-small: rem(1109);
+$min-small: rem(1110);
+
+$max-layout: $max-small;
+$min-layout: $min-small;
+
+$border-radius: 0.25rem;
+$large-border-radius: 0.5rem;
+
+@mixin border-radius { border-radius: $border-radius; }
+@mixin large-border-radius { border-radius: $large-border-radius; }
+
+
+// ============================================
+//  Buttons
+// ============================================
+
+.widget {
+  .btn,
+  button,
+  input[type=submit] {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Forms
+// ============================================
+
+.widget {
+  #{$all-text-inputs},
+  textarea,
+  select {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Widgets
+// ============================================
+
+// --------------------------------------------
+//  Accordion
+// --------------------------------------------
+
+.accordion {
+  .accordion-section:first-of-type {
+    .accordion-section-title {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+  }
+
+  .accordion-section:last-of-type {
+    .accordion-section-title {
+      border-radius: 0 0 $border-radius $border-radius;
+
+      &.active {
+        border-radius: 0;
+      }
+    }
+
+    .accordion-section-content {
+      border-radius: 0 0 $border-radius $border-radius;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Blog Feed
+// --------------------------------------------
+
+[class*=blog-feed] {
+  .news-item-link,
+  .all-news-link,
+  .post-expand,
+  .all-posts {
+    @include border-radius;
+  }
+}
+
+
+// --------------------------------------------
+//  Calls to Action
+// --------------------------------------------
+
+.action-calls a {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Contact Info
+// --------------------------------------------
+
+[role=main] .contact-info {
+  -webkit-clip-path: ellipse(90% 50% at 50% 50%);
+  clip-path: ellipse(90% 50% at 50% 50%);
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    -webkit-clip-path: ellipse(90% 50% at 50% 50%);
+    clip-path: ellipse(90% 50% at 50% 50%);
+    z-index: -1;
+  }
+
+  &::before {
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0.78125rem;
+    right: 0.78125rem;
+    bottom: 0.78125rem;
+    left: 0.78125rem;
+  }
+
+  &::after {
+    background-color: inherit;
+    top: 0.96875rem;
+    right: 0.96875rem;
+    bottom: 0.96875rem;
+    left: 0.96875rem;
+  }
+
+  a { position: relative; }
+}
+
+
+// --------------------------------------------
+//  Contact Info Sheet
+// --------------------------------------------
+
+.contact-info-sheet {
+  @include at-least(667px) {
+    .info-sheet-nav { border-radius: $large-border-radius 0 0 $large-border-radius; }
+    .info-sheet-content { border-radius: $large-border-radius; }
+
+    &.left .info-sheet-nav { border-radius: 0 $large-border-radius $large-border-radius 0; }
+    &.b-right .info-sheet-nav { border-radius: $large-border-radius 0 0 0; }
+    &.b-left .info-sheet-nav { border-radius: 0 $large-border-radius 0 0; }
+
+    &.b-right .info-sheet-content { border-radius: $large-border-radius 0 0 $large-border-radius; }
+    &.b-left .info-sheet-content { border-radius: 0 $large-border-radius $large-border-radius 0; }
+  }
+}
+
+
+// --------------------------------------------
+//  Directory
+// --------------------------------------------
+
+.directory .directory-heading {
+  @include border-radius;
+
+  &.open {
+    border-radius: $border-radius $border-radius 0 0 !important;
+  }
+}
+
+
+// --------------------------------------------
+//  Events
+// --------------------------------------------
+
+.events {
+  .event-summary { border-radius: $border-radius; }
+  .event-title { border-radius: $border-radius $border-radius 0 0; }
+  .event-details-button { border-radius: 0 0 $border-radius $border-radius; }
+}
+
+
+// --------------------------------------------
+//  Gallery
+// --------------------------------------------
+
+.gallery .flex-direction-nav a {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  HTML
+// --------------------------------------------
+
+.html .html-content {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Social Links
+// --------------------------------------------
+
+.social-links .icon {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Social Feed
+// --------------------------------------------
+
+.social-feed {
+  .feed-section { border-radius: 0 $border-radius $border-radius $border-radius; }
+  .feed-switch:first-of-type { border-top-left-radius: $border-radius; }
+  .feed-switch:last-of-type { border-top-right-radius: $border-radius; }
+}
+
+
+// ============================================
+//  Location Widgets
+// ============================================
+
+// --------------------------------------------
+//  Floor Plans Cards
+// --------------------------------------------
+
+.floorplans-cards {
+  .floorplan-card,
+  .unit-cta-button {
+    @include border-radius;
+  }
+
+  .floorplan-card-title {
+    border-radius: $border-radius $border-radius 0 0;
+    text-align: center;
+  }
+}
+
+
+// --------------------------------------------
+//  Home Multifamily IUI
+// --------------------------------------------
+
+[class*=home-multifamily-iui] {
+  .btn {
+    border-radius: 0px;
+  }
+}
+
+
+// --------------------------------------------
+//  Multifamily IUI Cards
+// --------------------------------------------
+
+[class*=multifamily-iui-cards], .multi-family-iui-cards-v3 {
+  .iui-cards-view-all,
+  .floorplan-card-cta {
+    @include border-radius;
+  }
+  .iui-cards-filter-select-wrapper .down-arrow {
+   left: -36px;
+   top: 11px;
+  }
+
+}
+
+
+// --------------------------------------------
+//  Self Storage Filtered
+// --------------------------------------------
+
+.self-storage-filtered {
+  .sss-cat,
+  .sss-cat a,
+  .sss-unit-matrix,
+  .sss-unit-cta .unit-cta {
+    @include border-radius;
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage IUI Cards
+// --------------------------------------------
+
+.self-storage-iui-cards {
+  .iui-cards-card,
+  .iui-cards-show-details,
+  .iui-cards-unit-header { @include large-border-radius; }
+
+  .iui-cards-unit-details,
+  .iui-cards-category-special {
+    border-radius: 0 0 $large-border-radius $large-border-radius;
+  }
+
+  .iui-cards-header-arrow,
+  .iui-cards-header-arrow:before {
+    border-radius: 0 $large-border-radius $large-border-radius 0;
+  }
+
+  .iui-cards-special-section,
+  .iui-cards-unit-actions a,
+  .sss-unit-cta .unit-cta {
+    @include border-radius;
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Search Widgets
+// --------------------------------------------
+
+[class*=self-storage-search] {
+  .sss-search-criteria {
+    @include large-border-radius;
+  }
+
+  .sss-search-select,
+  .sss-search-input {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Corporate Widgets
+// ============================================
+
+// --------------------------------------------
+//  City State Zip Search
+// --------------------------------------------
+
+.city-state-zip-search {
+  .zip-search-location-link {
+    @include border-radius;
+  }
+
+  .zip-search-input {  border-radius: $border-radius 0 0 $border-radius; }
+  .zip-search-button { border-radius: 0 $border-radius $border-radius 0; }
+}
+
+
+// --------------------------------------------
+//  Locations Navigation
+// --------------------------------------------
+
+.locations-navigation {
+  h3.locations-navigation-title {
+    @include border-radius;
+  }
+
+  .locations-navigation-state {
+    &:first-child {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+    }
+
+    &:last-child,
+    &:last-child li:last-child {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Location Mini Search
+// ---------------------------------------------
+
+.location-mini-search {
+  .search-form {
+    @include border-radius;
+
+    .search-filter,
+    .btn {
+      @include border-radius;
+    }
+  }
+
+  .xlarge {
+    .search-filter {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Location Search
+// ---------------------------------------------
+
+.location-search {
+  .search-form {
+    @include border-radius;
+  }
+
+  .search-filter,
+  a.loc-search-btn,
+  #location-search-container .resultAvailability {
+    @include border-radius;
+  }
+
+  .xlarge {
+    .search-filter {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .loc-search-btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search
+// ---------------------------------------------
+
+[class*=multifamily-mini-search] {
+  .search-form span,
+  .search-form .search-button button,
+  .corpSearchWrapper .search-form select {
+    @include border-radius;
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+.multifamily-search,
+.mf-search-cloud {
+  .search-form {
+    span:not(.search-button) {
+      @include border-radius;
+    }
+  }
+
+  #mf-search-cloud-container .mf-search-cloud-wrapper a.cp-Panel-toggle,
+  .amenities-section,
+  .search-button,
+  .store-summary .resultAvailability {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Header
+// ============================================
+
+[role=banner] {
+  .btn { border-radius: 0; }
+
+  @include until($max-layout) {
+    .collapsable-content,
+    .navigation,
+    .navigation li:last-child,
+    .navigation li:last-child a {
+      border-bottom-left-radius: $border-radius;
+    }
+  }
+}
+
+
+// ============================================
+//  Footer
+// ============================================
+
+@media screen and (max-width: 34.3125rem) {
+  [role=contentinfo] .access-hours {
+    text-align: left;
+  }
+}
+
+[role=contentinfo] label, [role=contentinfo] span {
+  font-size: 16px;
+}
+
+
+// ============================================
+//  Hours Widget
+// ============================================
+
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px
+}

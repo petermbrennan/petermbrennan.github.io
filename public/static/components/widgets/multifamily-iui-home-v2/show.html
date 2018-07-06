@@ -1,0 +1,58 @@
+{% capture widgetId %}home-multifamily-iui-v2-{{ widget.id }}{% endcapture %}
+<div class="home-multifamily-iui-v2 widget {{widgetId}}" id="{{widgetId}}">
+  <!-- This needs to be hooked up to the edit form -->
+  <script id="home-multifamily-iui-v2-config" class="config" type="application/json">
+    {
+      "location_urn": "{{ widget.location_urn.value_or_default }}",
+      "client_urn": "{{ widget.client_urn.value_or_default }}",
+      "cpns_url": "{{ widget.client_cpns_url.value_or_default }}",
+      "floorplan_page_url": "{{ widget.floorplan_page_url.value_or_default }}",
+      "floorplans_service_host": "{{ widget.floorplans_service_host.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    {% if widget.btn_bg.value != blank %}
+      .{{widgetId}} .btn { background-color: {{widget.btn_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.view_all_btn_bg.value != blank %}
+      .{{widgetId}} .iui-view-all .btn { background-color: {{widget.view_all_btn_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.btn_hover_bg.value != blank %}
+      .{{widgetId}} .btn:hover { background-color: {{widget.btn_hover_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.btn_text_color.value != blank %}
+      .{{widgetId}} .btn { color: {{widget.btn_text_color.value_or_default_parsed}} !important; }
+    {% endif %}
+
+    {% if widget.cta_button_color.value != blank %}
+      .{{widgetId}} .dropdown-content a { background-color: {{widget.cta_button_color.value_or_default_parsed}} !important; }
+    {% endif %}
+
+    {% if widget.cta_background_color.value != blank %}
+      .{{widgetId}} .dropdown-content { background-color: {{widget.cta_background_color.value_or_default_parsed}} !important; }
+      .{{widgetId}} .dropdown-content::before { border-color: transparent transparent {{widget.cta_background_color.value_or_default_parsed}} transparent; }
+    {% endif %}
+
+    {% if widget.cta_text_color.value != blank %}
+      .{{widgetId}} .dropdown-content a { color: {{widget.cta_text_color.value_or_default_parsed}} !important; }
+    {% endif %}
+
+  </style>
+
+  {% if widget.mf_iui_home_heading.value != blank %}
+    <h2 class="mf-iui-home-heading" style="text-align: {{widget.mf_iui_home_heading_position.value_or_default}}">{{ widget.mf_iui_home_heading.value }}</h2>
+  {% endif %}
+
+  <p class="iui-title">Select Size</p>
+
+  <div class="iui-container">
+    <p>Loading Floorplan Options</p>
+  </div>
+
+
+</div>

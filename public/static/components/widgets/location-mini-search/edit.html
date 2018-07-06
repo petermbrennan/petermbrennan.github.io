@@ -1,0 +1,73 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Location Mini Search Settings</legend>
+  <!-- Client URN -->
+  {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true }}
+
+  <!-- Corp Search Page -->
+  {{ widget.corp_search_page | edit_text_field: "Corp Search Page", "/page-slug" }}
+
+  <!-- Cloud API Domain -->
+  {{ widget.service_url | edit_text_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Heading Text -->
+  {{ widget.heading_text | edit_text_field: "Heading Text", "Find a Location", "value" }}
+
+  <!-- Search Button Text -->
+  {{ widget.search_button_text | edit_text_field: "Search Button Text", "Search", "value_or_default" }}
+  
+  <!-- Show Pending Locations Toggle -->
+  {{ widget.pending_location_toggle | edit_toggle_field: "Show Pending Locations?", "value_or_default"}}
+  
+  <!-- Enable Universal Search Typeahead -->
+   {{ widget.universal_search | edit_toggle_field: "Enable Universal Search (Typeahead)", "value_or_default"}}
+
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+
+  <!-- Heading Text Positioning-->
+  {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+  {{ widget.heading_text_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+  <!-- Text Color -->
+  {{ widget.text_color | edit_color_field: "Text Color", "#hex - inherited from theme body text color", "value" }}
+
+  <!-- Header Text Color -->
+  {{ widget.header_text_color | edit_color_field: "Header Text Color", "#fff", "value" }}
+
+  <!-- Search Form Text Color -->
+  {{ widget.search_form_text_color | edit_color_field: "Search Form Text Color", "#hex - inherited from theme body text color", "value" }}
+
+  <!-- Search Background -->
+  {{ widget.search_background | edit_color_field: "Search Background", "theme_primary_color", "value_or_default", "", true }}
+
+  <!-- Search Button BG -->
+  {{ widget.search_button_bg | edit_color_field: "Search Button Background", "theme_tertiary_color", "value_or_default", "", true }}
+
+  <!-- Search Button BG Hover -->
+  {{ widget.search_button_bg_hover | edit_color_field: "Search Button Background Hover", "theme_tertiary_color | darken: '5%';", "value_or_default", "", true}}
+
+  <!-- Search Button Text Color -->
+  {{ widget.search_button_text_color | edit_color_field: "Search Button Text Color", "#fff", "value_or_default" }}
+
+  <!-- Search Button Text Color Hover -->
+  {{ widget.search_button_text_color_hover | edit_color_field: "Search Button Text Color Hover", "#fff", "value_or_default" }}
+
+  <!-- Dropdown BG -->
+  {{ widget.dropdown_bg | edit_color_field: "Dropdown Background", "theme_secondary_color", "value_or_default", "", true }}
+
+  <!-- Dropdown Text Color -->
+  {{ widget.dropdown_text_color | edit_color_field: "Dropdown Text Color", "#fff", "value" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

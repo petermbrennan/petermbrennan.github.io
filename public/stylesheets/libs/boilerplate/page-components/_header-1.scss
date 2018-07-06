@@ -1,0 +1,150 @@
+// *******************************************
+//
+//  Header
+//
+// *******************************************
+
+// Variation to have logo hang over header
+@mixin hanging-logo {
+  @include at-least($min-nav) {
+    .logo-container {
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
+// ===========================================
+//  Standard version
+//   - logo left, nav right, buttons above nav
+// ===========================================
+
+[role=banner] {
+  @include clearfix;
+
+  h1 {
+    // Sets logo to base font size
+    font-size: 1em;
+    margin: 0;
+  }
+
+  .collapsable-btn {
+    .text {
+      display: none;
+    }
+  }
+
+  .navigation {
+    text-align: center;
+
+    a {
+      display: block;
+      padding: .5em;
+    }
+  }
+
+  .has-subnav > a:after {
+    content: ">";
+    margin-left: .5em;
+  }
+
+  @include until($max-medium) {
+    .navigation-container {
+      padding-top: .5em;
+      padding-bottom: .5em;
+    }
+  }
+
+  @include until($max-small) {
+    .logo-container {
+      // Make space for the nav
+      padding-top: 2.75em;
+      text-align: center;
+    }
+
+    .navigation-container {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+
+    .appended-phone {
+      //display: none;
+    }
+  }
+
+  @include between($min-small, $max-nav) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+
+    .collapsable-content {
+      position: absolute;
+      right: 0;
+      width: 50%;
+    }
+  }
+
+  @include at-least($min-small) {
+    .logo-container {
+      float: left;
+      margin-right: $base-whitespace;
+    }
+  }
+
+  @include at-least($min-nav) {
+    padding: .5em 0;
+
+    .buttons {
+      float: right;
+      padding-top: .5em;
+      padding-bottom: .5em;
+    }
+
+    .navigation-container {
+      float: right;
+    }
+
+    .corporate-navigation,
+    .navigation {
+      .top-nav > li {
+        display: table-cell;
+      }
+
+      a {
+        display: block;
+        padding: .25em .5em;
+      }
+    }
+
+    .subnav {
+      text-align: left;
+      position: absolute;
+      left: 0;
+      top: auto;
+      max-height: 0;
+      width: 100%;
+      z-index: 9999;
+
+      a {
+        &:focus,
+        &:hover {
+          background-color: $headerColor;
+          color: $headerTextColor;
+        }
+      }
+    }
+
+    // This is needed for mobile when the menu
+    // is taller than the screen to create scroll
+    .show-subnav {
+      max-height: 1000px;
+    }
+  }
+}

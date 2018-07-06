@@ -1,0 +1,33 @@
+// *************************************
+//
+//  Standard Calls to Action
+//
+// *************************************
+
+.action-calls {
+  a {
+    background-color: $tertiaryColor;
+    color: $white;
+    font-size: em(21);
+    display: block;
+    padding: .5em $base-whitespace .4em $half-whitespace;
+    position: relative;
+
+    &:focus,
+    &:hover {
+      background-color: $tertiary-light;
+    }
+  }
+
+  li {
+    margin-top: .5em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    @include at-least($min-medium) {
+      margin-top: 1em;
+    }
+  }
+}

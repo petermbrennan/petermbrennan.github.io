@@ -1,0 +1,55 @@
+{% if widget.location_thumbnail_url.value_or_default_parsed != blank %}
+<script class="structured-data-widget" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ widget.vertical_slug | local_business_type }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ widget.location_city.value_or_default }}",
+    "addressRegion": "{{ widget.location_state.value_or_default }}",
+    "postalCode": "{{ widget.location_postal_code.value_or_default }}",
+    "streetAddress": "{{ widget.location_street_address.value_or_default }}"
+  },
+  {% if widget.review_count > 0 %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ widget.average_rating }}",
+    "reviewCount": "{{ widget.review_count }}"
+  },
+  {% endif %}
+  "image": "{{ widget.location_thumbnail_url.value_or_default }}",
+  "name": "{{ widget.location_name.value_or_default }}",
+  {% if widget.office_hours_structured.size > 0 %}
+  "openingHoursSpecification": {{ widget.office_hours_structured }},
+  {% endif %}
+{% comment %}
+  // TODO: figure out how to display the reviews only on the review page
+  {% if widget.review_count > 0 %}
+  "review": [
+    {% for review in widget.reviews %}
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "{{ review.author }}"
+      },
+      "datePublished": "{{ review.date }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "G5"
+      },
+      "reviewBody": "{{ review.excerpt }}",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ review.rating }}"
+      }
+    }{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  ],
+  {% endif %}
+{% endcomment %}
+  "telephone": "{{ widget.location_phone_number.value_or_default }}",
+  "url": "{{ widget.location_url.value_or_default }}"
+}
+</script>
+{% endif %}

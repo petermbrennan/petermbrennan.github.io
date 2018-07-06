@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+nav ul,
+nav ol {
+  margin: 0;
+  padding: 0;
+}
+nav ul,
+nav ol,
+nav li {
+  list-style-type: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+form input,
+form label {
+  display: block;
+}
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}

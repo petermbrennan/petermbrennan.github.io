@@ -1,0 +1,289 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Storage Size Guide Settings</legend>
+
+    <!-- Storage Size Guide Heading -->
+    <div class="form-field">
+      {{ widget.size_guide_heading | edit_text_field: "Size Guide Heading", "", "value_or_default" }}
+
+      {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+      {{ widget.size_guide_heading_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+    </div>
+
+    <!-- Type of Image Desired -->
+    <div class="form-field">
+      {% assign image_opts = '{"storage-unit-overview": "Storage Unit Overhead View", "man-in-box": "Man In Box", "3d-view": "3D View", "custom": "Custom"}' %}
+      {{ widget.storage_image_type | edit_radio_field: "What type of Images?", image_opts, "value_or_default", "select-custom-image" }}
+    </div>
+
+    <!-- Allow all Eight Storage Sizes full cusomtization -->
+    <!-- Define Storage Size Options, #1 (5x5) -->
+    <fieldset>
+      <legend>Storage Size Option 1</legend>
+      <div class="cloudinary-options 1">
+        <fieldset>
+          {{ widget.storage_image_custom_1 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_1_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_1_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_1_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+      {{ widget.storage_size_1 | edit_text_field: "Unit Size", "default: 5x5", "value_or_default" }}
+
+      {{ widget.storage_description_1 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_1 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #2 (5x10) -->
+    <fieldset>
+      <legend>Storage Size Option 2</legend>
+      <div class="cloudinary-options 2">
+        <fieldset>
+          {{ widget.storage_image_custom_2 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_2_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_2_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_2_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+      {{ widget.storage_size_2 | edit_text_field: "Unit Size", "default: 5x10", "value_or_default" }}
+
+      {{ widget.storage_description_2 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_2 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #3 (5x15) -->
+    <fieldset>
+      <legend>Storage Size Option 3</legend>
+      <div class="cloudinary-options 3">
+        <fieldset>
+          {{ widget.storage_image_custom_3 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_3_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_3_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_3_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ widget.storage_size_3 | edit_text_field: "Unit Size", "default: 5x15", "value_or_default" }}
+
+      {{ widget.storage_description_3 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_3 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #4 (10x10) -->
+    <fieldset>
+      <legend>Storage Size Option 4</legend>
+
+      <div class="cloudinary-options 4">
+        <fieldset>
+          {{ widget.storage_image_custom_4 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_4_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_4_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_4_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ widget.storage_size_4 | edit_text_field: "Unit Size", "default: 10x10", "value_or_default" }}
+
+      {{ widget.storage_description_4 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_4 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #5 (10x15) -->
+    <fieldset>
+      <legend>Storage Size Option 5</legend>
+      <div class="cloudinary-options 5">
+        <fieldset>
+          {{ widget.storage_image_custom_5 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_5_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_5_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_5_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+      {{ widget.storage_size_5 | edit_text_field: "Unit Size", "default: 10x15", "value_or_default" }}
+
+      {{ widget.storage_description_5 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_5 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #6 (10x20) -->
+    <fieldset>
+      <legend>Storage Size Option 6</legend>
+      <div class="cloudinary-options 6">
+        <fieldset>
+          {{ widget.storage_image_custom_6 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_6_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_6_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_6_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+      {{ widget.storage_size_6 | edit_text_field: "Unit Size", "default: 10x20", "value_or_default" }}
+
+      {{ widget.storage_description_6 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_6 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #7 (10x25) -->
+    <fieldset>
+      <legend>Storage Size Option 7</legend>
+      <div class="cloudinary-options 7">
+        <fieldset>
+          {{ widget.storage_image_custom_7 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_7_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_7_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_7_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+      </div>
+      {{ widget.storage_size_7 | edit_text_field: "Unit Size", "default: 10x25", "value_or_default" }}
+
+      {{ widget.storage_description_7 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_7 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+    <!-- Define Storage Size Options, #8 (10x30) -->
+    <fieldset>
+      <legend>Storage Size Option 8</legend>
+      <div class="cloudinary-options 8">
+        <fieldset>
+          {{ widget.storage_image_custom_8 | edit_image_field: "Custom Image URL", "", "value_or_default", "custom-image-field", "storage-size-guide" }}
+          <div class="col s5">
+            {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+            {{ widget.photo_8_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+          </div>
+
+          <div class="max-width-max-height">
+            <div class="col s2 offset-s1">
+              {{ widget.photo_8_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+            </div>
+
+            <div class="col s2 offset-s1">
+              {{ widget.photo_8_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+            </div>
+            <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </div>
+        </fieldset>
+
+      </div>
+      {{ widget.storage_size_8 | edit_text_field: "Unit Size", "default: 10x30", "value_or_default" }}
+
+      {{ widget.storage_description_8 | edit_text_field: "Use Custom Size Guide Description?", "Leave blank for default descriptions", "value_or_default" }}
+
+      {{ widget.storage_image_alt_tag_8 | edit_text_field: "Image Alt Text", "", "value_or_default", "alt-tag-text" }}
+    </fieldset>
+
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+  <legend>Style Settings</legend>
+  <!-- Size tabs background and inactive tabs color (Optional) -->
+  {{ widget.size_guide_heading_color | edit_color_field: "Heading Text Color", "#000", "value_or_default" }}
+  {{ widget.inactive_tabs_background_color | edit_color_field: "Tabs Background Color", "theme_primary_color", "value_or_default", "", true }}
+  {{ widget.inactive_tabs_text_color | edit_color_field: "Tabs Text Color", "#fff", "value_or_default" }}
+  {{ widget.active_tab_text_color | edit_color_field: "Active Tab Text Color", "#000", "value_or_default" }}
+  {{ widget.desc_active_tab_background_color | edit_color_field: "Content and Active Tab Background Color", "#fff", "value_or_default" }}
+  {{ widget.base_color | edit_color_field: "Description Text Color", "#000", "value_or_default" }}
+  {{  widget.desc_heading_size | edit_text_field: "Description Heading Size", "30px", "value_or_default" }}
+  {{ widget.image_background_color | edit_color_field: "Image Background Color", "#fff", "value_or_default" }}
+
+  {% assign image_border_opts = '{"on": "On", "off": "Off"}' %}
+  {{ widget.image_border | edit_radio_field: "Image Border", image_border_opts, "value_or_default" }}
+
+  {% assign edges_opts = '{"rounded": "Rounded", "square": "Square"}' %}
+  {{ widget.square_edges | edit_radio_field: "Rounded / Square Edges", edges_opts, "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+  {{ widget | edit_save_button }}
+  </form>

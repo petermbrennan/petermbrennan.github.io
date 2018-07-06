@@ -1,0 +1,107 @@
+{
+  "name": "Contact Info Sheet",
+  "widget_id": 10,
+  "widget_type": null,
+  "summary": "A floating menu with slide out contact form",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7156' target='_blank'>Contact Info Sheet Documentation</a>",
+  "lib_javascripts": [
+    "phone-service.js",
+    "jquery.idle.min.js",
+    "fort-awesome-api.js"
+  ],
+  "lib_edit_javascripts": ["edit-form-types.js"],
+  "lib_stylesheets": [
+    "pikaday.css"
+  ],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "phone_number",
+      "default_value": "{{location_phone_number}}"
+    },
+    {
+      "name": "contact_url",
+      "default_value": "/{{location_internal_link}}/contact-us"
+    },
+    {
+      "name": "third_party_chat_code",
+      "default_value": ""
+    },
+    {
+      "name": "third_party_chat_url",
+      "default_value": ""
+    },
+    {
+      "name": "chat_width",
+      "default_value": 640
+    },
+    {
+      "name": "chat_height",
+      "default_value": 480
+    },
+    {
+      "name": "form_type",
+      "default_value": "contact"
+    },
+    {
+      "name": "form_endpoint",
+      "default_value": "html_forms"
+    },
+    {
+      "name": "success_redirect_url",
+      "default_value": ""
+    },
+    {
+      "name": "fade_delay",
+      "default_value": "8"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "cis_layout",
+      "default_value": "default"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "show_phone",
+      "default_value": "yes"
+    },
+    {
+      "name": "show_email",
+      "default_value": "yes"
+    },
+    {
+      "name": "show_scroll",
+      "default_value": "yes"
+    },
+    {
+      "name": "background_color",
+      "default_value": ""
+    },
+    {
+      "name": "icon_color",
+      "default_value": ""
+    },
+    {
+      "name": "show_home",
+      "default_value": "no"
+    },
+    {
+      "name": "show_contact_form",
+      "default_value": "yes"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Structured Data",
+  "widget_id": 44,
+  "widget_type": "G5 Internal",
+  "summary": "Structured data for SEO",
+  "liquid": true,
+  "widget_popover": "<a href='' target='_blank'>Structured Data Documentation</a>",
+  "remote_javascripts": [],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veternarian"
+  ],
+  "page_widget": false,
+  "settings": [
+    {
+      "name": "vertical_slug",
+      "default_value": "{{client_vertical_slug}}"
+    },
+    {
+      "name": "location_name",
+      "default_value": "{{location_name}}"
+    },
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "location_phone_number",
+      "default_value": "{{location_phone_number}}"
+    },
+    {
+      "name": "location_url",
+      "default_value": "{{location_home_url}}"
+    },
+    {
+      "name": "location_thumbnail_url",
+      "default_value": "{{location_thumbnail_url_300px}}"
+    }
+  ]
+}

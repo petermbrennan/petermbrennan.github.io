@@ -1,0 +1,962 @@
+// ********************************************
+//
+//  Focus Blueprint Theme
+//  - Bold Variation
+//
+// ********************************************
+
+// Boilerplate variables and mixins
+@import 'boilerplate/setup';
+
+$min-msmall: 560px;
+$min-med: 800px;
+$min-xlarge: 1512px;
+$min-nav: $min-small;
+
+$border-style: 2px solid $white;
+$border-radius: 2rem;
+$small-border-radius: 1rem;
+$inner-border-radius: 0.8rem;
+
+@mixin border { border: 2px solid $white; }
+
+@mixin border-radius { border-radius: $border-radius; }
+@mixin small-border-radius { border-radius: $small-border-radius; }
+
+@mixin dark-placeholder {
+  @include placeholder {
+    color: $base-color;
+  }
+}
+
+@mixin light-placeholder {
+  @include placeholder {
+    color: $white;
+  }
+}
+
+
+%btn-base {
+  @include border-radius;
+  background-color: transparent;
+  border: 2px solid $secondaryColor;
+  color: $secondaryColor;
+  font-weight: $bold-font-weight;
+
+  &:hover {
+    background-color: rgba($secondaryColor, 0.8);
+    color: $white !important;
+  }
+}
+
+
+// ============================================
+//  Buttons
+// ============================================
+
+.widget {
+  .btn,
+  button,
+  input[type=submit] {
+    @extend %btn-base;
+  }
+}
+
+.collapsable-btn {
+  border: 0;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+
+// ============================================
+//  Forms
+// ============================================
+
+.widget {
+  #{$all-text-inputs},
+  textarea,
+  select {
+    @include border-radius;
+    border: 2px solid $white;
+    background-color: transparent;
+    padding-left: 1em;
+    @include light-placeholder;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+
+// ============================================
+//  Widgets
+// ============================================
+
+// --------------------------------------------
+//  Accordion
+// --------------------------------------------
+
+.accordion {
+  .accordion-section:first-of-type {
+    .accordion-section-title {
+      border-radius: $small-border-radius $small-border-radius 0 0;
+    }
+  }
+
+  .accordion-section:last-of-type {
+    .accordion-section-title {
+      border-radius: 0 0 $small-border-radius $small-border-radius;
+
+      &.active {
+        border-radius: 0;
+      }
+    }
+
+    .accordion-section-content {
+      border-radius: 0 0 $small-border-radius $small-border-radius;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Blog Feed
+// --------------------------------------------
+
+[class*=blog-feed] {
+  .all-news-link,
+  .all-posts,
+  .news-item-link,
+  .post-expand {
+    @extend %btn-base;
+  }
+
+  .all-news-link,
+  .all-posts {
+    background-color: $secondaryColor;
+    color: $white;
+    &:hover { background-color: $secondary-light; }
+  }
+}
+
+
+// --------------------------------------------
+//  Calls to Action
+// --------------------------------------------
+
+.action-calls a {
+  @extend %btn-base;
+  border-color: $tertiaryColor;
+  color: $tertiaryColor;
+
+  &:hover {
+    background-color: rgba($tertiaryColor, 0.8);
+    color: $white;
+  }
+}
+
+
+// --------------------------------------------
+//  Careers
+// --------------------------------------------
+
+.careers {
+
+}
+
+// --------------------------------------------
+//  Multifamily Search Cloud
+// --------------------------------------------
+
+.mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+  .search-form {
+    span.amenity-checkbox-section,
+    span.multiselect-checkboxes {
+      border: 0;
+    }
+  }
+}
+
+// --------------------------------------------
+//  Contact Info Sheet
+// --------------------------------------------
+
+.contact-info-sheet {
+  .info-sheet-nav { background-color: rgba($white, 0.3); }
+  .info-sheet-content { background-color: rgba($white, 0.9); }
+
+  .info-sheet-content,
+  .form-instructions,
+  .required:after {
+    color: $base-color;
+  }
+
+  .info-sheet-toggle { color: $primaryColor; }
+
+  #{$all-text-inputs},
+  textarea {
+    border: 1px solid $grey;
+  }
+
+  input[type=submit] {
+    border-color: $secondaryColor;
+  }
+
+  .cis-btn {
+    color: $primaryColor;
+  }
+
+
+  @include at-least(667px) {
+    .info-sheet-nav,
+    .info-sheet-content {
+      border: 2px solid $primaryColor;
+    }
+
+    .info-sheet-content {
+      border-radius: $small-border-radius;
+    }
+
+    &.default .info-sheet-nav,
+    &.left .info-sheet-nav {
+      border-left: 0;
+      border-radius: 0 $small-border-radius $small-border-radius 0;
+    }
+
+    &.right .info-sheet-nav {
+      border-right: 0;
+      border-radius: $small-border-radius 0 0 $small-border-radius;
+    }
+
+    &.b-right .info-sheet-nav {
+      border-bottom: 0;
+      border-right: 0;
+      border-radius: $small-border-radius 0 0 0;
+    }
+
+    &.b-left .info-sheet-nav {
+      border-bottom: 0;
+      border-left: 0;
+      border-radius: 0 $small-border-radius 0 0;
+    }
+
+    &.b-right .info-sheet-content { border-radius: $small-border-radius 0 0 $small-border-radius; }
+    &.b-left .info-sheet-content { border-radius: 0 $small-border-radius $small-border-radius 0; }
+
+
+    &.default,
+    &.left,
+    &.right {
+      .info-sheet-chat-btn,
+      .info-sheet-toggle,
+      .info-sheet-pagination {
+        border-bottom: 2px solid $primaryColor;
+      }
+
+      .info-sheet-page-down {
+        border-bottom: 0;
+      }
+    }
+
+    &.b-right,
+    &.b-left {
+      .info-sheet-chat-btn,
+      .info-sheet-toggle,
+      .info-sheet-pagination {
+        border-right: 2px solid $primaryColor;
+      }
+
+      .info-sheet-page-down {
+        border-right: 0;
+      }
+    }
+  }
+
+  @include until(1169px) {
+    &.default,
+    &.left,
+    &.right {
+      .info-sheet-email-btn { border-bottom: 0; }
+    }
+
+    &.b-right,
+    &.b-left {
+      .info-sheet-email-btn { border-right: 0; }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Directory
+// --------------------------------------------
+
+.directory .directory-heading {
+  @include small-border-radius;
+
+  &.open {
+    border-radius: $small-border-radius $small-border-radius 0 0 !important;
+  }
+}
+
+
+// --------------------------------------------
+//  Events
+// --------------------------------------------
+
+.events {
+  .event-summary { border-radius: $small-border-radius; }
+  .event-title { border-radius: $small-border-radius $small-border-radius 0 0; }
+  .event-details-button { border-radius: 0 0 $small-border-radius $small-border-radius; }
+}
+
+
+// --------------------------------------------
+//  Gallery
+// --------------------------------------------
+
+.gallery .flex-direction-nav a {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  HTML
+// --------------------------------------------
+
+.html .html-content {
+  @include small-border-radius;
+}
+
+
+// --------------------------------------------
+//  Social Links
+// --------------------------------------------
+
+.social-links .icon {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Social Feed
+// --------------------------------------------
+
+.social-feed {
+  .feed-section { border-radius: 0 $small-border-radius $small-border-radius $small-border-radius; }
+  .feed-switch:first-of-type { border-top-left-radius: $small-border-radius; }
+  .feed-switch:last-of-type { border-top-right-radius: $small-border-radius; }
+}
+
+
+// ============================================
+//  Location Widgets
+// ============================================
+
+// --------------------------------------------
+//  Floor Plans Cards
+// --------------------------------------------
+
+.floorplans-cards {
+  .floorplan-card {
+    @include small-border-radius;
+  }
+
+  .floorplan-card-title {
+    border-radius: $small-border-radius $small-border-radius 0 0;
+    text-align: center;
+  }
+
+  .unit-cta-button {
+    @include border-radius;
+  }
+}
+
+
+// --------------------------------------------
+//  Home Multifamily IUI
+// --------------------------------------------
+
+.home-multifamily-iui {
+  font-size: 0.9em;
+  .btn {
+    background-color: transparent;
+    border-color: $white;
+    color: $white;
+    font-weight: $base-font-weight;
+  }
+
+  @include at-least($min-msmall) {
+    .iui-size {
+      padding: 0;
+
+      &:not(:last-of-type) .btn {
+        border-right: 0;
+        border-radius: 0;
+      }
+
+      &:first-child .btn {
+        border-radius: $small-border-radius 0 0 $small-border-radius;
+      }
+
+      &:last-child .btn {
+        border-radius: 0 $small-border-radius $small-border-radius 0;
+      }
+    }
+  }
+}
+
+
+
+.home-multifamily-iui-v2 {
+  @include at-least($min-med) {
+    .iui-size {
+      padding: 0;
+      &:first-child .btn {
+        border-radius: $small-border-radius 0 0 $small-border-radius;
+      }
+
+      &:last-child .btn {
+        border-radius: 0 $small-border-radius $small-border-radius 0;
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+//  Multifamily IUI Cards
+// --------------------------------------------
+
+[class*=multifamily-iui-cards] {
+  .iui-cards-view-all,
+  .floorplan-card-cta {
+    @include border-radius;
+  }
+}
+
+// --------------------------------------------
+//  Multifamily IUI Cards v3
+// --------------------------------------------
+.multi-family-iui-cards-v3.widget{
+  #{$all-text-inputs},
+    textarea,
+    select {
+    border: 2px solid #eee;
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Filtered
+// --------------------------------------------
+
+.self-storage-filtered {
+  .sss-cat,
+  .sss-cat a,
+  .sss-unit-matrix {
+    @include small-border-radius;
+  }
+
+  .sss-unit-cta .unit-cta {
+    @extend %btn-base;
+  }
+
+  .sss-cat.view-all a {
+    border: 0;
+    &:hover { background-color: transparent; }
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage IUI Cards
+// --------------------------------------------
+
+.self-storage-iui-cards {
+  .iui-cards-card,
+  .iui-cards-unit-details,
+  .iui-cards-special-section {
+    @include small-border-radius;
+  }
+
+  .iui-cards-category-special {
+    border-radius: 0 0 $small-border-radius $small-border-radius;
+  }
+
+  .iui-cards-header-arrow {
+    border-radius: 0 $small-border-radius $small-border-radius;
+  }
+
+  .iui-cards-unit-actions a,
+  .sss-unit-cta .unit-cta {
+    @include border-radius;
+  }
+
+  #{$all-text-inputs},
+  textarea,
+  select {
+    border-color: $base-color;
+    color: $base-color;
+    @include dark-placeholder;
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Search Widgets
+// --------------------------------------------
+
+[class*=self-storage-search] {
+  .sss-search-select,
+  .sss-search-input {
+    @include border-radius;
+  }
+
+  .sss-search-select::after {
+    border-radius: 0 $border-radius $border-radius 0;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    height: auto;
+  }
+
+  .sss-unit-cta .unit-cta,
+  .sss-unit-cta .btn {
+    @extend %btn-base;
+    height: auto;
+
+    span { display: block; }
+  }
+
+  .sss-search-input,
+  .sss-search-select {
+    background-color: transparent;
+    border: 2px solid $white;
+  }
+
+  .input-clear:after,
+  .sss-search-input,
+  .sss-search-storage-categories-select {
+    color: $white;
+  }
+}
+
+
+// --------------------------------------------
+//  SS Featured Unit Categories
+// --------------------------------------------
+
+.ss-featured-unit-categories {
+  .iui-steps span {
+    background-color: $white;
+    border: 2px solid $base-color;
+    color: $base-color;
+    font-weight: $bold-font-weight;
+    padding-top: 0.15em;
+  }
+
+  .iui-size .btn {
+    border-color: $base-color;
+    background-color: transparent;
+    color: $base-color;
+    display: block;
+    &:hover { color: $white; }
+  }
+
+  .iui-view-all .btn {
+    border-color: $tertiaryColor;
+    color: $tertiaryColor;
+    &:hover { background-color: $tertiaryColor; }
+  }
+}
+
+
+// ============================================
+//  Corporate Widgets
+// ============================================
+
+// --------------------------------------------
+//  City State Zip Search
+// --------------------------------------------
+
+.city-state-zip-search {
+  .zip-search-input {
+    @include border-radius;
+    background-color: transparent;
+
+    input {
+      border: 2px solid $white;
+      color: $white;
+    }
+  }
+
+  .zip-search-button { border-radius: 0 $border-radius $border-radius 0; }
+  button { border: 0; }
+}
+
+
+// --------------------------------------------
+//  Locations Navigation
+// --------------------------------------------
+
+.locations-navigation {
+  h3.locations-navigation-title {
+    @include small-border-radius;
+  }
+
+  .locations-navigation-state {
+    &:first-child {
+      border-top-left-radius: $small-border-radius;
+      border-top-right-radius: $small-border-radius;
+    }
+
+    &:last-child,
+    &:last-child li:last-child {
+      border-bottom-left-radius: $small-border-radius;
+      border-bottom-right-radius: $small-border-radius;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Location Mini Search
+// ---------------------------------------------
+
+.location-mini-search {
+  .search-form {
+    @include small-border-radius;
+
+    .search-filter,
+    .btn {
+      @include border-radius;
+    }
+
+    .search-filter {
+      border: 2px solid $white;
+      border-right: 0;
+
+      &,
+      &.typeahead { background-color: transparent; }
+
+      .search-input {
+        @include light-placeholder;
+      }
+
+      .twitter-typeahead {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .xlarge {
+    .search-filter {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Location Search
+// ---------------------------------------------
+
+.location-search {
+  .search-form {
+    @include small-border-radius;
+  }
+
+  .search-filter,
+  a.loc-search-btn,
+  #location-search-container .resultAvailability {
+    @include border-radius;
+  }
+
+  .xlarge {
+    .search-filter {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .loc-search-btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search
+// ---------------------------------------------
+
+[class*=multifamily-mini-search] {
+  .search-form {
+    span,
+    .search-button button {
+      @include border-radius;
+
+      &::after { border-radius: 0 $border-radius $border-radius 0; }
+    }
+
+    label,
+    select {
+      padding: 0.5em 2.5em 0.5em 1em;
+    }
+
+    input {
+      width: 76px;
+      vertical-align: 2px;
+    }
+
+    .neighborhood { width: 230px; }
+    .bathrooms { width: 123px; }
+  }
+
+  .corpSearchWrapper .search-form,
+  .search-form {
+    span:not(.search-button) {
+      background-color: transparent;
+      border: 2px solid $white;
+    }
+
+    span:not(.search-button):after {
+      top: -2px;
+      right: -2px;
+      bottom: -2px;
+    }
+  }
+
+  .corpSearchWrapper.narrow {
+    label,
+    select {
+      padding-left: 10px;
+    }
+  }
+
+  .store-summary .resultAvailability {
+    @extend %btn-base;
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+.multifamily-search,
+.mf-search-cloud {
+  .search-form {
+    span:not(.search-button) {
+      @include border-radius;
+      background-color: transparent;
+      border: 2px solid $white;
+      color: $white;
+
+      &:after {
+        border-radius: 0 $border-radius $border-radius 0;
+        top: -2px;
+        right: -2px;
+        bottom: -2px;
+      }
+    }
+
+    label,
+    select,
+    input {
+      color: $white;
+    }
+
+    input {
+      border-color: $white;
+    }
+  }
+
+  .search-button,
+  .store-summary .resultAvailability {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Header
+// ============================================
+
+[role=banner] .navigation {
+  border: $border-style;
+  border-radius: $small-border-radius;
+
+  .top-nav > li {
+    border-top: 2px solid $white;
+
+    &:first-child {
+      border-top: none;
+
+      > a { border-radius: $inner-border-radius $inner-border-radius 0 0; }
+    }
+
+    &:last-child > a,
+    &.last-link > a { border-radius: 0 0 $inner-border-radius $inner-border-radius }
+  }
+
+  a { font-weight: $bold-font-weight; }
+
+  .corporate-home a {
+    background-color: $primary-dark;
+    &:hover { background-color: $primaryColor; }
+  }
+}
+
+
+@include at-least($min-xlarge) {
+  [role=banner] .navigation .last-link a {
+    border-radius: 0 0 $inner-border-radius $inner-border-radius
+  }
+}
+
+
+// ============================================
+//  Boilerplate content stripe classes
+// ============================================
+
+.text-light {
+  #{$all-text-inputs},
+  textarea {
+    border-color: $white;
+    color: $white;
+    @include light-placeholder;
+  }
+
+  .ss-featured-unit-categories {
+    .iui-size:not(.iui-view-all) .btn {
+      border-color: $white;
+    }
+
+    .iui-title,
+    .iui-size:not(.iui-view-all) .btn {
+      color: $white;
+    }
+
+    .iui-size:not(.iui-view-all) .btn:hover {
+      background-color: $white;
+      color: $base-color !important;
+    }
+  }
+
+  .self-storage-iui-cards {
+    #{$all-text-inputs},
+    textarea,
+    select {
+      border-color: $white;
+      color: $white;
+      @include light-placeholder;
+    }
+  }
+}
+
+
+.text-dark {
+  #{$all-text-inputs},
+  textarea {
+    border-color: $base-color;
+    color: $base-color;
+    @include dark-placeholder;
+  }
+
+  .ss-featured-unit-categories {
+    .iui-size:not(.iui-view-all) .btn {
+      border-color: $base-color;
+    }
+
+    .iui-title,
+    .iui-size:not(.iui-view-all) .btn {
+      color: $base-color;
+    }
+
+    .iui-size:not(.iui-view-all) .btn:hover {
+      background-color: $base-color;
+      color: $white !important;
+    }
+  }
+
+  .city-state-zip-search {
+    .zip-search-input input {
+      border-color: $base-color;
+    }
+  }
+
+  .location-mini-search {
+    .search-form .search-filter {
+      border-color: $base-color;
+
+      .search-input {
+        @include dark-placeholder;
+      }
+    }
+  }
+
+  [class*=multifamily-mini-search] {
+    .corpSearchWrapper .search-form,
+    .search-form {
+      span:not(.search-button) {
+        border-color: $base-color;
+      }
+    }
+  }
+
+  .multifamily-search,
+  .mf-search-cloud {
+    .search-form {
+      span:not(.search-button),
+      label {
+        border-color: $base-color;
+      }
+
+      span,
+      label,
+      select,
+      input {
+        color: $base-color;
+      }
+    }
+  }
+
+  .location-search {
+    .search-filter {
+      border-color: $base-color;
+
+      input {
+        @include dark-placeholder;
+      }
+    }
+
+    .search-filter input,
+    #location-search-container .input-clear:after {
+      color: $base-color;
+    }
+  }
+
+  [class*=self-storage-search] {
+    .sss-search-input,
+    .sss-search-select {
+      border-color: $base-color;
+    }
+
+    .input-clear:after,
+    .sss-search-input,
+    .sss-search-storage-categories-select {
+      color: $base-color;
+    }
+  }
+}

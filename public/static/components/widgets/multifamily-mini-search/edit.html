@@ -1,0 +1,64 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily Mini Search Settings</legend>
+  <!-- Core Client ID -->
+  {{ widget.core_client_id | edit_text_field: "Core Client ID", "1234" }}
+
+  <!-- Corp Search Page -->
+  {{ widget.corp_search_page | edit_text_field: "Corp Search Page", "/relative/path/to/search_page" }}
+
+  <!-- Core API Domain -->
+  {{ widget.core_service_url | edit_text_field: "Core API Domain", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Heading Text -->
+  {{ widget.heading_text | edit_text_field: "Heading Text", "Find an Apartment" }}
+
+  <!-- Search Button Text -->
+  {{ widget.search_button_text | edit_text_field: "Search Button Text", "Search", "value_or_default", "", true }}
+
+  <!-- Alternate Core Client ID -->
+  {{ widget.alternate_core_client_id | edit_text_field: "Alternate Core Client ID", "1234" }}
+
+  <!-- Alternate Search Page Path -->
+  {{ widget.external_search_url | edit_text_field: "Alternate Search Page Path", "/relative/path/to/alternate_search_page" }}
+
+  <!-- Default Search Option -->
+  {{ widget.default_search_option | edit_text_field: "Default Search Option", "Apartments, perhaps" }}
+
+  <!-- Alternate Search Option -->
+  {{ widget.alternate_search_option | edit_text_field: "Alternate Search Option", "Commercial, perhaps" }}
+    <!-- Alternate Search Button Text -->
+  {{ widget.alternate_search_button_text | edit_text_field: "Alternate Search Button Text" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Search / Widget Background -->
+  {{ widget.search_background | edit_color_field: "Search / Widget Background" }}
+
+  <!-- Text Color -->
+  {{ widget.text_color | edit_color_field: "Text Color" }}
+
+  <!-- Search Button BG Color -->
+  {{ widget.search_button_color | edit_color_field: "Search Button Background Color" }}
+
+  <!-- Search Button Text Color -->
+  {{ widget.search_button_text_color | edit_color_field: "Search Button Text Color" }}
+
+  <!-- City / State Button BG Color -->
+  {{ widget.city_state_button_bg_color | edit_color_field: "City / State Button Background Color" }}
+
+  <!-- City / State Button Text Color -->
+  {{ widget.city_state_button_text_color | edit_color_field: "City / State Button text Color" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

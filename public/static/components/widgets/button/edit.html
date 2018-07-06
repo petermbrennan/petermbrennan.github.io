@@ -1,0 +1,71 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>Button Settings</legend>
+      <!-- Button Label -->
+      {{ widget.button_label | edit_text_field: "Button Label", "", "value_or_default" }}
+
+      <!-- Button URL -->
+      {{ widget.button_url | edit_url_field: "Button URL", "", "value_or_default" }}
+
+      <!-- Open URL in New Window Toggle -->
+      {{ widget.button_new_window | edit_toggle_field: "Opens in a New Window", "value_or_default" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    {% assign position_opts = '{"default": "Default", "left": "Left", "center": "Center", "right": "Right"}' %}
+    {{ widget.button_position | edit_radio_field: "Button Position (Do not use on header button)", position_opts, "value_or_default" }}
+
+    {% assign display_opts = '{"default": "Default", "inline": "Inline", "block": "Block"}' %}
+    {{ widget.button_display | edit_radio_field: "Button Display", display_opts, "value_or_default" }}
+    <fieldset>
+        <legend>Background Image</legend>
+        {{ widget.button_image_url | edit_image_field: "Source URL", "", "value_or_default", "", "button" }}
+        <div class="col s5">
+          {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+          {{ widget.cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+        </div>
+        <div class="max-width-max-height">
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+          </div>
+
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+          </div>
+          <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+      </div>
+    </fieldset>
+
+
+    <fieldset>
+      <!-- Button Color -->
+      {{ widget.button_color | edit_color_field: "Button Background Color", "", "value" }}
+
+      <!-- Button Text Color -->
+      {{ widget.button_text_color | edit_color_field: "Button Text Color", "", "value" }}
+
+        <!-- Button Border Color -->
+      {{ widget.button_border_color | edit_color_field: "Button Border Color (Must add a width below)", "", "value" }}
+
+      <!-- Button Border Width -->
+      {{ widget.button_border_width | edit_text_field: "Button Border Width (Must use one of the following units: px, em, rem)", "5px", "value" }}
+
+      <!-- Button Description -->
+      {{ widget.button_description | edit_text_field: "Button Description", "", "value_or_default" }}
+    </fieldset>
+
+    {% assign layout_opts = '{"list": "List", "grid": "Grid", "inline": "Inline"}' %}
+    {{ widget.button_layout | edit_radio_field: "Button Layout", layout_opts, "value_or_default" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

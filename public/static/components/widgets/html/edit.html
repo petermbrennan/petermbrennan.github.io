@@ -1,0 +1,52 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    {{ widget.text | edit_ckeditor_field: "Enter text" }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset>
+      <legend>Colors</legend>
+      <!-- Text Color -->
+      {{ widget.text_color | edit_color_field: "Text Color" }}
+
+      <!-- Background Color -->
+      {{ widget.background_color | edit_color_field: "Background Color" }}
+
+      <!-- Padding -->
+      {{ widget.padding | edit_text_field: "Padding" }}
+      {{ widget.padding_mobile | edit_text_field: "Padding On Mobile" }}
+
+      <!-- Hide HTML On Mobile Widget -->
+      {{ widget.hide_on_mobile | edit_toggle_field: "Hide On Mobile", "value_or_default" }}
+    </fieldset>
+
+    <!-- Background Color Opacity -->
+    {% assign bg_color_opacity_opts = '{"0.1":"10%", "0.25":"25%", "0.5":"50%", "0.75":"75%", "1":"100%"}' %}
+    {{ widget.background_color_opacity | edit_radio_field: "Background Color Opacity", bg_color_opacity_opts, "value_or_default" }}
+
+    <fieldset>
+      <legend>Borders</legend>
+
+      <p>Each setting accepts either 1 value for all sides or 4 values, separated by spaces. Follow this pattern:</p>
+      <p><strong>Color / Width:</strong> <em>Top Right Bottom Left</em>
+      <br>
+      <strong>Radius:</strong> <em>Top-Left Top-Right Bottom-Right Bottom-Left</em></p>
+      <!-- Border Color -->
+      {{ widget.border_color | edit_color_field: "Border Color (Required for border)", "example: red #cc0000 green #000" }}
+
+      <!-- border_width -->
+      {{ widget.border_width | edit_text_field: "Border Width (px, em)", "example: 2px 3px 2px 4px" }}
+
+      <!-- Border Radius -->
+      {{ widget.border_radius | edit_text_field: "Border Radius (px, em, %)", "example: 5% 10% 5% 10%" }}
+    </fieldset>
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

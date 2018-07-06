@@ -1,0 +1,75 @@
+{
+  "name": "Self Storage Search Home",
+  "widget_id": 99,
+  "widget_type": null,
+  "summary": "Self Storage Search Home: Home page widget to link up to Self Storage Search widget",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469137-Self-Storage-Search-Home-Widget' target='_blank'>Self Storage Search Home Documentation</a>",
+  "lib_javascripts": [
+    "typeahead.bundle.min.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "api_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "pending_location_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "hide_categories",
+      "default_value": "false"
+    },
+    {
+      "name": "destination_page",
+      "default_value": ""
+    },
+    {
+      "name": "bg_search_criteria",
+      "default_value": ""
+    },
+    {
+      "name": "color_search_h2",
+      "default_value": ""
+    },
+    {
+      "name": "bg_category_dropdown",
+      "default_value": ""
+    },
+    {
+      "name": "color_category_dropdown",
+      "default_value": ""
+    },
+    {
+      "name": "bg_search_btn",
+      "default_value": ""
+    },
+    {
+      "name": "color_search_btn",
+      "default_value": ""
+    },
+    {
+      "name": "search_heading",
+      "default_value": "Find a Storage Unit"
+    },
+    {
+      "name": "search_heading_align",
+      "default_value": "left"
+    },
+    {
+      "name": "location_placeholder_text",
+      "default_value":  "Search by City or State"
+    }
+  ]
+}

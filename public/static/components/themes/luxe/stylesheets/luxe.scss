@@ -1,0 +1,2781 @@
+@import 'old_boilerplate/bourbon/bourbon.scss';
+@import 'global-classes.scss';
+@import 'boilerplate/setup/icons';
+
+
+// *************************************
+//
+//   Settings
+//
+// *************************************
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+// ----- Base Colors ----- //
+$white: #fff;
+$white-transparent: rgba($white, .50);
+$grey: #aeaeac;
+$grey-light: #e5e3e1;
+$grey-dark: #4c4c4c;
+$black: #222;
+
+$primary-alt: lighten(desaturate($primaryColor, 25%), 10%);
+$primary-dark: darken(desaturate($primaryColor, 25%), 20%);
+$secondary-alt: lighten(desaturate($secondaryColor, 25%), 10%);
+$secondary-dark: darken(desaturate($secondaryColor, 30%), 20%);
+
+$header-text-transparent: rgba($headerTextColor, .50);
+$header-alt: lighten(desaturate($headerColor, 25%), 10%);
+$header-dark: darken(desaturate($headerColor, 25%), 20%);
+$body-link-dark: darken(desaturate($bodyLinkColor, 30%), 20%);
+
+// Changes default footer color
+@if $footerColor == $primaryColor {
+  $footerColor: $primary-dark;
+}
+
+@if $footerTextColor == $white {
+  $footerTextColor: $grey-light;
+}
+
+// ----- Text Colors ----- //
+$base-color: #1d2028;
+$base-header-color: #fff;
+$base-link-color: $bodyLinkColor;
+$base-hover-color: $body-link-dark;
+
+// ----- Background Colors ----- //
+$base-background: rgba($primary-dark, .05);
+
+// ----- Borders ----- //
+$base-border: 1px solid $grey-dark;
+$border-color-light: rgba(255, 255, 255, .10);
+$border-color-dark: rgba(0, 0, 0, .10);
+
+// ----- Typography ----- //
+$base-fontFamily: 'pt-sans', $helvetica;
+$base-fontWeight: 400;
+$base-fontSize: 16px;
+$base-lineHeight: 1.5;
+$alt-fontWeight: normal;
+
+$primary-font: $primaryFont, $base-fontFamily;
+$secondary-font: $secondaryFont, $base-fontFamily;
+
+
+// ----- Whitespace ----- //
+$base-whitespace: 30px;
+$half-whitespace: $base-whitespace / 2;
+$double-whitespace: $base-whitespace * 2;
+
+// ----- Contexts ----- //
+$site-width: em(1170);
+
+// ----- Layout ----- //
+$maxWidth: $site-width;
+
+$max-hero: em(739);
+$min-hero: em(740);
+
+$max-xsmall: em(479);
+$min-xsmall: em(480);
+$max-small: em(624);
+$min-small: em(625);
+$max-medium: em(909);
+$min-medium: em(910);
+$max-large: em(1169);
+$min-large: em(1170);
+$max-xlarge: em(1599);
+$min-xlarge: em(1600);
+
+// *************************************
+//
+//   Helpers
+//
+// *************************************
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+@mixin at-least($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin until($query) {
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+@mixin between($min-query, $max-query) {
+  @media screen and (min-width: $min-query) and (max-width: $max-query) {
+    @content;
+  }
+}
+
+@mixin grid-row {
+  @include clearfix;
+  clear: both;
+  margin-left: -$half-whitespace;
+  margin-right: -$half-whitespace;
+}
+
+@mixin grid-defaults {
+  float: left;
+  padding-left: $half-whitespace;
+  padding-right: $half-whitespace;
+}
+
+@mixin grid-column($n: 1) {
+  width: #{$n/12*100}#{"%"};
+}
+
+// -------------------------------------
+//   404 Styles
+// -------------------------------------
+
+@import 'boilerplate/defaults/404.scss';
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+@function percent($target, $context: $maxWidth) {
+  @return #{$target / $context * 100}#{"%"};
+}
+
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+%row {
+  @include grid-row;
+}
+
+%column {
+  @include grid-defaults;
+}
+
+%clearfix {
+  @include clearfix;
+}
+
+%hidden {
+  display: none !important;
+}
+
+%visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+%ir {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+%overflow {
+  overflow: hidden;
+}
+
+%relative {
+  position: relative;
+}
+
+%hide-mobile {
+  @include at-least($min-medium) {
+    display: none !important;
+  }
+}
+
+%show-desktop {
+  @include until($max-medium) {
+    display: none !important;
+  }
+}
+
+%shout {
+  text-transform: uppercase;
+}
+
+%inline {
+  display: inline-block;
+}
+
+%inverse {
+  color: $white;
+}
+
+%center {
+  text-align: center;
+}
+
+.primary-font {
+  font-family: $primary-font;
+}
+
+.secondary-font {
+  font-family: $secondary-font;
+}
+
+
+// *************************************
+//
+//   Base
+//
+// *************************************
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: $base-fontSize;
+  height: 100%;
+  @include until($max-small) {
+    font-size: $base-fontSize - 2;
+  }
+  @include between($min-small, $max-medium) {
+    font-size: $base-fontSize - 1;
+  }
+}
+
+body {
+  background: $base-background;
+  color: $base-color;
+  font-family: $base-fontFamily;
+  font-size: 100%;
+  line-height: $base-lineHeight;
+  min-height: 100%;
+}
+
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+//Windows Firefox fix to hide default arrows
+select{
+  -moz-appearance: none;
+}
+
+
+// *************************************
+//
+//   Layout
+//
+// *************************************
+
+// -------------------------------------
+//   Container
+// -------------------------------------
+
+%content,
+.content {
+  @extend %clearfix;
+  @extend %relative;
+  @include box-sizing(content-box);
+  margin: 0 auto;
+  max-width: $maxWidth;
+  padding: 0 $half-whitespace;
+}
+
+// -------------------------------------
+//   Main Section
+// -------------------------------------
+
+
+
+// -------------------------------------
+//   Rows
+// -------------------------------------
+
+.row:before,
+.row:after,
+.row-grid:before,
+.row-grid:after {
+  content: " ";
+  display: table;
+}
+.row:after,
+.row-grid:after {
+  clear: both;
+}
+
+.row-grid {
+  margin: 0 -15px;
+}
+
+.col {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.row-halves .col,
+.row-uneven-thirds-1 .col,
+.row-uneven-thirds-2 .col,
+.row-thirds .col,
+.row-quarters .col {
+  float: left;
+}
+
+.row-halves .col {
+  width: 50%;
+}
+
+.row-thirds .col {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-1 {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-2 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-1 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-2 {
+  width: 33.33333%;
+}
+
+.row-quarters .col {
+  width: 25%;
+}
+
+
+.row {
+  padding: 2em 0;
+  &:nth-of-type(2n) {
+    @extend %inverse;
+    background-color: $primary-dark;
+  }
+  .widget {
+    margin-bottom: 2em;
+  }
+  @include until($max-medium) {
+    .col {
+      width: 100%;
+    }
+  }
+}
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+
+// -------------------------------------
+//   Utilities
+// -------------------------------------
+
+%l-pullLeft,
+.l-pullLeft {
+  float: left;
+}
+
+%l-pullRight,
+.l-pullRight {
+  float: right;
+}
+
+
+// *************************************
+//
+//   Typography
+//
+// *************************************
+
+// -------------------------------------
+//   Headings
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-top: 0;
+  .widget &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  font-family: $secondary-font;
+  margin-bottom: 0;
+  @include at-least($min-medium) {
+    font-size: em(48);
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: $primary-font;
+}
+
+h2 {
+  font-size: em(26);
+  margin-bottom: .5em;
+}
+
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 2em;
+  position: relative;
+  p {
+    font-family: $secondary-font;
+    font-size: 1.7em;
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top: -.05em;
+      font-family: $georgia;
+      font-size: 2.25em;
+      line-height: 1;
+    }
+    &:after {
+      content: '';
+    }
+  }
+  cite {
+    font-style: normal;
+    display: block;
+  }
+}
+
+
+// -------------------------------------
+//   Links
+// -------------------------------------
+
+a {
+  @include transition(all 0.2s ease);
+  color: $base-link-color;
+  .html & {
+    font-weight: bold;
+    text-decoration: underline;
+    &:focus,
+    &:hover {
+      color: $base-hover-color;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   HTML Widget
+//
+// *************************************
+
+.html,
+.directions,
+.coupon {
+  ul {
+    list-style-type: disc;
+    padding-left: $base-whitespace;
+  }
+  li {
+    display: list-item;
+  }
+}
+
+
+// *************************************
+//
+//   Phone
+//
+// *************************************
+
+.row .phone .number {
+  color: $secondaryColor;
+  font-size: em(26);
+
+  &:hover,
+  &:focus {
+    color: $secondary-alt;
+  }
+}
+
+// ============================================
+//  Multifamily Search Cloud
+// ============================================
+
+.mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+  .btn,
+  button {
+    text-transform: none;
+  }
+  .map.visible {
+    &+.search-column {
+      width: 65%;
+    }
+  }
+  .result-top {
+    height: 80px;
+  }
+  #map {
+    width: 35%;
+  }
+  .search-bottom-section .radius-slider .slider.slider-disabled:before {
+    left: 0;
+  }
+  .store-summary {
+    .result-contact-info .result-address {
+      line-height: 1.1em;
+    }
+    .result-location-info {
+      .result-phone {
+        padding: 4px 0 0;
+      }
+      .result-unit-info {
+        padding: 4px 0;
+        min-height: 26px;
+      }
+    }
+  }
+  .search-form {
+    div, span, select, input, button, .search-bottom-section .results-message {
+      font-family: $primary-font;
+    }
+  }
+  .filter-results,
+  .pagination-nav .pagination-controls {
+    font-family: $primary-font;
+  }
+}
+
+// *************************************
+//
+//   Forms
+//
+// *************************************
+
+.form {
+  label {
+    margin-bottom: .5em;
+  }
+  .required:after {
+    content: '*';
+    color: red;
+    margin-left: .25em;
+  }
+  textarea,
+  #{$all-text-inputs} {
+    @include box-sizing(border-box);
+    border: 1px solid $grey;
+    font-family: $base-fontFamily;
+    font-size: 1em;
+    padding: .75em;
+    width: 100%;
+  }
+  textarea {
+    height: 10em;
+  }
+  .form-field {
+    margin-bottom: .75em;
+  }
+  .form-instruction {
+    color: red;
+    font-style: italic;
+    display: inline-block;
+    margin: .5em 0 0 25px;
+  }
+}
+
+// Horizontal form is a config in lead forms widget
+// This makes the submit button same height as text inputs
+.horizontal-form {
+  input[type=submit] {
+    padding-top: 0.8125em;
+    padding-bottom: 0.8125em;
+  }
+}
+
+
+
+// *************************************
+//
+//   Buttons
+//
+// *************************************
+.button {
+  display: block;
+  font-family: $primary-font;
+  font-size: em(18);
+}
+
+.btn,
+button,
+input[type=submit] {
+  @extend %shout;
+  @extend %inverse;
+  @include transition(background-color .2s ease-in-out);
+  background-color: $primaryColor;
+  border: none;
+  font-family: $primary-font;
+  text-align: center;
+  display: block;
+  padding: .5em;
+  @include at-least($min-small) {
+    display: inline-block;
+    padding: .5em 2em;
+  }
+  &:focus,
+  &:hover {
+    color: $white;
+    background-color: $primary-alt;
+  }
+}
+
+.btn-alt {
+  @extend %inverse;
+  @include transition(background-color .2s ease-in-out);
+  background-color: $secondaryColor;
+  border-left: 15px solid $secondary-alt;
+  font-family: $primary-font;
+  display: block;
+  padding: .4em .5em .3em;
+  &:focus,
+  &:hover {
+    background-color: $secondary-alt;
+  }
+}
+
+
+// *************************************
+//
+//   Photo Widget
+//
+// *************************************
+
+.photo,
+.html {
+  img {
+    border: 10px solid rgba($primary-dark, .10);
+    .row:nth-of-type(2n) & {
+      border-color: rgba($primary-alt, .20);
+    }
+  }
+
+  &.no-border img {
+    border: none;
+  }
+}
+
+body{
+  &.web-home-template, &.web-page-template {
+    .row{
+      .photo, .html{
+        &.no-border img {
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+// *************************************
+//
+//   Contact Info Widget
+//
+// *************************************
+
+[role=main] .contact-info {
+  font-family: $primary-font;
+  .p-name {
+    border-bottom: 1px solid $base-color;
+    font-size: em(24);
+    padding-bottom: .25em;
+  }
+  p {
+    @extend %shout;
+    font-size: em(18);
+  }
+  p,
+  a {
+    color: $grey-dark;
+  }
+  .adr-ret,
+  .p-tel,
+  .adr,
+  .tel,
+  .email,
+  .chat {
+    background: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') no-repeat;
+    min-height: 35px;
+    padding-left: 40px;
+  }
+  .p-tel, .tel {
+    background-position: 0 0;
+  }
+  .adr-ret, .adr {
+    background-position: 0 -65px;
+  }
+  .email {
+    background-position: 0 -146px;
+  }
+  .chat {
+    background-position: 0 -225px;
+  }
+  .fax {
+    @extend %icon;
+    @extend .icn-fax;
+
+    &:before {
+      color: $black;
+      font-size: 24px;
+      margin-right: 10px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Social Feed Widget
+//
+// *************************************
+
+.social-feed {
+  color: $base-color;
+  font-size: em(14);
+  line-height: 1.25;
+  .feed-switch {
+    background-color: $white;
+    border-right-color: 1px solid $grey;
+  }
+  .p-summary,
+  .tweet-name,
+  .tweet-text {
+    font-style: italic;
+  }
+  .p-name,
+  .tweet-name {
+    font-weight: bold;
+  }
+  .btn {
+    width: 50%;
+  }
+}
+
+
+// *************************************
+//
+//   Social Links
+//
+// *************************************
+
+.social-links {
+  background-color: $base-background;
+  padding: $half-whitespace $half-whitespace 0 $half-whitespace;
+  a {
+    margin: 0 $half-whitespace $half-whitespace 0;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .icon {
+    @include transition(background-color .2s ease);
+    background-color: $primaryColor;
+    height: 45px;
+    width: 45px;
+    &:hover {
+      background-color: $primary-alt;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Coupon Widget
+//
+// *************************************
+
+.coupon {
+  h2 {
+    font-size: em(32);
+    border-bottom-color: $secondaryColor;
+    color: $secondaryColor;
+  }
+  .p-name,
+  .btn {
+    font-size: em(14);
+  }
+  .btn {
+    cursor: pointer;
+    padding: .65em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+
+// *************************************
+//
+//   Multifamily IUI Cards
+//
+// *************************************
+
+.multifamily-iui-cards {
+  @include at-least($min-medium) {
+    h3 {
+     font-size: em(42);
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Multifamily Mini Search
+//
+// *************************************
+
+.corporate-search {
+  .resultUnitInfo,
+  .iconLegendToggle,
+  .search-form span.neighborhood,
+  .search-form span.bathrooms,
+  .search-form span.bedrooms,
+  .search-form span.square-feet-range,
+  .search-form span.price-range {
+    display:none;
+  }
+}
+
+.corporate-search {
+  position: relative;
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $secondaryColor;
+
+  .corpSearchWrapper {
+
+    .neighborhood,
+    .bedrooms,
+    .bathrooms,
+    .square-feet-range,
+    .price-range {
+      display: none !important;
+    }
+
+    .search-form {
+      padding: 1em $half-whitespace;
+      h2,
+      span,
+      select {
+        font-family: $base-fontFamily;
+      }
+      h2 {
+        border-bottom: 2px solid $white;
+        color: $white;
+        font-size: em(28);
+        font-weight: $base-fontWeight;
+        line-height: 1.2;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 1em;
+        padding-bottom: .5em;
+      }
+      span {
+        background-color: $secondary-dark;
+      }
+      select{
+        -moz-appearance: none;
+      }
+      .state,
+      .search-button {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .state {
+        width: 30%;
+      }
+      .city {
+        margin-right: 0;
+        margin-left: 2%;
+        width: 68%;
+      }
+      .search-button {
+        background-color: $primaryColor;
+        width: 100%;
+      }
+    }
+    .search-form-center,
+    .search-form-inner {
+      width: 100%;
+    }
+    .search-type-radio-buttons {
+      margin:0 0 10px 0;
+
+      label{
+        vertical-align:middle;
+        padding:0 10px 0 0;
+        font-size: em(16);
+        line-height: 1.25;
+      }
+      input{
+        width:15px;
+        height:15px;
+        margin:0 5px 0 10px;
+        vertical-align: middle;
+      }
+    }
+
+    @include at-least($min-medium) {
+      .search-form {
+        .state {
+          width: 20%;
+        }
+        .city {
+          margin-right: 2%;
+          width: 45%;
+        }
+        .search-button {
+          width: 31%;
+        }
+      }
+    }
+  }
+
+  @include at-least($min-small) {
+    max-width: 450px;
+  }
+
+  @include at-least($min-medium) {
+    max-width: none;
+    .corpSearchWrapper .search-form {
+      border-left-width: 30px;
+    }
+    .search-form-center {
+      max-width: 660px;
+    }
+    .web-home-template & {
+      max-width: 100%;
+      width: 660px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Multifamily Mini Search VERSION 2
+//
+// *************************************
+
+.multifamily-mini-search-v2 {
+  position: relative;
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $secondaryColor;
+
+  .search-form { padding: 1em $half-whitespace; }
+
+  h2,
+  span,
+  select { font-family: $base-fontFamily; }
+
+  h2 {
+    border-bottom: 2px solid $white;
+    color: $white;
+    font-size: em(28);
+    font-weight: $base-fontWeight;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+    padding-bottom: .5em;
+  }
+
+  .state,
+  .city { background-color: $secondary-dark; }
+
+  .state,
+  .search-button {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .state {
+    width: 30%;
+  }
+
+  .city {
+    margin-right: 0;
+    margin-left: 2%;
+    width: 68%;
+  }
+
+  .btn {
+    background-color: $primaryColor;
+    width: 100%;
+  }
+
+  @include at-least($min-medium) {
+    .state { width: 20%; }
+
+    .city {
+      margin-right: 2%;
+      width: 45%;
+    }
+
+    .search-button { width: 31%; }
+  }
+  .twitter-typeahead {
+    width: 100%;
+    margin-bottom: 10px;
+    .mf-search-input {
+      width: 100%;
+      height: 33px;
+    }
+  }
+
+  @include at-least($min-small) {
+    max-width: 450px;
+  }
+
+  @include at-least($min-medium) {
+    .twitter-typeahead {
+      height: 47px;
+      width: 67%;
+      margin-right: 2%;
+      .mf-search-input {
+        width: 100%;
+        height: 33px;
+      }
+    }
+
+    max-width: none;
+
+    .search-form {
+      border-left-width: 30px;
+    }
+
+    .web-home-template & {
+      max-width: 100%;
+      width: 660px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   IUI
+//
+// *************************************
+
+.home-multifamily-iui,
+.home-multifamily-iui-v2 {
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+  .iui-steps {
+    display: inline-block;
+    &:before {
+      background-color: $secondaryColor;
+    }
+    span {
+      background-color: $secondaryColor;
+      color: $white;
+      &:first-child {
+        background-color: $primaryColor;
+        color: $white;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .iui-title {
+    @extend %shout;
+    font-family: $primary-font;
+    font-size: em(32);
+    text-align: center;
+    margin-bottom: .5em;
+  }
+  .iui-size {
+    @include transition(box-shadow .2s ease);
+    background: $white url(https://widgets.g5dxm.com/multifamily-iui-cards/background-stripes.png);
+    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+    padding: 20px;
+    margin: $half-whitespace;
+    vertical-align: top;
+    &,
+    &:last-child {
+      width: 200px !important;
+      height: 200px;
+    }
+    &:hover {
+      box-shadow: 0 0 4px rgba(0, 0, 0, .3), 0 0 0 15px $secondaryColor;
+    }
+  }
+  .btn {
+    background-color: $primaryColor;
+    font-size: em(24);
+    display: table-cell;
+    height: 160px;
+    width: 160px;
+    vertical-align: middle;
+    padding: 0;
+    &:hover {
+      background: $secondaryColor;
+    }
+  }
+  @include at-least($min-medium) {
+    .iui-steps {
+      float: right;
+      margin-top: .75em;
+    }
+    .iui-title {
+      float: left;
+    }
+    .iui-container {
+      clear: both;
+    }
+  }
+}
+
+.home-multifamily-iui-v2 {
+  .iui-size {
+    position: relative;
+  }
+  .dropdown-content {
+    left: calc(50% - 79px);
+  }
+}
+
+
+// *************************************
+//
+//   Locations Navigation
+//
+// *************************************
+
+.widget.locations-navigation {
+  margin: 0 auto;
+
+  h3.locations-navigation-title {
+    @include transition(background-color .2s ease-in-out);
+    background-color: $secondaryColor;
+    border-left: 15px solid $secondary-alt;
+    font-family: $primary-font;
+    font-size: 2em;
+    padding: .5em;
+
+    &:focus,
+    &:hover {
+      background-color: $secondary-alt;
+    }
+
+    .littleArrow {
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      margin-top: .25em;
+    }
+
+    @include between($min-hero, $max-large) {
+      padding-top: 0.68181818em;
+      padding-bottom: 0.68181818em;
+      line-height: 1.5;
+      font-size: 1.5em;
+    }
+
+    @include at-least($min-large) {
+      padding: .49em .5em .43em;
+    }
+  }
+
+  @include at-least($min-small) {
+    max-width: 400px;
+  }
+}
+
+
+// *************************************
+//
+//   City State Zip Search
+//
+// *************************************
+
+.city-state-zip-search {
+  font-size: 1.25em;
+  width: 100%;
+  .zip-search-heading {
+    display: none;
+  }
+  .zip-search-top {
+    @include clearfix;
+    background-color: $secondaryColor;
+    border-left: 15px solid $secondary-alt;
+    float: none;
+    padding: $half-whitespace;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+  }
+  .zip-search-input {
+    float: left;
+    padding: 0;
+    input {
+      padding: .4em 20px;
+    }
+  }
+  .zip-search-button {
+    background-color: transparent;
+    float: right;
+    padding: 0;
+    button {
+      @extend .btn;
+      background-color: $secondary-alt;
+      padding: .4em .5em;
+
+      &:hover {
+        background-color: $secondary-dark;
+      }
+    }
+  }
+  .web-home-template & {
+    @include at-least($min-small) {
+      font-size: 1.5em;
+      margin-left: auto;
+      margin-right: auto;
+      padding: $half-whitespace;
+      width: 75%;
+      max-width: 450px;
+    }
+    @include at-least($min-medium) {
+      width: 50%;
+    }
+
+    @include at-least($min-large) {
+      width: 33%;
+    }
+  }
+}
+
+.row-single .city-state-zip-search .zip-search-top {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+// This class added when there is a calls to action
+// and zip search on home page
+.hero-widgets {
+  @extend %center;
+  @include at-least($min-small) {
+    .row-2,
+    .row-3 {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .web-home-template & .action-calls li {
+      width: auto;
+    }
+    .city-state-zip-search {
+      padding-top: 0;
+      width: 450px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Gallery Widget
+//
+// *************************************
+
+.gallery {
+  overflow: hidden;
+
+  .full-gallery {
+    .flex-caption {
+      background-color: rgba($black, 0.5);
+      color: $white;
+      margin: 0;
+      padding: .5em 1em;
+      font-size: em(18);
+    }
+
+    .flex-control-thumbs li {
+      float: none;
+      padding: 30px 5px 0;
+      @include at-least($min-xsmall) {
+        width: 20%;
+      }
+      @include at-least($min-small) {
+        width: 16.666666%;
+      }
+      @include at-least($min-medium) {
+        .row-single & {
+          width: 12%;
+        }
+        .row-halves & {
+          width: 20%;
+        }
+      }
+    }
+  }
+}
+
+.gallery-only {
+  .mini-gallery {
+
+    .flex-caption,
+    .flex-title {
+      padding: 0 20px;
+      margin: 5px 0;
+      color: $base-color;
+    }
+
+    .flex-title {
+      font-size: 1.625em;
+    }
+
+    .flex-caption {
+      text-transform: none;
+    }
+
+    .flex-control-thumbs {
+      padding: 0;
+
+      li{
+        padding: 5px 5px 0 5px;
+      }
+    }
+
+    .flex-direction-nav {
+      .flex-prev{
+        background-position: 0 50%;
+      }
+      .flex-next{
+        background-position: -54px 50%;
+      }
+
+      a{
+        z-index: 101;
+        @include until($max-medium) {
+          background-size: inherit;
+          width: 54px;
+        }
+      }
+    }
+
+    @include at-least($min-medium){
+      .flex-control-thumbs li {
+        width: 20%;
+        &:nth-child(4n+1) {
+          clear:none;
+        }
+      }
+
+      .flex-direction-nav {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.featured-properties {
+  h2 {
+    text-align: center;
+
+    @include at-least($min-small) {
+      font-size: 2.25em;
+    }
+  }
+
+  .flex-caption {
+    &:after {
+      @include transform(translateY(-50%));
+      content: ">";
+      position: absolute;
+      right: $half-whitespace;
+      top: 50%;
+      font-size: 2.5em;
+      line-height: 1;
+    }
+  }
+}
+
+.flex-caption {
+  margin: 0;
+  padding: .5em 1em;
+  font-size: em(18);
+  text-transform: uppercase;
+}
+
+.gallery-carousel {
+  .slides li {
+    position: relative;
+  }
+
+  .flex-caption {
+    bottom: auto;
+    top: 0;
+    background-color: rgba($black, 0.5);
+    color: $white;
+    text-align: left;
+  }
+}
+
+
+// *************************************
+//
+//   Header
+//
+// *************************************
+
+[role=banner] {
+
+  @include until($max-xsmall) {
+    .content {
+      padding: 0;
+    }
+
+    .buttons{
+      padding: 0 10px;
+    }
+  }
+
+  .logo-container {
+    background-color: rgba($black, .25);
+    text-align: center;
+    overflow: hidden;
+    padding-top: 37px;
+
+    @include at-least($min-small) {
+      padding-top: 41px;
+    }
+
+    @include at-least($min-medium) {
+      padding-top: 93px;
+    }
+
+    &.nav-loaded {
+      padding-top: 0;
+    }
+
+    .h-c-ret, .h-card {
+      font-size: 1em;
+      margin: 1em 0;
+    }
+  }
+
+  .logo {
+    display: inline-block;
+    img {
+      max-height: 150px;
+    }
+    @include until($max-medium) {
+      max-width: 75%;
+    }
+  }
+  .navigation-container {
+    background-color: $header-alt;
+  }
+}
+
+
+// *************************************
+//
+//   Main Navigation
+//
+// *************************************
+
+.navigation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 6000;
+
+  @include at-least($min-medium) {
+  }
+}
+
+.buttons {
+  @include clearfix;
+  text-align: right;
+
+  .appended-phone {
+    color: $headerTextColor;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .5em;
+  }
+
+  @include at-least($min-xsmall) {
+    .appended-phone {
+      background: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png') 0 -5% no-repeat;
+      background-size: 12%;
+      font-size: em(18);
+      margin-right: 1em;
+      padding-left: 20px;
+
+      .js & {
+        position: absolute;
+        right: -100%;
+
+        &.show-phone {
+          position: relative;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  @include at-least($min-medium) {
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 250%;
+      height: 100%;
+      background-color: $headerColor;
+      position: absolute;
+      left: -75%;
+      top: 0;
+      z-index: -1;
+    }
+
+    .appended-phone {
+      margin-top: 0.1em;
+      margin-right: 1em;
+    }
+  }
+}
+
+#drop-target-btn {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 3px 7px 0;
+
+  .btn {
+    background-color: darken($headerColor, 10%);
+    font-size: em(12);
+    padding: .5em;
+
+    &:hover {
+      background-color: $header-dark;
+    }
+  }
+
+  @include until($max-medium) {
+    .btn {
+      line-height: 1;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    margin-right: .5em;
+
+    .btn {
+      font-size: em(14);
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
+
+  @include at-least($min-medium) {
+    float: right;
+    margin: 0;
+    .btn {
+      padding: .25em 2em;
+    }
+  }
+}
+
+.collapsable-content {
+  &, &.collapse {
+    height: 0;
+    overflow: hidden;
+  }
+  &.collapse {
+    @include transition(height 0.35s ease);
+  }
+  &.collapse.in {
+    height: auto;
+  }
+  @include at-least($min-medium) {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+.collapsable-btn {
+  background-color: transparent;
+  border-left-color: $secondaryColor;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0.55em 0;
+  padding: 0 !important;
+  vertical-align: middle;
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+  .text,
+  .bars {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .text {
+    @extend %shout;
+    color: $headerTextColor;
+    font-size: em(16);
+    margin-right: 5px;
+    margin-top: 1px;
+  }
+  .bars {
+    span {
+      border-bottom: 3px solid $headerTextColor;
+      display: block;
+      margin: 3px 0;
+      width: 20px;
+    }
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+  @include at-least($min-medium) {
+    display: none !important;
+  }
+}
+
+[role=banner] .navigation {
+  font-family: $secondary-font;
+  text-align: center;
+  a {
+    color: $headerTextColor;
+    display: block;
+    font-size: em(21);
+
+    &.active {
+      color: $header-text-transparent;
+    }
+  }
+  .has-subnav > a:after {
+    @include transform(rotate(90deg));
+    content: '\203A';
+    display: inline-block;
+    margin-left: .5em;
+  }
+  .subnav {
+    background-color: rgba($header-dark, .9);
+    li {
+      &:first-child {
+        border: none;
+      }
+    }
+    a {
+      font-size: em(18);
+    }
+  }
+  @include until($max-medium) {
+    a {
+      border-top: 1px solid $header-text-transparent;
+      padding: .5em;
+    }
+  }
+  @include at-least($min-medium) {
+    display: table;
+    width: 100%;
+    .top-nav {
+      display: table-row;
+      > li {
+        display: table-cell;
+        vertical-align: middle;
+        > a {
+          display: inline-block;
+        }
+      }
+    }
+    a {
+      padding: 1em 0;
+      &:focus,
+      &:hover {
+        color: $header-text-transparent;
+      }
+    }
+    .subnav {
+      width: 200px;
+      max-height: 0;
+      position: absolute;
+      z-index: 9999;
+      left: 50%;
+      top: em(73);
+      margin-left: -100px;
+      li {
+        border-top: 1px solid $header-text-transparent;
+      }
+      a {
+        padding: .5em 10px;
+        &:hover,
+        &:focus {
+          background-color: $headerColor;
+          color: $headerTextColor;
+        }
+      }
+    }
+    .show-subnav {
+      max-height: 1000px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Footer
+//
+// *************************************
+
+[role=contentinfo] {
+  @extend %clearfix;
+  background-color: $footerColor;
+  border-top: 1px solid $primary-alt;
+  padding: 2em 0;
+  .widget {
+    margin-bottom: 2em;
+  }
+  &,
+  a {
+    color: $footerTextColor;
+  }
+  .hours,
+  .contact-info {
+    float: left;
+    margin-right: 2em;
+  }
+  .contact-info h4 {
+    font-size: inherit;
+    margin: 0;
+  }
+  .hours p,
+  .contact-info p {
+    margin-bottom: 0;
+  }
+}
+
+footer .footer-info {
+  .access {
+    background-image: url("//themes.g5dxm.com/shared/access-icons-light.png");
+  }
+
+  /* if two footer links exist */
+  .nav {
+    :nth-child(2):nth-last-child(1){
+      border-left: 1px solid $footerTextColor;
+      padding-left: 5px;
+    }
+  }
+
+  @include until($max-small) {
+    float: left;
+    text-align: left;
+  }
+}
+
+
+// *************************************
+//
+//   Calls to Action
+//
+// *************************************
+
+.action-calls {
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  a {
+    @extend .btn-alt;
+    font-size: em(36);
+    text-transform: none;
+    margin-bottom: 1px;
+  }
+  li {
+    @include between($min-small, $max-medium) {
+      float: left;
+      width: 50%;
+      &:first-of-type {
+        padding-right: $half-whitespace;
+      }
+    }
+  }
+  .row & {
+    margin-bottom: 2em;
+  }
+}
+
+
+// *************************************
+//
+//   Home Page
+//
+// *************************************
+
+.web-home-template {
+
+  [role=banner] {
+    padding-top: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    .logo-container {
+      position: relative;
+      z-index: 500;
+    }
+  }
+
+  .zip-search-top {
+    float: none;
+  }
+
+  .action-calls {
+    position: relative;
+    z-index: 1;
+
+    @include until($max-small){
+      .row:first-child .photo .filter-container,
+      .row:first-child .photo .filter-container {
+        position: relative;
+      }
+    }
+
+    @include at-least($min-small) {
+      li {
+        float: none;
+        width: 75%;
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 0 $half-whitespace $half-whitespace;
+        vertical-align: top;
+      }
+
+      a {
+        display: block;
+      }
+    }
+
+    @include at-least($min-medium) {
+      li {
+        width: 50%;
+      }
+    }
+
+    @include at-least($min-large) {
+      li {
+        display: inline-block;
+        width: 33%;
+      }
+    }
+  }
+
+  .row:not(.hero) .action-calls {
+
+    @include at-least($min-medium) {
+      li {
+        padding: 0 0 15px;
+        width: 100%;
+      }
+    }
+
+  }
+
+  .row:nth-of-type(2n) {
+    background-color: $base-background;
+    color: $base-color;
+
+    .photo,
+    .html {
+      img {
+        border: 10px solid rgba($primary-dark, .10);
+      }
+    }
+  }
+
+  .row:nth-of-type(2n+1) {
+    @extend %inverse;
+    background-color: $primary-dark;
+    &.cinemagraph-hero {
+      background-color: transparent;
+    }
+
+    .photo,
+    .html {
+      img {
+        border-color: rgba($primary-alt, .20);
+      }
+    }
+  }
+
+}
+
+
+
+// *************************************
+//
+//   Hero
+//
+// *************************************
+
+.web-home-template .row:first-of-type {
+  @extend %relative;
+  margin-top: 37px;
+  padding: 0;
+  overflow: hidden;
+
+  &.cinemagraph-hero {
+    background: transparent;
+    background-color: transparent;
+
+    .cinemagraph {
+      z-index: 0;
+    }
+
+    .fallback-image img { width: 100%; }
+
+    @include until($max-hero) {
+      .col:first-of-type {
+        padding-top: 0;
+      }
+      .cinemagraph-absolute,
+      .cinemagraph-full-width {
+        position: relative;
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+      .cinemagraph-absolute iframe,
+      .cinemagraph-absolute .ytplayer {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        transform: none;
+      }
+    }
+    @include at-least($min-hero) {
+      height: 56vw !important;
+      max-height: 56.25em !important;
+      .cinemagraph-absolute,
+      .cinemagraph-full-width {
+        height: 56vw !important;
+        max-height: 56.25em !important;
+      }
+    }
+  }
+
+  .content {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    border: none;
+    width: 100%;
+  }
+
+  .html {
+    background-color: $primary-dark;
+    color: $white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    z-index:1;
+
+    .html-content {
+      @extend %content;
+    }
+  }
+
+  @include at-least($min-small) {
+    .col:first-of-type {
+      position: relative;
+      padding-top: 15em;
+      padding-bottom: 5em;
+    }
+
+    .photo {
+      overflow: hidden;
+      position: absolute;
+      top: -15em;
+      right: 0;
+      bottom: -5em;
+      left: 0;
+      margin: 0;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: none;
+        min-height: 100%;
+        min-width: 100%;
+        width: auto;
+
+        .csstransforms & {
+          @include transform(translateX(-50%) translateY(-50%));
+          left: 50%;
+          top: 50%;
+        }
+      }
+    }
+
+    .html {
+      background-color: rgba($primary-dark, .80);
+      margin-bottom: 0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      z-index:1;
+    }
+  }
+
+  @include at-least($min-medium) {
+    margin-top: 62px;
+
+    .col:first-of-type {
+      padding-top: 20em;
+      padding-bottom: 10em;
+    }
+
+    .photo {
+      top: -20em;
+      bottom: -10em;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Row Widget Overrides
+//
+// *************************************
+
+// Remove all padding from rows
+.no-padding {
+  padding: 0 !important;
+}
+
+// Area Pages
+.area {
+  background-color: $white;
+}
+
+// *************************************
+//
+//   Directions Widget
+//
+// *************************************
+
+.directions {
+  .canvas {
+    width:100%;
+    position: relative;
+    .gm-style {
+      position:absolute;
+      top:0;
+      left:0;
+    }
+  }
+}
+
+.directions.wide {
+  .canvas {
+    padding-bottom: 500px;
+    .gm-style {
+      height:500px !important;
+    }
+  }
+}
+
+.row .directions.widget {
+  margin-bottom:0;
+}
+
+
+// This comes from an optional setting on the Row widget to set text color
+.text-light {
+  &, h1, h2, h3, h4, h5, h6, p,
+  .html,
+  .blockquote,
+  .coupon,
+  .phone .number,
+  .contact-info,
+  .contact-info a,
+  .form label,
+  .form legend {
+    color: $white !important;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: 1px solid $white !important;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png') !important;
+    }
+    .fax:before { color: $white; }
+  }
+}
+
+.text-dark {
+  &, h1, h2, h3, h4, h5, h6, p,
+  .html,
+  .blockquote,
+  .coupon,
+  .phone .number,
+  .contact-info,
+  .contact-info a,
+  .form label,
+  .form legend,
+  .promoted-reviews {
+    color: $base-color !important;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: $base-border;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') !important;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   New Hero
+//
+// *************************************
+
+// Overrides of current hero code
+// Delete when original code is replaced
+.web-home-template .row.hero {
+  .row-grid {
+    margin: 0;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  img {
+    width: auto;
+  }
+
+  .action-calls li {
+    padding: 0;
+  }
+
+  .city-state-zip-search {
+    padding: 0;
+    max-width: none;
+    width: auto;
+  }
+
+  .corporate-search,
+  .multifamily-mini-search-v2 {
+    max-width: none;
+  }
+
+  @include at-least($min-small) {
+    .col:first-of-type {
+      position: static;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .photo {
+      img {
+        min-height: 0;
+        min-width: 0;
+        max-width: 100%;
+
+        .csstransforms & {
+          @include transform(none);
+        }
+      }
+    }
+
+    .action-calls li {
+      margin-bottom: 1px;
+      max-width: none;
+    }
+
+    .html {
+      background-color: $primary-dark;
+      position: relative;
+    }
+  }
+
+  @include until($max-hero) {
+    .photo {
+      &,
+      img {
+        position: static;
+      }
+    }
+  }
+}
+
+
+// New hero styles. Will replace old code
+.web-home-template .row.hero {
+  @extend %relative;
+  padding: 0;
+  overflow: visible;
+
+  .content {
+    position: static;
+    margin: 0 auto;
+    max-width: $site-width;
+  }
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  .gallery-basic,
+  .photo {
+    margin: 0;
+  }
+
+  img {
+    border: none;
+  }
+
+  .html {
+    background-color: $primary-dark;
+    color: $white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: relative;
+
+    .html-content {
+      @extend %content;
+    }
+  }
+
+  @include at-least($min-hero) {
+    height: 59vw;
+    max-height: 850px;
+    padding-top: 29vw;
+
+    .content {
+      padding: 0 $half-whitespace;
+    }
+
+    .gallery-basic,
+    .photo {
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .csstransforms & {
+          @include transform(translateX(-50%) translateY(-50%));
+          left: 50%;
+          top: 50%;
+        }
+      }
+    }
+
+    .html {
+      background-color: rgba($primary-dark, .80);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .corporate-search,
+    .multifamily-mini-search-v2,
+    .city-state-zip-search {
+      max-width: 650px;
+    }
+  }
+
+  @include at-least($min-medium) {
+    margin-top: 71px;
+    padding-top: 32vw;
+
+    .corporate-search,
+    .multifamily-mini-search-v2 {
+      max-width: 66%;
+      width: auto;
+    }
+  }
+
+  @include at-least(1440px) {
+    padding-top: 29em;
+  }
+}
+
+// New hero styles to accomodate larger corp widgets
+.site-corporate.web-home-template .row.hero {
+  @include at-least($min-hero) {
+    padding-top: 26vw;
+
+    .action-calls a {
+      font-size: 1.5em;
+    }
+  }
+
+  @include at-least($min-large) {
+    .action-calls a {
+      font-size: 2em;
+    }
+  }
+
+  @include at-least(1440px) {
+    padding-top: 23em;
+  }
+}
+
+
+// New hero widget styles and behavior
+.web-home-template .row.hero {
+
+  // New CTA behavior
+  .action-calls {
+    margin: 0 auto;
+    position: relative;
+
+    li {
+      margin: .5em auto;
+    }
+
+    a {
+      font-size: 2em;
+    }
+
+    @include at-least($min-small) {
+      li {
+        vertical-align: top;
+        float: left;
+        width: 50%;
+
+        &:first-child {
+          padding-right: .5em;
+        }
+
+        &:nth-child(3) {
+          width: 100%;
+        }
+
+        &.single-cta {
+          float: none;
+          padding-right: 0;
+        }
+      }
+
+      a {
+        display: block;
+      }
+    }
+
+    @include at-least($min-hero) {
+      max-width: 650px;
+
+      li {
+        margin-bottom: 1em;
+
+        &:nth-child(2) {
+          padding-left: .5em;
+        }
+      }
+    }
+
+    @include at-least($min-medium) {
+      max-width: none;
+
+      li {
+        max-width: 450px;
+      }
+
+      li,
+      li:nth-child(3) {
+        display: inline-block;
+        float: none;
+        width: 33%;
+      }
+
+      li:last-child {
+        padding-left: 1em;
+      }
+    }
+
+    @include at-least($min-large) {
+      padding-bottom: 1em;
+      li:first-child {
+        padding-right: 1em;
+      }
+
+      a {
+        font-size: 2em;
+      }
+    }
+  }
+
+  // New styles for Corp Mini Search
+  .multifamily-mini-search,
+  .multifamily-mini-search-v2 {
+    h2 {
+      margin-bottom: 0.5em;
+    }
+
+    @include at-least($min-hero) {
+      h2 {
+        font-size: 1.5em;
+      }
+      .state,
+      .city {
+        margin-bottom: 0;
+      }
+
+      .state {
+        width: 28%;
+      }
+
+      .city {
+        margin-right: 2%;
+        width: 38%;
+      }
+
+      .search-button {
+        width: 30%;
+      }
+    }
+
+    @include at-least($min-large) {
+      h2 {
+        font-size: 2em;
+      }
+    }
+  }
+
+
+  // New styles for City State Zip Search
+  &.hero-widgets {
+
+    @include at-least($min-small) {
+      .action-calls {
+        li {
+          margin: 0;
+          width: 100%;
+        }
+      }
+
+      .row-2,
+      .row-3 {
+        float: left;
+        width: 50%;
+      }
+
+      .row-4 {
+        clear: left;
+      }
+    }
+
+    @include at-least($min-hero) {
+      padding-top: 29vw;
+
+      .action-calls a {
+        padding-top: em(15, 22);
+        padding-bottom: em(15, 22);
+      }
+    }
+
+    @include at-least($min-medium) {
+      padding-top: 32vw;
+
+      .row-2,
+      .row-3 {
+        float: none;
+        max-width: 400px;
+        width: 45%;
+      }
+
+      .action-calls {
+        li {
+          width: 100%;
+        }
+      }
+    }
+
+    @include at-least($min-large) {
+      .action-calls a {
+        padding: 0;
+        line-height: 2.1;
+      }
+    }
+
+    @include at-least(1440px) {
+      padding-top: 29em;
+    }
+  }
+
+  .city-state-zip-search {
+    @include at-least($min-small) {
+      font-size: 1.125em;
+    }
+
+    @include at-least($min-hero) {
+      max-width: 450px;
+    }
+  }
+}
+
+
+// Self Storage Search Home
+
+#drop-target-main .row .self-storage-search-home.widget{
+    background-color: $secondaryColor;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    position: relative;
+    z-index: 100;
+    .sss-search-criteria{
+        background-color: $secondaryColor;
+        padding: 1em 15px;
+        width: auto;
+        @include clearfix;
+        h2{
+            border-bottom: 2px solid $white;
+            color: $white;
+            font-family: $primary-font;
+            font-size: 1.75em;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+            padding-bottom: .5em;
+        }
+        select, input{
+          margin-bottom: 0;
+        }
+        .search-input, .sss-search-select, .sss-search-btn{
+            -webkit-appearance: none;
+               -moz-appearance: none;
+            background: 0 0;
+            border: 0;
+            border-radius: 0;
+            float: left;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        .search-input input, .sss-search-select select, .sss-search-btn{
+            color: $white;
+            font-family: $primary-font;
+            font-size: 18px;
+            font-weight: 200;
+            height: 43px;
+            padding: 8px 7px;
+        }
+        .search-input, .sss-search-btn{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .search-input{
+            margin-bottom: 2%;
+            width: 100%;
+            .twitter-typeahead{
+                display: block !important;
+                height: 100%;
+                opacity: 1;
+                input{
+                  color: #303030;
+                  max-height: 43px;
+                  min-height: 43px;
+                  text-indent: 0px;
+                }
+            }
+        }
+        .input-clear{
+            background-color: $white;
+            height: 100%;
+            padding: 13px 11px;
+            right: 0;
+        }
+        .sss-search-select{
+            background: url(https://widgets.g5dxm.com/multifamily-search/select-triangle.png) no-repeat right 10px center;
+            background-color: $secondary-dark;
+            margin-bottom: 2%;
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            &:before{
+                content: url("https://widgets.g5dxm.com/multifamily-search/select-triangle.png");
+                bottom: 0;
+                display: block;
+                height: 5px;
+                left: auto;
+                line-height: 0px;
+                margin: auto;
+                pointer-events: none;
+                position: absolute;
+                right: 10px;
+                top: 0;
+                width: 9px;
+                z-index: 1;
+            }
+            &:after{
+              content: none;
+            }
+            .sss-search-storage-categories-select{
+                -webkit-appearance: none;
+                 -moz-appearance: window;
+                background-color: transparent;
+                cursor: pointer;
+                text-indent: .01px;
+                text-overflow: '';
+            }
+        }
+        .sss-search-btn{
+            background-color: $secondary-dark;
+            text-align: center;
+            width: 100%;
+        }
+
+    }
+
+    @include at-least(525px) {
+        .sss-search-criteria{
+            .search-input{
+                width: 49%;
+            }
+            .sss-search-select{
+                margin-left: 2%;
+                width: 49%;
+            }
+        }
+    }
+
+    @include at-least($min-hero) {
+        max-width: 600px;
+        .sss-search-criteria{
+            h2{
+                font-size: 1.5em;
+            }
+            .search-input, .sss-search-select{
+                margin-bottom: 0;
+            }
+            .search-input{
+                width: 40%;
+            }
+            .sss-search-select{
+                margin-right: 2%;
+                width: 30%;
+            }
+            .sss-search-btn{
+                width: 26%;
+            }
+        }
+    }
+
+    @include at-least($min-medium) {
+        max-width: 66%;
+        width: auto;
+        .sss-search-criteria{
+            padding: 1em 56px;
+        }
+    }
+
+    @include at-least(73.125em) {
+      .sss-search-criteria h2{
+          font-size: 2em;
+      }
+    }
+
+}

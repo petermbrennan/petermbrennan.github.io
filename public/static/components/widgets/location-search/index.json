@@ -1,0 +1,152 @@
+{
+  "name": "Location Search",
+  "widget_id": 37,
+  "widget_type": null,
+  "summary": "Search for Locations via typeahead or city/state from a Corp Site",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/115001889287' target='_blank'>Widget Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "beta": false,
+  "settings": [
+    {
+      "name": "per_page",
+      "default_value": "20"
+    },
+    {
+      "name": "cta_text",
+      "default_value": "Visit Location Site"
+    },
+    {
+      "name": "show_pending_locations",
+      "default_value": "false"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find a Location"
+    },
+    {
+      "name": "slider_search_radius",
+      "default_value": "20"
+    },
+    {
+      "name": "slider_min_distance",
+      "default_value": "0"
+    },
+    {
+      "name": "slider_max_distance",
+      "default_value": "200"
+    },
+    {
+      "name": "slider_step_distance",
+      "default_value": "5"
+    },
+    {
+      "name": "service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "universal_search",
+      "default_value": "true"
+    },
+    {
+      "name": "location_link_in_new_tab",
+      "default_value": "false"
+    },
+    {
+      "name": "auto_show_results",
+      "default_value": "false"
+    },
+    {
+      "name": "map_display",
+      "default_value": "true"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_form_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "pagination_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "pagination_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "card_bg_color",
+      "default_value": ""
+    },
+    {
+      "name": "card_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "cta_bg_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "cta_bg_hover_color",
+      "default_value": "{{theme_tertiary_color | darken: '5%';}}"
+    },
+    {
+      "name": "cta_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "header_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_bg",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "search_button_bg_hover",
+      "default_value": "{{theme_tertiary_color | darken: '5%';}}"
+    },
+    {
+      "name": "search_button_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "search_button_text_color_hover",
+      "default_value": "#fff"
+    },
+    {
+      "name": "dropdown_bg",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "dropdown_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_background",
+      "default_value": "{{theme_primary_color}}"
+    }
+  ]
+}

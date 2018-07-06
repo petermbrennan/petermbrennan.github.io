@@ -1,0 +1,28 @@
+{
+  "name": "Typekit",
+  "widget_id": 46,
+  "widget_type": "G5 Internal",
+  "summary": "Typekit javascript includes",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-5173' target='_blank'>Typekit Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": false,
+  "settings": [
+    {
+      "name": "typekit_filename",
+      "default_value": ""
+    },
+    {
+      "name": "theme_typekit_id",
+      "default_value": "{{theme_typekit_id}}"
+    }
+  ]
+}

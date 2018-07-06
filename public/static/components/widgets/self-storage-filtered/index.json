@@ -1,0 +1,152 @@
+{
+  "name": "Self Storage Filtered",
+  "widget_id": 74,
+  "widget_type": null,
+  "summary": "Self Storage Filtered - A way to filter available storage units by category for a location",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469147-Self-Storage-Filtered-Widget' target='_blank'>Self Storage Filtered Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "api_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "move_in_service_api",
+      "default_value": "https://vendor-leads.g5marketingcloud.com"
+    },
+    {
+      "name": "pending_location_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "mobile_select_category_label",
+      "default_value": ""
+    },
+    {
+      "name": "empty_category_badge_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "bg_cta_elements",
+      "default_value": ""
+    },
+    {
+      "name": "color_phone_desktop",
+      "default_value": ""
+    },
+    {
+      "name": "bg_category_badge",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "bg_category_badge_active",
+      "default_value": ""
+    },
+    {
+      "name": "color_category_badge",
+      "default_value": ""
+    },
+    {
+      "name": "color_category_badge_active",
+      "default_value": ""
+    },
+    {
+      "name": "color_popover_link",
+      "default_value": ""
+    },
+    {
+      "name": "bg_popover_hover",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "color_popover_hover",
+      "default_value": ""
+    },
+    {
+      "name": "bg_location_matrix",
+      "default_value": ""
+    },
+    {
+      "name": "color_location_matrix",
+      "default_value": ""
+    },
+    {
+      "name": "bg_unit_matrix",
+      "default_value": ""
+    },
+    {
+      "name": "color_unit_matrix",
+      "default_value": ""
+    },
+    {
+      "name": "border_unit_matrix",
+      "default_value": ""
+    },
+    {
+      "name": "unit_border_bottom",
+      "default_value": ""
+    },
+    {
+      "name": "bg_amenity",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "color_special",
+      "default_value": ""
+    },
+    {
+      "name": "color_special_badge",
+      "default_value": ""
+    },
+    {
+      "name": "bg_disabled",
+      "default_value": ""
+    },
+    {
+      "name": "color_disabled",
+      "default_value": ""
+    },
+    {
+      "name": "color_elease_valid",
+      "default_value": ""
+    },
+    {
+      "name": "store_price_text",
+      "default_value": "In Store Rate:"
+    },
+    {
+      "name": "web_price_text",
+      "default_value": "Web Rate:"
+    },
+    {
+      "name": "special_price_text",
+      "default_value": "Special:"
+    },
+    {
+      "name": "scroll_selector_offset",
+      "default_value": ""
+    },
+    {
+      "name": "widget_container_margin",
+      "default_value": ""
+    }
+  ]
+}

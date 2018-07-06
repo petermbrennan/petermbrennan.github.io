@@ -1,0 +1,148 @@
+// ***************************************
+//
+// Theme Custom Color and Font Defaults
+//
+// ***************************************
+
+// -------------------------------------
+//  General
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primaryColor;
+}
+
+[role=contentinfo] {
+  background-color: $footerColor;
+
+  &, a, h1, h2, h3, h4, h5, h6 { color: $footerTextColor; }
+}
+
+// -------------------------------------
+//  Buttons
+// -------------------------------------
+
+.action-calls a,
+.home-multifamily-iui .btn,
+.home-multifamily-iui-v2 .btn,
+.city-state-zip-search button,
+.multifamily-mini-search .corpSearchWrapper .search-form .search-button button,
+.self-storage-search-home .sss-search-btn,
+.self-storage-search .sss-search-btn,
+.corporate-search button,
+.ss-featured-unit-categories .btn {
+  background-color: $tertiaryColor;
+
+  &:hover,
+  &:focus {
+    background-color: $tertiary-dark;
+  }
+}
+
+.city-state-zip-search {
+  .zip-search-button {
+    background-color: transparent;
+  }
+}
+
+
+// -------------------------------------
+//  Header
+// -------------------------------------
+
+[role=banner] {
+  .button,
+  [class*=navigation] {
+    font-family: $primary-font;
+  }
+
+  [class*=navigation] {
+    a {
+      color: $headerTextColor;
+
+      &:hover,
+      &:focus,
+      &.active {
+        color: darken($headerTextColor, 20%);
+      }
+    }
+  }
+
+  .navigation {
+    background-color: $headerColor;
+
+    .subnav {
+      background-color: rgba($headerColor, 0.80);
+
+      a {
+        &:hover,
+        &:focus {
+          background-color: $header-xdark;
+        }
+      }
+    }
+
+    // On mobile the nav becomes a dropdown
+    @include until($max-nav) {
+      background-color: rgba($headerColor, 0.80);
+    }
+
+    // This link should only show on mobile
+    @include at-least($min-nav) {
+      .corporate-home {
+        display: none !important;
+      }
+    }
+  }
+
+  .corporate-navigation {
+    background-color: $secondaryColor;
+
+    .subnav {
+      background-color: rgba($secondaryColor, 0.80);
+
+      a {
+        &:hover,
+        &:focus {
+          background-color: $secondary-xdark;
+        }
+      }
+    }
+  }
+
+  .appended-phone {
+    font-family: $base-font-family;
+  }
+}
+
+
+// -------------------------------------
+//  Widgets
+// -------------------------------------
+
+.social-links {
+  .icon {
+    background-color: $secondaryColor;
+
+    &:hover {
+      background-color: $secondary-light;
+    }
+  }
+}
+
+.contact-info-sheet {
+  background-color: $secondaryColor;
+  color: $white;
+
+  .info-sheet-nav * {
+    &.active {
+      background-color: $secondary-dark;
+    }
+  }
+
+  .info-sheet-content {
+    a {
+      color: $tertiaryColor;
+    }
+  }
+}

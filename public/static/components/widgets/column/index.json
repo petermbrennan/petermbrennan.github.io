@@ -1,0 +1,81 @@
+{
+  "name": "Column",
+  "widget_id": 6,
+  "widget_type": null,
+  "summary": "Full width column with layouts and widget drop areas",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468947-Column-Widget' target='_blank'>Column Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-layout.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-layout.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "col_css_custom",
+      "default_value": ""
+    },
+    {
+      "name": "row_count",
+      "default_value": "one"
+    },
+    {
+      "name": "row_1_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_1_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_2_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_2_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_3_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_3_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_4_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_4_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_5_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_5_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_6_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "row_6_widget_name",
+      "default_value": ""
+    }
+  ]
+}

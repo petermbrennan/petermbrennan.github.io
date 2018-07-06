@@ -1,0 +1,265 @@
+// Variables and Mixins
+// --------------------
+
+$base-whitespace: 10px;
+$double-whitespace: $base-whitespace * 2;
+
+$external-link: "https://widgets.g5dxm.com/shared/icon-external-link.svg";
+
+@mixin clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+
+// Base styles
+// -----------
+
+.careers {
+
+  // If border radius config is set in widget
+  &.br-true .careers-wrapper,
+  &.br-true .post-btn { border-radius: 10px; }
+  &.br-true .post-headings { border-radius: 9px 9px 0 0; }
+  &.br-true .post:last-child { border-radius: 0 0 9px 9px; }
+  &.br-true .careers-pagination li:first-child { border-radius: 9px 0 0 9px; }
+  &.br-true .careers-pagination li:last-child { border-radius: 0 9px 9px 0; }
+
+  // Content stripe color overrides
+  .text-light & { color: #fff; }
+  .text-dark & { color: #000; }
+
+  // Typography and buttons
+  .post-headings,
+  .post { padding: 1em $base-whitespace; }
+  .post:nth-child(2n) { background-color: #efefef; }
+
+  li, h4, p { color: inherit; }
+
+  p, h4 { margin: 0 0 1em; }
+
+  h4, p { font-size: 1em; }
+
+  .post-headings span,
+  h4 { font-weight: bold; }
+
+  .btn {
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    padding: 0.5em 1em;
+  }
+
+
+  // Posts
+  .careers-wrapper { background-color: #fff; }
+
+  .post,
+  .post-headings {
+    @include clearfix;
+    [data-sort]:hover {
+      cursor: pointer;
+      -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;          /* Likely future */
+    }
+  }
+
+  .posts {
+    .spinner {
+      margin: 100px auto 0;
+      width: 70px;
+      text-align: center;
+    }
+
+    .spinner > div {
+      width: 18px;
+      height: 18px;
+      background-color: #333;
+
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    }
+
+    .spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+
+    @-webkit-keyframes sk-bouncedelay {
+      0%, 80%, 100% { -webkit-transform: scale(0) }
+      40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes sk-bouncedelay {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      } 40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+      }
+    }
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post:last-child { border-bottom: 0; }
+
+  .post-posted { float: right; }
+
+  // Hide posts until data is loaded
+  .careers-wrapper,
+  .post-headings { display: none; }
+
+  .post-description { font-weight: normal; }
+
+  .icon {
+    height: 0.825em;
+    width: 1em;
+    vertical-align: 0.025em;
+  }
+
+  .error { text-align: center; }
+}
+
+
+// Pagination
+.careers-pagination {
+  margin-top: 1em;
+}
+
+.careers-pagination ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+}
+
+.careers-pagination li {
+  border: 1px solid;
+  border-left: 0;
+  float: left;
+}
+
+.careers-pagination li:first-child { border-left: 1px solid; }
+
+.careers-pagination a,
+.careers-pagination span {
+  display: block;
+  color: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  text-align: center;
+  min-width: 21px;
+  padding: 0 $base-whitespace;
+}
+
+.careers-pagination a:hover { text-decoration: none; }
+
+.careers-pagination .active .current {
+  cursor: default;
+  color: #fff;
+}
+
+.careers-pagination .disabled a,
+.careers-pagination .disabled span { color: #9E9E9E; }
+
+.careers-pagination .ellipse {
+  padding: 0 10px;
+  cursor: default;
+}
+
+.careers-pagination .ellipse.clickable { cursor: pointer; }
+
+.careers-pagination .ellipse input { width: 3em; }
+
+
+// 1st breakpoint @ 480px
+// ----------------------
+
+.careers-small {
+  .post-title { float: left; }
+  .post-location { float: right; }
+  .post-description { clear: both; }
+}
+
+
+// 2nd breakpoint @ 980px
+// ----------------------
+
+.careers-large {
+  .post {
+    padding-bottom: 0.5em;
+    padding-right: $double-whitespace;
+  }
+
+  .post-headings {
+    color: #fff;
+    display: block;
+  }
+
+  .post-headings span,
+  .post-item { float: left; }
+
+  .post-headings span,
+  .post-posted,
+  .post-info .post-item { padding: 0 $base-whitespace; }
+
+
+  // Specific widths so headings and post info line up
+  .post-headings span:first-child { width: 11%; } // Posted
+  .post-headings span:nth-child(2) { width: 22%; } // Company
+  .post-headings span:nth-child(3) { width: 32%; } // Job Title
+  .post-headings span:nth-child(4) { width: 18%; } // City / State / Zip
+
+  // Post info widths
+  .post-posted { width: 11%; }
+  .post-info { width: 73%; }
+  .post-org { width: 30%; }
+  .post-title { width: 45%; }
+  .post-location { width: 25%; }
+  .post-actions {
+    text-align: right;
+    width: 16%;
+  }
+}
+
+
+// 3rd breakpoint @ 1170px
+// ----------------------
+
+.careers-xlarge {
+  .btn { font-size: 16px; }
+}

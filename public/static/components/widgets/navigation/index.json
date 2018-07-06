@@ -1,0 +1,33 @@
+{
+  "name": "Navigation",
+  "widget_id": 32,
+  "widget_type": null,
+  "summary": "Navigation list",
+  "liquid": false,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-6867' target='_blank'>Navigation Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "deprecated"
+  ],
+  "page_widget": false,
+  "settings": [
+    {
+      "name": "display_navigation",
+      "default_value": "true"
+    },
+    {
+      "name": "display_corporate_navigation",
+      "default_value": "false"
+    },
+    {
+      "name": "display_as_calls_to_action",
+      "default_value": "false"
+    },
+    {
+      "name": "navigation",
+      "default_value": ""
+    }
+  ]
+}

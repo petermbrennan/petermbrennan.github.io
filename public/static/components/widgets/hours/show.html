@@ -1,0 +1,43 @@
+{% capture widgetId %}hours-{{ widget.id }}{% endcapture %}
+{% assign office_hours_label = widget.office_hours_label.value_or_default_parsed %}
+{% assign office_hours = widget.location_office_hours.value_or_default_parsed %}
+{% assign office_hours_note = widget.office_hours_note %}
+{% assign access_hours_label = widget.access_hours_label.value_or_default_parsed %}
+{% assign access_hours = widget.location_access_hours.value_or_default_parsed %}
+
+<div class="hours h-c-ret v-c-ret h-card vcard widget" id="{{widgetId}}">
+{% if office_hours != blank %}
+  <div class="hours-wrapper office-hours">
+    {% if office_hours_label != blank  %}
+      <h3 class="p-name">{{ office_hours_label }}</h3>
+      <hr>
+    {% endif %}
+
+    {% if widget.office_hours_format.value_or_default == "condensed" %}
+      <div class="office-hours-condensed">
+        {{ widget.office_hours_condensed }}
+      </div>
+    {% else %}
+      <div class="office-hours-list">
+        {{ widget.office_hours_list }}
+      </div>
+    {% endif %}
+
+    {% if widget.show_office_hours_note.value_or_default == "true" and office_hours_note != blank %}
+      <div class="office-hours-note">
+        <p>{{ office_hours_note | newline_to_br }}</p>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if access_hours != blank  %}
+  <div class="hours-wrapper access-hours">
+    {% if access_hours_label != blank  %}
+      <h3 class="p-name">{{ access_hours_label }}</h3>
+      <hr>
+    {% endif %}
+    <div><p>{{ widget.location_access_hours.value_or_default }}</p></div>
+  </div>
+{% endif %}
+</div>

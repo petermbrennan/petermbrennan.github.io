@@ -1,0 +1,25 @@
+{
+  "theme_id": 1,
+  "name": "Berkshire A+ Modern",
+  "summary": "Multi-Family Theme",
+  "primary_color": "#5d8087",
+  "secondary_color": "#7bbb61",
+  "tertiary_color": null,
+  "primary_font": null,
+  "secondary_font": null,
+  "primary_font_variations": [],
+  "secondary_font_variations": [],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-1t2d31r8-berkshire-communities",
+    "g5-c-1szcnbet-berkshire-communities"
+  ],
+  "pending": false,
+  "group": "Berkshire",
+  "theme_type": "location",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments"
+  ]
+}

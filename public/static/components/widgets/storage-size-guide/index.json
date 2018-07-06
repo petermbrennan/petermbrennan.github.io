@@ -1,0 +1,387 @@
+{
+  "name": "Storage Size Guide",
+  "widget_id": 104,
+  "beta": false,
+  "widget_type": null,
+  "summary": "What Size Do I Need",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/220341548' target='_blank'>Storage Size Guide Documentation</a>",
+  "remote_javascripts": [],
+  "lib_javascripts": [
+    "easyResponsiveTabs.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "photo_7_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_7_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_7_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_6_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_6_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_6_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_5_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_5_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_5_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_4_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_4_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_4_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_3_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_3_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_3_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_2_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_2_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_2_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_1_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "photo_1_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "photo_1_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "size_guide_heading",
+      "default_value": ""
+    },
+    {
+      "name": "size_guide_heading_position",
+      "default_value": "left"
+    },
+    {
+      "name": "size_guide_heading_color",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_type",
+      "default_value": "storage-unit-overview"
+    },
+    {
+      "name": "storage_size_1",
+      "default_value": "5 x 5"
+    },
+    {
+      "name": "storage_size_2",
+      "default_value": "5 x 10"
+    },
+    {
+      "name": "storage_size_3",
+      "default_value": "5 x 15"
+    },
+    {
+      "name": "storage_size_4",
+      "default_value": "10 x 10"
+    },
+    {
+      "name": "storage_size_5",
+      "default_value": "10 x 15"
+    },
+    {
+      "name": "storage_size_6",
+      "default_value": "10 x 20"
+    },
+    {
+      "name": "storage_size_7",
+      "default_value": "10 x 25"
+    },
+    {
+      "name": "storage_size_8",
+      "default_value": "10 x 30"
+    },
+    {
+      "name": "storage_description_1",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_1",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_1",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_1",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_1",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+1"
+    },
+    {
+      "name": "storage_image_alt_tag_1",
+      "default_value": "5x5 Storage Units"
+    },
+    {
+      "name": "storage_description_2",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_2",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_2",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_2",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_2",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+2"
+    },
+    {
+      "name": "storage_image_alt_tag_2",
+      "default_value": "5x10 Storage Units"
+    },
+    {
+      "name": "storage_description_3",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_3",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_3",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_3",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_3",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+3"
+    },
+    {
+      "name": "storage_image_alt_tag_3",
+      "default_value": "5x15 Storage Units"
+    },
+    {
+      "name": "storage_description_4",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_4",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_4",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_4",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_4",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+4"
+    },
+    {
+      "name": "storage_image_alt_tag_4",
+      "default_value": "10x10 Storage Units"
+    },
+    {
+      "name": "storage_description_5",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_5",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_5",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_5",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_5",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+5"
+    },
+    {
+      "name": "storage_image_alt_tag_5",
+      "default_value": "10x15 Storage Units"
+    },
+    {
+      "name": "storage_description_6",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_6",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_6",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_6",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_6",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+6"
+    },
+    {
+      "name": "storage_image_alt_tag_6",
+      "default_value": "10x20 Storage Units"
+    },
+    {
+      "name": "storage_description_7",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_7",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_7",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_7",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_7",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+7"
+    },
+    {
+      "name": "storage_image_alt_tag_7",
+      "default_value": "10x25 Storage Units"
+    },
+    {
+      "name": "storage_description_8",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_overview_8",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_man_in_box_8",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_3d_8",
+      "default_value": ""
+    },
+    {
+      "name": "storage_image_custom_8",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+8"
+    },
+    {
+      "name": "storage_image_alt_tag_8",
+      "default_value": "10x30 Storage Units"
+    },
+    {
+      "name": "inactive_tabs_background_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "inactive_tabs_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "desc_active_tab_background_color",
+      "default_value": ""
+    },
+    {
+      "name": "base_color",
+      "default_value": "#656565"
+    },
+    {
+      "name": "desc_heading_size",
+      "default_value": "30px"
+    },
+    {
+      "name": "square_edges",
+      "default_value": "rounded"
+    },
+    {
+      "name": "image_background_color",
+      "default_value": "#f2f2f2"
+    },
+    {
+      "name": "image_border",
+      "default_value": "on"
+    },
+    {
+      "name": "active_tab_text_color",
+      "default_value": "#000"
+    }
+  ]
+}

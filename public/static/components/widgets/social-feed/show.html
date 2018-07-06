@@ -1,0 +1,60 @@
+{% capture widgetId %}social-feed-{{ widget.id }}{% endcapture %}
+<div class="social-feed widget" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "twitter_toggle": {{ widget.twitter_toggle.value_or_default }},
+      "twitter_username": "{{ widget.twitter_username.best_value }}",
+      "tweet_count": {{ widget.twitter_tweet_count.best_value }},
+      "display_avatar": {{widget.display_avatars.best_value}},
+      "blog_feed_toggle": {{ widget.blog_feed_toggle.value_or_default }},
+      "feed_url": "{{ widget.blog_feed_url.best_value }}",
+      "show_entry_summary": {{ widget.blog_feed_display_summary.best_value }},
+      "show_entry_author": {{ widget.blog_feed_display_author.best_value }},
+      "entries_to_show": {{ widget.blog_feed_number_to_display.best_value }},
+      "facebook_toggle": {{ widget.facebook_toggle.value_or_default }},
+      "facebook_page_id": "{{ widget.facebook_page_id.best_value }}",
+      "facebook_post_limit": {{ widget.facebook_post_count.best_value }},
+      "facebook_position": "{{ widget.facebook_position.best_value }}",
+      "twitter_position": "{{ widget.twitter_position.best_value }}",
+      "blog_position": "{{ widget.blog_position.best_value }}",
+      "instagram_position": "{{ widget.instagram_position.best_value }}",
+      "google_toggle": {{ widget.google_toggle.value_or_default }},
+      "google_plus_page_id": "{{ widget.google_plus_page_id.best_value }}",
+      "google_plus_post_limit": {{ widget.google_plus_post_count.best_value }},
+      "google_position": "{{ widget.google_position.best_value }}",
+      "instagram_toggle": {{ widget.instagram_toggle.value_or_default }},
+      "instagram_user_id": "{{ widget.instagram_user_id.best_value }}",
+      "instagram_user_name": "{{ widget.instagram_user_name.best_value }}",
+      "instagram_number_of_photos": {{ widget.instagram_number_of_photos.value_or_default  }},
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <div class="feed-switcher">
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  window.onload = function() {
+    padding();
+    var instagram_switcher = document.getElementsByClassName("feed-switch-instagram")[0]
+    if(instagram_switcher!= undefined){instagram_switcher.onclick = function() {padding()};}
+  };
+  window.onresize = function() {
+    padding();
+  };
+
+  function padding(){
+    if(document.querySelector(".instagram_images") == null){return;}
+    var container_width = document.querySelector(".instagram_images").parentElement.clientWidth;
+    var count = Math.floor(container_width / 150);
+    var padding = Math.floor(((container_width - (150 * count)) / count) / 2);
+    var images = document.getElementsByClassName("instagram_images"),
+      i = images.length;
+    while(i--) {
+      images[i].style.padding = "10px "+padding+"px";
+    }
+  }
+
+</script>

@@ -1,0 +1,1674 @@
+// Boilerplate variables and helpers
+@import 'old_boilerplate/setup';
+
+// +++ Theme Overrides
+$grey: #646568;
+$base-color: #0c1921;
+$base-background: #fff;
+$base-font-family: $georgia;
+$primary-font: $primaryFont, $helvetica;
+$secondary-font: $secondaryFont, $base-font-family;
+$light-font-weight: 300;
+$base-whitespace: em(30);
+$half-whitespace: $base-whitespace / 2;
+$double-whitespace: $base-whitespace * 2;
+$site-width: em(1170);
+$max-xsmall: em(479);
+$min-xsmall: em(480);
+$max-small: em(699);
+$min-small: em(700);
+$max-medium: em(993);
+$min-medium: em(994);
+$max-large: em(1169);
+$min-large: em(1170);
+$max-xlarge: em(1599);
+$min-xlarge: em(1600);
+$stars: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTBDNzVDOTRBQTM0MTFFNEE3RURDMEY0RDU4RUU1NDMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTBDNzVDOTVBQTM0MTFFNEE3RURDMEY0RDU4RUU1NDMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBRjVCMkU3RkFBMzMxMUU0QTdFREMwRjRENThFRTU0MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBRjVCMkU4MEFBMzMxMUU0QTdFREMwRjRENThFRTU0MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PueboGAAAAF7SURBVHjapJTNSsNAFIWnQaSIoXRRlazUVbEiQvANunAhiIsIvkLJ6xQfwYULoeA7CFYQWnUr4kZKEbHQUtB4Bk5kmMxM0nTgI5f7c3pz7zSV+PpNOE7I54MtYUW4T5Qn4BUQiFwJXk77uyQsIxBZ7MwMjkHVEDvX7DtDzkwKvIMrsO/oZgfcaL4huPBoHIGuKH66rBmmM5iBGJyAkaNwxJyYNZkh3uasLWKOcwtth0C7yBrPFPuFmGJGgSZo0b7kBQppC8aaLgH5jmNwCjpgSjr0jfUZ6QJ1cAB6hlfrMVZXnZUkScQyJ+/fWCOi7Pcg4POrbAeBIrKwgGx9jdTKCAQWOzODDYuQLvBpyPmVa/R52/wFN/gtP7bpPfB4TbcLFr+Cp7QDNbAJDsGqpXAOHsGHbYgy0Hf8cl8ttm2h4RBoFFnjlmJPiClmvMrryjbkoJ5p73HAPnMmtg4CDuoeDMAPGdA3z1wquQWFFqhqPpUqc/59S38P/gQYACU2f4ywdi/gAAAAAElFTkSuQmCC';
+
+$fa-var-comment-2: "\f0b1";
+
+// Boilerplate css
+@import 'old_boilerplate/defaults';
+@import 'global-classes.scss';
+@import 'boilerplate/defaults/404.scss';
+
+
+// *************************************
+//
+//   +++ Berkshire A+ Resort Theme
+//
+// *************************************
+
+// Row Classes
+// .cta-row
+// .collage-row
+// .contact-info-row
+// .gallery-row
+// .video-row
+
+
+// =====================================
+//   Mixins & Variables
+// =====================================
+
+@mixin row-triangle {
+  @extend %absolute;
+  content: '';
+  bottom: -30px;
+  left: 50%;
+  z-index: 1;
+  margin-left: -15px;
+  height: 0;
+  width: 0;
+  border: 15px solid transparent;
+}
+
+$stars: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAgCAYAAAAbifjMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTBDNzVDOTRBQTM0MTFFNEE3RURDMEY0RDU4RUU1NDMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTBDNzVDOTVBQTM0MTFFNEE3RURDMEY0RDU4RUU1NDMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBRjVCMkU3RkFBMzMxMUU0QTdFREMwRjRENThFRTU0MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBRjVCMkU4MEFBMzMxMUU0QTdFREMwRjRENThFRTU0MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PueboGAAAAF7SURBVHjapJTNSsNAFIWnQaSIoXRRlazUVbEiQvANunAhiIsIvkLJ6xQfwYULoeA7CFYQWnUr4kZKEbHQUtB4Bk5kmMxM0nTgI5f7c3pz7zSV+PpNOE7I54MtYUW4T5Qn4BUQiFwJXk77uyQsIxBZ7MwMjkHVEDvX7DtDzkwKvIMrsO/oZgfcaL4huPBoHIGuKH66rBmmM5iBGJyAkaNwxJyYNZkh3uasLWKOcwtth0C7yBrPFPuFmGJGgSZo0b7kBQppC8aaLgH5jmNwCjpgSjr0jfUZ6QJ1cAB6hlfrMVZXnZUkScQyJ+/fWCOi7Pcg4POrbAeBIrKwgGx9jdTKCAQWOzODDYuQLvBpyPmVa/R52/wFN/gtP7bpPfB4TbcLFr+Cp7QDNbAJDsGqpXAOHsGHbYgy0Hf8cl8ttm2h4RBoFFnjlmJPiClmvMrryjbkoJ5p73HAPnMmtg4CDuoeDMAPGdA3z1wquQWFFqhqPpUqc/59S38P/gQYACU2f4ywdi/gAAAAAElFTkSuQmCC';
+
+// =====================================
+//   Typography
+// =====================================
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %text-shout;
+  color: $base-color;
+  font-family: $primary-font;
+}
+
+.html h1 {
+  font-size: em(28);
+  letter-spacing: 0.05em;
+
+  em {
+    color: rgba($base-color, 0.5);
+    font-size: em(25, 36);
+    font-style: normal;
+    margin-bottom: 0.25em;
+  }
+
+  strong {
+    @extend %block;
+  }
+
+  @include at-least($min-small) {
+    font-size: em(36);
+  }
+}
+
+p {
+  color: $grey;
+}
+
+.html {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li:before {
+      @extend %inline;
+      content: '';
+      border: 2px solid $secondaryColor;
+      height: .75em;
+      width: .75em;
+      margin-right: .5em;
+    }
+  }
+}
+
+legend,
+label {
+  font-family: $primary-font;
+}
+
+textarea,
+#{$all-text-inputs} {
+  border-color: rgba(0, 0, 0, .3);
+}
+
+
+// =====================================
+//   Layout
+// =====================================
+
+.row:nth-of-type(odd) {
+  background-color: $tertiaryColor;
+}
+
+
+// =====================================
+//   Buttons
+// =====================================
+
+.btn,
+button,
+input[type=submit] {
+  font-family: $primary-font;
+}
+
+
+%secondary-btn {
+  @extend %text-shout;
+  @include transition(background-color 0.2s ease);
+  border: 1px solid $white;
+  font-size: 1em;
+  font-weight: $bold-font-weight;
+}
+
+
+// =====================================
+//   Social Feed
+// =====================================
+
+.social-feed {
+  font-family: $primary-font;
+
+  .feed-switcher {
+    @include display(flex);
+  }
+
+  .feed-switch {
+    border-bottom: 1px solid $grey;
+    margin-top: -1px;
+    top: 1px;
+
+    svg {
+      opacity: 0.5;
+    }
+
+    &.active {
+      bottom: auto;
+      border-bottom-color: $white;
+
+      svg {
+        opacity: 1;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  li a {
+    color: $black;
+  }
+
+  .btn {
+    @extend %relative;
+    @extend %icon;
+    @extend .icn-angle-right;
+    @extend %text-shout;
+    color: $white;
+    font-size: em(21);
+    text-align: left;
+    padding-left: $half-whitespace;
+    width: 100%;
+
+    &:before {
+      @extend %absolute;
+      right: em(15, 21);
+      top: 0.3em;
+      font-size: 1.3em;
+    }
+  }
+}
+
+
+// =====================================
+//   Contact Info
+// =====================================
+
+[role=main] .contact-info {
+  background-color: $primaryColor;
+  margin-bottom: 0;
+  padding: 2em $half-whitespace 1em;
+
+  p, a, .p-name {
+    color: $white;
+  }
+
+  p {
+    line-height: 1.2;
+    margin-bottom: .5em;
+
+    &:first-of-type {
+      border-top: 1px solid rgba($white, 0.5);
+      padding-top: 1em;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid rgba($white, 0.5);
+      padding-bottom: 1em;
+    }
+  }
+
+  .p-name {
+    border-bottom: none;
+    font-size: em(24);
+    margin-bottom: .5em;
+    padding-bottom: 0;
+  }
+
+  .p-tel,
+  .adr-ret a,
+  .tel,
+  .adr,
+  .email,
+  .chat {
+    &:before {
+      color: $white;
+    }
+  }
+
+  @include at-least($min-small) {
+    padding-left: $base-whitespace;
+    padding-right: $base-whitespace;
+
+    .p-name {
+      font-size: em(36);
+    }
+
+    .p-tel,
+    .adr-ret a,
+    .tel,
+    .adr,
+    .email,
+    .chat {
+      &:before {
+        background-color: rgba($white, 0.5);
+        color: $base-color;
+        padding: .25em;
+      }
+    }
+  }
+
+  @include at-least($min-medium) {
+    p {
+      font-size: em(18);
+    }
+
+    .p-tel,
+    .adr-ret a,
+    .tel,
+    .adr,
+    .email,
+    .chat {
+      &:before {
+        padding: .5em;
+      }
+    }
+  }
+}
+
+
+// =====================================
+//   Contact Info Sheet
+// =====================================
+
+.contact-info-sheet {
+  font-family: $primary-font;
+  font-size: em(14);
+  z-index: 999;
+
+  .info-sheet-nav {
+    background-color: rgba($white, 0.75);
+  }
+
+  .cis-btn { font-size: 18px; }
+
+  .info-sheet-content {
+    border: none;
+    box-shadow: 0 4px 0 rgba($black, .2);
+    color: $white;
+    min-height: 65px;
+  }
+
+  .info-sheet-phone {
+    font-size: 2em;
+  }
+
+  .required:after,
+  .form-instruction {
+    color: $white;
+  }
+
+  textarea,
+  #{$all-text-inputs} {
+    border: none;
+    padding: 0.5em;
+  }
+
+  textarea {
+    height: 4em;
+  }
+
+  input[type=submit] {
+    background-color: $primaryColor;
+
+    &:hover {
+      background-color: $primary-dark;
+    }
+  }
+
+  i { color: $black; }
+
+  .info-sheet-email-btn i:before {
+    content: $fa-var-envelope-outline;
+  }
+
+  @include until(736px) {
+    .cis-btn {
+      color: $black;
+      min-width: 0;
+    }
+
+    .info-sheet-phone-btn {
+      margin-right: $half-whitespace;
+    }
+  }
+
+  @include at-least(737px) {
+    margin-top: 4em;
+
+    &.default.opened .info-sheet-content,
+    &.contact-info-sheet.left.opened .info-sheet-content {
+      margin-left: 65px;
+    }
+
+    .cis-btn {
+      font-size: 21px;
+      height: 65px;
+      width: 65px;
+
+      &:before {
+        left: -50px;
+      }
+    }
+
+    .info-sheet-chat-btn i:before { content: $fa-var-comment-2; }
+    .info-sheet-email-btn { font-size: 18px; }
+
+    .info-sheet-nav {
+      background-color: rgba($white, 0.9);
+    }
+
+    .active,
+    .info-sheet-content {
+      background-color: $secondaryColor;
+    }
+
+    .active i {
+      color: $white;
+    }
+  }
+}
+
+
+// =====================================
+//   Social Links
+// =====================================
+
+.social-links {
+  [role=main] & {
+    margin-bottom: 0;
+    padding: 0 $half-whitespace;
+
+    @include at-least($min-small) {
+      padding-left: $base-whitespace;
+      padding-right: $base-whitespace;
+    }
+  }
+
+  .icon {
+    height: em(35);
+    width: em(35);
+  }
+}
+
+
+// =====================================
+//   Promoted Reviews
+// =====================================
+
+.rating .average-rating,
+.rating .gold-stars,
+.review .rating {
+  background-image: url($stars);
+}
+
+.ratings-summary {
+  width: auto;
+
+  .average-rating,
+  .gold-stars,
+  .rating {
+    background-image: url($stars);
+  }
+
+  .average-rating {
+    @extend %inline;
+    background-position: 0 -17px;
+  }
+
+  .total-reviews {
+    @extend %relative;
+    top: -3px;
+  }
+}
+
+
+// =====================================
+//   Home Multifamily IUI && V2
+// =====================================
+
+.home-multifamily-iui, .home-multifamily-iui-v2 {
+  background-color: rgba($black, .85);
+
+  .iui-title {
+    @extend %text-center;
+    @extend %text-shout;
+    font-family: $primary-font;
+    font-size: em(30);
+  }
+
+  .btn {
+    @extend %relative;
+    @extend %text-shout;
+    font-size: em(18);
+  }
+
+  .btn-beds {
+     padding: .5em .5em .5em .5em;
+
+    strong {
+      @extend %absolute;
+      border-right: 1px solid $white;
+      font-size: em(32, 18);
+      font-weight: $light-font-weight;
+      line-height: 1;
+      left: 0;
+      top: 0;
+      height: 100%;
+      padding: .25em .25em;
+    }
+
+    &:hover {
+      strong {
+        border-right-color: $base-hover-color;
+      }
+    }
+  }
+
+  .iui-view-all .btn {
+    @extend %relative;
+    @extend %icon;
+    @extend .icn-angle-right;
+    text-align: left;
+    padding-right: 40px;
+
+    &:before {
+      @extend %absolute;
+      right: 15px;
+      font-size: 1.4em;
+    }
+  }
+
+  @include until($max-small) {
+    .iui-size {
+      display: block;
+    }
+  }
+
+  @include at-least($min-small) {
+    .iui-title {
+      text-align: left;
+    }
+
+    .btn {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    &.count-4 .iui-size {
+      width: 20%;
+    }
+  }
+
+  @include between($min-small, $max-medium) {
+    &.count-4 .btn {
+      font-size: .875em;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-container {
+      width: 100%;
+    }
+
+    .iui-title {
+      padding-top: .25em;
+    }
+
+    .btn {
+      font-size: em(24);
+    }
+  }
+
+  @include at-least($min-large) {
+    .iui-container {
+      width: 80%;
+    }
+
+    &.count-4 .iui-container {
+      width: 100%;
+    }
+  }
+}
+
+.home-multifamily-iui-v2 {
+  @include at-least($min-small) {
+    .iui-size {
+      height: 45px;
+      a {
+        height: 100%;
+      }
+    }
+  }
+  .iui-size a {
+    font-size: 1.5em !important;
+  }
+}
+
+
+
+// =====================================
+//   Multifamily IUI Cards
+// =====================================
+
+.multifamily-iui-cards {
+  .iui-cards-nav,
+  .iui-cards-view-all {
+    font-family: $primary-font;
+  }
+
+  .iui-cards-unit-card,
+  .unit-numbers,
+  .unit-numbers span {
+    height: auto;
+  }
+}
+
+
+// =====================================
+//   Calls to Action
+// =====================================
+
+.action-calls {
+  li {
+    margin-top: 1em;
+  }
+
+  a {
+    @extend %relative;
+    @extend %text-shout;
+    @extend %icon;
+    @extend .icn-angle-right;
+    border: 1px solid $white;
+    font-family: $primary-font;
+    margin-bottom: 1px;
+
+    &:before {
+      @extend %absolute;
+      font-size: 1.3em;
+      right: 15px;
+    }
+  }
+
+  @include at-least($min-small) {
+    text-align: center;
+
+    li {
+      display: inline-block;
+      text-align: left;
+      margin: 0 2%;
+      width: 45%;
+    }
+  }
+
+  @include at-least($min-medium) {
+    a {
+      font-size: 1.75em;
+    }
+  }
+
+  @include at-least($min-large) {
+    li {
+      margin: 0 4%;
+      width: 33%;
+    }
+  }
+}
+
+
+// =====================================
+//   Gallery
+// =====================================
+
+.gallery {
+  .flex-direction-nav {
+
+    // Once widgets can use icon-font, update this css
+    a {
+      @extend %icon;
+      background: rgba($black, 0.85);
+      border: 1px solid $white;
+      width: 32px;
+      text-indent: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+
+      &:before {
+        @extend %absolute;
+        left: -21px;
+        top: 50%;
+        margin-top: -18px;
+        color: $white;
+        font-size: 32px;
+      }
+
+      &:hover {
+        background-color: $secondaryColor;
+      }
+    }
+
+    .flex-prev {
+      @extend .icn-angle-left;
+    }
+
+    .flex-next {
+      @extend .icn-angle-right;
+
+      &:before {
+        left: -20px;
+      }
+    }
+  }
+
+  .flex-title {
+    font-family: $primary-font;
+    font-weight: $bold-font-weight;
+  }
+
+  .mini-gallery {
+    background-color: $primaryColor;
+
+    .flex-control-nav {
+      @include display(flex);
+      bottom: $half-whitespace;
+      left: 0;
+      right: auto;
+      padding: 0 $base-whitespace;
+    }
+
+    .flex-title {
+      color: $white;
+      font-size: em(24);
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+
+    .flex-caption {
+      color: rgba($white, 0.75);
+      font-size: em(18);
+    }
+
+    @include at-least($min-small) {
+      .flex-title {
+        padding: 0 em(15, 36);
+      }
+
+      .flex-caption {
+        padding: 0 em(15, 18);
+      }
+    }
+
+    @include until(909px) {
+      position: relative;
+
+      .flex-control-nav {
+        padding-bottom: $base-whitespace;
+
+        li {
+          width: 20%;
+        }
+      }
+
+      .flex-direction-nav a {
+        border: none;
+      }
+    }
+
+    @include at-least(910px) {
+      .slides img {
+        float: right;
+      }
+
+      .flex-title {
+        padding: 0 em(30, 24);
+      }
+
+      .flex-caption {
+        padding: 0 em(30, 18);
+      }
+
+      .flex-direction-nav {
+        a {
+          height: 66px !important;
+          top: 50%;
+          margin-top: -33px;
+        }
+
+        .flex-prev {
+          left: 50%;
+          margin-left: $half-whitespace;
+        }
+
+        .flex-next {
+          right: $half-whitespace;
+        }
+      }
+    }
+
+    @include at-least($min-large) {
+      .flex-title {
+        font-size: em(36);
+        padding: 0 em(30, 36);
+      }
+    }
+  }
+}
+
+
+// =====================================
+//   Navigation
+// =====================================
+
+.collapsable-btn {
+  margin-bottom: 0;
+
+  .text {
+    @extend %hidden;
+  }
+
+  .bars {
+    span {
+      border-color: $white;
+      border-width: em(5);
+      margin: em(5) 0;
+      width: $base-whitespace;
+    }
+  }
+}
+
+[role=banner] {
+  .navigation-container {
+    .content {
+      padding-top: em(5);
+      padding-bottom: em(5);
+    }
+  }
+
+  .navigation {
+    a {
+      @include transition(background-color 0.2s ease, color 0.2s ease);
+      font-family: $primary-font;
+      font-weight: $bold-font-weight;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+  }
+
+  .has-subnav > a:after {
+    @extend %relative;
+    bottom: 1px;
+  }
+
+  @include until($max-medium) {
+    .navigation {
+      a {
+        background-color: transparent;
+        border-bottom: 1px solid rgba($white, .5);
+        color: $white;
+
+        &:hover {
+          background-color: $secondaryColor;
+        }
+      }
+    }
+  }
+
+  @include until($max-small) {
+    .navigation-container {
+      background-color: $black;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .collapsable-content {
+      position: absolute;
+      top: auto;
+      right: $half-whitespace;
+      padding-left: $base-whitespace;
+      width: 100%;
+    }
+
+    .logo,
+    .navigation {
+      box-shadow: 0 4px 0 rgba($black, .2);
+    }
+
+    .navigation-container {
+      padding-top: 0;
+
+      .content {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    .navigation {
+      background-color: rgba($white, 0.8);
+      margin-bottom: -2em;
+      padding: em(10) $half-whitespace em(10) $half-whitespace;
+      position: relative;
+      z-index: 100;
+
+      a {
+        color: $primaryColor;
+        font-size: em(14);
+        padding: 1em $half-whitespace;
+      }
+    }
+
+    .navigation a:hover,
+    .subnav-open > a {
+      color: $white;
+      background-color: $primaryColor;
+    }
+
+    .subnav {
+      box-shadow: 0 4px 0 rgba($black, .2);
+      min-width: 150px;
+      width: 100%;
+    }
+  }
+
+  .subnav {
+    background-color: $white;
+
+    a {
+      border-top: 1px solid $grey;
+      color: $primaryColor;
+
+      &:hover {
+        background-color: transparent;
+        color: $secondaryColor;
+      }
+    }
+  }
+}
+
+
+// =====================================
+//   Header
+// =====================================
+
+#drop-target-btn {
+
+  .btn {
+    @extend %secondary-btn;
+    padding-top: .25em;
+    padding-bottom: .25em;
+  }
+}
+
+[role=banner] {
+  background-color: $black;
+  min-height: em(55);
+  position: relative;
+
+  h1 {
+    text-align: center;
+  }
+
+  .buttons {
+    @extend %clearfix;
+    @extend %relative;
+    z-index: 100;
+  }
+
+  .button {
+    display: inline-block;
+  }
+
+  .appended-phone {
+    display: none;
+  }
+
+  @include between($min-small, $max-medium) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  @include until($max-medium) {
+    .buttons {
+      text-align: left;
+    }
+  }
+
+  @include until($max-small) {
+    padding: em(55) 0 0;
+
+    .buttons {
+      min-height: 0;
+    }
+  }
+
+  @include at-least($min-small) {
+
+    .appended-phone {
+      display: inline-block;
+      color: $white;
+      font-family: $primary-font;
+      font-size: em(21);
+      font-weight: $bold-font-weight;
+      margin-right: 2em;
+      position: relative;
+      vertical-align: top;
+
+      &:before {
+        content: 'CALL ';
+        color: rgba($white, 0.50);
+      }
+
+      &:hover {
+        color: $base-hover-color;
+      }
+    }
+
+    .buttons {
+      text-align: right;
+    }
+
+    .collapsable-btn {
+      float: right;
+      margin-left: $half-whitespace;
+    }
+  }
+
+  @include at-least($min-medium) {
+    background-color: $white;
+    height: em(66);
+
+    .navigation {
+      height: em(69);
+    }
+
+    .buttons {
+      background-color: $black;
+      padding: em(20) $half-whitespace .75em;
+    }
+
+    .button {
+      float: right;
+    }
+  }
+}
+
+.logo-container {
+  @include at-least($min-medium) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.logo {
+  text-align: center;
+  z-index: 200;
+
+  @include until($max-medium) {
+    width: auto;
+  }
+
+  @include until($max-small) {
+    background-color: $black;
+    display: inline-block;
+    height: auto;
+    margin: 0 auto -4em;
+    padding: 0 $half-whitespace $half-whitespace;
+    position: static;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  @include at-least($min-medium) {
+    background-color: $black;
+    height: em(135);
+    padding: em(20) $base-whitespace;
+    position: relative;
+    left: 0;
+  }
+}
+
+
+// =====================================
+//   Footer
+// =====================================
+
+[role=contentinfo] {
+  font-family: $primary-font;
+
+  &,
+  a,
+  p,
+  h4 {
+    color: $white;
+  }
+
+  .housing-icons {
+    color: $white;
+  }
+
+  @include until($max-medium) {
+    .contact-info,
+    .social-links,
+    .office-hours {
+      margin-bottom: 2em;
+    }
+  }
+}
+
+.footer-info {
+  .nav {
+    a {
+      font-weight: $bold-font-weight;
+      border-left: 1px solid $white;
+      margin-left: .25em;
+      padding-left: .5em;
+
+      &:first-child {
+        border: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+
+  .corporate-logo {
+    clear: both;
+    float: left;
+
+    &:before {
+      @extend %absolute;
+      content: '';
+      background-color: $white;
+      left: 0;
+      height: 1px;
+      width: 100%;
+    }
+
+    img {
+      margin-top: 1em;
+    }
+  }
+
+  @include at-least($min-small) {
+    float: none;
+
+    .social-links,
+    .nav,
+    .office-hours,
+    .copyright,
+    .housing-icons {
+      clear: right;
+      float: right;
+    }
+  }
+}
+
+
+// =====================================
+//   All Pages
+// =====================================
+
+.row {
+  @extend %relative;
+  padding: 3em 0;
+}
+
+
+// =====================================
+//   Home Page
+// =====================================
+
+.web-home-template {
+  @include hero-image;
+
+  .row-grid {
+    margin: 0;
+  }
+
+  [role=main] .widget {
+    margin-bottom: 0;
+  }
+
+  .html h1 em {
+    @extend %inline;
+    border-bottom: 2px solid $base-color;
+    padding-bottom: 0.25em;
+  }
+
+  .html {
+    padding: 3em $half-whitespace 1em;
+  }
+
+  [role=main] > .photo {
+    text-align: center;
+  }
+
+  .row:nth-of-type(1n+2):after {
+    @include row-triangle;
+  }
+
+  .row:first-of-type {
+    @include until($max-xsmall) {
+      &,
+      .content {
+        padding: 0;
+      }
+
+      .col {
+        padding: 0;
+      }
+
+      .widget {
+        margin-bottom: 0;
+      }
+    }
+
+    @include at-least($min-xsmall) {
+      padding: em(165) 0 $base-whitespace;
+    }
+
+    @include at-least($min-small) {
+      padding: em(378) 0 $base-whitespace;
+    }
+  }
+
+  .row:nth-of-type(2n+3) {
+    &:after {
+      border-top-color: $tertiaryColor;
+    }
+  }
+
+  .row:nth-of-type(2n+4) {
+    &:after {
+      border-top-color: $white;
+    }
+  }
+
+  > .photo img {
+    margin: 0 auto;
+  }
+
+  @include until($max-small) {
+    .social-links {
+      padding: 0;
+    }
+  }
+
+  @include at-least($min-small) {
+    .row-grid {
+      @include grid-table-row;
+    }
+
+    .col {
+      @include grid-table-col;
+      float: none;
+      vertical-align: top;
+    }
+
+    .html {
+      padding-left: $base-whitespace;
+      padding-right: $base-whitespace;
+
+      p,
+      li {
+        font-size: em(18);
+      }
+    }
+  }
+
+  @include between(em(650), $min-large) {
+    .collage-row {
+      .html {
+        padding-top: 2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+
+  @include at-least($min-large) {
+    .cta-row {
+      padding: 3em 0 5em;
+    }
+
+    .collage-row .content {
+      margin-top: -5em;
+    }
+  }
+}
+
+
+// =====================================
+//   Internal Pages
+// =====================================
+
+.web-page-template {
+  @include hero-image;
+
+  .html h1 {
+    line-height: 1.2;
+
+    @include at-least($min-medium) {
+      font-size: em(48);
+    }
+  }
+
+  .widget.social-links {
+    background-color: $primaryColor;
+    padding-bottom: 1em;
+  }
+
+  .row:nth-of-type(1n+1):after {
+    @include row-triangle;
+  }
+
+  .row:nth-of-type(even) {
+    &:after {
+      border-top-color: $white;
+    }
+  }
+
+  .row:nth-of-type(2n+3) {
+    &:after {
+      border-top-color: $tertiaryColor;
+    }
+  }
+
+  .row:first-child {
+    padding: 0;
+
+    .widget {
+      margin-bottom: 0;
+    }
+
+    @include until($max-small) {
+      .col {
+        padding: 0;
+      }
+    }
+
+    @include at-least($min-xsmall) {
+      padding: 7em 0 2em;
+    }
+
+    @include at-least($min-medium) {
+      padding: 11em 0 3em;
+    }
+  }
+
+  .action-calls {
+    background-color: $primaryColor;
+    padding: $half-whitespace;
+
+    li {
+      display: block;
+      margin: 0 0 $half-whitespace;
+      width: auto;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include at-least($min-small) {
+      float: right;
+      padding: $base-whitespace;
+      width: 400px;
+
+      li {
+        margin-bottom: $base-whitespace;
+      }
+    }
+
+  }
+
+  .collage-row,
+  .gallery-row {
+    .row-grid {
+      margin: 0;
+    }
+  }
+}
+
+
+// =====================================
+//   Custom Rows
+// =====================================
+
+.contact-info-row .col-1,
+.social-feed-row .col-1,
+.video-row .row-grid {
+  border: 1px solid $black;
+}
+
+
+// =====================================
+//   CTA Row
+// =====================================
+
+.cta-row {
+  background-color: $primaryColor;
+
+  .col {
+    padding: 0;
+  }
+
+  .action-calls {
+    margin-bottom: 1px;
+  }
+}
+
+
+// =====================================
+//   Collage Row
+// =====================================
+
+.collage-row {
+  @extend %text-center;
+
+  .col {
+    background-color: $white;
+    padding: 0;
+  }
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  .html {
+    padding: 3em $half-whitespace 1em;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .photo {
+    @extend %relative;
+
+    &:before {
+      @extend %absolute;
+      content: '';
+      left: 50%;
+      margin-left: -15px;
+      height: 0;
+      width: 0;
+      border: 15px solid transparent;
+    }
+  }
+
+  .col:first-of-type,
+  .col:last-of-type {
+    .photo:before {
+      bottom: 0;
+      border-bottom-color: $white;
+    }
+  }
+
+  .col:nth-of-type(2) .photo:before {
+    top: 0;
+    border-top-color: $white;
+  }
+
+  h2 {
+    @extend %inline;
+    @extend %relative;
+    font-size: em(21);
+    margin: 0;
+    padding: .5em 0;
+
+    &:before,
+    &:after {
+      @extend %absolute;
+      background-color: $black;
+      content: '';
+      display: block;
+      height: 2px;
+      width: 75%;
+      left: 50%;
+      margin-left: -35.5%;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+    }
+  }
+
+  @include between(em(650), em(899)) {
+    .photo,
+    .html {
+      clear: none;
+      float: left;
+      width: 50%;
+    }
+
+    .photo:before {
+      margin-left: 0;
+      margin-top: -15px;
+    }
+
+    .col:first-of-type,
+    .col:last-of-type {
+      .photo:before {
+        bottom: 50%;
+        left: auto;
+        right: 0;
+        border-bottom-color: transparent;
+        border-right-color: $white;
+      }
+    }
+
+    .col:nth-of-type(2) .photo:before {
+      top: 50%;
+      left: 0;
+      border-top-color: transparent;
+      border-left-color: $white;
+    }
+  }
+
+  @include until(em(899)) {
+    .col {
+      float: left;
+      width: 100%;
+    }
+  }
+
+  @include until(em(649)) {
+    // override set height widgets on mobile
+    .collage-fixed {
+      height: auto !important;
+    }
+  }
+
+  @include at-least(em(650)) {
+    .collage-fixed {
+      &.photo {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      img {
+        @include transform(translateX(-50%) translateY(-50%));
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        min-height: 100%;
+        min-width: 100%;
+        width: auto;
+        max-width: none;
+      }
+    }
+  }
+
+  @include at-least(em(900)) {
+    .html {
+      padding-top: 3em;
+    }
+  }
+
+  @include between(em(650), $max-large) {
+    .html {
+      padding-top: 2em;
+    }
+  }
+}
+
+
+// =====================================
+//   Contact Info row
+//   Social Feed row
+// =====================================
+
+.contact-info-row,
+.social-feed-row {
+
+  .html {
+    padding-top: 1em;
+  }
+
+  .col:first-of-type {
+    background-color: $white;
+  }
+
+  .col:last-of-type {
+    background-color: $primaryColor;
+    padding-bottom: 2em;
+  }
+
+  @include until($max-small) {
+    .contact-info {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .html {
+      padding: 1em 0;
+    }
+  }
+}
+
+.social-feed-row {
+  .col:last-of-type {
+    padding: $half-whitespace;
+
+    @include at-least($min-medium) {
+      padding: $base-whitespace;
+    }
+  }
+}
+
+
+// =====================================
+//   Gallery Row
+// =====================================
+
+.gallery-row {
+  .col {
+    background-color: $primaryColor;
+    padding-right: 0;
+
+    @include until($max-small) {
+      padding-left: 0;
+    }
+  }
+
+  .gallery {
+    margin-bottom: 0;
+  }
+}
+
+
+// =====================================
+//   Video Row
+// =====================================
+
+.video-row {
+  .col {
+    background-color: $white;
+
+    &:first-of-type {
+      padding-left: 0;
+
+      @include until($max-small) {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .html {
+    padding: 0;
+  }
+}
+
+// =====================================
+//Multi Family Mini Search V2
+// =====================================
+
+.multifamily-mini-search-v2 {
+  .mf-search-input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 47px;
+  }
+  .mf-search-go-button {
+    height: 47px;
+  }
+  .city,
+  .state {
+    height: 47px;
+  }
+  .search-form {
+    padding: 10px;
+    height: 145px !important;
+  }
+}

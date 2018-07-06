@@ -1,0 +1,56 @@
+// ******************************************
+//
+//  Global Content Stripe Classes
+//
+// ******************************************
+
+// =====================================
+//  Classes
+// =====================================
+
+.no-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.super-padding {
+  padding-top: 9em !important;
+  padding-bottom: 9em !important;
+}
+
+.no-col-padding {
+  .col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.no-border {
+  img {
+    border: none !important;
+  }
+}
+
+.cta-bg-white {
+  .action-calls {
+    background-color: #fff;
+  }
+}
+
+.cta-bg-charcoal {
+  .action-calls {
+    background-color: #36454f;
+  }
+}
+
+.cta-bg-grey {
+  .action-calls {
+    background-color: #d3d3d3;
+  }
+}
+
+.cta-bg-taupe {
+  .action-calls {
+    background-color: #b38b6d;
+  }
+}

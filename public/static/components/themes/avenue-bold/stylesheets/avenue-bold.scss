@@ -1,0 +1,446 @@
+// ********************************************
+//
+//  Avenue Blueprint Theme
+//  - Classic Variation
+//
+// ********************************************
+
+// -------------------------------------
+//  Variables and Mixins
+// -------------------------------------
+
+// Boilerplate variables and mixins
+@import 'boilerplate/setup';
+
+$max-small: rem(1109);
+$min-small: rem(1110);
+
+$max-layout: $max-small;
+$min-layout: $min-small;
+
+$base-whitespace: rem(50);
+$half-whitespace: $base-whitespace / 2;
+
+$cta-arrow-simple-right: "//themes.g5dxm.com/avenue/cta-arrow-simple-right.png";
+
+@mixin shape-clip {
+  -webkit-clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+}
+
+@mixin shape-transform { transform: skew(-15deg); }
+@mixin shape-transform-revert { transform: skew(15deg); }
+
+@mixin shape-transform-small { transform: skew(-10deg); }
+@mixin shape-transform-small-revert { transform: skew(10deg); }
+
+@mixin button($color: $secondaryColor) {
+  position: relative;
+  margin-left: 23px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: auto;
+  z-index: 1;
+
+  &,
+  &:hover {
+    -webkit-box-shadow: 0 0 0 0;
+    -moz-box-shadow:    0 0 0 0;
+    box-shadow:         0 0 0 0;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    width: calc(100% + 14px);
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: -7px;
+    z-index: -1;
+  }
+
+  &::before {
+    background-color: rgba($color, 0.6);
+    -webkit-transform: translate(-10px, 8px) skew(-15deg);
+    transform: translate(-10px, 8px) skew(-15deg);
+    -webkit-transition: -webkit-transform 500ms ease;
+    transition: transform 500ms ease;
+  }
+
+  &::after {
+    -webkit-transform: skew(-15deg);
+    transform: skew(-15deg);
+    background-color: inherit;
+    transition: background-color 500ms ease;
+  }
+
+  &:hover {
+    &::before {
+    -webkit-transform: translate(0, 0) skew(-15deg);
+    transform: translate(0, 0) skew(-15deg);
+    }
+
+    &::after {
+      background-color: inherit;
+    }
+  }
+}
+
+@mixin simple-button {
+  @include shape-clip;
+  padding-left: $half-whitespace + rem(10);
+  padding-right: $half-whitespace + rem(10);
+}
+
+
+// ============================================
+//  Buttons
+// ============================================
+
+[role=main] .button.button-list .btn,
+.multifamily-iui-cards .floorplans a.floorplan-card-cta,
+body.area .btn,
+.coupon .btn,
+.social-feed .btn,
+.photo-cards a.btn {
+  @include button;
+}
+
+[role=main] .button {
+  &.button-inline .btn,
+  &.button-grid .btn {
+    @include simple-button;
+  }
+}
+
+.action-calls a,
+.city-state-zip-search .zip-search-location-link {
+  @include button($tertiaryColor);
+}
+
+@include at-least($min-layout) {
+  [role=banner] .corporate-home {
+    @include button;
+    margin-bottom: 0;
+    position: absolute;
+  }
+}
+
+
+// ============================================
+//  Action Calls
+// ============================================
+
+.action-calls {
+  li {
+    padding: 0 20px 0 30px;
+
+    a { left: 0; }
+  }
+
+  @include at-least($min-layout) {
+    .web-home-template .row:first-of-type & {
+      li {
+        max-width: 52%;
+
+        &:first-of-type { margin-right: -3%; }
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Blog Feed
+// --------------------------------------------
+
+[class*=blog-feed] {
+  .all-posts,
+  .post-toggle.toggle-button {
+    @include simple-button;
+    border: 0;
+  }
+}
+
+// --------------------------------------------
+//  Contact Info
+// --------------------------------------------
+
+[role=main] .contact-info {
+  @include shape-transform-small;
+  overflow: hidden;
+  margin-left: $half-whitespace;
+  margin-right: $half-whitespace;
+
+ > p,
+ > div { @include shape-transform-small-revert; }
+
+ .p-name {
+  -webkit-transform: translateX(-50%) skew(10deg);
+  -moz-transform: translateX(-50%) skew(10deg);
+  -ms-transform: translateX(-50%) skew(10deg);
+  -o-transform: translateX(-50%) skew(10deg);
+  transform: translateX(-50%) skew(10deg);
+ }
+
+  a { position: relative; }
+
+  @include between($min-layout, rem(1300)) {
+    .street-address { display: block; }
+  }
+
+  @include at-least($min-layout) {
+    .phone,
+    .email {
+      text-align: center;
+      float: none;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Coupon
+// --------------------------------------------
+
+.coupon .btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+
+// --------------------------------------------
+//  Gallery
+// --------------------------------------------
+
+.gallery .flex-direction-nav a {
+  @include simple-button;
+}
+
+
+// --------------------------------------------
+//  Social Links
+// --------------------------------------------
+
+.social-links {
+  .icon {
+    @include shape-clip;
+    width: 86px;
+    margin-left: -12.5px;
+    margin-right: -12.5px;
+
+    @include until($max-msmall) {
+      width: 60px;
+    }
+  }
+
+  [role=main] .contact-info & .icon {
+    width: 86px;
+
+    @include until($max-msmall) {
+      width: 60px;
+    }
+
+    @include between($min-msmall, $max-xlarge) {
+      width: 70px;
+    }
+  }
+
+  [role=contentinfo] & .icon { width: 70px; }
+}
+
+
+// ============================================
+//  Location Widgets
+// ============================================
+
+// --------------------------------------------
+//  Floor Plans Cards
+// --------------------------------------------
+
+.floorplans-cards {
+  a.unit-cta-button {
+    @include simple-button;
+    border-radius: 0;
+  }
+}
+
+.multi-family-iui-cards-v3 {
+  .iui-cards-filter-select-wrapper .down-arrow {
+    left: -36px;
+    top: 11px;
+  }
+}
+
+// --------------------------------------------
+//  Home Multifamily IUI
+// --------------------------------------------
+
+[class*=home-multifamily-iui] {
+  .iui-container { @include shape-clip; }
+}
+
+
+// --------------------------------------------
+//  Self Storage IUI Cards
+// --------------------------------------------
+
+.self-storage-iui-cards {
+  .iui-cards-unit-actions a {
+    @include shape-transform;
+
+    .phone { @include shape-transform-revert; }
+  }
+}
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// --------------------------------------------
+//  Self Storage Search Widgets
+// --------------------------------------------
+
+[class*=self-storage-search] {
+  .sss-search-btn {
+    @include button($tertiaryColor);
+    height: auto;
+  }
+}
+
+
+// ============================================
+//  Corporate Widgets
+// ============================================
+
+// --------------------------------------------
+//  City State Zip Search
+// --------------------------------------------
+
+.city-state-zip-search {
+  .zip-search-top .zip-search-form {
+    @include shape-transform;
+
+    input {
+      @include shape-transform-revert;
+    }
+
+    .zip-search-input { padding-left: 5px; }
+
+    .zip-search-button {
+      &,
+      &:hover {
+        background-image: none;
+      }
+
+      button {
+        @include shape-transform-revert;
+        background: url($cta-arrow-simple-right) top 35% right 60% no-repeat;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Locations Navigation
+// --------------------------------------------
+
+.locations-navigation {
+  // @include shape-transform-small;
+
+  .locations-navigation-title {
+    @include shape-transform;
+
+    span { @include shape-transform-revert; }
+  }
+
+  .locations-navigation-state-list { left: -8px; }
+}
+
+
+// ---------------------------------------------
+//  Location Mini Search
+// ---------------------------------------------
+
+.location-mini-search,
+.location-search {
+  .loc-search-btn {
+    @include simple-button;
+  }
+
+  .xlarge {
+    .search-filter {
+      @include shape-transform;
+
+      span { @include shape-transform-revert; }
+    }
+
+    .search-form-inner .loc-search-btn {
+      margin-left: -6px;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Location Search
+// ---------------------------------------------
+
+.location-search {
+  .resultAvailability {
+    @include simple-button;
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search
+// ---------------------------------------------
+
+[class*=multifamily-mini-search] {
+  .search-button {
+    @include simple-button;
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+
+// ============================================
+//  Header
+// ============================================
+
+[role=banner] {
+  .buttons .button .btn {
+    @include simple-button;
+  }
+}
+
+
+// ============================================
+//  Footer
+// ============================================
+
+@media screen and (max-width: 34.3125rem) {
+  [role=contentinfo] .access-hours {
+    text-align: left;
+  }
+}
+
+[role=contentinfo] label, [role=contentinfo] span {
+  font-size: 16px;
+}
+
+// ============================================
+//  Hours Widget
+// ============================================
+
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px
+}

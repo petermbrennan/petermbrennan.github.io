@@ -1,0 +1,101 @@
+// *************************************
+//
+//  Content Stripe Classes and Color Overrides
+//
+// *************************************
+
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+
+// =====================================
+//  Content stripe text color overrides
+// =====================================
+
+// Client has the option to change content stripe background to anything
+// If the default text color doesn't work with the new background
+// these classes on .content-stripe can be used to change text color
+// This is an option in the widget settings
+// Logical to add specific widget color overrides
+.text-light {
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend,
+  .hours {
+    color: $white !important;
+  }
+  a {
+    color: rgba($base-color, .8);
+    &:hover {
+      color: rgba($white, .6) !important;
+    }
+  }
+  .mini-blog-feed {
+    .post-details,
+    .post-description {
+      color: $white !important;
+    }
+  }
+  .city-state-zip-search {
+    .zip-search-top {
+      input {
+        color: $white !important;
+      }
+    }
+    ::-webkit-input-placeholder {
+      color: $white !important;
+    }
+    :-moz-placeholder {
+      color: $white !important;
+    }
+    ::-moz-placeholder {
+      color: $white !important;
+    }
+    :-ms-input-placeholder {
+      color: $white !important;
+    }
+  }
+}
+
+.text-dark {
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend,
+  .hours {
+    color: $base-color !important;
+  }
+  a {
+    color: rgba($base-color, .8);
+    &:hover {
+      color: rgba($base-color, .5) !important;
+    }
+  }
+  .mini-blog-feed {
+    .post-details,
+    .post-description {
+      color: $base-color !important;
+    }
+  }
+  .city-state-zip-search {
+    ::-webkit-input-placeholder {
+      color: lighten($base-color, 70%);
+    }
+    :-moz-placeholder {
+      color: lighten($base-color, 70%);
+    }
+    ::-moz-placeholder {
+      color: lighten($base-color, 70%);
+    }
+    :-ms-input-placeholder {
+      color: lighten($base-color, 70%);
+    }
+  }
+}

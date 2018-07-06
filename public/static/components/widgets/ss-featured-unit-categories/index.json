@@ -1,0 +1,57 @@
+{
+  "name": "SS Featured Unit Categories",
+  "widget_id": 63,
+  "widget_type": null,
+  "summary": "Displays categories based on featured units.",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7417' target='_blank'>SS Featured Unit Categories Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "unit_service_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "unit_page_url",
+      "default_value": ""
+    },
+    {
+      "name": "destination_type",
+      "default_value": "ss_filtered"
+    },
+    {
+      "name": "ss_featured_unit_categories_heading",
+      "default_value": "Select a Size"
+    },
+    {
+      "name": "ss_featured_unit_categories_heading_position",
+      "default_value": "left"
+    },
+    {
+      "name": "primary_color",
+      "default_value": ""
+    },
+    {
+      "name": "view_all_color",
+      "default_value": ""
+    },
+    {
+      "name": "secondary_color",
+      "default_value": ""
+    },
+    {
+      "name": "accent_color_1",
+      "default_value": ""
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{% assign google_plus_id = widget.google_plus_id.value_or_default_parsed %}
+<meta name="keywords" content="" />
+{% if widget.google_site_verification.value != blank %}
+  <meta name='google-site-verification' content="{{ widget.google_site_verification.value }}" />
+{% endif %}
+{% if google_plus_id != blank %}
+  <link href="https://plus.google.com/{{ google_plus_id }}" rel="publisher" />
+{% endif %}
+{% if widget.favicon.best_value != blank %}
+  <link rel="shortcut icon" href="{{ widget.favicon.best_value }}" />
+{% endif %}
+{% assign use_crazy_egg = widget.use_crazy_egg.value | downcase %}
+{% if use_crazy_egg == "true" %}
+<script type="text/javascript">
+  setTimeout(function(){var a=document.createElement("script");
+    var b=document.getElementsByTagName("script")[0];
+    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0024/8426.js?"+Math.floor(new Date().getTime()/3600000);
+    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+{% endif %}

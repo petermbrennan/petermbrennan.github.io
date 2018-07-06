@@ -1,0 +1,335 @@
+<script src="https://use.fonticons.com/26805d78.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+<div id="self-storage-filtered" class="self-storage-filtered widget">
+
+<script class="config" type="application/json">
+  {
+    "clientUrn": "{{ widget.location_urn.value_or_default }}",
+    "cpnsUrl": "{{ widget.client_cpns_url.value_or_default }}"
+  }
+</script>
+  <script>
+
+    if (window.G5Leads == null) {
+      window.G5Leads = {};
+    }
+    window.G5Leads.disableWebshims = true;
+
+    var sssEmberAppConfig = {
+      "modulePrefix":"self-storage-filtered",
+      "environment":"production",
+      "baseURL":"/",
+      "locationType":"hash",
+      "EmberENV":{
+      },
+      "APP":{
+        "rootElement":"#ss-search-filtered",
+        "client_id":"{{ widget.location_urn.value_or_default }}",
+        "apiHost":"{{ widget.api_host.value }}",
+        "storePriceText": "{{ widget.store_price_text.value_or_default }}",
+        "webPriceText": "{{ widget.web_price_text.value_or_default }}",
+        "specialPriceText": "{{ widget.special_price_text.value_or_default }}",
+        "pendingLocationToggle":"{{widget.pending_location_toggle.value_or_default}}",
+        "toggleEmptyCategory":"{{widget.empty_category_badge_toggle.value_or_default}}",
+        "mobileSelectCategoryLabel":"{{widget.mobile_select_category_label.value}}",
+        "scrollSelectorOffset":"{{widget.scroll_selector_offset.value}}",
+        "cpnsUrl": "{{widget.client_cpns_url.value_or_default}}",
+        "clientUrn": "{{ widget.client_urn.value_or_default }}",
+        "locationUrn": "{{ widget.location_urn.value_or_default }}",
+        "elease": {
+          "pusherTimeoutDuration": "10000",
+          "locationUrn": "{{ widget.location_urn.value_or_default }}",
+          "moveInCostServiceHost": "{{ widget.move_in_service_api.value_or_default }}"
+        },
+        'mapbox': {
+          accessToken:'pk.eyJ1IjoiZzVsZXZpYnJvd24iLCJhIjoiVXBockRSOCJ9.6HLfrsqLqgQSrTHG0jPYkw',
+          mapIdentifier: 'g5levibrown.j3m5jbl8'
+        }
+      },
+      "exportApplicationGlobal":false
+    }
+
+    var sssMetaConfig = document.createElement('meta');
+        sssMetaConfig.id="ember-meta";
+        sssMetaConfig.name = "self-storage-filtered/config/environment";
+        sssMetaConfig.content = JSON.stringify(sssEmberAppConfig);
+    document.getElementsByTagName('head')[0].appendChild(sssMetaConfig);
+  </script>
+
+  <style>
+    {% if widget.theme_primary_color.value != blank %}
+      /* theme_primary_color customizations */
+      .ss-search-filtered .sss-cat.view-all{ background-color:{{widget.theme_primary_color.value}}; }
+    {% endif %}
+
+    {% if widget.bg_cta_elements.value != blank %}
+      /* bg_cta_elements customizations */
+      .ss-search-filtered .sss-cat.view-all a,
+      .ss-search-filtered .sss-search-btn,
+      .ss-search-filtered .sss-unit-cta .unit-cta,
+      .ss-search-filtered .sss-unit-cta .phoneCTAText{ background-color:{{widget.bg_cta_elements.value}}; }
+    {% endif %}
+
+    {% if widget.color_phone_desktop.value != blank %}
+      /* phone CTA desktop - color */
+      .ss-search-filtered.xlarge .sss-unit-cta .phoneCTAText,
+      .ss-search-filtered.large .sss-unit-cta .phoneCTAText,
+      .ss-search-filtered.full .sss-unit-cta .phoneCTAText{ color: {{widget.color_phone_desktop.value}}; }
+    {% endif %}
+
+    {% if widget.bg_category_badge.value != blank %}
+      /* Category Badge BG customizations */
+      .ss-search-filtered .sss-cat{ background-color:{{widget.bg_category_badge.value}}; }
+    {% endif %}
+
+    {% if widget.bg_category_badge_active.value != blank %}
+      /* bg_category_badge_active customizations */
+      .spinner > div,
+      .ss-search-filtered div.sss-cat a.active,
+      .ss-search-filtered .sss-locations-matrix.location-archive .sss-cat.searched-category{ background-color:{{widget.bg_category_badge_active.value}}; }
+    {% endif %}
+
+    {% if widget.color_category_badge.value != blank %}
+      /* color_category_badge customizations */
+      .ss-search-filtered .sss-cat a{ color:{{widget.color_category_badge.value}};}
+      .ss-search-filtered .sss-cat a .cat-price:after{ border-top-color:{{widget.color_category_badge.value}}; }
+    {% endif %}
+
+    {% if widget.color_category_badge_active.value != blank %}
+      /* color_category_badge_active customizations */
+      .ss-search-filtered .sss-cat a.active,
+      .ss-search-filtered .location-single .sss-cat.searched-category{ color:{{widget.color_category_badge_active.value}}; }
+      /* BUG the below rule may need to be changed to border-top-color */
+      .ss-search-filtered .sss-cat a.active .cat-price:after{ border-bottom-color: {{widget.color_category_badge_active.value}}; }
+    {% endif %}
+
+    {% if widget.color_popover_link.value != blank %}
+      /* color_popover_link customizations */
+      .popover-content a{ color:{{widget.color_popover_link.value}}; }
+    {% endif %}
+
+    {% if widget.bg_popover_hover.value_or_default != blank %}
+      /* bg_popover_color customizations */
+      .popover-content a:hover, .popover-content a.active{ background-color:{{widget.bg_popover_hover.value_or_default}}; }
+    {% endif %}
+
+    {% if widget.color_popover_hover.value != blank %}
+      /* color_popover_hover customizations */
+      .popover-content a:hover, .popover-content a.active{ color:{{widget.color_popover_hover.value}}; }
+    {% endif %}
+
+    {% if widget.color_location_matrix.value != blank %}
+      /* color_location_matrix customizations */
+      .ss-search-filtered .sss-v-c-ret,
+      .ss-search-filtered .sss-vcard,
+      .ss-search-filtered .unit-info{ color:{{widget.color_location_matrix.value}}; }
+    {% endif %}
+
+    {% if widget.bg_location_matrix.value != blank %}
+      /* bg_location_matrix customizations */
+      .ss-search-filtered .sss-location{ background-color:{{widget.bg_location_matrix.value}}; }
+    {% endif %}
+
+    {% if widget.bg_unit_matrix.value != blank %}
+      /* bg_unit_matrix customizations */
+      .ss-search-filtered .sss-unit-matrix{ background-color:{{widget.bg_unit_matrix.value}}; }
+      .ss-search-filtered .sss-cat a.active:after{ border-bottom-color:{{widget.bg_unit_matrix.value}}; }
+    {% endif %}
+
+    {% if widget.color_unit_matrix.value != blank %}
+      /* color_unit_matrix customizations */
+      .ss-search-filtered .sss-unit-matrix,
+      .ss-search-filtered .sss-unit-matrix select,
+      .ss-search-filtered .sss-unit-matrix input,
+      .ss-search-filtered .unit-info{ color:{{widget.color_unit_matrix.value}}; }
+    {% endif %}
+
+    {% if widget.border_unit_matrix.value != blank %}
+      /* border_unit_matrix customizations */
+      .ss-search-filtered .sss-unit-matrix,
+      .ss-search-filtered .sss-unit-matrix .unit-info{ border-color:{{widget.border_unit_matrix.value}}; }
+      .ss-search-filtered .sss-cat a.active:before{ border-bottom-color:{{widget.border_unit_matrix.value}}; }
+    {% endif %}
+
+    {% if widget.unit_border_bottom.value != blank %}
+      /* unit_border_bottom customizations */
+      .ss-search-filtered .sss-unit-description{ border-top-color:{{widget.unit_border_bottom.value}}; }
+    {% endif %}
+
+    {% if widget.bg_amenity.value_or_default != blank  %}
+      /* bg_amenity customizations */
+      .ss-search-filtered .sss-unit-amenities .icon-bg{ background-color:{{widget.bg_amenity.value_or_default}}; }
+    {% endif %}
+
+    {% if widget.color_special.value != blank %}
+      /* color_special customizations */
+      .ss-search-filtered .sss-unit-special .unit-special-offer{ color:{{widget.color_special.value}}; }
+      .ss-search-filtered .sss-cat a .cat-special{ background-color: {{widget.color_special.value}}; }
+      .ss-search-filtered .sss-cat a .cat-special:after{ border-right-color: {{widget.color_special.value}}; opacity: .5; }
+    {% endif %}
+
+    {% if widget.color_special_badge.value != blank %}
+      /* color_special_badge customizations */
+      .ss-search-filtered .sss-cat a .cat-special{ color:{{widget.color_special_badge.value}}; }
+    {% endif %}
+
+    {% if widget.bg_disabled.value != blank %}
+      /* bg_disabled customizations */
+      .ss-search-filtered .disabled,
+      .ss-search-filtered .disabled a,
+      .ss-search-filtered .disabled.sss-cat a,
+      .ss-search-filtered .sss-cat.searched-category .disabled,
+      .ss-search-filtered .location-archive .sss-cat.searched-category.disabled a,
+      .popover-content .disabled, .popover-content .disabled a, .popover-content .disabled:hover{ background-color:{{widget.bg_disabled.value}}; }
+    {% endif %}
+
+    {% if widget.bg_disabled.value != blank %}
+      /* bg_disabled customizations */
+      .ss-search-filtered .sss-unit-special.price-slash .unit-price{ color: {{widget.bg_disabled.value}}; }
+    {% endif %}
+
+    {% if widget.color_disabled.value != blank %}
+      /* color_disabled customizations */
+      .ss-search-filtered .disabled,
+      .ss-search-filtered .disabled a,
+      .ss-search-filtered .sss-cat.disabled a,
+      .ss-search-filtered .sss-cat.searched-category .disabled,
+      .ss-search-filtered .location-archive .sss-cat.searched-category.disabled a,
+      .popover-content .disabled, .popover-content .disabled a, .popover-content .disabled:hover{ color:{{widget.color_disabled.value}}; }
+    {% endif %}
+
+    .self-storage-filtered{
+      overflow: auto;
+      width: 100%;
+    {% if widget.widget_container_margin.value != blank %}
+      margin-top: {{widget.widget_container_margin.value}};
+    {% endif %}
+    }
+
+    {% if widget.bg_cta_elements.value != blank %}
+      /*eLease Primary BG Color - eLease over-rides */
+      .elease h1.header,
+      .elease .circle,
+      .elease .confirmation-container .confirmation-details #loading-table .header,
+      .elease .confirmation-container .confirmation-details #table .header,
+      .elease .confirmation-container .move-in-costs #loading-table .header,
+      .elease .confirmation-container .move-in-costs #table .header,
+      .elease .move-in-costs-container .confirmation-details #loading-table .header,
+      .elease .move-in-costs-container .confirmation-details #table .header,
+      .elease .move-in-costs-container .move-in-costs #loading-table .header,
+      .elease .move-in-costs-container .move-in-costs #table .header,
+      .ember-modal-dialog  #insurance-table .header,
+      .ember-modal-dialog button{
+        background-color: {{widget.bg_cta_elements.value}};
+      }
+      .elease .date-container .date-input .options-wrapper select,
+      .elease .date-container .insurance-input .options-wrapper select,
+      .elease .insurance-container .date-input .options-wrapper select,
+      .elease .insurance-container .insurance-input .options-wrapper select,
+      .elease .date-container .date-input input,
+      .elease .date-container .insurance-input input,
+      .elease .insurance-container .date-input input,
+      .elease .insurance-container .insurance-input input,
+
+      .elease .form input[type=color],
+      .elease .form input[type=date],
+      .elease .form input[type=datetime-local],
+      .elease .form input[type=datetime],
+      .elease .form input[type=email],
+      .elease .form input[type=month],
+      .elease .form input[type=number],
+      .elease .form input[type=password],
+      .elease .form input[type=search],
+      .elease .form input[type=tel],
+      .elease .form input[type=text],
+      .elease .form input[type=time],
+      .elease .form input[type=url],
+      .elease .form input[type=week],
+      .elease .form textarea,
+      .elease .elease-form select,
+      .elease select{
+        border-bottom-color: {{widget.bg_cta_elements.value}};
+      }
+
+      .elease .date-container .date-input .options-wrapper:after,
+      .elease .date-container .insurance-input .options-wrapper:after,
+      .elease .insurance-container .date-input .options-wrapper:after,
+      .elease .insurance-container .insurance-input .options-wrapper:after,
+      .elease .elease-form .form-field.select:after{
+        border-top-color: {{widget.bg_cta_elements.value}};
+      }
+
+      .elease .confirmation-container .confirmation-details #loading-table,
+      .elease .confirmation-container .confirmation-details #table,
+      .elease .confirmation-container .move-in-costs #loading-table,
+      .elease .confirmation-container .move-in-costs #table,
+      .elease .move-in-costs-container .confirmation-details #loading-table,
+      .elease .move-in-costs-container .confirmation-details #table,
+      .elease .move-in-costs-container .move-in-costs #loading-table,
+      .elease .move-in-costs-container .move-in-costs #table,
+      .ember-modal-dialog  #insurance-table{
+        border-color: {{widget.bg_cta_elements.value}};
+      }
+
+      .elease #loading-table .loading-item,
+      .elease .bar:after,
+      .elease .bar:before{
+        background-color: {{widget.bg_cta_elements.value}};
+      }
+
+      .elease .insurance-input select:valid,
+      .elease .date-container .date-input input:read-only,
+      .elease .elease-form .form-field input:focus,
+      .elease .elease-form .form-field input:focus ~label,
+      .elease .elease-form .form-field select:focus,
+      .elease .elease-form .form-field select:focus ~label,
+      .elease .elease-form .form-field input:valid,
+      .elease .elease-form .form-field input:valid ~label,
+      .elease .elease-form .form-field select:valid,
+      .elease .elease-form .form-field select:valid ~label{
+        color: {{widget.color_elease_valid.value}};
+      }
+
+      .elease .elease-form input[type=submit]{
+        background-color: {{widget.bg_cta_elements.value}};
+      }
+
+      .elease .elease-form input[type=submit]:hover{
+        background-color: {{ widget.bg_cta_elements.value_or_default_parsed | lighten: '15%'; }};
+      }
+
+      /* Calendar popup Date Colors */
+      .is-today .pika-button{
+         color: #999;
+      }
+
+      .is-today .pika-button:hover{
+        color: #fff;
+      }
+
+      .pika-button:hover{
+        background-color: {{ widget.bg_cta_elements.value_or_default_parsed | lighten: '10%'; }};
+      }
+
+      .is-selected .pika-button{
+        color: #fff;
+        background-color: {{widget.bg_cta_elements.value}};
+        box-shadow: inset 0 1px 3px {{widget.bg_cta_elements.value}};
+      }
+
+      .pika-button:active{
+        background: {{ widget.bg_cta_elements.value_or_default_parsed | lighten: '10%'; }};
+      }
+    {% endif %}
+
+  </style>
+
+  <div id="ss-search-filtered">
+    <div id="app-loading" class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+</div>

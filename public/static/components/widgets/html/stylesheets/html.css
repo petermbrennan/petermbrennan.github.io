@@ -1,0 +1,42 @@
+.html {
+  clear: both;
+  overflow: hidden;
+}
+
+.html ul,
+.html ol {
+  padding-left: 2.5em;
+}
+
+.html ul {
+  list-style-type: disc;
+}
+
+.html ol {
+  list-style-type: decimal;
+}
+
+.row-single .html-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%;
+}
+
+@media (max-width: 768px) {
+  .row-single .html-content {
+    max-width: 96%;
+  }
+}
+
+.row-single .html h1,
+.row-single .html h2,
+.row-single .html h3,
+.row-single .html h4,
+.row-single .html h5,
+.row-single .html h6,
+.row-single .html p,
+.row-single .html ol,
+.row-single .html ul, {
+  margin-left: auto;
+  margin-right: auto;
+}

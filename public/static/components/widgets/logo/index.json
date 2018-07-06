@@ -1,0 +1,58 @@
+{
+  "name": "Logo",
+  "beta": false,
+  "widget_id": 25,
+  "widget_type": null,
+  "summary": "Business Logo with link to home page",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468547-Logo-Widget' target='_blank'>Logo Documentation</a>",
+  "lib_javascripts": [
+    "home-url.js"
+  ],
+  "lib_edit_javascripts": [
+    
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": false,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "business_name",
+      "default_value": "{{location_name}}"
+    },
+    {
+      "name": "display_logo",
+      "default_value": "true"
+    },
+    {
+      "name": "logo_url",
+      "default_value": "https://placehold.it/350x150&text=LOGO+PLACEHOLDER"
+    },
+    {
+      "name": "orion_single_domain",
+      "default_value": "{{client_single_domain}}"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+.lead-form.horizontal-form h2 {
+  margin-bottom: 0.5em;
+}
+
+.lead-form input[type="radio"] {
+  display: inline;
+}
+
+select.location-list-urn:invalid  {
+  box-shadow: none;
+}
+
+select.location-list-urn.user-error:invalid {
+  box-shadow: 0 0 4px red;
+}
+
+@media screen and ("min-width: 600px") {
+  .lead-form.horizontal-form {
+    text-align: center
+  }
+
+  .lead-form.horizontal-form .form-text,
+  .lead-form.horizontal-form .g5-enhanced-form,
+  .lead-form.horizontal-form .p-author,
+  .lead-form.horizontal-form .form-field,
+  .lead-form.horizontal-form input[type=submit] {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .lead-form.horizontal-form .form-text,
+  .lead-form.horizontal-form .form-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .lead-form.horizontal-form h2 {
+    margin: 0 10px;
+  }
+
+  .p-author {
+    margin-right: 5px;
+  }
+
+  .lead-form.horizontal-form input[type=submit] {
+    display: inline-block;
+    margin-top: 9px;
+    margin-bottom: 11px;
+  }
+}

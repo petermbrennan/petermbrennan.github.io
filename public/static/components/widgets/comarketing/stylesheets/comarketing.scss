@@ -1,0 +1,92 @@
+/* include mixin in parent of floats to clear */
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.comarketing {
+  margin: 30px auto;
+  max-width: 1170px;
+  padding: 0 15px;
+  @include clearfix;
+
+  .area-page-locations {
+    float: left;
+    width: 60%;
+  }
+  .area-page-locations .h-adr {
+    background: none repeat scroll 0 0 #f3f3f3;
+    margin: 0 30px 10px 0;
+    padding: 13px;
+    color: #000000 !important;
+  }
+  .area-page-locations a.number {
+    color: #000000 !important;
+    &:hover {
+      color: #000000 !important;
+    }
+  }
+  .area-page-locations a.btn {
+    clear:both;
+    display: block;
+    margin: .5em 0 0 0;
+    padding: 6px 10px;
+    text-align: center;
+  }
+  .area-page-footer {
+      clear: both;
+  }
+  .area-page-locations img{
+    float:right;
+    margin-bottom:.5em;
+  }
+
+  .canvas {
+    display: block;
+    float: left;
+    height: 377px;
+    padding-top: 30px;
+    position: relative;
+    width: 40%;
+    img {
+      max-width: none;
+    }
+    label {
+      display: inline;
+      width: auto;
+    }
+  }
+  &.no-map {
+    .canvas {
+      display: none;
+    }
+    .area-page-locations {
+      float: none;
+      width: 100%;
+    }
+  }
+
+  &.small {
+    .area-page-locations, .canvas {
+      float: none;
+      width: 100%;
+    }
+    .area-page-locations .h-adr {
+      margin-right: 0;
+    }
+  }
+}
+
+
+body.hide-navigation {
+  [role=banner] .navigation, .action-calls {
+    display:none !important;
+  }
+}

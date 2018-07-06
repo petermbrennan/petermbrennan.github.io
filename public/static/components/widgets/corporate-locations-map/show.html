@@ -1,0 +1,70 @@
+{% capture widgetId %}corporate-map-{{ widget.id }}{% endcapture %}
+
+<div class="corporate-map widget {{widgetId}}" id="{{widgetId}}">
+  <style>
+    {% if widget.country_code.value == "usa_ca_en" %}
+      .corporate-map.canada.x-small,
+      .corporate-map.canada.x-small .svg-map {
+        min-height: 320px;
+      }
+      .corporate-map.canada.x-small svg {
+        transform: translateX(-35%);
+        margin-top: -20%;
+      }
+      .corporate-map.canada.small,
+      .corporate-map.canada.small .svg-map {
+        min-height: 500px;
+      }
+      .corporate-map.canada.small svg {
+        transform: translateX(-35%);
+        margin-top: -15%;
+      }
+      .corporate-map.canada.medium,
+      .corporate-map.canada.medium .svg-map {
+        min-height: 600px;
+      }
+      .corporate-map.canada.medium svg {
+        transform: translateX(-30%);
+        margin-top: -1%;
+      }
+      .corporate-map.canada.large,
+      .corporate-map.canada.large .svg-map {
+        min-height: 650px;
+      }
+      .corporate-map.canada.large svg {
+        transform: translateX(-10%);
+      }
+    {% endif %}
+  </style>
+
+  <script class="config" type="application/json">
+    {
+      "coreClientId": "{{widget.core_client_id.value}}",
+      "corpSearchPage": "{{widget.corp_search_page.value}}",
+      "coreClientIdAlt": "{{widget.core_client_id_alt.value}}",
+      "corpSearchPageAlt": "{{widget.corp_search_page_alt.value}}",
+      "baseColor": "{{widget.map_base_color.value_or_default}}",
+      "borderColor": "{{widget.map_border_color.value_or_default}}",
+      "hoverColor": "{{ widget.hover_color.value_or_default }}",
+      "selectedColor": "{{ widget.primary_color.value_or_default }}",
+      "selectedRegions": {{ widget.live_locations_by_populated_states }},
+      "locationCounts": {{ widget.live_locations_by_state_count }},
+      "corporateMap": {% if widget.corporate_value.value_or_default %} true {% else %} false {% endif %},
+      "stateDataToggle": {% if widget.state_data_toggle.value %} true {% else %} false {% endif %},
+      "searchWidget": "{{widget.search_widget.value_or_default}}",
+      "clientVertical": "{{ widget.client_vertical_slug.value }}",
+      "countryCode": "{{ widget.country_code.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  {% assign state_toggles = widget.state_data_toggle.value | downcase %}
+  {% if state_toggles == "true" %}
+    <div class="map-tabs">
+      <a href="#" data-map-config="corpMapConfig" class="locations">Multi-Family</a>
+      <a href="#" data-map-config="corpConfigClone" class="commercial">Commercial</a>
+    </div>
+  {% endif %}
+
+  <div class="svg-map"></div>
+</div>

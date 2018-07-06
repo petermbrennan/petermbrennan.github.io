@@ -1,0 +1,63 @@
+// ********************************************
+//
+//  Olmsted Custom Theme (Nashville Edition)
+//
+//  CSS by Adam Sworob
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+
+[Table of contents]
+
+1. Imports & Variables
+2. CSS Overrides
+3. Widgets
+
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[ 1. Imports & Variables ]
+*/
+
+$black: #231f20;
+$grey: #f2f1ed;
+$pink: #fde4e1;
+$red: #d1e9d0;
+
+/*------------------------------------------------------------------
+[ 2. CSS Overrides (Formally) ]
+*/
+
+.multifamily-iui-cards-v2 h3 {
+  width: 100%;
+}
+
+/* removes undefined (button) in navigation Kolby Kirk - 2017.05.15 - ADD THIS TO CHILD THEME SCSS */
+.navigation .top-nav > li:last-child {
+  display: none;
+}
+
+/* insures sticky nav is at full height -  Kolby Kirk - 2017.05.15 - ADD THIS TO CHILD THEME SCSS */
+.sticky-wrapper  {
+  height: 100% !important;
+  &, & nav.stuck{
+    background-color: rgb(180, 39, 45)  !important;
+  }
+}
+
+/* changes color of GET DIRECTIONS in Map widget Kolby Kirk - 2017.05.09 */
+.directions.widget .text .directions-submit {
+  color: $pink;
+}
+
+/*------------------------------------------------------------------
+[ 3. Widgets ]
+-------------------------------------------------------------------*/
+.office-hours{
+    font-weight: 700;
+    span{
+      display: inline;
+      font-weight: normal;
+    }
+  }

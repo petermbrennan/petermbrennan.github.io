@@ -1,0 +1,34 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Map Settings</legend>
+  <!-- Street Address -->
+  {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "value_or_default", "", true}}
+
+  <!-- City -->
+  {{ widget.location_city | edit_text_field: "City", "location_city", "value_or_default", "", true}}
+
+  <!-- State -->
+  {{ widget.location_state | edit_us_states_field: "State", "value_or_default_parsed" }}
+
+  <!-- Postal Code -->
+  {{ widget.location_postal_code | edit_text_field: "Location Postal Code", "location_postal_code", "value_or_default", "", true}}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Map Type -->
+  {% assign map_type_opts = '{"ROADMAP":"ROADMAP","SATELLITE":"SATELLITE"}' %}
+  {{ widget.map_type | edit_radio_field: "Map Type", map_type_opts, "value_or_default" }}
+
+  <!-- Allow Panning and Zooming toggle -->
+  {{ widget.map_allow_pan_zoom | edit_toggle_field: "Allow Panning and Zooming", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

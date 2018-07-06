@@ -1,0 +1,4064 @@
+// ********************************************
+//
+//  sequoia Blueprint Theme
+//
+//  CSS by Chad Crissman
+//
+// ********************************************
+
+/* --------------------------------------------
+Table of Contents 3523
+
+Imports and Variables
+Mixins
+Animations
+Base Styles
+Layout
+Buttons
+Forms
+Multifamily Widgets
+Corporate Widgets
+Other Widgets
+Mobile Nav
+Header
+Footer
+Hero
+-------------------------------------------- */
+
+
+// -----------------------------------------------------
+// Available Content Stripe Classes
+
+// .tagline (h6 with blue border and wood background)
+// .light-padding (little vertical space in row)
+// .corp-collage (use call-outs widget)
+// .mosaic-collage (location mosaic collage)
+// .mosaic-photos (flush photos)
+// .vert-align (vertically align content within content stripe)
+
+// --------------------------------------------------------
+
+
+// ============================================
+//  Imports and Variables
+// ============================================
+
+// Boilerplate variables and mixins
+@import 'boilerplate/setup';
+
+
+// Theme variables
+$black: #2d2018;
+$dark-grey: #2d2a28;
+$base-color: #2d2018;
+$base-hover-color: $secondary-dark;
+
+// Hard coded custom color
+$dark-blue: #56728b;
+
+$nav-hover: rgba($white, 0.7);
+
+// Changes default footer color
+@if $footerColor == $primaryColor {
+  $footerColor: $dark-grey;
+}
+
+$primary-font: $primaryFont, $helvetica;
+$secondary-font: $secondaryFont, $helvetica;
+
+$base-font-family: $primary-font;
+
+$header-font-weight: 400;
+$header-line-height: 1.2;
+
+$base-whitespace: rem(30);
+$half-whitespace: $base-whitespace / 2;
+$quarter-whitespace: $base-whitespace / 4;
+$double-whitespace: $base-whitespace * 2;
+
+$mobile-header-height: 48px;
+
+
+// Used for the main column
+$site-width: rem(1170);
+
+$max-xsmall: rem(479);
+$min-xsmall: rem(480);
+
+$max-msmall: rem(549);
+$min-msmall: rem(550);
+
+$max-small: rem(699);
+$min-small: rem(700);
+
+$max-medium: rem(979);
+$min-medium: rem(980);
+
+$max-large: rem(1169);
+$min-large: rem(1170);
+
+$max-mlarge: rem(1399);
+$min-mlarge: rem(1400);
+
+$max-xlarge: rem(1599);
+$min-xlarge: rem(1600);
+
+// Breakpoint for switching from mobile to desktop nav
+$max-nav: rem(979);
+$min-nav: rem(980);
+
+// Breakpoint for switching from single to multi column layout
+$max-layout: $max-small;
+$min-layout: $min-small;
+
+// Breakpoint for creating hero
+$max-hero: $max-nav;
+$min-hero: $min-nav;
+
+$hero-height: 55vw;
+$nav-width: 30%;
+
+$left-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAZCAQAAABNuxw9AAAAiElEQVR4AYWSJQJCQRCGceg4HAJpcBAsIkfBKhbReyANuQQUpOP2vbyzYSeO/2LTgxYXPVkCRjKZ5s4Gr5oMceBETE26WfEiIxcMgIpM1oCuTGZ5s8ClJuOc2RNQkz523EjKBTMgL5NtoKGDhQsekRTdxt3yE9PfEqWZE8mgmW+pjkFLqbzuEws45IT06oZIUQAAAABJRU5ErkJggg==';
+$right-arrow:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAZCAQAAABNuxw9AAAAhklEQVR4AYWSsaEBYAyE//ce6AEMAR2DgBJGAS0ogT2ggyVooAfAZ4DDuy5JkiR3MeyoGAUdIKNuOzOORDUQYMMKjwZiXJhg1UAOaBkFdaCgbgsjrsQ14GLJlqAGwhxY4NBAEhgYBSWgqm4bO/gnW3r/s4nurVcqJ8rgv3yrOqrl/8q//5MXn0CE9KC6MNgAAAAASUVORK5CYII=';
+
+
+// Boilerplate defaults
+@import 'boilerplate/defaults/grid';
+@import 'boilerplate/defaults/normalize';
+@import 'boilerplate/defaults/base';
+@import 'boilerplate/defaults/forms';
+@import 'boilerplate/defaults/layout';
+@import 'boilerplate/defaults/content-stripe';
+@import 'boilerplate/defaults/404.scss';
+
+// Boilerplate add-ons
+@import 'boilerplate/content-stripes/hero-image';
+@import 'boilerplate/widgets/contact-info';
+@import 'boilerplate/widgets/contact-info-sheet';
+@import 'boilerplate/widgets/footer-info';
+@import 'boilerplate/widgets/news';
+@import 'boilerplate/widgets/social-feed';
+@import 'boilerplate/widgets/multifamily-search-v2';
+
+
+// ============================================
+//  Mixins
+// ============================================
+
+@mixin bg-transition {
+  @include transition(background-color 200ms ease);
+}
+
+@mixin corners {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%corners {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// ============================================
+//  Animations
+// ============================================
+
+@include keyframes(button-glow) {
+  from { background-color: rgba($tertiaryColor, 0.15); }
+  to { background-color: rgba($tertiaryColor, 0.5); }
+}
+
+@include keyframes(bouncy-toggle) {
+  0% { @include transform(rotate(-45deg)); }
+  50% { @include transform(rotate(-145deg)); }
+  75% { @include transform(rotate(-125deg)); }
+  100% { @include transform(rotate(-135deg)); }
+}
+
+@include keyframes(bouncy-toggle-reverse) {
+  0% { @include transform(rotate(-135deg)); }
+  50% { @include transform(rotate(-35deg)); }
+  75% { @include transform(rotate(-55deg)); }
+  100% { @include transform(rotate(-45deg)); }
+}
+
+@include keyframes(bulge) {
+  0% { @include transform(scale(1)); }
+  50% { @include transform(scale(1.05)); }
+  100% { @include transform(scale(1)); }
+}
+
+
+// ============================================
+//  Base Styles
+// ============================================
+
+// html {
+//   @include at-least($min-xlarge) {
+//     font-size: 18px;
+//   }
+
+//   @include at-least(rem(2000)) {
+//     font-size: 21px;
+//   }
+// }
+
+body {
+  background-color: $dark-grey;
+  font-weight: $base-font-weight;
+}
+
+
+[role=main] {
+  background-color: $white;
+}
+
+a {
+  font-weight: $bold-font-weight;
+}
+
+a,
+.btn {
+  @include transition(color 200ms ease, background-color 200ms ease, border-color 200ms ease);
+}
+
+.html p,
+.html li {
+  font-size: em(17);
+
+  @include at-least($min-medium) {
+    font-size: em(18);
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(21);
+  }
+}
+
+.html h3 {
+  @include at-least($min-medium) {
+    font-size: em(21);
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(24);
+  }
+}
+
+%heading {
+  color: $primaryColor;
+  font-weight: $header-font-weight;
+  line-height: $header-line-height;
+}
+
+%h2 {
+  font-size: em(32);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %heading;
+
+  &:first-child:last-child {
+    line-height: 1;
+    margin-bottom: 0;
+  }
+}
+
+h1, h2 {
+  color: $secondaryColor;
+}
+
+%h1,
+h1,
+h6,
+.cta-heading {
+  font-size: em(21);
+  margin-bottom: 1em;
+
+  @include at-least($min-small) {
+    font-size: em(28);
+    margin-bottom: 0.5em;
+  }
+
+  @include at-least($min-hero) {
+    font-size: em(36);
+  }
+
+  @include at-least($min-large) {
+    font-size: em(48);
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(60);
+  }
+}
+
+.html h2 {
+  font-size: em(18);
+
+  @include at-least($min-small) {
+    font-size: em(21);
+  }
+
+  @include at-least($min-hero) {
+    font-size: em(28);
+  }
+
+  @include at-least($min-large) {
+    font-size: em(32);
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(40);
+  }
+}
+
+
+// .hgroup class is added by the js to adjust spacing
+// between h1 and h2
+.hgroup {
+  margin-bottom: 1.25em !important;
+}
+
+
+// ============================================
+//  Layout
+// ============================================
+
+%margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  box-sizing: border-box;
+  max-width: none;
+
+  @include at-least($min-medium) {
+    padding-left: $base-whitespace;
+    padding-right: $base-whitespace;
+  }
+
+  @include at-least($min-xlarge) {
+    padding-left: $double-whitespace;
+    padding-right: $double-whitespace;
+  }
+}
+
+.row {
+  background-color: $base-background;
+  position: relative;
+  z-index: 100;
+
+  .row-grid {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    overflow: visible;
+  }
+
+  .col {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .column .widget {
+    margin-bottom: 2em;
+  }
+
+  @include until($max-xsmall) {
+    .col + .col {
+      padding-top: 0;
+    }
+  }
+
+  @include at-least($min-nav) {
+    .col {
+      padding-top: 3em;
+      padding-bottom: 3em;
+    }
+
+    .column .widget {
+      margin-bottom: 3em;
+    }
+  }
+
+  @include until($max-layout) {
+    // On mobile, if column is empty then remove padding
+    // Keep padding on large screen so column layout remains in tact
+    .col:empty {
+      padding: 0;
+    }
+  }
+
+  @include at-least($min-medium) {
+
+    .area & {
+      padding-top: 150px;
+    }
+
+    .col {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+    }
+
+    .row-grid {
+      margin-left: -$base-whitespace;
+      margin-right: -$base-whitespace;
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .col {
+      padding-left: $base-whitespace;
+      padding-right: $base-whitespace;
+    }
+
+    .row-grid {
+      margin-left: -$double-whitespace;
+      margin-right: -$double-whitespace;
+      padding-left: $base-whitespace;
+      padding-right: $base-whitespace;
+    }
+  }
+}
+
+.row-divider {
+  z-index: 1;
+}
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+[class*=row-]:last-child > .widget {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: $min-nav) {
+  .layout {
+    position: relative;
+    overflow: hidden;
+  }
+
+  // Undo clearfix on row and content divs
+  .row::before,
+  .row::after {
+    display: none;
+  }
+
+  .row .content::before,
+  .row .content::after,
+  .row-grid {
+    clear: none;
+  }
+
+  [role=main] {
+    .web-home-template & {
+      //padding-top: $hero-height;
+    }
+  }
+}
+
+
+// ============================================
+//  Buttons
+// ============================================
+
+// Base for all button styles
+%btn-base {
+  @include transition(background-color 200ms ease);
+  font-weight: $bold-font-weight;
+  letter-spacing: 0.05em;
+  line-height: $base-line-height;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0.5em 1em;
+}
+
+// Button with right facing arrow
+%btn-arrow {
+  position: relative;
+
+  &::after {
+    content: '>';
+    font-size: 32px;
+    font-weight: $base-font-weight;
+    line-height: 1;
+    position: absolute;
+    right: em(9);
+    top: 50%;
+    margin-top: -0.5em;
+    width: 11px;
+    height: 25px;
+  }
+}
+
+// Basic button using tertiary color
+%btn-primary {
+  @extend %btn-base;
+  background-color: $tertiaryColor;
+  border: 0;
+  color: $primaryColor;
+
+  &:hover {
+    background-color: $tertiary-light;
+  }
+}
+
+%btn-alt {
+  @extend %btn-base;
+  background-color: rgba(0, 0, 0, 0.07);
+  border: 2px solid $white;
+  color: $white;
+
+  &:focus,
+  &:hover {
+    background-color: $tertiaryColor;
+  }
+
+  @include at-least($min-large) {
+    font-size: em(24);
+    border-width: 3px;
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(28);
+    border-width: 5px;
+  }
+}
+
+%btn-alt-location {
+  @extend %btn-base;
+  background-color: $tertiaryColor;
+  color: $white;
+  position: relative;
+
+  &:focus,
+  &:hover {
+    background-color: $tertiary-light;
+  }
+
+  &::before {
+    content: '';
+    border: 1px solid $white;
+    position: absolute;
+    top: em(5);
+    right: em(5);
+    bottom: em(5);
+    left: em(5);
+  }
+
+  @include at-least($min-large) {
+    font-size: em(24);
+    border-width: 3px;
+  }
+
+  @include at-least($min-xlarge) {
+    font-size: em(28);
+    border-width: 5px;
+  }
+}
+
+%btn-outline {
+  @extend %btn-base;
+  background-color: transparent;
+  border: 1px solid $base-color;
+  color: $base-color;
+}
+
+%btn-outline-white {
+  @extend %btn-base;
+  background-color: transparent;
+  border: 1px solid $white;
+  color: $white;
+}
+
+section .btn,
+aside .btn,
+button,
+input[type=submit] {
+  @extend %btn-primary;
+}
+
+section .button {
+
+}
+
+.site-corporate section .button {
+  a {
+    border: 2px solid $white;
+    display: inline-block;
+
+    @include at-least($min-large) {
+      font-size: em(24);
+      border-width: 3px;
+    }
+
+    @include at-least($min-xlarge) {
+      font-size: em(28);
+      border-width: 5px;
+    }
+  }
+
+  .btn {
+    @extend %btn-base;
+    background-color: rgba(0, 0, 0, 0.07);
+    color: $white;
+
+    &:focus,
+    &:hover {
+      background-color: $tertiaryColor;
+    }
+}
+}
+
+.site-location, .not-found-404 {
+  section .button .btn {
+    @extend %btn-alt-location;
+  }
+}
+
+.button-list {
+  text-align: center;
+}
+
+
+// ============================================
+//  Forms
+// ============================================
+
+legend,
+label {
+  font-weight: $bold-font-weight;
+}
+
+textarea,
+#{$all-text-inputs} {
+  @include transition(box-shadow 300ms ease);
+  @include appearance(none);
+  box-shadow: none;
+  background-color: $white;
+  line-height: $base-line-height;
+
+  @include placeholder {
+    color: $base-color;
+    text-transform: uppercase;
+  }
+}
+
+textarea,
+input,
+select {
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: 0 0 em(5) em(2) $secondaryColor;
+  }
+}
+
+input[type=radio],
+input[type=checkbox] {
+  margin-right: 0.5em;
+}
+
+input[type=submit] {
+  @include bg-transition;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.form-field {
+  margin-bottom: 1.5em;
+}
+
+.g5-enhanced-form {
+  @extend %margin-auto;
+  max-width: $min-medium;
+}
+
+
+
+// ============================================
+//  Multifamily Widgets
+// ============================================
+
+// --------------------------------------------
+//  Home Multifamily IUI && Home Multifamily V2
+// --------------------------------------------
+
+.home-multifamily-iui, .home-multifamily-iui-v2 {
+  @extend %margin-auto;
+  padding: 0;
+
+  .iui-steps {
+    display: none;
+  }
+
+  .iui-title {
+    display: none;
+  }
+
+  .mf-iui-home-heading {
+    color: $white;
+    font-weight: $bold-font-weight;
+    line-height: $header-line-height;
+    margin-bottom: 0.5em;
+  }
+
+  .iui-size {
+    float: left;
+    margin: 0;
+    width: auto;
+  }
+
+  .btn {
+    @extend %btn-outline-white;
+    display: block;
+
+    &:hover {
+      background-color: $tertiaryColor;
+    }
+  }
+
+  .iui-view-all .btn {
+    background-color: $tertiaryColor;
+    border-color: $tertiaryColor;
+    position: relative;
+
+    &:hover {
+      background-color: $tertiary-light;
+    }
+
+    &::before {
+      content: '';
+      border: 1px solid $white;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+      left: 5px;
+    }
+  }
+
+  @include until($max-medium) {
+    .mf-iui-home-heading {
+      text-align: center;
+    }
+  }
+}
+
+.row-single .home-multifamily-iui, .row-single .home-multifamily-iui-v2 {
+  @include until(779px) {
+    .iui-size {
+      width: 50%;
+    }
+  }
+
+  @include at-least(780px) {
+    .mf-iui-home-heading {
+      display: inline-block;
+      margin-top: 0.5em;
+      vertical-align: middle;
+    }
+
+    .iui-container {
+      display: inline-block;
+      padding-left: $half-whitespace;
+      vertical-align: middle;
+    }
+
+    .iui-size:nth-child(3):last-child,
+    .iui-size:nth-child(5) {
+      width: auto;
+    }
+
+    .iui-view-all {
+      min-width: 10em;
+    }
+
+    &.count-4 {
+      .iui-title {
+        float: none;
+      }
+
+      .iui-container {
+        padding-left: 0;
+      }
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .iui-size {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Multifamily IUI Cards
+// --------------------------------------------
+
+// Lots of widget overrides for better mobile styles
+
+.multifamily-iui-cards {
+  padding: 0;
+
+  h3 {
+    min-height: 0;
+    height: auto;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .iui-cards-nav-outer {
+    padding-right: 30px;
+  }
+
+  .iui-cards-nav a {
+    padding-top: rem(6);
+  }
+
+  // Step 1
+  .iui-cards-unit-categories {
+    clear: both;
+
+    @include until($max-medium) {
+      $iui-card: rem(175);
+      $iui-card-inner: $iui-card - rem(20);
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: rem(10);
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: rem(5);
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span:nth-of-type(1) {
+          font-size: 2em;
+          line-height: 1;
+          padding-top: .75em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.5em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.5em;
+          padding-top: 2em;
+        }
+      }
+    }
+
+    @include until(rem(730)) {
+      $iui-card: rem(130);
+      $iui-card-inner: $iui-card - rem(10);
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: rem(5);
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: rem(5);
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span:nth-of-type(1) {
+          font-size: 1.5em;
+          line-height: 1;
+          padding-top: .5em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.125em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.125em;
+          padding-top: 1.5em;
+        }
+      }
+    }
+  }
+
+  // Step 3
+  // need tons of classes for specificity :(
+  .iui-cards-wrapper .iui-cards-step .iui-cards-floorplan-details {
+    .iui-cards-unit-card {
+      width: rem(200);
+    }
+
+    @include until(rem(800)) {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+
+      .iui-cards-unit-card {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+// FLOORPLANS CARDS WIDGET
+a.floorplan-view-link div {
+  font-size: 17px;
+}
+
+
+// --------------------------------------------
+//  Multifamily Mini Search
+// --------------------------------------------
+
+.multifamily-mini-search.widget {
+  @extend %margin-auto;
+
+  .search-form-center,
+  .search-form-inner {
+    float: none;
+    left: 0;
+  }
+
+  .search-form {
+    background-color: transparent;
+    padding: $half-whitespace;
+    position: relative;
+
+    h2 {
+      @extend %heading;
+      @extend %h2;
+      padding: 0;
+      margin: 0.2em 0;
+    }
+
+    .city,
+    .state {
+      @extend %btn-arrow;
+      background-color: transparent;
+      border: 2px solid $base-color;
+      color: $base-color;
+      min-height: 0;
+      max-height: none;
+
+      &::after {
+        @include transform(rotate(90deg));
+        right: 10px;
+      }
+
+      @include until($max-xsmall) {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      @include between($min-layout, rem(1380)) {
+        .row-uneven-thirds-1 .col-1 &,
+        .row-uneven-thirds-2 .col-2 &,
+        .row-thirds &,
+        .row-quarters & {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+
+    select {
+      @include appearance(none);
+      background-image: none;
+      color: $base-color;
+      font-size: 1em;
+      font-weight: $bold-font-weight;
+      line-height: normal;
+      text-transform: uppercase;
+
+      option {
+        background-color: $white;
+      }
+    }
+
+    .search-button {
+      background-color: transparent;
+      min-height: 0;
+      max-height: none;
+
+      .default-submit-button {
+        @extend %btn-arrow;
+        @include transition(background-color 200ms ease);
+        background: $tertiaryColor;
+        color: $primaryColor;
+        font-size: 1em;
+        font-weight: $bold-font-weight;
+        letter-spacing: 0.05em;
+        line-height: normal;
+        text-transform: uppercase;
+        display: inline-block;
+        padding: 10px 1em;
+
+        &:hover {
+          background-color: $tertiary-light;
+        }
+      }
+    }
+
+    @include at-least($min-msmall) {
+      padding-left: em(45);
+
+      &::before {
+        @include transform(rotate(90deg));
+        @include icon;
+        content: "\f002";
+        color: $base-color;
+        font-size: em(21);
+        position: absolute;
+        top: rem(27);
+        left: $half-whitespace;
+      }
+
+      .state {
+        width: 23%
+      }
+
+      .city {
+        width: 43%;
+      }
+
+      .city,
+      .state {
+        margin-bottom: 0;
+      }
+
+      .search-button {
+        width: 30%;
+        margin-left: 2%;
+
+        .default-submit-button {
+          text-align: left;
+        }
+      }
+    }
+
+    @include at-least($min-mlarge) {
+      padding-left: em(60);
+
+      &::before {
+        font-size: em(24);
+      }
+
+      .city,
+      .state {
+        border-width: 3px;
+      }
+
+      .state {
+        width: 25%
+      }
+
+      .city {
+        width: 41%;
+      }
+
+      select {
+        font-size: em(24);
+        padding-left: 0.5em;
+      }
+
+      .search-button .default-submit-button {
+        font-size: em(24);
+        padding: 11px 0.5em;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Multifamily Mini Search VERSION 2
+// --------------------------------------------
+
+.multifamily-mini-search-v2 {
+  @extend %margin-auto;
+
+  .search-form {
+    padding: $half-whitespace;
+    position: relative;
+  }
+
+  h2 {
+    margin: 0.2em 0;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .city,
+  .state {
+    @extend %btn-arrow;
+    background-color: transparent;
+    border: 2px solid $base-color;
+
+    &::after {
+      @include transform(rotate(90deg));
+      right: 10px;
+    }
+
+    @include until($max-xsmall) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  .twitter-typeahead {
+    @include until($max-xsmall) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  .search-input {
+    padding: 0px;
+  }
+  .mf-search-input {
+    margin-bottom: 4px;
+    border-radius: 0px;
+  }
+  .tt-open {
+    display: block;
+  }
+  .tt-menu {
+    position: relative !important;
+  }
+  .search-fields {
+    overflow: visible;
+  }
+  .search-form {
+    height: 92px !important;
+  }
+  select {
+    @include appearance(none);
+    background-image: none;
+    color: $base-color;
+    font-size: 1em;
+    font-weight: $bold-font-weight;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 8px 7px;
+
+    option { background-color: $white; }
+  }
+
+  .btn {
+    @extend %btn-arrow;
+    @include transition(background-color 200ms ease);
+    color: $primaryColor;
+    letter-spacing: 0.05em;
+    line-height: normal;
+    padding: 10px 1em;
+
+    &:hover {
+      background-color: $tertiary-light;
+    }
+  }
+
+  @include at-least($min-msmall) {
+    .search-form {
+      padding-left: em(45);
+
+      &::before {
+        @include transform(rotate(90deg));
+        @include icon;
+        content: "\f002";
+        color: $base-color;
+        font-size: em(21);
+        position: absolute;
+        top: rem(27);
+        left: $half-whitespace;
+      }
+    }
+
+    .state { width: 25% }
+
+    .twitter-typeahead {
+      width: 65%;
+    }
+    .city { width: 41%; }
+
+    .city,
+    .state { margin-bottom: 0; }
+
+    .search-button {
+      width: 30%;
+      margin-left: 2%;
+    }
+
+    .btn {
+      text-align: left;
+    }
+  }
+  .twitter-typeahead > input {
+    height: 2.5em;
+  }
+
+
+  @include between($min-layout, rem(1380)) {
+    .row-uneven-thirds-1 .col-1 &,
+    .row-uneven-thirds-2 .col-2 &,
+    .row-thirds &,
+    .row-quarters & {
+      .state,
+      .city,
+      .search-button,
+      .twitter-typeahead
+       {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  @include at-least($min-mlarge) {
+    .twitter-typeahead > input {
+      height: 50px;
+    }
+
+    .search-form {
+      padding-left: em(60);
+
+      &::before { font-size: em(24); }
+    }
+
+    .city,
+    .state { border-width: 3px; }
+
+    select { font-size: em(24); }
+
+    .btn {
+      font-size: em(24);
+      padding: 11px 0.5em;
+    }
+  }
+}
+
+// ============================================
+//  Multifamily Search Cloud
+// ============================================
+
+.mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+  .btn,
+  button {
+    text-transform: none;
+  }
+  &.medium {
+    .search-form-inner {
+      select {
+        font-size: 98%;
+      }
+      .square-feet-range,
+      .price-range {
+        label {
+          font-size: 98%;
+        }
+      }
+    }
+  }
+  .search-form {
+    legend,
+    label,
+    a.cp-Panel-toggle {
+      font-weight: normal !important;
+    }
+  }
+
+  .store-summary {
+    .result-contact-info .result-address {
+      line-height: 1em;
+    }
+    .result-location-info {
+      .result-phone {
+        padding: 4px 0 0;
+      }
+      .result-unit-info {
+        padding: 4px 0;
+        min-height: 26px;
+      }
+    }
+  }
+}
+
+// ============================================
+//  Corporate Widgets
+// ============================================
+
+// --------------------------------------------
+//  City State Zip Search
+// --------------------------------------------
+
+.city-state-zip-search {
+  @extend %margin-auto;
+  max-width: rem(350);
+
+  .zip-search-top {
+    background-color: transparent;
+    overflow: visible;
+  }
+
+  .zip-search-heading {
+    @extend %heading;
+    @extend %h2;
+  }
+
+  .zip-search-form {
+    position: relative;
+    // overflow: hidden;
+  }
+
+  .zip-search-input {
+    padding: 0;
+  }
+
+  .zip-search-button {
+    @include transition(background-color 300ms ease);
+    background-color: $tertiaryColor;
+    border: 1px solid $tertiaryColor;
+    padding-top: em(12);
+    padding-bottom: em(12);
+
+    &:hover {
+      background-color: $tertiary-light;
+    }
+
+    button {
+      padding: 0;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        outline: none;
+      }
+    }
+  }
+
+  .zip-search-location {
+    margin-left: 0;
+  }
+
+  .zip-search-location-link {
+    @extend %btn-primary;
+    display: block;
+  }
+}
+
+
+// --------------------------------------------
+//  Locations Navigation
+// --------------------------------------------
+
+.locations-navigation {
+  @extend %margin-auto;
+  max-width: rem(350);
+
+  .locations-navigation-title .littleArrow {
+    display: none;
+  }
+
+  .locations-navigation-state-list .open {
+    box-shadow: none;
+  }
+}
+
+
+// --------------------------------------------
+//  Directory
+// --------------------------------------------
+
+.directory {
+  @extend %margin-auto;
+  max-width: $min-large;
+
+  .directory-table {
+    padding-bottom: 0;
+  }
+
+  h3.directory-heading {
+    font-weight: $bold-font-weight;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    .littleArrow {
+      background: transparent;
+      border: 0;
+      width: 11px;
+      height: 25px;
+      margin: -15px 0 0;
+      position: absolute;
+      right: $half-whitespace;
+      top: 50%;
+
+      &::after {
+        content: '>';
+        font-size: 32px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+.multifamily-search {
+  .search-form {
+    h2 {
+      @extend %heading;
+      color: $white;
+    }
+
+    span {
+      background-color: transparent;
+      border: 2px solid $white;
+      max-height: none;
+      min-height: 0;
+    }
+
+    input {
+      display: inline-block;
+      padding: 0.5em;
+    }
+
+    .search-button {
+      @include bg-transition;
+      background-color: $tertiaryColor;
+      border-color: transparent;
+      color: $base-color;
+
+      &:hover {
+        background-color: $tertiary-light;
+      }
+    }
+  }
+
+  .searchResultsInfo {
+    padding: 0;
+  }
+
+  .corpSearchWrapper .pagination-nav {
+    .previous {
+      border-right-color: $secondaryColor;
+    }
+
+    .next {
+      border-left-color: $secondaryColor;
+    }
+
+    a.page {
+      color: $secondaryColor;
+    }
+
+    span.page {
+      background-color: $secondaryColor;
+    }
+  }
+
+  .store-summary .resultAvailability {
+    background-color: $tertiaryColor;
+    color: $base-color;
+    line-height: $base-line-height;
+    padding: 0.5em 1em;
+
+    &:hover {
+      background-color: $tertiary-light;
+    }
+  }
+
+  .pagination-nav .range {
+    margin-bottom: 0.5em;
+  }
+}
+
+
+// ============================================
+//  Other Widgets
+// ============================================
+
+// --------------------------------------------
+//  Calls to Action
+// --------------------------------------------
+
+.action-calls {
+  text-align: center;
+
+  .cta-heading {
+    margin-bottom: 0.5em;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  li {
+    margin: 0 0 1em;
+    overflow: hidden;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    .row-single & li {
+      display: inline-block;
+      margin: 0 rem(5);
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:first-child:last-child {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.site-corporate .action-calls {
+  a {
+    @extend %btn-alt;
+  }
+}
+
+.site-location, .not-found-404 {
+  .action-calls {
+    a {
+      @extend %margin-auto;
+      @extend %btn-alt-location;
+      display: block;
+      max-width: 16em;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Contact Info
+// --------------------------------------------
+
+[role=main] .contact-info {
+  background-color: $secondaryColor;
+  border: 1px solid $white;
+  box-shadow: 0 0 0 $half-whitespace $secondaryColor;
+  margin: $half-whitespace;
+  padding: $half-whitespace;
+  position: relative;
+
+  p,
+  a,
+  .p-name,
+  .hours {
+    color: $white;
+  }
+
+  a,
+  .hours label {
+    font-weight: $base-font-weight;
+  }
+
+  .office-hours {
+    max-width: 80%;
+  }
+
+  .p-name {
+    border-bottom: 0;
+  }
+
+  .adr-ret,
+  .p-tel,
+  .tel,
+  .adr,
+  .fax,
+  .email,
+  .chat {
+    &::before {
+      color: $white;
+      font-size: 1.25em;
+      margin-top: -0.25em;
+    }
+  }
+
+  .email a {
+    color: $tertiaryColor;
+  }
+
+  .social-links,
+  .google-translate {
+    margin-top: 0.5em;
+  }
+
+  .social-links {
+    text-align: left;
+    padding-left: rem(35);
+
+    a {
+      margin-right: 0.5em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .icon {
+      width: rem(32);
+      height: rem(32);
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    padding: $base-whitespace;
+    box-shadow: 0 0 0 $base-whitespace $secondaryColor;
+    margin: $base-whitespace;
+  }
+
+  @include between($min-layout, 999px) {
+    font-size: 14px;
+  }
+
+  @include between($min-layout, 1199px) {
+    .adr-ret,
+    .p-tel,
+    .tel,
+    .adr,
+    .fax,
+    .email,
+    .chat,
+    .hours {
+      &::before {
+        display: none;
+      }
+    }
+
+    .social-links a {
+      margin-bottom: .5em;
+    }
+
+    .social-links,
+    .ratings-summary-outer {
+      padding-left: 0;
+    }
+  }
+
+  @include between($min-layout, 1299px) {
+    box-shadow: 0 0 0 $half-whitespace $secondaryColor;
+    margin: $half-whitespace;
+    padding: $half-whitespace;
+  }
+}
+
+.google-translate {
+  text-align: center;
+  display: block;
+}
+
+.goog-te-gadget {
+  display: inline-block;
+}
+
+
+// Added in the javascript
+.center-ci {
+  text-align: center;
+
+  .widget {
+    text-align: left;
+    display: inline-block;
+  }
+}
+
+
+// --------------------------------------------
+//  Contact Info Sheet
+// --------------------------------------------
+
+.contact-info-sheet {
+  z-index: 9999;
+}
+
+
+
+// --------------------------------------------
+//  Hours
+// --------------------------------------------
+
+.hours {
+  text-align: center;
+
+  hr {
+    border-color: $secondaryColor;
+    border-style: solid;
+    border-width: rem(6) 0 0;
+  }
+
+  // ### ADD TO BOILERPLATE
+  .office-hours,
+  .access-hours {
+    text-align: left;
+    display: inline-block;
+    max-width: em(200);
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .office-hours {
+    margin-right: -4px;
+    padding-right: $half-whitespace;
+  }
+
+  .access-hours {
+    margin-left: -4px;
+  }
+}
+
+.hours.appended-hours {
+  @extend %icon;
+  @extend .icn-calendar;
+  text-align: left;
+
+  &::before {
+    color: $white;
+    font-size: 1.25em;
+    margin-right: 0.5em;
+  }
+
+  > div {
+    width: 100%;
+    margin: 0;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .p-name {
+    font-weight: $base-font-weight;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+// --------------------------------------------
+//  Contact Info Sheet
+// --------------------------------------------
+
+
+// --------------------------------------------
+//  Coupon
+// --------------------------------------------
+
+.coupon {
+  padding: $half-whitespace;
+  background-color: $primaryColor;
+
+  &,
+  h2,
+  p {
+    color: $white !important;
+  }
+
+  .coupon-offer {
+    font-weight: $bold-font-weight;
+    margin-bottom: 0;
+  }
+
+  .coupon-description {
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+
+  .btn {
+    margin: 0 auto 0.5em;
+    width: em(200);
+  }
+}
+
+
+// --------------------------------------------
+//  Map and directions
+// --------------------------------------------
+
+// ### ADD TO BOILERPLATE
+.directions {
+  padding: 0;
+  margin-top: 0;
+
+  .text {
+    float: none;
+
+    .directions-submit[type=submit] {
+      position: absolute;
+      bottom: 0.5em;
+      right: 0;
+      margin-left: 3%;
+    }
+  }
+
+  .canvas {
+    width: 100%;
+  }
+
+  @include until($max-msmall) {
+    .text {
+      padding-bottom: 3em;
+    }
+
+    .directions-start {
+      width: 100% !important;
+    }
+  }
+
+  @include at-least($min-msmall) {
+    .directions-submit {
+      right: auto;
+      left: 50%;
+    }
+
+    .directions-start {
+      width: 50% !important;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Gallery
+// --------------------------------------------
+
+// All gallery styles
+.gallery {
+  h2 {
+    @extend %h1;
+    text-align: center;
+  }
+
+  .flexslider .slides img {
+    display: inline-block;
+  }
+
+  .flex-control-thumbs img {
+    border: 1px solid transparent;
+
+    &.flex-active {
+      border-color: $secondaryColor;
+    }
+  }
+
+  // All gallery navigation arrows
+  .flex-direction-nav {
+    a {
+      background-color: $dark-blue;
+      background-image: none;
+      text-indent: 100%;
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      margin-top: -35px;
+
+      &:hover {
+        background-color: $secondary-dark;
+      }
+
+      &::before {
+        content:'';
+        background-position: center center;
+        background-repeat: no-repeat;
+        text-indent: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    .flex-prev::before {
+      background-image: url($left-arrow);
+    }
+
+    .flex-next:before {
+      background-image: url($right-arrow);
+    }
+  }
+}
+
+// Normal default gallery slideshow
+.full-gallery.gallery-slideshow {
+  .slides {
+    text-align: center;
+    overflow: hidden;
+
+    > li {
+      height: auto !important;
+    }
+
+    img {
+      max-height: none !important;
+    }
+  }
+
+  .slide-wrapper {
+    position: relative;
+    max-width: 100%;
+
+    .photo-overlay &::before {
+      content: '';
+      background-color: rgba(50, 50, 50, 0.3);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .flex-title {
+    color: $white;
+    font-size: em(24);
+    font-weight: $bold-font-weight;
+    line-height: 1.2;
+    text-shadow: -1px 1px 0 rgba($black, 0.75);
+    margin: -7px 0 0;
+    padding: 0 50px;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+  }
+
+  .flex-caption {
+    // background-color: $secondaryColor;
+    background-color: $dark-blue;
+    color: $white;
+    font-size: em(14);
+    text-align: left;
+    padding: 0.5em 1em;
+    margin: 0;
+  }
+
+  .flex-control-nav {
+    padding: 1em 0;
+  }
+
+  .flex-control-thumbs {
+    li {
+      float: none;
+      padding: 0 5px 10px;
+      width: 20%;
+    }
+  }
+
+  @include until($max-small) {
+    a,
+    a:hover {
+      background-color: transparent;
+    }
+
+    .flex-caption {
+      position: relative;
+    }
+
+    .flex-direction-nav a {
+      top: 30%;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    // Normal default gallery or carousel
+    .flex-title {
+      font-size: em(28);
+      padding: 0 80px;
+    }
+
+    .flex-direction-nav {
+      a {
+        opacity: 1 !important;
+        top: 30%;
+      }
+
+      .flex-prev {
+        left: $half-whitespace;
+      }
+
+      .flex-next {
+        right: $half-whitespace;
+      }
+    }
+
+    .flex-control-thumbs li {
+      width: 80px;
+    }
+  }
+
+  @include at-least($min-small) {
+    .flex-title {
+      font-size: em(42);
+    }
+
+    .flex-caption {
+      // background-color: rgba($secondaryColor, 0.8);
+      background-color: rgba(#56728b, 0.8);
+      font-size: em(18);
+    }
+
+    .flex-direction-nav {
+      a {
+        top: 32%;
+      }
+
+      .flex-prev {
+        left: $base-whitespace;
+      }
+
+      .flex-next {
+        right: $base-whitespace;
+      }
+    }
+  }
+
+  @include at-least($min-medium) {
+    .flex-title {
+      font-size: em(60);
+      text-shadow: -3px 3px 2px rgba(45, 32, 24, 0.75);
+    }
+
+    .flex-caption {
+      padding: 1em;
+    }
+
+    .flex-control-thumbs li {
+      width: 150px;
+    }
+  }
+
+  @include at-least($min-large) {
+    .flex-title {
+      top: 37%;
+    }
+
+    .flex-direction-nav a {
+      top: 46%;
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .flex-title {
+      font-size: em(72);
+    }
+  }
+
+}
+
+
+.gallery-only .mini-gallery {
+  .flex-title {
+    @extend %heading;
+    font-size: em(24);
+    text-align: center;
+    margin-top: 1em;
+  }
+
+  .flex-caption {
+    font-size: em(18);
+  }
+
+  // This breakpoint is in the widget css
+  @include until(909px) {
+    .flex-direction-nav a {
+      &,
+      &:hover {
+        background-color: transparent;
+      }
+
+      &::before {
+        top: 50%;
+        margin-top: -25px;
+      }
+    }
+
+    .flex-control-thumbs {
+      display: none;
+    }
+  }
+
+  @include at-least(910px) {
+    .slides img {
+      float: right;
+    }
+
+    .flex-title,
+    .flex-caption {
+      float: left;
+      padding: 0 15px;
+    }
+
+    .flex-title {
+      font-size: em(32);
+      text-align: left;
+      margin-top: 0.5em;
+      margin-bottom: 0;
+    }
+
+    .flex-control-thumbs {
+      margin: 0;
+      left: 0;
+      right: auto;
+
+      li {
+        padding-top: 10px;
+        padding-bottom: 0;
+      }
+    }
+
+    .flex-direction-nav {
+      a {
+        background-color: rgba($secondaryColor, 0.8);
+        height: 50px !important;
+        top: auto;
+        bottom: 0;
+
+        &:hover {
+          background-color: $secondaryColor;
+        }
+      }
+
+      .flex-prev {
+        left: auto;
+        right: 55px;
+      }
+    }
+
+  }
+
+  @include at-least($min-large) {
+    .slides img {
+      width: 67%
+    }
+
+    .flex-title,
+    .flex-caption,
+    .flex-control-thumbs {
+      width: 33%;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Gallery Carousel & Featured Properties
+// --------------------------------------------
+
+.gallery-carousel {
+  // ### ADD TO BOILERPLATE
+  .slides {
+    li {
+      position: relative;
+    }
+  }
+
+  .flex-caption {
+    background-color: $primaryColor;
+    color: $white;
+    font-size: 1em;
+    font-weight: $bold-font-weight;
+    text-align: left;
+    margin: 0;
+    padding: 0.5em 1em;
+  }
+
+  @include until($max-xsmall) {
+    .flex-direction-nav a {
+      &,
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  HTML
+// --------------------------------------------
+
+.html {
+  overflow: visible;
+
+  p,
+  li {
+    font-family: $secondary-font;
+  }
+
+  .row-single & .html-content {
+    @include until($max-layout) {
+      max-width: 100%;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 1.25em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  News Feed and Mini News Feed
+// --------------------------------------------
+
+[class*=blog-feed] {
+  @extend %margin-auto;
+
+  h2 {
+    font-size: em(32);
+  }
+
+  h3 {
+    font-size: em(21);
+  }
+
+  .post-details {
+    border-bottom: 0;
+    font-weight: $bold-font-weight;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-date,
+  .post-author {
+    font-style: normal;
+  }
+
+  .news-item-link {
+    @extend %btn-primary;
+  }
+
+  .all-news-link,
+  .all-posts {
+    @extend %btn-primary;
+  }
+
+  .all-news {
+    border-bottom-color: $tertiaryColor;
+  }
+
+  .nav-bling {
+    display: none;
+  }
+
+  // ### ADD TO BOILERPLATE
+  .news-feed-post:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .post-toggle.toggle-button {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+
+    &::before {
+      content: '';
+    }
+  }
+
+  .posts-nav {
+    border-top-color: $tertiaryColor;
+  }
+
+  .all-posts {
+    top: -1.25em;
+  }
+
+  .post-nav-top:hover {
+    background-color: transparent;
+    color: $black;
+  }
+
+  @include until($max-small) {
+    &.narrow {
+      .news-item-preview {
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.blog-feed {
+  max-width: rem(600);
+}
+
+
+// --------------------------------------------
+//  Photo
+// --------------------------------------------
+
+.photo {
+  figcaption {
+    font-weight: $base-font-weight;
+  }
+}
+
+.mosaic-photos {
+  .col > .photo,
+  .column-one .photo {
+    margin-left: -$half-whitespace;
+    margin-right: -$half-whitespace;
+    margin-top: -2em;
+    margin-bottom: -2em;
+    overflow: hidden;
+
+    @include at-least($min-xsmall) {
+      img {
+        max-width: none;
+        width: 100%;
+      }
+    }
+
+    @include at-least($min-nav) {
+      margin-top: -3em;
+      margin-bottom: -3em;
+    }
+
+    @include at-least($min-large) {
+      margin-left: -$half-whitespace;
+      margin-right: -$half-whitespace;
+    }
+  }
+
+  .col:first-child > .photo,
+  .col:first-child .column-one .photo {
+    @include at-least($min-large) {
+      margin-left: -$base-whitespace;
+    }
+  }
+
+  .col:last-child > .photo,
+  .col:last-child .column-one .photo {
+    @include at-least($min-large) {
+      margin-right: -$base-whitespace;
+    }
+  }
+
+  .col + .col .photo {
+    @include until($max-xsmall) {
+      margin-top: 0;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Promoted Reviews
+// --------------------------------------------
+
+.ratings-summary-outer {
+  padding: 1.5em 0 0 rem(35);
+
+  .ratings-summary {
+    width: auto;
+  }
+}
+
+
+// --------------------------------------------
+//  Quote
+// --------------------------------------------
+
+blockquote {
+  text-align: center;
+  margin: 0;
+
+  p {
+    color: $primary-dark;
+    font-size: em(21);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+  }
+
+  cite {
+    font-style: normal;
+  }
+
+  @include at-least($min-xsmall) {
+    p {
+      font-size: em(32);
+    }
+  }
+
+  @include at-least($min-layout) {
+    p {
+      .row-uneven-thirds-2 .col-2 &,
+      .row-uneven-thirds-1 .col-1 &,
+      .row-thirds & {
+        font-size: em(24);
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Social Feed
+// --------------------------------------------
+
+// ### ADD TO BOILERPLATE
+.social-feed {
+  .feed-switch {
+    svg {
+      opacity: 0.2;
+    }
+  }
+}
+
+#feed-switch-blog.active {
+  path {
+    stroke: $secondaryColor;
+  }
+  circle {
+    fill: $secondaryColor;
+  }
+}
+
+#feed-switch-twitter.active,
+#feed-switch-facebook.active,
+#feed-switch-google.active {
+  path {
+    fill: $secondaryColor;
+  }
+}
+
+
+// --------------------------------------------
+//  Social Links
+// --------------------------------------------
+
+.social-links {
+  text-align: center;
+
+  a {
+    margin: 0 $half-whitespace $half-whitespace 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .icon {
+    @include bg-transition;
+    background-color: transparent;
+    border: 2px solid $white;
+    border-radius: 50%;
+    height: rem(40);
+    width: rem(40);
+
+    &:hover {
+      background-color: $tertiaryColor;
+    }
+  }
+
+  @include at-least($min-small) {
+    a {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Walkscore
+// --------------------------------------------
+
+.walkscore {
+  text-align: center;
+
+  .btn a {
+    color: $white;
+    padding: 0.5em 1em;
+  }
+}
+
+
+// -------------------------------------------
+//  Call Outs
+// -------------------------------------------
+
+.call-outs {
+  .label {
+    color: $base-color;
+
+    @include at-least($min-layout) {
+      font-size: em(21);
+      width: 9em;
+    }
+  }
+}
+
+.site-location, .not-found-404 {
+  .call-outs-default {
+    .call-out {
+      padding: 0 $quarter-whitespace;
+    }
+
+    img {
+      height: auto !important;
+      width: auto !important;
+    }
+
+    @include until($max-xsmall) {
+      @include display(block);
+
+      .call-out {
+        float: left;
+        width: 33.3333333%;
+
+        &:nth-of-type(4) {
+          clear: left;
+        }
+      }
+    }
+
+    @include at-least($min-xsmall) {
+      @include flex-wrap(nowrap);
+
+      .call-out {
+        @include flex(1 1 auto);
+      }
+    }
+  }
+}
+
+
+
+// ============================================
+//  Mobile Nav
+// ============================================
+
+// *************************************
+//
+//  Mobile Navigation
+//
+// *************************************
+
+.buttons {
+  position: relative;
+}
+
+// TODO @@@
+// Put into boilerplate as alternate nav
+
+// ============================================
+//  Shared Header
+// ============================================
+
+// Shared mobile nav
+.collapsable-content {
+  @include transition(right 0.35s ease);
+  clear: both;
+  background-color: $primaryColor;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  padding-top: $mobile-header-height;
+  height: auto !important;
+  width: 100%;
+
+  &.in {
+    right: 0;
+  }
+
+  @include at-least($min-xsmall) {
+    width: $nav-width * 2;
+    right: -($nav-width) * 2;
+  }
+
+  @include at-least($min-medium) {
+    width: $nav-width;
+    right: -($nav-width);
+  }
+}
+
+.navigation-container {
+  &::before {
+    @include transition(opacity 300ms ease);
+    content: '';
+    background-color: rgba($primaryColor, 0.7);
+    opacity: 0;
+  }
+
+  &.menu-open::before {
+    @extend %corners;
+    position: fixed;
+    opacity: 1;
+  }
+}
+
+// Button to show/hide navigation
+.collapsable-btn {
+  @extend %float-right;
+  background-color: transparent;
+  color: $base-color;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0.7em;
+  right: 0;
+  z-index: 1;
+
+  &.on {
+    @include at-least($min-nav) {
+      position: fixed;
+      margin-right: $half-whitespace;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+    color: $base-color;
+  }
+
+  .text,
+  .bars {
+    @extend %inline;
+    vertical-align: middle;
+  }
+
+  .text {
+    @extend %text-shout;
+    color: $white;
+    font-size: 17px;
+    margin-right: .5em;
+    vertical-align: top;
+  }
+
+  .bars span {
+    @extend %block;
+    @include backface-visibility(hidden);
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease);
+    border-bottom: 2px solid $white;
+    margin: 3px 0;
+    width: 20px;
+  }
+
+  &.on .bars span {
+    &:nth-child(2) {
+      border-color: transparent;
+    }
+
+    &:first-child {
+      @include transform(rotate(45deg) translate(3px, 3px));
+    }
+
+    &:last-child {
+      @include transform(rotate(-45deg) translate(4px, -5px));
+    }
+  }
+}
+
+@media screen and (min-width: $min-nav) {
+  header[role=banner] .corporate-navigation,
+  header[role=banner] .navigation {
+    overflow-y: visible;
+  }
+
+  .show-subnav {
+    max-height: 1000px;
+  }
+}
+
+// Shared header
+[role=banner] {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  h1 {
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  a {
+    // fixes flash when tapping on link
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  .logo {
+    display: block;
+    padding-right: 10px;
+  }
+
+  .appended-phone {
+    font-weight: $base-font-weight;
+  }
+
+  .corporate-navigation {
+    display: none;
+  }
+
+  .subnav {
+    @include transition(opacity 300ms ease);
+    background-color: $secondaryColor;
+    opacity: 0;
+  }
+
+  .show-subnav {
+    opacity: 1;
+  }
+
+  .navigation a {
+    color: $white;
+    font-weight: $base-font-weight;
+    text-transform: uppercase;
+    display: block;
+    padding: 1em $quarter-whitespace;
+
+    &:hover {
+      color: $nav-hover;
+    }
+  }
+
+  .has-subnav > a {
+    position: relative;
+
+    &::before {
+      @include transform(rotate(-135deg));
+      @include transform-origin(center center);
+      @include transition(transform 200ms ease-out);
+      content: '\221F';
+      position: absolute;
+      top: 1em;
+      right: em(15, 12);
+      font-size: 1em;
+      text-shadow: 0 0 2px $white;
+    }
+  }
+
+  .subnav-open > a::before {
+    @include transform(rotate(-45deg) translate(3px));
+  }
+
+  // Mobile header
+  @include until($max-nav) {
+    height: $mobile-header-height;
+
+    .logo-container {
+      position: absolute;
+      top: $quarter-whitespace;
+      left: $quarter-whitespace;
+      z-index: 100;
+    }
+
+    .buttons {
+      text-align: center;
+    }
+
+    .button {
+      display: inline-block;
+    }
+  }
+
+  // Very mobile header
+  @include until(379px) {
+    .logo-container {
+      float: left;
+      position: relative;
+      left: -$quarter-whitespace;
+    }
+
+    .button .btn {
+      margin-right: $quarter-whitespace;
+    }
+
+    .collapsable-btn .text {
+      display: none;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    .navigation a {
+      font-size: em(18);
+      padding: 1em $base-whitespace;
+    }
+  }
+
+  // Desktop header
+  @include at-least($min-nav) {
+    position: absolute;
+
+    .logo-container {
+      @include transition(opacity 500ms ease);
+      position: absolute;
+      top: 3rem;
+      left: 7%;
+      width: 7vw;
+      opacity: 0;
+
+      .not-found-404 &{
+        opacity: 1;
+      }
+
+    }
+  }
+}
+
+
+// ============================================
+//  Corporate Header
+// ============================================
+
+// Corp mobile Nav
+.site-corporate {
+  .collapsable-content {
+    overflow: auto;
+  }
+
+  @include at-least($min-nav) {
+    .collapsable-content {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      padding-top: 140px;
+    }
+
+    // Button to show/hide navigation
+    .collapsable-btn {
+      padding-bottom: 38px;
+      top: 3rem;
+      right: 7%;
+      opacity: 0;
+
+      .text {
+        font-size: 24px;
+        position: absolute;
+        bottom: 0;
+        left: 1px;
+      }
+
+      .bars span {
+        border-bottom-width: 12px;
+        margin: 0 0 10px;
+        width: 70px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &.dark {
+        .text { color: $base-color; }
+
+        .bars span { border-color: $base-color; }
+      }
+
+      &.on {
+        .text {
+          opacity: 0;
+        }
+        .bars span {
+          border-color: $white;
+
+          &:nth-child(2) {
+            border-color: transparent;
+          }
+
+          &:first-child {
+            @include transform(rotate(45deg) translate(20px, 10px));
+          }
+
+          &:last-child {
+            @include transform(rotate(-45deg) translate(20px, -11px));
+          }
+        }
+      }
+    }
+
+    .collapsable-btn {
+      display: block !important;
+    }
+  }
+} // end mobile nav
+
+// Corp header
+.site-corporate {
+  [role=banner] {
+    @include until($max-nav) {
+      background-color: rgba($primaryColor, 0.7);
+
+      .logo-container {
+        @include transform(rotate(90deg));
+        @include transform-origin(left bottom);
+        top: -71px;
+        z-index: 1;
+      }
+
+      .logo img {
+        max-height: 83px;
+      }
+    }
+
+    // Desktop header
+    @include at-least($min-nav) {
+      .logo-container {
+        top: 3rem;
+        left: 7%;
+        width: 7vw;
+      }
+    }
+
+    @include at-least(980px) {
+      .subnav {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @include at-least($min-large) {
+      .navigation a {
+        font-size: em(24);
+      }
+    }
+
+    @include at-least($min-xlarge) {
+      .navigation a {
+        font-size: em(32);
+      }
+    }
+  }
+} // end site-corporate
+
+
+
+// ============================================
+//  Location Header
+// ============================================
+
+// Location mobile nav
+.site-location, .not-found-404 {
+  .navigation-container:not(.menu-open) .collapsable-btn {
+    &,
+    .text {
+      color: $base-color;
+    }
+
+    .bars span {
+      border-bottom-color: $base-color;
+    }
+  }
+
+  @include at-least($min-nav) {
+    .collapsable-content {
+      position: static;
+      padding-top: 0;
+    }
+
+    // Button to show/hide navigation
+    .collapsable-btn {
+      display: none !important;
+    }
+  } // end min-nav mq
+}
+
+// Location header
+.site-location, .not-found-404 {
+  [role=banner] {
+    .button .btn {
+      @extend %btn-outline;
+      font-size: em(12);
+      margin: 0.5em 0 0.5em 0;
+    }
+
+    @include until($max-nav) {
+      background-color: rgba($white, 0.7);
+
+      .logo img {
+        max-height: 34px;
+      }
+
+      .appended-phone {
+        display: none;
+      }
+    }
+
+    @include at-least($min-nav) {
+      text-align: right;
+      font-size: em(14);
+
+      .logo-container {
+        top: 2vw;
+        left: $base-whitespace;
+        width: 25vw;
+      }
+
+      .appended-phone {
+        color: $white;
+        font-size: em(24);
+        line-height: 1.2;
+        display: inline-block;
+        margin-top: 1em;
+
+        &:hover {
+          color: $nav-hover;
+        }
+      }
+
+      .buttons {
+        float: right;
+        padding-top: .5em;
+        padding-bottom: .5em;
+        margin-right: em(10);
+      }
+
+      .button .btn {
+        border-color: $white;
+        color: $white;
+        font-size: 1em;
+        margin-left: em(15);
+
+        &:hover {
+          background-color: $tertiaryColor;
+        }
+      }
+
+      .collapsable-content {
+        background-color: transparent;
+        width: auto;
+      }
+
+      .navigation-container {
+        float: right;
+      }
+
+      .navigation {
+        text-align: left;
+
+        a {
+          font-size: 1em;
+          padding: 0.5em em(10);
+
+          &.active {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .top-nav > li {
+        display: inline-block;
+
+        > a {
+          //padding: 0 $quarter-whitespace;
+        }
+      }
+
+      .top-nav .has-subnav > a {
+        padding-right: em(30);
+
+        &::before {
+          top: 0.5em;
+          right: em(10);
+        }
+      }
+
+      .subnav-open {
+        > a {
+          background-color: $secondaryColor;
+        }
+      }
+
+      .subnav {
+        background-color: $white;
+        top: auto;
+        width: 100%;
+
+        a {
+          color: $secondaryColor;
+          padding: 0.25em em(10);
+
+          &:hover {
+            color: $tertiaryColor;
+          }
+        }
+      }
+    }
+
+    @include at-least($min-large) {
+      font-size: 1em;
+    }
+
+    @include at-least(1350px) {
+      font-size: em(18);
+    }
+
+    @include at-least($min-xlarge) {
+      font-size: em(21);
+    }
+  }
+} // end site-location
+
+
+
+// ============================================
+//  Footer
+// ============================================
+
+[role=contentinfo] {
+  @extend %clearfix;
+  background-color: $footerColor;
+  font-weight: $bold-font-weight;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  text-align: right;
+
+  &,
+  a {
+    font-weight: $base-font-weight;
+  }
+
+  a:hover {
+    color: $footer-text-light;
+  }
+
+  p,
+  .p-name,
+  .nav {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    color: inherit;
+    font-size: em(17);
+    line-height: $base-line-height;
+  }
+
+  .contact-info {
+    float: right;
+    margin-bottom: 2em;
+  }
+
+  .footer-info {
+    clear: right;
+  }
+
+  .copyright {
+    margin-bottom: 1em;
+  }
+
+  .nav a {
+    padding: 0.5em 0.5em 0.5em 0;
+
+    & + a::before {
+      content: '';
+      border-left: 1px solid #fff;
+      height: 1em;
+      display: inline-block;
+      margin-right: 0.5em;
+      vertical-align: -(em(2, 14));
+    }
+
+    @include at-least($min-xsmall) {
+      padding: 0.5em 0 0.5em 0.5em;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    padding-top: 4em;
+    padding-bottom: 4em;
+
+    .corporate-logo {
+      position: absolute;
+      top: 0;
+      left: $base-whitespace;
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .corporate-logo {
+      left: $double-whitespace;
+    }
+  }
+}
+
+
+// ============================================
+//  Hero
+// ============================================
+
+.hero,
+.row:first-child {
+  background: $secondaryColor;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .content {
+    margin: 0 auto;
+    max-width: $site-width;
+    position: static;
+  }
+
+  .col {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .row-1 {
+    padding-bottom: 0;
+  }
+
+  .cinemagraph-absolute {
+    height: 56.25vw;
+  }
+
+  .photo-wrapper {
+    display: block;
+    position: static;
+  }
+
+  .photo,
+  .gallery-basic {
+    @extend %corners;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .photo,
+  .gallery-basic,
+  .cinemagraph {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+    margin-left: -($half-whitespace);
+    margin-right: -($half-whitespace);
+  }
+
+  figcaption,
+  .html {
+    text-align: center;
+    width: 100%;
+  }
+
+  figcaption {
+    font-size: 4vw;
+    top: 35%;
+  }
+
+  .html h1 {
+    color: $base-color;
+  }
+
+  @include until($max-hero) {
+    .cinemagraph {
+      position: relative;
+    }
+  }
+
+  @include at-least($min-hero) {
+    .content {
+      padding: 0 $half-whitespace;
+    }
+
+    .widget:not(.photo):not(.cinemagraph) {
+      opacity: 0;
+    }
+
+    .cinemagraph-full-width .cinemagraph-frame,
+    .cinemagraph-full-width .ytplayer {
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .photo,
+    .gallery-basic {
+      position: absolute;
+    }
+
+    img {
+      @include transition(opacity 500ms ease);
+      @include center-el;
+      opacity: 0;
+      width: 100%;
+    }
+  }
+}
+
+.row:first-child {
+  @include until($max-nav) {
+    margin-top: 0;
+  }
+
+  @include at-least($min-hero) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    .not-found-404 & {
+      padding-top: 250px;
+      position: static;
+      .widget.button {
+        opacity: 1;
+      }
+      &:before{
+        background-color: #2d2a28;
+        content: "";
+        display: block;
+        height: 250px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+
+  }
+}
+
+.web-home-template .row:first-child,
+.hero {
+  @include at-least($min-hero) {
+    height: $hero-height;
+  }
+}
+
+.web-home-template .row:first-child + div {
+  @include at-least($min-hero) {
+    margin-top: $hero-height;
+  }
+}
+
+.web-page-template .row:first-child {
+  @include at-least($min-hero) {
+    height: 30vw;
+
+    &:first-child + div {
+      margin-top: 30vw;
+    }
+  }
+}
+
+.site-corporate.web-home-template .row:first-child {
+  background-color: $primaryColor;
+
+  @include until($max-xsmall) {
+    .html h1 {
+      font-size: 1em;
+    }
+  }
+
+  @include at-least($min-mlarge) {
+    .html h1 {
+      font-size: em(60);
+    }
+  }
+
+  @include at-least(rem(1800)) {
+    .html h1 {
+      font-size: em(72);
+    }
+  }
+}
+
+.site-corporate.web-home-template .row:first-child,
+.site-corporate .hero {
+  @include until($max-hero) {
+    .html {
+      top: 28vw;
+    }
+  }
+}
+
+.site-corporate.web-page-template .row:first-child {
+  @include until($max-hero) {
+    .html {
+      top: 16vw;
+    }
+  }
+}
+
+.site-corporate .hero,
+.site-corporate .row:first-child {
+  figcaption,
+  .html {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  @include at-least($min-hero) {
+    figcaption {
+      top: 25%;
+    }
+
+    .html {
+      top: -5vw;
+    }
+  }
+}
+
+.site-location.web-page-template .row:first-child {
+  @include at-least($min-hero) {
+    .photo:before {
+      background-color: rgba($secondaryColor, 0.5);
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Hero Widgets
+// --------------------------------------------
+
+.hero-widgets {
+  margin-left: -$half-whitespace;
+  margin-right: -$half-whitespace;
+
+  .html-content {
+    max-width: none;
+  }
+
+  @include until($max-hero) {
+    .multifamily-mini-search-v2,
+    .multifamily-mini-search.widget {
+      .city,
+      .state {
+        border-color: $white;
+      }
+
+      .city,
+      .state,
+      select,
+      .search-form::before {
+        color: $white;
+      }
+    }
+  }
+
+  @include at-least($min-hero) {
+    @include transition(opacity 500ms 250ms ease);
+    @include transform(translateX(-50%));
+    position: absolute;
+    left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    z-index: 100;
+
+    .widget:not(.photo):not(.cinemagraph) {
+      opacity: 1 !important;
+    }
+
+    .multifamily-mini-search-v2,
+    .multifamily-mini-search.widget {
+      width: 42%;
+      min-width: 500px;
+      max-width: 750px;
+    }
+
+    .home-multifamily-iui, .home-multifamily-iui-v2 {
+      background-color: rgba($secondaryColor, 0.8);
+      padding: $half-whitespace;
+    }
+  }
+
+  @include at-least(1330px) {
+    .home-multifamily-iui, .home-multifamily-iui-v2 {
+      font-size: em(21);
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .home-multifamily-iui, .home-multifamily-iui-v2 {
+      font-size: em(24);
+    }
+  }
+}
+
+.site-corporate .hero-widgets {
+  padding: $half-whitespace 0;
+
+  @include at-least($min-hero) {
+    padding: 0;
+    top: 50%;
+    width: 100%;
+  }
+}
+
+.site-corporate .row:first-child .hero-widgets {
+  @include at-least($min-hero) {
+    top: 37%;
+  }
+}
+
+.site-location, .not-found-404 {
+  .hero-widgets {
+    text-align: center;
+
+    .widget {
+      display: inline-block;
+      min-width: 300px;
+    }
+
+    h1 {
+      margin-bottom: .5em;
+    }
+
+    @include until($max-hero) {
+      padding: $half-whitespace;
+    }
+  }
+
+  // only first stripe hero
+  &.web-home-template .row:first-child {
+    .hero-widgets {
+      @include at-least($min-hero) {
+        bottom: 3vw;
+        width: 80%;
+      }
+    }
+  }
+
+  &.web-page-template .row:first-child {
+    .html {
+      margin-bottom: 0;
+    }
+
+    .hero-widgets {
+      @include at-least($min-hero) {
+        bottom: 6vw;
+        width: 80%;
+      }
+    }
+  }
+
+  // any other hero
+  .hero {
+    .hero-widgets {
+      @include at-least($min-hero) {
+        @include transform(translate(-50%, -50%));
+        top: 50%;
+      }
+    }
+  }
+}
+
+
+// ============================================
+//  Content Stripe / Column Classes
+// ============================================
+
+.tagline {
+  .col {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  .html-content {
+    max-width: none;
+  }
+
+  h6 {
+    color: $white;
+  }
+
+  h6::before {
+    content: ">";
+    font-weight: $bold-font-weight;
+    margin-right: 0.5em;
+  }
+
+  @include at-least($min-hero) {
+    .col {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+  }
+}
+
+.site-corporate .tagline {
+  border-bottom: 5px solid $secondaryColor;
+
+  @include at-least($min-hero) {
+    border-bottom-width: 10px;
+  }
+}
+
+
+.vert-align .row-grid {
+  @include align-items(center);
+}
+
+.corp-collage {
+  .content,
+  .row-grid,
+  .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row-grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .call-outs {
+    @include display(block);
+  }
+
+  // 960 x 580 canvas
+  .call-out {
+    float: left;
+    margin: 0;
+    position: relative;
+
+    &:nth-of-type(1),
+    &:nth-of-type(2),
+    &:nth-of-type(3) {
+      padding-bottom: 30%;
+    }
+
+    &:nth-of-type(1) {
+      width: 100%; // 960
+    }
+
+    &:nth-of-type(2) {
+      width: 75%; // 720
+    }
+
+    &:nth-of-type(3) {
+      width: 25%; // 240
+    }
+
+    &:nth-of-type(4),
+    &:nth-of-type(5),
+    &:nth-of-type(6) {
+      padding-bottom: 60%;
+      width: 33.3333333%; // 320
+    }
+  }
+
+  img {
+    @include transition(transform 300ms ease);
+    height: auto !important;
+    min-height: 100% !important;
+    width: 100% !important;
+  }
+
+  .call-out a {
+    @extend %corners;
+    color: $dark-grey;
+    position: absolute;
+    overflow: hidden;
+
+    &::before {
+      @extend %corners;
+      @include transition(opacity 300ms ease);
+      content: '';
+      background-color: rgba($white, 0.50);
+      position: absolute;
+      z-index: 1;
+    }
+  }
+
+  .label {
+    @include transition(opacity 300ms ease);
+    @include transform(translateY(-50%));
+    font-size: 4vw;
+    font-weight: $base-font-weight;
+    line-height: 1;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+
+    strong {
+      display: block;
+    }
+  }
+
+  a:hover .label {
+    opacity: 1;
+  }
+
+  @include at-least($min-small) {
+    // 1920 x 580 canvas
+    .call-out {
+      &:nth-of-type(1),
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        padding-bottom: 15%;
+      }
+
+      &:nth-of-type(1) {
+        width: 50%; // 960
+      }
+
+      &:nth-of-type(2) {
+        width: 37.5%; // 720
+        position: absolute;
+        left: 0;
+        top: 50%;
+      }
+
+      &:nth-of-type(3) {
+        width: 12.5%; // 240
+        position: absolute;
+        left: 37.5%;
+        top: 50%;
+      }
+
+      &:nth-of-type(4),
+      &:nth-of-type(5),
+      &:nth-of-type(6) {
+        padding-bottom: 30%;
+        width: 16.6666667%; // 320
+      }
+    }
+
+    a {
+      &::before {
+        background-color: rgba($white, 0.75);
+      }
+
+      &::before,
+      .label {
+        opacity: 0;
+      }
+
+      &:hover {
+        &::before,
+        .label {
+          opacity: 1;
+        }
+
+        img {
+          @include transform(scale(1.05));
+        }
+      }
+    }
+
+    .label {
+      font-size: 2vw;
+    }
+  }
+}
+
+
+.mosaic-collage {
+  background-color: $secondaryColor;
+  text-align: center;
+
+  .content,
+  .row-grid {
+    padding: 0;
+  }
+
+  .row-grid {
+    margin: 0;
+  }
+
+  .col,
+  .widget {
+    position: relative;
+  }
+
+  .photo-wrapper {
+    position: static;
+  }
+
+  .photo {
+    @extend %corners;
+    position: absolute;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+
+    img {
+      @include transform(translate(-50%, -50%));
+      max-width: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+    }
+  }
+
+  .column .html {
+    text-align: center;
+  }
+
+  .column-two .html {
+    border: 1px solid $white;
+    display: inline-block;
+    padding: 1em 3em;
+
+    h2 {
+      font-size: em(42);
+    }
+  }
+
+  h2 {
+    font-size: em(32);
+    line-height: 1.2 !important;
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  @include until($max-layout) {
+    & + .mosaic-collage .col-1 {
+      @include order(2);
+    }
+  }
+
+  @include until($max-xsmall) {
+    .col + .col {
+      padding-top: 2em;
+    }
+  }
+
+  @include at-least($min-layout) {
+    .col {
+      height: 25vw;
+    }
+
+    .mini-hero-widgets {
+      @include transform(translateY(-50%));
+      position: absolute;
+      top: 50%;
+      left: $half-whitespace;
+      right: $half-whitespace;
+    }
+  }
+
+  @include at-least($min-large) {
+    font-size: em(18);
+  }
+
+  @include at-least($min-mlarge) {
+    font-size: em(21);
+
+    .column-two .html {
+      padding: 2em 9em;
+    }
+  }
+
+  @include at-least($min-xlarge) {
+    .photo img {
+      width: auto;
+    }
+  }
+}
+
+
+.full-width {
+  .row-grid {
+    margin: 0;
+  }
+
+  .content,
+  .row-grid,
+  .col {
+    padding: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+
+.equal-buttons .btn,
+.page-careers .row:nth-last-child(2) .btn {
+  width: em(250);
+
+  @include at-least($min-large) {
+    width: em(350);
+  }
+}
+
+
+// -------------------------------------------
+//  Boilerplate content stripe classes
+// -------------------------------------------
+
+// Boilerplate assumes top/bottom padding added to .row
+// In this theme it's added to .col
+.no-padding .col {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.super-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  @include at-least($min-layout) {
+    .col {
+      padding-top: 9em;
+      padding-bottom: 9em;
+    }
+  }
+}
+
+// ### ADD TO BOILERPLATE
+.light-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+
+  .col {
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    @include at-least($min-nav) {
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
+    }
+  }
+}
+
+.col-1-bg .col-1,
+.col-2-bg .col-2 {
+  background-color: $primary-light;
+}
+
+[class*=cta-bg-] {
+  .action-calls {
+    padding: 1em $half-whitespace;
+  }
+}
+
+.text-dark {
+  .multifamily-mini-search-v2,
+  .multifamily-mini-search.widget {
+    .city,
+    .state {
+      border-color: $primaryColor;
+    }
+
+    .city,
+    .state,
+    select {
+      color: $primaryColor;
+    }
+
+    .search-form::before {
+      color: $primaryColor;
+    }
+  }
+
+  .button .btn,
+  .action-calls a {
+    color: $primaryColor;
+    border-color: $primaryColor;
+  }
+}
+
+.text-light {
+  .multifamily-mini-search-v2,
+  .multifamily-mini-search.widget {
+    .city,
+    .state {
+      border-color: $white;
+    }
+
+    .city,
+    .state,
+    select,
+    .search-form::before {
+      color: $white;
+    }
+  }
+}

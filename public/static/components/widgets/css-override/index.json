@@ -1,0 +1,24 @@
+{
+  "name": "CSS Override",
+  "widget_id": 68,
+  "widget_type": null,
+  "summary": "CSS Override for themes",
+  "liquid": false,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7660' target='_blank'>CSS Override Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "css_override",
+      "default_value": ""
+    }
+  ]
+}

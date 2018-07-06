@@ -1,0 +1,53 @@
+// *************************************
+//
+//  Standard Contact Info
+//
+// *************************************
+
+.contact-info {
+  @extend %clearfix;
+}
+
+// Styling within main to leave footer styles alone
+[role=main] .contact-info {
+  a {
+    color: $base-color;
+  }
+
+  .p-name {
+    border-bottom: 1px solid $base-color;
+    font-family: $primary-font;
+    font-size: em(18);
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+  }
+
+  .adr-ret,
+  .p-tel,
+  .tel,
+  .adr,
+  .fax,
+  .email,
+  .chat {
+    @extend %icon;
+
+    &:before {
+      @extend %inline;
+      margin-right: .5em;
+      vertical-align: middle;
+    }
+  }
+
+  .p-tel, .tel { @extend .icn-phone; }
+  .email { @extend .icn-envelope; }
+  .fax { @extend .icn-fax; }
+  .chat { @extend .icn-comment; }
+  .adr-ret, .adr {
+    @extend .icn-location;
+
+    a {
+      @extend %inline;
+      vertical-align: middle;
+    }
+  }
+}

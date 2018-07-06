@@ -1,0 +1,61 @@
+{% capture widgetId %}coupon-{{ widget.id }}{% endcapture %}
+{% capture locationName %}{{ widget.location_name.value_or_default }}{% endcapture %}
+{% capture streetAddress %}{{ widget.location_street_address.value_or_default }}{% endcapture %}
+{% capture city %}{{ widget.location_city.value_or_default }}{% endcapture %}
+{% capture state %}{{ widget.location_state.value_or_default }}{% endcapture %}
+{% capture postalCode %}{{ widget.location_postal_code.value_or_default }}{% endcapture %}
+
+<div class="coupon widget h-c-ret h-card {{ widgetId }}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "streetAddress": "{{ streetAddress | HtmlEncode }}",
+      "city": "{{ city | HtmlEncode }}",
+      "state": "{{ state | HtmlEncode }}",
+      "postalCode": "{{ postalCode | HtmlEncode }}",
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+
+  <div class="coupon-info">
+
+    {% if widget.location_logo_url.value != blank %}
+      <img src="{{widget.location_logo_url.value}}" alt="{{locationName}}" class="coupon-logo" {{ widget.location_logo_url.value | srcset }}>
+    {% endif %}
+
+    {% if widget.coupon_text.value != blank %}
+      <h2 class="coupon-offer">{{ widget.coupon_text.value }}</h2>
+    {% endif %}
+
+    {% if widget.coupon_description.value != blank %}
+      <p class="coupon-description">{{ widget.coupon_description.value}}</p>
+    {% endif %}
+
+    <div class="coupon-actions">
+      <button id="{{widgetId}}-coupon-print" class="coupon-print btn">Print</button>
+      <button class="show-location-info show-coupon-map btn">Map &amp; Directions</button>
+    </div> <!-- end .coupon-actions -->
+
+  </div> <!-- end .coupon-info -->
+
+  <div class="location-info coupon-drawer">
+    <div class="coupon-map">
+      <div class="map-canvas"></div>
+    </div> <!-- end .coupon-map -->
+
+    <div class="coupon-address">
+      <p class="p-name"><strong>{{ locationName | google_no_translate }}</strong></p>
+      <p class="p-adr h-adr">
+        <span class="p-street-address">{{ streetAddress }}</span>
+        <span class="p-locality">{{ city }}</span>, <span class="p-region">{{ state }}</span> <span class="p-postal-code">{{ postalCode }}</span>
+        <span class="p-tel">{{ widget.location_tel.value_or_default }}</span>
+      </p>
+    </div> <!-- end .coupon-address -->
+
+    {% if widget.location_directions.value != blank %}
+      <div class="coupon-directions">
+        {{ widget.location_directions.value }}
+      </div>
+    {% endif %}
+
+  </div> <!-- end .coupon-drawer -->
+</div>

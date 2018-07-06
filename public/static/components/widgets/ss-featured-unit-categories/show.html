@@ -1,0 +1,55 @@
+{% capture widgetId %}ss-featured-unit-categories-{{ widget.id }}{% endcapture %}
+<div class="ss-featured-unit-categories widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "unit_service_host": "{{ widget.unit_service_host.value }}",
+      "location_urn": "{{ widget.location_urn.value }}",
+      "unit_page_url": "{{ widget.unit_page_url.value }}",
+      "destination_type": "{{ widget.destination_type.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+{% if widget.primary_color.value != blank or widget.secondary_color.value != blank or widget.accent_color.value != blank %}
+<style>
+  {% if widget.primary_color.value != blank %}
+  /* Button Color color customizations */
+    .ss-featured-unit-categories .iui-size > a,
+    .ss-featured-unit-categories .iui-steps span:first-child { background-color: {{widget.primary_color.value}} !important; }
+  {% endif %}
+  {% if widget.view_all_color.value != blank %}
+  /* Button Color color customizations */
+    .ss-featured-unit-categories.{{widgetId}} .iui-size > a,
+    .ss-featured-unit-categories.{{widgetId}} .iui-steps span:first-child { background-color: {{widget.primary_color.value}} !important; }
+    {% endif %}
+    {% if widget.view_all_color.value != blank %}
+    /* Button Color color customizations */
+      .ss-featured-unit-categories.{{widgetId}} .iui-size .iui-view-all { background-color: {{widget.view_all_color.value}} !important; }
+    {% endif %}
+    {% if widget.secondary_color.value != blank %}
+    /* Secondary  color customizations */
+      .ss-featured-unit-categories.{{widgetId}} .iui-title,
+      .ss-featured-unit-categories.{{widgetId}} .iui-size .btn,
+      .ss-featured-unit-categories.{{widgetId}} .iui-steps span:first-child { color: {{widget.secondary_color.value}} !important; }
+    {% endif %}
+    {% if widget.accent_color_1.value != blank %}
+    /* Text-Color-1 color customizations */
+      .ss-featured-unit-categories.{{widgetId}} .iui-title {color:{{widget.accent_color_1.value}} !important;}
+    {% endif %}
+    </style>
+  {% endif %}
+
+  <div class="iui-steps">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+
+  {% if widget.ss_featured_unit_categories_heading.value_or_default != blank %}
+    <h2 class="iui-title" style="text-align: {{widget.ss_featured_unit_categories_heading_position.value_or_default}}">{{ widget.ss_featured_unit_categories_heading.value_or_default }}</h2>
+  {% endif %}
+
+  <div class="iui-container">
+    <p>Loading Unit Options</p>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+// ******************************************
+//
+//  Content Stripe Classes and Color Override
+//
+// ******************************************
+
+// =====================================
+//  Classes
+// =====================================
+
+.no-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+// DEPRECATED
+// See defaults/required-widgets.scss for new patterns
+.super-padding {
+  padding-top: 9em !important;
+  padding-bottom: 9em !important;
+}
+
+.no-col-padding {
+  .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.col-1-bg .col-1,
+.col-2-bg .col-2 {
+  background-color: $secondaryColor;
+}
+
+.cta-bg-white {
+  .action-calls {
+    background-color: #fff;
+  }
+}
+
+.cta-bg-charcoal {
+  .action-calls {
+    background-color: #36454f;
+  }
+}
+
+.cta-bg-grey {
+  .action-calls {
+    background-color: #d3d3d3;
+  }
+}
+
+.cta-bg-taupe {
+  .action-calls {
+    background-color: #b38b6d;
+  }
+}
+
+.no-border {
+  img {
+    border: none;
+  }
+}
+
+// =====================================
+//  Overrides
+// =====================================
+
+// Client has the option to change content stripe background to anything
+// If the default text color doesn't work with the new background
+// these classes on .content-stripe can be used to change text color
+// This is an option in the widget settings
+@mixin text-light { color: $white !important; }
+@mixin text-dark { color: $black !important;}
+
+.text-light {
+  @include text-light;
+
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend,
+  .contact-info a {
+    color: $white !important;
+  }
+
+  a {
+    color: $body-link-light;
+  }
+}
+
+.text-dark {
+  @include text-dark;
+
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend,
+  .contact-info a {
+    color: $black !important;
+  }
+
+  a {
+    color: $bodyLinkColor;
+  }
+}

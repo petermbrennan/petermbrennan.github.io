@@ -1,0 +1,25 @@
+{
+  "name": "Vetstoria",
+  "widget_id": 77,
+  "widget_type": null,
+  "summary": "Third party widget provided by Vetstoria",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/229313168' target='_blank'>Vetstoria Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "vetstoria_id",
+      "default_value": ""
+    },
+    {
+      "name": "vetstoria_theme",
+      "default_value": ""
+    }
+  ]
+}

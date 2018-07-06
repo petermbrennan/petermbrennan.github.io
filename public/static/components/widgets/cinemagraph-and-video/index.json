@@ -1,0 +1,87 @@
+{
+  "name": "Cinemagraph and Video",
+  "widget_id": 103,
+  "widget_type": null,
+  "summary": "An embedded cinemagraph",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468597-Cinemagraph-and-Video-Widget' target='_blank'>Cinemagraph and Video Documentation</a>",
+  "lib_javascripts": [
+    "you-tube-api.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "cinemagraph_id",
+      "default_value": ""
+    },
+    {
+      "name": "cinemagraph_title",
+      "default_value": ""
+    },
+    {
+      "name": "source",
+      "default_value": ""
+    },
+    {
+      "name": "source_ratio_width",
+      "default_value": "16"
+    },
+    {
+      "name": "source_ratio_height",
+      "default_value": "9"
+    },
+    {
+      "name": "cinemagraph_position",
+      "default_value": "cinemagraph-absolute"
+    },
+    {
+      "name": "cinemagraph_full_width",
+      "default_value": "no"
+    },
+    {
+      "name": "cinemagraph_fallback_image",
+      "default": ""
+    },
+    {
+      "name": "fallback_photo_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "cinemagraph_filter",
+      "default_value": ""
+    },
+    {
+      "name": "filter_opacity",
+      "default_value": "filter-half"
+    }
+  ],
+  "aliases": [
+    "cinemagraph"
+  ]
+}

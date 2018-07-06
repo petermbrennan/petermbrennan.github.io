@@ -1,0 +1,33 @@
+{% capture widgetId %}blog-tags-{{ widget.id }}{% endcapture %}
+<div class="blog-tags widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "newsServiceDomain":  "{{ widget.news_service_domain.value_or_default }}",
+      "locationURN":        "{{ widget.location_urn.best_value }}",
+      "widgetId":           "{{ widgetId }}"
+    }
+  </script>
+
+  <style>
+    {% if widget.background_color.value != blank %}
+      .blog-tags.{{widgetId}} a.tag-link{ background:{{ widget.background_color.value }}; }
+    {% endif %}
+
+    {% if widget.active_background_color.value != blank %}
+      .blog-tags.{{widgetId}} a.tag-link.active-tag{ background:{{ widget.active_background_color.value }}; }
+    {% endif %}
+
+    {% if widget.text_color.value != blank %}
+      .blog-tags.{{widgetId}} a.tag-link{ color:{{ widget.text_color.value }}; }
+    {% endif %}
+
+    {% if widget.heading_alignment.value != blank %}
+      .blog-tags.{{widgetId}} { text-align:{{ widget.heading_alignment.value }}; }
+    {% endif %}
+  </style>
+
+  <h2>{{ widget.heading_text.value }}</h2>
+  {% if widget.subtitle.value != blank %}
+    <p>{{ widget.subtitle.value }}</p>
+  {% endif %}
+</div>

@@ -1,0 +1,135 @@
+    {% capture widgetId %}photo-cards-{{ widget.id }}{% endcapture %}
+
+  {% comment %}
+    // This voodoo basically creates a photo card width based on the number of cards in the row.
+    // Prevents us from needing a widget config to specify count. Less work for builders.
+  {% endcomment %}
+
+  {% capture photo_cards_list %}{{widget.photo_cards_1_url.value}}|{{widget.photo_cards_2_url.value}}|{{widget.photo_cards_3_url.value}}|{{widget.photo_cards_4_url.value}}|{{widget.photo_cards_5_url.value}}|{{widget.photo_cards_6_url.value}}{% endcapture %}
+
+  {% assign photo_cards_count = photo_cards_list | split: "|" %}
+
+  {% if photo_cards_count.size > 0 %}
+    {% assign flip_tile_width = 100 | divided_by: photo_cards_count.size %}
+  {% endif %}
+
+  <div class="photo-cards {{widgetId}} {{widget.photo_cards_animation.value_or_default}} {% if widget.photo_cards_img_overlay_background.value != blank %}has-overlay{% endif %} {{widget.photo_cards_title_position.value}} {{widget.photo_cards_title_alignment.value}} widget" id="{{widgetId}}">
+
+<script class="config" type="application/json">
+  {
+    "widgetId": "{{widgetId}}"
+  }
+</script>
+
+    <style>
+      {% if widget.photo_cards_heading.value != blank %}
+        .{{widgetId}} h2 { text-align: {{widget.photo_cards_heading_alignment.value_or_default}}; }
+      {% endif %}
+
+      {% if widget.photo_cards_spacing.value != blank %}
+        .{{widgetId}} .photo-card-wrapper { padding: {{widget.photo_cards_spacing.value}} !important; }
+      {% endif %}
+
+      {% if widget.photo_cards_title_background.value != blank %}
+        .{{widgetId}} .photo-card-title { background-color: {{widget.photo_cards_title_background.value}} !important; }
+      {% endif %}
+
+      {% if widget.photo_cards_title_size.value != blank %}
+        .{{widgetId}} .photo-card-title h3 { font-size: {{widget.photo_cards_title_size.value}} !important; }
+      {% endif %}
+
+      {% if widget.photo_cards_title_color.value != blank %}
+        .{{widgetId}} .photo-card-title h3 { color: {{widget.photo_cards_title_color.value}} !important; }
+      {% endif %}
+
+      {% if widget.photo_cards_caption_color.value != blank %}
+        .{{widgetId}} .photo-card-caption * { color: {{widget.photo_cards_caption_color.value}} !important; }
+      {% endif %}
+
+      .{{widgetId}} .photo-card-back::before {
+        background-color: {{widget.photo_cards_caption_background.value_or_default}} !important;
+        opacity: {{widget.photo_cards_caption_background_opacity.value_or_default}};
+      }
+
+      {% if widget.photo_cards_img_overlay_background.value != blank %}
+        .{{widgetId}} .photo-card-front::before {
+          background-color: {{widget.photo_cards_img_overlay_background.value}};
+          opacity: {{widget.photo_cards_img_overlay_opacity.value}};
+        }
+      {% endif %}
+
+      {% comment %}
+        // Mobile breakpoint can be overridden by client
+        // Allows fine tuning of when the cards stack based on size and number of cards
+      {% endcomment %}
+
+      @media screen and (min-width: 480px) and (max-width: {{widget.photo_cards_mobile_breakpoint.value_or_default}}) {
+        .photo-cards .photo-card-wrapper { width: 50%; }
+      }
+
+      @media screen and (min-width: {{widget.photo_cards_mobile_breakpoint.value_or_default}}) {
+        .{{widgetId}} .photo-cards-container { flex-wrap: nowrap; }
+
+        .{{widgetId}} .photo-cards-wrapper { width: auto; }
+
+        .{{widgetId}} .photo-card-wrapper img { width: 100%; }
+
+        {% if widget.photo_cards_animation.value_or_default == "a-flip" %}
+          .{{widgetId}}.a-flip .photo-card-wrapper {
+            width: {{flip_tile_width}}%;
+            margin-left: 0;
+            margin-right: 0;
+          }
+        {% endif %}
+      }
+    </style>
+
+    {% if widget.photo_cards_heading.value != blank %}
+    <h2>{{ widget.photo_cards_heading.value }}</h2>
+    {% endif %}
+
+    {% if photo_cards_count.size > 0 %}
+      <div class="photo-cards-container">
+        {% for i in (1..photo_cards_count.size) %}
+
+          {% comment %}
+            // Must create new variables using the current index of the loop
+          {% endcomment %}
+
+          {% capture link %}photo_cards_{{i}}_link{% endcapture %}
+          {% capture link_target %}photo_cards_{{i}}_link_target{% endcapture %}
+          {% capture url %}photo_cards_{{i}}_url{% endcapture %}
+          {% capture alt %}photo_cards_{{i}}_alt{% endcapture %}
+          {% capture title %}photo_cards_{{i}}_title{% endcapture %}
+          {% capture caption %}photo_cards_{{i}}_large_caption{% endcapture %}
+
+          <div class="photo-card-wrapper">
+            <div class="photo-card">
+              {% if widget[link].value != blank %}
+              <a href="{{widget[link].value}}"{% if widget[link_target].value_or_default == "true" %} target="_blank"{% endif %}>
+              {% endif %}
+                <div class="photo-card-front">
+                  <img src="{{widget[url].value}}" alt="{{widget[alt].value}}" {{ widget[url].value | srcset }}>
+
+                  <div class="photo-card-title">
+                    <h3>{{widget[title].value}}</h3>
+                  </div>
+                </div>
+
+                <div class="photo-card-back">
+                  <div class="photo-card-caption">
+                    {{widget[caption].value}}
+                  </div>
+                </div>
+              {% if widget[link].value != blank %}
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No Photo Cards Set Up</p>
+    {% endif %}
+  </div>

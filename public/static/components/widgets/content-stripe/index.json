@@ -1,0 +1,154 @@
+{
+  "name": "Content Stripe",
+  "widget_id": 11,
+  "beta": false,
+  "widget_type": null,
+  "summary": "Full width content stripe with layouts and widget drop areas",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468807-Manage-Webpage-Content-using-Content-Stripes' target='_blank'>Content Stripe Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-layout.js",
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-layout.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "divider_image_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "divider_image_cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "divider_image_cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "background_image_cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "background_image_cropping_height",
+      "default_value": "1100"
+    },
+    {
+      "name": "background_image_cropping_width",
+      "default_value": "2000"
+    },
+    {
+      "name": "disabled",
+      "default_value": "false"
+    },
+    {
+      "name": "custom_name",
+      "default_value": ""
+    },
+    {
+      "name": "row_css_custom",
+      "default_value": ""
+    },
+    {
+      "name": "row_bg_color",
+      "default_value": ""
+    },
+    {
+      "name": "row_bg_image",
+      "default": ""
+    },
+    {
+      "name": "row_bg_overlay_color",
+      "default": ""
+    },
+    {
+      "name": "row_bg_overlay_opacity",
+      "default": "0.5"
+    },
+    {
+      "name": "row_bg_position",
+      "default": "cover"
+    },
+    {
+      "name": "row_bg_behavior",
+      "default": "normal"
+    },
+    {
+      "name": "row_divider_image",
+      "default": ""
+    },
+    {
+      "name": "row_divider_position",
+      "default": "center"
+    },
+    {
+      "name": "row_text_color",
+      "default_value": "default"
+    },
+    {
+      "name": "row_layout",
+      "default_value": "single"
+    },
+    {
+      "name": "column_1_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "column_1_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "column_2_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "column_2_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "column_3_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "column_3_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "column_4_widget_id",
+      "default_value": ""
+    },
+    {
+      "name": "column_4_widget_name",
+      "default_value": ""
+    },
+    {
+      "name": "link_color",
+      "default_value": ""
+    },
+    {
+      "name": "row_padding",
+      "default_value": "default"
+    },
+    {
+      "name": "top_row_padding",
+      "default_value": ""
+    },
+    {
+      "name": "bottom_row_padding",
+      "default_value": ""
+    }
+  ]
+}

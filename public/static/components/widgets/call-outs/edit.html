@@ -1,0 +1,68 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- Call Outs Layout -->
+    {% assign callout_layout_opts = '{"default": "Default", "1": "Large Call Out on Left", "2": "Large Call Out on Right"}' %}
+    {{ widget.callout_layout | edit_radio_field: "Call Outs Layout", callout_layout_opts, "value_or_default" }}
+
+    <div class="photo-gallery-preview"></div>
+    <p class="note">Drag and drop thumbnails to change Call Out order. Click the <i class='fa fa-close'></i> icon to remove a Call Out. Click the <i class='fa fa-plus'></i> icon to add a Call Out.</p>
+
+    <div class="photo-fields">
+      {% for i in (1..6) %}
+        {% capture widget_new_window %}callout_{{i}}_new_window{% endcapture %}
+        {% capture widget_label %}callout_label_{{i}}{% endcapture %}
+        {% capture widget_url %}callout_url_{{i}}{% endcapture %}
+        {% capture widget_image_url %}callout_image_url_{{i}}{% endcapture %}
+        {% capture widget_image_alt %}callout_image_alt_{{i}}{% endcapture %}
+        {% capture widget_image_height %}callout_image_height_{{i}}{% endcapture %}
+        {% capture widget_image_width %}callout_image_width_{{i}}{% endcapture %}
+        {% capture widget_cropping_styles %}callout_image_cropping_styles_{{i}}{% endcapture %}
+
+        <fieldset class="photo-field photo-field-{{i}}">
+          <legend>Call Out {{i}}</legend>
+          <!-- Call Out Image URL -->
+          <fieldset>
+            <legend>Call Out Image</legend>
+              {{ widget[widget_image_url] | edit_image_field: "Source URL", "", "value_or_default", "", "call-out" }}
+              <div class="col s5">
+                {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+                {{ widget[widget_cropping_styles] | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+              </div>
+
+              <div class="col s2 offset-s1">
+                {{ widget[widget_image_width] | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+              </div>
+
+              <div class="col s2 offset-s1">
+                {{ widget[widget_image_height] | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+              </div>
+              <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+          </fieldset>
+
+          <!-- Call Out Label -->
+          {{ widget[widget_label] | edit_text_field: "Call Out Label", "", "value_or_default" }}
+
+          <!-- Call Out Link URL -->
+          {{ widget[widget_url] | edit_url_field: "Call Out URL", "", "value_or_default" }}
+
+          <!-- Open Call Out Link in New Window Toggle -->
+          {{ widget[widget_new_window] | edit_toggle_field: "Opens Link in a New Window", "value_or_default" }}
+
+          <!-- Call Out Image ALT Text -->
+          {{ widget[widget_image_alt] | edit_text_field: "Call Out Image Alt Text", "", "value_or_default" }}
+        </fieldset>
+      {% endfor %}
+    </div>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    {{ widget | edit_photo_overlay }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

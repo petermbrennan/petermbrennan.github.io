@@ -1,0 +1,10 @@
+{% capture widgetId %}floorplans-{{ widget.id }}{% endcapture %}
+<div class="floorplans widget">
+  <script class="config" type="application/json">
+    {
+      "clientUrn": "{{ widget.client_urn.value_or_default }}",
+      "locationUrn": "{{ widget.location_urn.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+</div>

@@ -1,0 +1,523 @@
+// *****************************************************
+//
+//  Fort Awesome Icons
+//
+// *****************************************************
+
+// Documentation here:
+// https://fortawesome.com/share/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJraXQiOiIyNjgwNWQ3OCJ9.1darMtBCIGWnYw8FjSqWh-2e3a9F4zTt_Gqm9pl_HOU/kit-documentation/icons
+
+
+// --------------------------
+// Mixins
+// --------------------------
+
+@mixin fa-icon() {
+  display: inline-block;
+  font: normal normal normal #{$fa-font-size-base}/#{$fa-line-height-base} "Fa";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin fa-icon-rotate($degrees, $rotation) {
+  -webkit-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+
+
+@mixin fa-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+@mixin fa-2x {
+  font-size: 2em;
+}
+
+@mixin fa-3x {
+  font-size: 3em;
+}
+
+@mixin fa-4x {
+  font-size: 4em;
+}
+
+@mixin fa-5x {
+  font-size: 5em;
+}
+
+
+// Fixed width icons
+@mixin fa-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+
+
+// Icon instead of bullet
+// Use this on the ul
+@mixin fa-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+
+  & > li {
+    position: relative;
+    position: absolute;
+    left: -2.14285714em;
+    width: 2.14285714em;
+    top: 0.14285714em;
+    text-align: center;
+  }
+}
+
+
+// Spinning animation
+@mixin fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+// Pulse animation
+@mixin fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+
+// --------------------------
+// Variables
+// --------------------------
+
+$fa-font-size-base:   16px !default;
+$fa-line-height-base: 1 !default;
+
+
+$fa-var-search: "\f000";
+
+$fa-var-star: "\f001";
+
+$fa-var-staffed-entry: "\f002";
+
+$fa-var-home: "\f005";
+
+$fa-var-comment: "\f006";
+
+$fa-var-chevron-up: "\f007";
+
+$fa-var-phone: "\f008";
+
+$fa-var-envelope: "\f00c";
+
+$fa-var-surf: "\f00f";
+
+$fa-var-stairs: "\f010";
+
+$fa-var-locker: "\f011";
+
+$fa-var-secure: "\f012";
+
+$fa-var-handicap-accessible: "\f013";
+
+$fa-var-door-slide: "\f014";
+
+$fa-var-car-storage: "\f015";
+
+$fa-var-motorcycle-storage: "\f016";
+
+$fa-var-rv-storage: "\f017";
+
+$fa-var-boat-storage: "\f018";
+
+$fa-var-bicycle-storage: "\f019";
+
+$fa-var-ceramics-studio: "\f01a";
+
+$fa-var-arts-crafts-storage: "\f01b";
+
+$fa-var-premium: "\f01c";
+
+$fa-var-moving-truck: "\f01d";
+
+$fa-var-level-upper: "\f01e";
+
+$fa-var-level-lower: "\f01f";
+
+$fa-var-office-space: "\f020";
+
+$fa-var-retail-storage: "\f022";
+
+$fa-var-exclamation: "\f023";
+
+$fa-var-warning: "\f024";
+
+$fa-var-dollar-bill: "\f025";
+
+$fa-var-door-swing: "\f026";
+
+$fa-var-power: "\f027";
+
+$fa-var-door-roll-up: "\f028";
+
+$fa-var-electric-outlet: "\f02a";
+
+$fa-var-key: "\f02b";
+
+$fa-var-not-available: "\f02c";
+
+$fa-var-lighted: "\f02d";
+
+$fa-var-video-security: "\f02e";
+
+$fa-var-lock: "\f02f";
+
+$fa-var-elevator: "\f030";
+
+$fa-var-keypad: "\f031";
+
+$fa-var-lower-price: "\f032";
+
+$fa-var-no: "\f033";
+
+$fa-var-dollar-sign: "\f034";
+
+$fa-var-heart: "\f035";
+
+$fa-var-sun: "\f036";
+
+$fa-var-mouse-pointer: "\f037";
+
+$fa-var-wifi: "\f038";
+
+$fa-var-air-conditioned: "\f03a";
+
+$fa-var-general: "\f03b";
+
+$fa-var-motion-detector: "\f03c";
+
+$fa-var-door-alarm: "\f03d";
+
+$fa-var-bedroom-studio: "\f03e";
+
+$fa-var-bedroom-one: "\f03f";
+
+$fa-var-bedroom-two: "\f040";
+
+$fa-var-bedroom-three: "\f041";
+
+$fa-var-bedroom-four: "\f042";
+
+$fa-var-security: "\f043";
+
+$fa-var-heated-unit: "\f044";
+
+$fa-var-parking: "\f045";
+
+$fa-var-parking-exterior: "\f046";
+
+$fa-var-parking-exterior-covered: "\f047";
+
+$fa-var-parking-interior: "\f048";
+
+$fa-var-floor-first: "\f049";
+
+$fa-var-floor-second: "\f04a";
+
+$fa-var-floor-third: "\f04b";
+
+$fa-var-floor-fourth: "\f04c";
+
+$fa-var-floor-fifth: "\f04d";
+
+$fa-var-floor-sixth: "\f04e";
+
+$fa-var-unlimited-access: "\f04f";
+
+$fa-var-well-lit: "\f050";
+
+$fa-var-climate-controlled: "\f051";
+
+$fa-var-cooled-unit: "\f052";
+
+$fa-var-mobile-unit: "\f053";
+
+$fa-var-wine: "\f054";
+
+$fa-var-location: "\f055";
+
+$fa-var-account-plus: "\f056";
+
+$fa-var-add-box: "\f057";
+
+$fa-var-check: "\f058";
+
+$fa-var-clock: "\f059";
+
+$fa-var-warning-entypo: "\f05a";
+
+$fa-var-close: "\f05b";
+
+$fa-var-rocket: "\f05c";
+
+$fa-var-edit: "\f05d";
+
+$fa-var-television: "\f05e";
+
+$fa-var-hand-o-left: "\f05f";
+
+$fa-var-undo: "\f060";
+
+$fa-var-check-circle: "\f061";
+
+$fa-var-photo: "\f062";
+
+$fa-var-tags: "\f063";
+
+$fa-var-upload: "\f064";
+
+$fa-var-arrow-up: "\f065";
+
+$fa-var-plus: "\f066";
+
+$fa-var-flag: "\f067";
+
+$fa-var-trash: "\f068";
+
+$fa-var-camera: "\f069";
+
+$fa-var-files-o: "\f06a";
+
+$fa-var-save: "\f06b";
+
+$fa-var-random: "\f06c";
+
+$fa-var-rss: "\f06d";
+
+$fa-var-arrow-circle-up: "\f06e";
+
+$fa-var-eye-slash: "\f06f";
+
+$fa-var-gear: "\f070";
+
+$fa-var-x: "\f071";
+
+$fa-var-arrow-right: "\f072";
+
+$fa-var-arrow-left: "\f073";
+
+$fa-var-chevron-right: "\f074";
+
+$fa-var-chevron-left: "\f075";
+
+$fa-var-chevron-down: "\f076";
+
+$fa-var-drive: "\f077";
+
+$fa-var-box: "\f078";
+
+$fa-var-door: "\f079";
+
+$fa-var-refresh: "\f07a";
+
+$fa-var-external-link: "\f07b";
+
+$fa-var-cog: "\f07c";
+
+$fa-var-trash-o: "\f07d";
+
+$fa-var-retweet: "\f07e";
+
+$fa-var-download: "\f07f";
+
+$fa-var-dashboard: "\f080";
+
+$fa-var-websites: "\f081";
+
+$fa-var-social-seo: "\f082";
+
+$fa-var-support: "\f083";
+
+$fa-var-user-profile: "\f084";
+
+$fa-var-facebook-official: "\f085";
+
+$fa-var-google-plus: "\f086";
+
+$fa-var-twitter: "\f087";
+
+$fa-var-linkedin: "\f088";
+
+$fa-var-new-instagram: "\f089";
+
+$fa-var-monitor: "\f08a";
+
+$fa-var-settings: "\f08b";
+
+$fa-var-arrow-shuffle: "\f08c";
+
+$fa-var-question-circle: "\f08d";
+
+$fa-var-globe: "\f08e";
+
+$fa-var-floppy-disk: "\f08f";
+
+$fa-var-floppy-o: "\f090";
+
+$fa-var-arrows: "\f091";
+
+$fa-var-reorder-1: "\f092";
+
+$fa-var-cloud-upload: "\f093";
+
+$fa-var-air-conditioning: "\f094";
+
+$fa-var-basketball-court: "\f095";
+
+$fa-var-bbq-area: "\f096";
+
+$fa-var-cat-friendly: "\f097";
+
+$fa-var-clubhouse: "\f098";
+
+$fa-var-computer-lab: "\f099";
+
+$fa-var-dog-friendly: "\f09a";
+
+$fa-var-elevator-people: "\f09b";
+
+$fa-var-fitness-center: "\f09c";
+
+$fa-var-garage-parking: "\f09d";
+
+$fa-var-hardwood-floors: "\f09e";
+
+$fa-var-hot-tub: "\f09f";
+
+$fa-var-laundry: "\f0a0";
+
+$fa-var-media-room: "\f0a1";
+
+$fa-var-parking-car: "\f0a2";
+
+$fa-var-pet-friendly: "\f0a3";
+
+$fa-var-security-camera: "\f0a4";
+
+$fa-var-spa: "\f0a5";
+
+$fa-var-stainless-steel-appliances: "\f0a6";
+
+$fa-var-storage: "\f0a7";
+
+$fa-var-swimming-pool: "\f0a8";
+
+$fa-var-tennis-courts: "\f0a9";
+
+$fa-var-wifi-available: "\f0aa";
+
+$fa-var-envelope-2: "\f0ab";
+
+$fa-var-angle-down: "\f0ac";
+
+$fa-var-angle-right: "\f0ad";
+
+$fa-var-angle-left: "\f0ae";
+
+$fa-var-angle-up: "\f0af";
+
+$fa-var-calendar: "\f0b0";
+
+$fa-var-comment-2: "\f0b1";
+
+$fa-var-comment-outline: "\f0b2";
+
+$fa-var-envelope-outline-2: "\f0b3";
+
+$fa-var-envelope-outline: "\f0b4";
+
+$fa-var-equal-opportunity: "\f0b5";
+
+$fa-var-facebook-2: "\f0b6";
+
+$fa-var-fax: "\f0b7";
+
+$fa-var-foursquare: "\f0b8";
+
+$fa-var-google-plus-2: "\f0b9";
+
+$fa-var-info-circle: "\f0ba";
+
+$fa-var-instagram: "\f0bb";
+
+$fa-var-location-2: "\f0bc";
+
+$fa-var-location-outline: "\f0bd";
+
+$fa-var-long-down-arrow: "\f0be";
+
+$fa-var-long-left-arrow: "\f0bf";
+
+$fa-var-long-right-arrow: "\f0c0";
+
+$fa-var-long-up-arrow: "\f0c1";
+
+$fa-var-phone-outline: "\f0c2";
+
+$fa-var-pinterest: "\f0c3";
+
+$fa-var-play-circle: "\f0c4";
+
+$fa-var-quote-left: "\f0c5";
+
+$fa-var-quote-right: "\f0c6";
+
+$fa-var-tumblr: "\f0c7";
+
+$fa-var-vimeo: "\f0c8";
+
+$fa-var-yelp: "\f0c9";
+
+$fa-var-youtube-play: "\f0ca";
+
+$fa-var-youtube: "\f0cb";
+
+$fa-var-spinner: "\f0cc";
+
+$fa-var-home-bts: "\f0cd";
+
+$fa-var-angle-up-bts: "\f0cf";
+
+$fa-var-angle-down-bts: "\f0d0";
+
+$fa-var-angle-right-bts: "\f0cc";
+
+$fa-var-angle-left-bts: "\f0d1";
+
+
+

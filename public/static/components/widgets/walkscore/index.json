@@ -1,0 +1,55 @@
+{
+  "name": "Walkscore",
+  "widget_id": 67,
+  "widget_type": null,
+  "summary": "Generates a Walkscore badge for clients to give visitors more information about their locations 'walkability'",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469057-Walkscore-Widget' target='_blank'>Walkscore Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "apartments",
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "walkscore_location",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_latitude",
+      "default_value": "{{location_latitude}}"
+    },
+    {
+      "name": "location_longitude",
+      "default_value": "{{location_longitude}}"
+    },
+    {
+      "name": "primary_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "border_color",
+      "default_value": "#eeeeee"
+    },
+    {
+      "name": "secondary_color",
+      "default_value": "#000000"
+    }
+  ]
+}

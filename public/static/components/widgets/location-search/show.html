@@ -1,0 +1,158 @@
+{% capture widgetId %}location-search-{{ widget.id }}{% endcapture %}
+<div class="location-search widget {{widgetId}}">
+<style>
+  .location-search{overflow: auto;}
+  {% if widget.text_color.value != '' %}
+  .location-search #location-search-container{color:{{widget.text_color.value}}}
+  {% endif %}
+  {% if widget.photo_border_color.value != '' %}
+  .location-search #location-search-container .store-summary .resultPhoto img{border:1px solid {{widget.photo_border_color.value}}}
+  {% endif %}
+
+  /* The OG paired styles */
+  {% if widget.pagination_background_color.value_or_default != '' %}
+  .location-search #location-search-container .pagination-nav span.next{border-left: 15px solid {{widget.pagination_background_color.value_or_default}}}
+  .location-search #location-search-container .pagination-nav a.next{border-left: 15px solid {{widget.pagination_background_color.value_or_default}}}
+  .location-search #location-search-container .pagination-nav span.previous{border-right: 15px solid {{widget.pagination_background_color.value_or_default}}}
+  .location-search #location-search-container .pagination-nav a.previous{border-right: 15px solid {{widget.pagination_background_color.value_or_default}}}
+  .location-search #location-search-container .pagination-nav a.page,
+  .location-search #location-search-container .pagination-nav .range,
+  .location-search #location-search-container .pagination-nav .view-all{color:{{widget.pagination_background_color.value_or_default}}}
+  .location-search #location-search-container .pagination-nav span.page{background-color:{{widget.pagination_background_color.value_or_default}}}
+  {% endif %}
+
+  {% if widget.pagination_text_color.value_or_default != '' %}
+  .location-search #location-search-container .pagination-nav span.page {color:{{widget.pagination_text_color.value_or_default}}}
+  {% endif %}
+
+  {% if widget.card_bg_color.value != '' %}
+  .location-search #location-search-container .store-summary {background-color:{{widget.card_bg_color.value}}}
+  {% endif %}
+  {% if widget.card_text_color.value != '' %}
+  .location-search #location-search-container .store-summary {color:{{widget.card_text_color.value}}}
+  {% endif %}
+  {% if widget.cta_bg_color.value_or_default != '' %}
+  .location-search #location-search-container .store-summary .resultAvailability{
+    background-color:{{widget.cta_bg_color.value_or_default}}}
+  {% endif %}
+  {% if widget.cta_bg_hover_color.value_or_default != '' %}
+  .location-search #location-search-container .store-summary .resultAvailability:hover{
+    background-color:{{widget.cta_bg_hover_color.value_or_default}}}
+  {% endif %}
+  {% if widget.cta_text_color.value != '' %}
+  .location-search #location-search-container .store-summary .resultAvailability{
+    color:{{widget.cta_text_color.value}}}
+  {% endif %}
+  {% if widget.header_text_color.value != '' %}
+  .location-search #location-search-container .search-form h2{color:{{widget.header_text_color.value}}}
+  {% endif %}
+  {% if widget.search_background.value_or_default != '' %}
+  .location-search #location-search-container .search-form{background-color:{{widget.search_background.value_or_default}}}
+  {% endif %}
+  {% if widget.search_form_text_color.value != '' %}
+  .location-search #location-search-container .search-form-inner,
+  .location-search #location-search-container .range-message,
+  .location-search #location-search-container .results-message{color:{{widget.search_form_text_color.value}}}
+  {% endif %}
+  {% if widget.search_button_bg.value_or_default != '' %}
+  .location-search #location-search-container .search-form .loc-search-btn,
+  .location-search #location-search-container .search-form button,
+  .location-search #location-search-container .slider-handle{background-color:{{widget.search_button_bg.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_bg_hover.value_or_default != '' %}
+  .location-search #location-search-container .search-form .loc-search-btn:hover{background-color:{{widget.search_button_bg_hover.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_text_color.value_or_default != '' %}
+  
+  .location-search #location-search-container .search-form a{color:{{widget.search_button_text_color.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_text_color_hover.value_or_default != '' %}
+  .location-search #location-search-container .search-form a:hover{color:{{widget.search_button_text_color_hover.value_or_default}}}
+  {% endif %}
+  {% if widget.dropdown_bg.value_or_default != '' %}
+  .location-search #location-search-container .search-form .search-filter,
+  .location-search #location-search-container .search-form-inner .loading-gray{background-color: {{widget.dropdown_bg.value_or_default}}}
+  .location-search #location-search-container .search-form .search-filter.typeahead{background-color: #fff;}
+  .location-search #location-search-container .search-form-inner span.locations-loading > select{color: {{widget.dropdown_bg.value_or_default}}}
+  {% endif %}
+  {% if widget.dropdown_text_color.value != '' %}
+  .location-search #location-search-container .search-form .search-filter,
+  .location-search #location-search-container .search-form-inner span select,
+  .location-search #location-search-container .search-form-inner span option,
+  .location-search #location-search-container .search-form-inner span label{color: {{widget.dropdown_text_color.value}}}
+  .location-search #location-search-container .search-form .state:after,
+  .location-search #location-search-container .search-form .city:after,
+  .location-search #location-search-container .search-form .neighborhood:after{
+    top: 45%;
+    right: 4%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: {{widget.dropdown_text_color.value}};
+    border-width: 6px;
+    margin-left: -6px;
+  }
+  .location-search #location-search-container .search-form select{
+    background: none;
+  }
+  {% endif %}
+   .location-search #location-search-container .search-form h2 { text-align: {{ widget.heading_text_position.value_or_default }}; }
+</style>
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+
+  <script>
+    var EmberAppConfig = {
+     "modulePrefix":"location-search",
+     "environment":"production",
+     "baseURL":"/",
+     "locationType":"hash",
+     "EmberENV":{
+        "FEATURES":{},
+        "PAGINATION":{
+          "PER_PAGE":"{{widget.per_page.value_or_default }}"
+        },
+        "CTAS":{
+          "CTA_TEXT": "{{widget.cta_text.value_or_default}}"
+        },
+        "SHOW_PENDING_LOCATIONS": "{{widget.show_pending_locations.value_or_default}}",
+        "HEADING_TEXT": "{{widget.heading_text.value_or_default}}",
+        "GEO_SEARCH": {
+          "DEFAULT_SEARCH_RADIUS": "{{widget.slider_search_radius.value_or_default}}",
+          "SEARCH_SLIDER_MIN": "{{widget.slider_min_distance.value_or_default}}",
+          "SEARCH_SLIDER_MAX": "{{widget.slider_max_distance.value_or_default}}",
+          "SEARCH_SLIDER_STEP": "{{widget.slider_step_distance.value_or_default}}"
+        },
+        "ENABLE_UNIVERSAL_SEARCH": "{{widget.universal_search.value_or_default }}",
+        "LOCATION_LINK_IN_NEW_TAB" : "{{widget.location_link_in_new_tab.value_or_default}}",
+        "CLIENT_URN": "{{widget.client_urn.value_or_default}}",
+        "SERVICE_HOST": "{{widget.service_url.value_or_default}}",
+        "AUTO_SHOW_RESULTS": "{{widget.auto_show_results.value_or_default}}",
+        "MAP_DISPLAY_ON": "{{widget.map_display.value_or_default}}"
+     },
+     "APP":{
+      "rootElement": '#location-search-container',
+     },
+     "exportApplicationGlobal":false
+    }
+
+    var lsMetaConfig = document.createElement('meta');
+    lsMetaConfig.id="ember-meta";
+    lsMetaConfig.name = "location-search/config/environment";
+    lsMetaConfig.content = JSON.stringify(EmberAppConfig);
+    document.getElementsByTagName('head')[0].appendChild(lsMetaConfig);
+  </script>
+
+  <div id="location-search-container">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+</div>

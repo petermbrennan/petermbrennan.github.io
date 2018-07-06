@@ -1,0 +1,14 @@
+.blog-tags {
+  display: block;
+  position: relative;
+}
+
+.blog-tags .tag-link{ 
+  padding:0 .5em; 
+  margin:.5em .5em 0 0; 
+  background:#888;
+  color:#fff;
+  display:inline-block; 
+  border-radius: .25em;
+}
+

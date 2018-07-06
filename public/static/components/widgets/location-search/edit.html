@@ -1,0 +1,113 @@
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+<fieldset>
+  <legend>Location Search Settings</legend>
+  <!-- Client URN -->
+  {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true }}
+
+  <!-- API Service URL -->
+  {{ widget.service_url | edit_text_field: "API Service URL", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Heading Text -->
+  {{ widget.heading_text | edit_text_field: "Heading Text", "Find a Location", "value_or_default" }}
+
+  <!-- Slider Search Radius -->
+  {{ widget.slider_search_radius | edit_text_field: "Slider Search Radius", "20", "value_or_default" }}
+
+  <!-- Slider Min Distance -->
+  {{ widget.slider_min_distance | edit_text_field: "Slider Min Distance", "0", "value_or_default" }}
+
+  <!-- Slider Max Distance -->
+  {{ widget.slider_max_distance | edit_text_field: "Slider Max Distance", "200", "value_or_default" }}
+
+  <!-- Slider Step Distance -->
+  {{ widget.slider_step_distance | edit_text_field: "Slider Step Distance", "5", "value_or_default" }}
+
+  <!-- Pagination Per Page -->
+  {{ widget.per_page | edit_text_field: "Pagination Per Page", "20", "value_or_default" }}
+
+  <!-- CTA TEXT -->
+  {{ widget.cta_text | edit_text_field: "CTA TEXT", "Visit Location Site", "value_or_default" }}
+
+  <!-- Show Pending Locations -->
+  {{ widget.show_pending_locations | edit_toggle_field: "Show Pending Locations", "value_or_default", "", false }}
+
+  <!-- Enable Universal Search Typeahead -->
+  {{ widget.universal_search | edit_toggle_field: "Enable Typeahead - Universal Search Typeahead", "value_or_default"}}
+
+  <!-- Location Link Opens New Tab -->
+  {{ widget.location_link_in_new_tab | edit_toggle_field: "Location Link Opens New Tab", "value_or_default"}}
+
+  <!-- Auto Show Results -->
+  {{ widget.auto_show_results | edit_toggle_field: "Auto Show Results", "value_or_default"}}
+
+  <!-- Map Display Toggle -->
+  {{ widget.map_display | edit_toggle_field: "Map Display Toggle", "value_or_default"}}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Text Color -->
+  {{ widget.text_color | edit_color_field: "Text Color", "#hex - inherited from theme body text color", "value" }}
+
+  <!-- Photo Border Color -->
+  {{ widget.photo_border_color | edit_color_field: "Photo Border Color", "#e7e7e7", "value" }}
+
+  <!-- Pagination Background Color -->
+  {{ widget.pagination_background_color | edit_text_field: "Pagination Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+  <!-- Pagination Active Text Color -->
+  {{ widget.pagination_text_color | edit_text_field: "Pagination Active Text Color", "#fff", "value_or_default" }}
+
+  <!-- Card Background Color -->
+  {{ widget.card_bg_color | edit_color_field: "Card Background Color", "#eee", "value" }}
+
+  <!-- Card Text Color -->
+  {{ widget.card_text_color | edit_color_field: "Card Text Color", "#hex - inherited from theme body text color", "value" }}
+
+  <!-- CTA BG Color -->
+  {{ widget.cta_bg_color | edit_color_field: "CTA Background Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+  <!-- CTA BG Hover Color -->
+  {{ widget.cta_bg_hover_color | edit_color_field: "CTA Background Hover Color", "theme_tertiary_color | darken: '5%';", "value_or_default", "", true }}
+
+  <!-- CTA Text Color -->
+  {{ widget.cta_text_color | edit_color_field: "CTA Text Color", "#fff", "value" }}
+
+  <!-- Header Text Color -->
+  {{ widget.header_text_color | edit_color_field: "Header Text Color", "#fff", "value" }}
+
+  <!-- Search Form Text Color -->
+  {{ widget.search_form_text_color | edit_color_field: "Search Form Text Color", "#hex - inherited from theme body text color", "value" }}
+
+  <!-- Search Background -->
+  {{ widget.search_background | edit_color_field: "Search Background", "theme_primary_color", "value_or_default", "", true }}
+
+  <!-- Search Button BG -->
+  {{ widget.search_button_bg | edit_color_field: "Search Button Background", "theme_tertiary_color", "value_or_default", "", true }}
+
+  <!-- Search Button BG Hover -->
+  {{ widget.search_button_bg_hover | edit_color_field: "Search Button Background Hover", "theme_tertiary_color | darken: '5%';", "value_or_default", "", true}}
+
+  <!-- Search Button Text Color -->
+  {{ widget.search_button_text_color | edit_color_field: "Search Button Text Color", "#fff", "value_or_default" }}
+
+  <!-- Search Button Text Color Hover -->
+  {{ widget.search_button_text_color_hover | edit_color_field: "Search Button Text Color Hover", "#fff", "value_or_default" }}
+
+  <!-- Dropdown BG -->
+  {{ widget.dropdown_bg | edit_color_field: "Dropdown Background", "theme_secondary_color", "value_or_default", "", true }}
+
+  <!-- Dropdown Text Color -->
+  {{ widget.dropdown_text_color | edit_color_field: "Dropdown Text Color", "#fff", "value" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

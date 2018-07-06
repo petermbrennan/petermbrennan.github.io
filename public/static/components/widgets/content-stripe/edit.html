@@ -1,0 +1,131 @@
+{% assign bg_position_opts = '{"cover": "Cover Row Centered", "cover-top": "Cover Row From Top", "cover-bottom": "Cover Row From Bottom", "centered": "Centered", "tile": "Tile Horizontally and Vertically", "tile-x-top": "Tile Horizontally on Top", "tile-x-bottom": "Tile Horizontally on Bottom", "tile-y-left": "Tile Vertically on Left", "tile-y-right": "Tile Vertically on Right" }' %}
+{% assign bg_behavior_opts = '{"normal": "Normal", "fixed": "Fixed Position" }' %}
+{% assign overlay_opacity_opts = '{"0.1":"10%", "0.25":"25%", "0.5":"50%", "0.75":"75%"}' %}
+{% assign divider_position_opts = '{"center": "Center", "left": "Left", "right": "Right"}' %}
+{% assign row_layout_opts = '{"single": "Single Column", "halves": "Two Columns: 1/2-1/2", "uneven-thirds-1": "Two Columns: 1/3-2/3", "uneven-thirds-2": "Two Columns: 2/3-1/3", "thirds": "Three Columns: 1/3-1/3-1/3", "quarters": "Four Columns: 1/4-1/4-1/4-1/4"}' %}
+{% assign row_text_opts = '{"default": "Default", "dark": "Dark", "light": "Light"}' %}
+{% assign disabled_opts = '{"true": "Yes", "false": "No"}' %}
+{% assign row_padding_opts = '{"default": "Default", "extra": "Extra (9em)", "light": "Light  (1.5em)", "no": "None"}' %}
+
+<form>
+  <div class="row-edit" data-row-id="{{widget.id}}">
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>Widgets</legend>
+      <!-- Select Row Layout -->
+      {{ widget.row_layout | edit_select_field: "Widget Layout", row_layout_opts, "value_or_default", "select-row-layout" }}
+
+      <!-- Content Stripe Column Widgets -->
+      {{ widget | edit_row_layout_widget_fields }}
+
+    </fieldset>
+    <div class="form-field-row">
+      <!-- Content Stripe Custom Name -->
+      {{ widget.custom_name | edit_text_field: "Custom Content Stripe Name", "Content Stripe", "value", "", false, 80 }}
+
+      <!-- Custom CSS Class (Optional) -->
+      {{ widget.row_css_custom | edit_text_field: "Custom CSS Class", "custom-class" }}
+
+      <!-- Content Stripe Enabled -->
+      {{ widget.disabled | edit_radio_field: "Hide Content Stripe?", disabled_opts, "value_or_default" }}
+    </div>
+    {{ widgets | end_tab }}
+
+    {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <div>
+      <fieldset class="form-field-row row-bg-image">
+        <legend>Background Image</legend>
+              <fieldset>
+                <!-- Row Background Image (Optional) -->
+                {{ widget.row_bg_image | edit_image_field: "Row Background Image", "", "value_or_default", "", "content-stripe" }}
+                <div class="col s5">
+                  {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+                  {{ widget.background_image_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+                </div>
+                <div class="max-width-max-height">
+                  <div class="col s2 offset-s1">
+                    {{ widget.background_image_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+                  </div>
+
+                  <div class="col s2 offset-s1">
+                    {{ widget.background_image_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+                  </div>
+                  <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+
+                </div>
+              </fieldset>
+            <!-- Select Row Layout -->
+            {{ widget.row_bg_position | edit_select_field: "Image Position", bg_position_opts, "value_or_default" }}
+            {{ widget.row_bg_behavior | edit_select_field: "Image Behavior", bg_behavior_opts, "value_or_default" }}
+      </fieldset>
+
+      <fieldset>
+        <legend>Background Overlay</legend>
+        <div class="form-field-row">
+          {{ widget.row_bg_overlay_color | edit_color_field: "Overlay Color", "#fff or white" }}
+
+          {{ widget.row_bg_overlay_opacity | edit_select_field: "Overlay Opacity", overlay_opacity_opts, "value_or_default" }}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Colors</legend>
+
+        <div class="form-field-row">
+          <!-- Row Background Color (Optional) -->
+          {{ widget.row_bg_color | edit_color_field: "Background Color", "example: #fff", "value_or_default" }}
+
+          <!-- Row Text Color -->
+          {{ widget.row_text_color | edit_select_field: "Row Text Color", row_text_opts, "value_or_default" }}
+
+          <!-- Link Text Color -->
+          {{ widget.link_color | edit_text_field: "Link Text Color", "example: #fff", "value_or_default" }}
+      </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Divider</legend>
+
+        <div class="form-field-row row-divider-image">
+          <fieldset>
+            {{ widget.row_divider_image | edit_image_field: "Divider Image URL", "", "value_or_default", "", "content-stripe" }}
+            <div class="col s5">
+              {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+              {{ widget.divider_image_cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+            </div>
+            <div class="max-width-max-height">
+              <div class="col s2 offset-s1">
+                {{ widget.divider_image_cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+              </div>
+
+              <div class="col s2 offset-s1">
+                {{ widget.divider_image_cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+              </div>
+              <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+            </div>
+          </fieldset>
+          <!-- Select Row Layout -->
+          {{ widget.row_divider_position | edit_select_field: "Divider Image Position", divider_position_opts, "value_or_default" }}
+        </div>
+      </fieldset>
+
+      {{ widget.row_padding | edit_radio_field: "Padding Top/Bottom", row_padding_opts, "value_or_default"}}
+
+    <fieldset>
+      <legend>Custom Padding</legend>
+      <p class="note"><em>Custom padding configurations will override the above padding settings</em></p>
+
+      {{ widget.top_row_padding | edit_text_field: "Custom Top Padding (em, px, %)", "example: 4em", "value_or_default"}}
+
+      {{ widget.bottom_row_padding | edit_text_field: "Custom Bottom Padding (em, px, %)", "example: 4em", "value_or_default"}}
+    </fieldset>
+
+    </div>
+    {{ widget | end_tab }}
+
+    {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+      <h1>G5 Widget Document</h1>
+      <p>{{ widget.widget_documentation_link }}</p>
+    {{ widget | end_tab: true }}
+  </div>
+</form>

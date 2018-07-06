@@ -1,0 +1,42 @@
+<form>
+{% assign override_api_opts = '{ "false": "No Override Method Selected", "true": "Calculate Directions with Lat / Long", "address": "Calculate Directions with Address (From Configs Tab)" }' %}
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Directions Settings</legend>
+  <!-- Street Address -->
+  {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "value_or_default", "", true }}
+
+  <!-- City -->
+  {{ widget.location_city | edit_text_field: "City", "location_city", "value_or_default", "", true }}
+
+  <!-- State -->
+  {{ widget.location_state | edit_text_field: "State", "location_state", "value_or_default", "", true }}
+
+   <!-- Postal Code -->
+  {{ widget.location_postal_code | edit_text_field: "Postal Code", "location_postal_code", "value_or_default", "", true }}
+  </fieldset>
+{{ widget | end_tab }}
+
+
+{{ widget | start_tab: "fa fa-unlock-alt", "Overrides" }}
+  <fieldset>
+    <legend>Overrides Settings</legend>
+    <!-- Use Overrides -->
+    {{ widget.override_api_settings | edit_select_field: "Use Lat / Long OR Address to calculate Directions (Hardcode or use from Liquid Variables)", override_api_opts, "value_or_default"}}
+
+    <!-- Suppress Info Window -->
+    {{ widget.suppress_info_windows | edit_toggle_field: "Suppress Info Window", "value_or_default"}}
+
+    <!-- Latitude -->
+    {{ widget.location_latitude | edit_text_field: "Latitude", "location_latitude", "value_or_default", "", true }}
+
+    <!-- Longitude -->
+    {{ widget.location_longitude | edit_text_field: "Longitude", "location_longitude", "value_or_default", "", true }}
+  </fieldset>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+{{ widget | end_tab: true }}
+</form>

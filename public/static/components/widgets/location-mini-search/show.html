@@ -1,0 +1,101 @@
+{% capture widgetId %}location-mini-search-{{ widget.id }}{% endcapture %}
+<div class="location-mini-search widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "clientURN": "{{ widget.client_urn.value_or_default }}",
+      "serviceURL": "{{ widget.service_url.value_or_default}}",
+      "corpSearchPage": "{{ widget.corp_search_page.value }}",
+      "universalSearch" : "{{ widget.universal_search.value_or_default }}",
+      "includePending":"{{ widget.pending_location_toggle.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+  {% if widget.text_color.value != '' %}
+  .location-mini-search#{{widgetId}}{color:{{widget.text_color.value}}}
+  {% endif %}
+  .location-mini-search#{{widgetId}} .search-form h2 { text-align: {{ widget.heading_text_position.value_or_default }}; }
+  {% if widget.header_text_color.value != '' %}
+  .location-mini-search#{{widgetId}} .search-form .search-heading{color:{{widget.header_text_color.value}}}
+  {% endif %}
+  {% if widget.search_background.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form{background-color:{{widget.search_background.value}}}
+  {% endif %}
+  {% if widget.search_form_text_color.value != '' %}
+  .location-mini-search#{{widgetId}} .search-form-inner{color:{{widget.search_form_text_color.value}}}
+  {% endif %}
+  {% if widget.search_button_bg.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form .loc-search-btn{background-color:{{widget.search_button_bg.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_bg_hover.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form .loc-search-btn:hover{background-color:{{widget.search_button_bg_hover.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_text_color.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form a{color:{{widget.search_button_text_color.value_or_default}}}
+  {% endif %}
+  {% if widget.search_button_text_color_hover.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form a:hover{color:{{widget.search_button_text_color_hover.value_or_default}}}
+  {% endif %}
+  {% if widget.dropdown_bg.value_or_default != '' %}
+  .location-mini-search#{{widgetId}} .search-form .search-filter:not(.typeahead){background-color: {{widget.dropdown_bg.value_or_default}}}
+  {% endif %}
+  {% if widget.dropdown_text_color.value != '' %}
+  .location-mini-search#{{widgetId}} .search-form .search-filter,
+  .location-mini-search#{{widgetId}} .search-form-inner span select,
+  .location-mini-search#{{widgetId}} .search-form-inner span option,
+  .location-mini-search#{{widgetId}} .search-form-inner span label{color: {{widget.dropdown_text_color.value}}}
+  .location-mini-search#{{widgetId}} .search-form .state:after,
+  .location-mini-search#{{widgetId}} .search-form .city:after,
+  .location-mini-search#{{widgetId}} .search-form .neighborhood:after{
+    top: 45%;
+    right: 4%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: {{widget.dropdown_text_color.value}};
+    border-width: 6px;
+    margin-left: -6px;
+  }
+  .location-mini-search#{{widgetId}} .search-form select{
+    background: none;
+  }
+  {% endif %}
+  </style>
+  <div class="search-form">
+    <div class="search-form-inner">
+      {% if widget.heading_text.value != blank %}
+      <h2 class="search-heading">{{ widget.heading_text.value }}</h2>
+      {% endif %}
+      {% if widget.universal_search.value_or_default != "false" %}
+      <span class="search-filter typeahead">
+        <input class="search-input  tt-hint" type="text" placeholder="Search by Location, City, St, or Zip">
+        <span class="input-clear"></span>
+      </span>
+      {% else if %}
+      <span class="state search-filter">
+        <select class="search-states">
+          <option value="">State</option>
+        </select>
+      </span>
+
+      <span class="city search-filter">
+        <select class="search-cities">
+          <option value="">City</option>
+        </select>
+      </span>
+
+      <span class="neighborhood search-filter">
+        <select class="search-neighborhoods">
+          <option value="">Neighborhood</option>
+        </select>
+      </span>
+      {% endif %}
+      <a class="search-go-button loc-search-btn btn">{{ widget.search_button_text.value_or_default }}</a>
+    </div>
+  </div>
+</div>

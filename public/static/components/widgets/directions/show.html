@@ -1,0 +1,24 @@
+{% capture widgetId %}directions-{{ widget.id }}{% endcapture %}
+<div class="directions widget clearfix" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "widgetId": "{{widgetId}}",
+      "address": "{{ widget.location_street_address.value_or_default }}, {{ widget.location_city.value_or_default }}, {{ widget.location_state.value_or_default }} {{ widget.location_postal_code.value_or_default }}",
+      "lat" : "{{ widget.location_latitude.value_or_default }}",
+      "lon" : "{{ widget.location_longitude.value_or_default }}",
+      "overrides" : {
+        "hardcodeLatLon" : "{{ widget.override_api_settings.value_or_default }}",
+        "suppress_info_windows" : "{{ widget.suppress_info_windows.value_or_default }}"
+      }
+    }
+  </script>
+
+  <div class="error directions-error clearfix"></div>
+  <div class="text clearfix">
+    <label for="start">Please Enter Your Starting Address:</label>
+    <input type="submit" value="Get Directions" class="directions-submit">
+    <input type="text" name="directions-start" class="directions-start">
+  </div>
+  <div class="canvas clearfix"></div>
+  <div class="panel clearfix"></div>
+</div>

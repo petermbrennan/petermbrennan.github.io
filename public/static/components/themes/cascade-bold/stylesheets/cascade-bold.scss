@@ -1,0 +1,205 @@
+// ********************************************
+//
+//  Cascade Blueprint Theme - Bold Variation
+//
+//  CSS by Adam Sworob
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+[ 1. Imports & Variables ]
+*/
+
+// Headings
+
+$heading-line-height: 10px;
+
+/*------------------------------------------------------------------
+[ 9. Hero Stripe / .row:first-of-type ]
+*/
+
+.row:first-of-type {}
+
+/*------------------------------------------------------------------
+[ 10. Second Stripe / .row:nth-of-type(2) ]
+*/
+
+.row:nth-of-type(2):not([class*='diagonal-']):not(.chevron):not(.straight) {
+  @include diagonal-left;
+}
+
+/*------------------------------------------------------------------
+[ 11. Mosaic Classes ]
+*/
+
+.row {
+  @include mosaic-child-theme-styles($padding-default);
+
+  &.light-padding {
+    @include mosaic-child-theme-styles($padding-light);
+  }
+
+  &.no-padding {
+    @include mosaic-child-theme-styles($padding-none);
+  }
+
+  &.super-padding {
+    @include mosaic-child-theme-styles($padding-super);
+  }
+}
+
+/*------------------------------------------------------------------
+[ 12. Contact Info Sheet (Sticky Nav) / .contact-info-sheet ]
+*/
+
+.contact-info-sheet {
+  .info-sheet-nav {
+    & > a, & > div {
+      border: solid rgba($primaryColor, $base-opacity);
+      border-width: $base-border-width;
+
+      @include background-clip(padding-box);
+      @include hover-trans(background-color, rgba($primaryColor, $base-opacity), $white);
+      @include hover-trans(border-color, rgba($primaryColor, $base-opacity), rgba($primaryColor, 1));
+      @include hover-trans(color, $white, rgba($primaryColor, 1), "all");
+    }
+
+    & > a.active {
+      background-color: $white;
+      border-color: $primary-dark;
+      color: $primary-dark;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+[ 13. Widgets and Other Elements / .widget ]
+*/
+
+.widget {
+  hr {
+    height: $xsmall-spacing;
+  }
+}
+
+// Action Calls / .action-calls
+
+.action-calls {
+  li:only-child a:after {
+		margin-left: 0;
+    position: absolute;
+    width: $btn-size;
+	}
+  a {
+    border-width: $base-border-width $btn-size $base-border-width $base-border-width;
+    border-right-width: $btn-size;
+    color: $tertiaryColor;
+
+    @include hover-trans(background-color, transparent, $tertiary-dark);
+    @include hover-trans(border-color, $tertiaryColor, $tertiary-dark, "all");
+    @include hover-trans(color, $tertiaryColor, $white);
+    &:after {
+    	color: $white;
+    	right: -$btn-size;
+    }
+  }
+}
+
+// City State Zip Search
+
+.zip-search-input input {
+  background-color: transparent;
+}
+
+// Headings
+
+.widget {
+  @include headings {
+    &:after {
+    	height: $heading-line-height;
+    }
+  }
+}
+
+// Lead Forms
+
+.lead-form {
+
+  input, textarea {
+    background-color: transparent;
+  }
+
+}
+
+// Locations Navigation
+
+nav.locations-navigation.widget {
+  h3.locations-navigation-title {
+    border-width: $base-border-width;
+    border-right-width: $btn-size;
+    color: $tertiaryColor !important;
+    line-height: $btn-size - $base-border-width * 2;
+
+    @include hover-trans(background-color, transparent, $tertiary-dark);
+
+    &:hover, &.open {
+      color: $white !important;
+    }
+  }
+}
+
+// Hours
+.office-hours hr, .access-hours hr {
+  display: none;
+}
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px;
+}
+
+// Map and Directions
+
+.directions {
+	div.text {
+		.directions-start {
+			background-color: transparent;
+		}
+	}
+}
+
+// Multifamily Home IUI
+
+[class*='home-multifamily-iui'] {
+  .iui-size:not(.iui-view-all) a.btn {
+    background-color: transparent !important;
+
+    &:hover {
+      background-color: $tertiary-dark !important;
+    }
+  }
+}
+
+// Multifamily Mini Search
+
+div[class*='multifamily-mini-search'].widget div.search-form {
+  .default-select {
+    @include hover-trans(background-color, transparent, $tertiary-dark);
+  }
+}
+
+// SS Featured Unit Categories
+
+.ss-featured-unit-categories .iui-size:not(.iui-view-all) a {
+  background-color: transparent;
+}
+
+// Self Storage Search Home
+
+.self-storage-search-home.widget form.sss-search-criteria {
+  .sss-search-input {
+    background-color: transparent !important;
+  }
+
+  .sss-search-storage-categories-select {
+    @include hover-trans(background-color, transparent, $tertiary-dark, "background-color");
+  }
+}

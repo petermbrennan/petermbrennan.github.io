@@ -1,0 +1,405 @@
+// ********************************************
+//
+//  Venture Blueprint Theme - Classic Variation
+//
+//  CSS by Adam Sworob
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+
+[Table of contents]
+
+1. Imports & Variables
+2. Mixins
+3. Animations
+4. Base
+5. Layout
+6. Header / header[role=banner]
+7. Navigation / header[role=banner] .navigation-container
+8. Footer / footer[role=contentinfo]
+9. Hero Stripe / .hero
+10. Widgets in the Hero Stripe / .hero .widget
+11. Widgets and Other Elements / .widget
+12. G5 Corporate Website / .g5-corporate-website
+13. Area Page / .area
+14. No JS
+
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+[ 1. Imports & Variables ]
+*/
+
+$base-border-radius: 12px;
+
+
+/*------------------------------------------------------------------
+[ 5. Layout ]
+*/
+
+textarea{
+	border-radius: $base-border-radius;
+}
+
+/*------------------------------------------------------------------
+[ 6. Header / header[role=banner] ]
+*/
+
+@include until(400px) {
+	header[role=banner] .appended-phone {
+		border-bottom-right-radius: $base-border-radius;
+  	border-top-right-radius: $base-border-radius;
+	}
+}
+
+
+/*------------------------------------------------------------------
+[ 7. Navigation / header[role=banner] .navigation-container ]
+*/
+
+.collapsable-btn {
+	border-bottom-left-radius: $base-border-radius;
+  border-top-left-radius: $base-border-radius;
+}
+
+#drop-target-nav .subnav{
+	border-radius: $base-border-radius;
+}
+
+/*------------------------------------------------------------------
+[ 8. Footer / footer[role=contentinfo] ]
+*/
+
+.footer-info .social-links a{
+	margin: 0 rem(10) $button-pad 0;
+	&:first-child{
+		margin-left: 0;
+		margin-right: rem(10);
+	}
+	&:last-child{
+		margin-right: 0;
+	}
+}
+
+/*------------------------------------------------------------------
+[ 9. Hero Stripe / .hero ]
+*/
+
+.hero{
+	.left-arrow{
+		border-bottom-left-radius: $base-border-radius;
+    border-top-left-radius: $base-border-radius;
+	}
+	.right-arrow{
+		border-bottom-right-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+	}
+}
+
+/*------------------------------------------------------------------
+[ 10. Widgets and Other Elements / .widget ]
+*/
+
+.widget{
+	#{$all-text-inputs}, select, input[type=submit]{
+		border-radius: $base-border-radius;
+	}
+  #{$all-text-inputs}, select{
+    &:focus {
+      outline: $primary-dark auto 5px;
+    }
+  }
+
+}
+
+// Accordion / .accordion
+
+.accordion-section-title{
+	border-radius: $base-border-radius;
+	@include transition(color 0.2s ease, background-color 0.2s ease, border-radius 0.2s ease);
+	&.active{
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+}
+
+.accordion-section-content{
+	border-radius: $base-border-radius;
+	@include transition(border-radius 0.2s ease);
+	&.open{
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+}
+
+//  Action Calls / .action-calls.widget
+
+.row:not(.hero), .hero-other-widget .hero {
+	.action-calls a{
+		border-radius: $base-border-radius;
+	}
+}
+
+//  Button Widget / .button.widget
+
+a.button, .coupon button{
+	border-left: none;
+	border-radius: $base-border-radius;
+}
+
+.button{
+  .btn{
+    background-color: $secondaryColor;
+		border-left: none;
+		border-radius: $base-border-radius;
+  }
+}
+
+// City State Zip Search
+
+.city-state-zip-search .zip-search-button{
+  border: $border-size solid $base-color;
+  border-bottom-right-radius: $base-border-radius;
+  border-top-right-radius: $base-border-radius;
+  bottom: 0;
+  height: 55px;
+  right: 0;
+  top: 0;
+  width: 55px;
+}
+
+// Contact Info
+
+[role=main] .contact-info.h-c-ret,
+[role=main] .contact-info.h-card{
+	border-bottom: 2px solid $base-color;
+	border-radius: $base-border-radius;
+	&.phone-and-email .email{
+		border-left: none;
+	}
+	&.has-social-links{
+		border-bottom: none;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		& + .social-links{
+			border-bottom: 2px solid $base-color;
+			border-left: 2px solid $base-color;
+			border-bottom-left-radius: $base-border-radius;
+			border-bottom-right-radius: $base-border-radius;
+			padding: 0 $button-pad;
+			&:before{
+				content: none;
+			}
+		}
+	}
+	.adr-ret, .adr, .email, .phone, .chat, .ratings-summary-outer, .fax{
+		border-bottom: none;
+	}
+	.adr-ret, .adr, .email, .phone, .chat, .fax{
+		&:after{
+			content: none;
+		}
+	}
+}
+
+// Contact Info Sheet (Sticky Nav)
+
+@include at-least(737px) {
+	.contact-info-sheet .info-sheet-nav .cis-btn {
+    border-right: 2px solid $white;
+	}
+	.info-sheet-content, .cis-btn{
+  	border-radius: $base-border-radius;
+  }
+  .contact-info-sheet .info-sheet-nav{
+  	background-color: transparent;
+  }
+}
+
+// CTAs
+
+.hero-ctas .hero .action-calls span{
+	&, &:before{
+		border-radius: $base-border-radius;
+	}
+}
+
+// Coupon
+
+.coupon{
+	border-radius: $base-border-radius;
+}
+
+// Directions
+
+.directions .panel{
+	border-radius: $base-border-radius;
+}
+
+// Directory
+
+.directory-heading{
+	border-radius: $base-border-radius;
+	@include transition(border-radius 0.2s ease);
+	&.open{
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+}
+
+.directory-table .directory-locations{
+	&:last-of-type > table{
+		border-bottom-left-radius: $base-border-radius;
+		border-bottom-right-radius: $base-border-radius;
+		overflow: hidden;
+	}
+}
+
+//  Gallery
+
+.gallery.widget {
+
+	.flex-caption{
+		border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+	}
+
+  .flex-direction-nav{
+  	.flex-prev, .flex-next{
+  		width: $social-size;
+  	}
+    .flex-prev{
+			border-bottom-right-radius: $base-border-radius;
+			border-right: none;
+			border-top-right-radius: $base-border-radius;
+    }
+    .flex-next{
+			border-bottom-left-radius: $base-border-radius;
+			border-left: none;
+ 			border-top-left-radius: $base-border-radius;
+    }
+  }
+
+}
+
+.gallery-only .full-gallery .flex-direction-nav{
+	.flex-prev{
+		border-bottom-left-radius: $base-border-radius;
+   	border-bottom-right-radius: 0;
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: 0;
+   }
+  .flex-next{
+    border-bottom-left-radius: 0;
+	  border-bottom-right-radius: $base-border-radius;
+    border-top-left-radius: 0;
+    border-top-right-radius: $base-border-radius;
+  }
+}
+
+.gallery.widget .mini-gallery .flex-direction-nav a{
+	&.flex-prev, &.flex-next{
+		&:after{
+			border: none;
+			height: $social-size;
+		}
+	}
+	&.flex-prev:after{
+		border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+		left: -1px;
+	}
+	&.flex-next:after{
+		border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+		right: -1px;
+	}
+}
+
+// IUIs
+
+[class*="home-multifamily-iui"], .ss-featured-unit-categories{
+	a{
+		border-radius: $base-border-radius;
+	}
+}
+
+.multi-family-iui-cards-v3 {
+	.move-in-date-picker {
+		input {
+			padding: 7px;
+		}
+	}
+	select {
+    width: auto;
+  }
+	.iui-cards-filter-select-wrapper .down-arrow {
+		top: 11px;
+	}
+}
+
+
+//  Locations Navigation Widget / .locations-navigation.widget
+
+.locations-navigation{
+  .locations-navigation-title, .locations-navigation-list, .locations-navigation-state, .locations-navigation-city, a{
+		border-radius: $base-border-radius;
+  }
+}
+
+// Map
+
+.canvas{
+	& , & > div{
+		border-radius: $base-border-radius;
+	}
+	.gm-style{
+		overflow: hidden;
+	}
+}
+
+// Mini Blog Feed
+
+.mini-blog-feed{
+	img, .news-item-link, .all-news-link{
+		border-radius: $base-border-radius;
+	}
+}
+
+// Neighborhood Map
+
+.neighborhood-map-filter{
+	border-radius: $base-border-radius;
+	margin-bottom: $base-border-radius;
+	overflow: hidden;
+}
+
+// Social Feed
+
+.feed-switch{
+	border-top-left-radius: $base-border-radius;
+	border-top-right-radius: $base-border-radius;
+}
+
+.feed-section{
+	border-bottom-left-radius: $base-border-radius;
+	border-bottom-right-radius: $base-border-radius;
+	border-top-right-radius: $base-border-radius;
+}
+
+// Social Links
+
+.social-links{
+	a{
+		border: none;
+		border-radius: 50%;
+		height: 45px;
+		margin: 0 10px $button-pad 0;
+		width: 45px;
+		&:before {
+			line-height: 45px;
+		}
+	}
+}

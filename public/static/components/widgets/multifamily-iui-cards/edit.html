@@ -1,0 +1,98 @@
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily IUI Cards Settings</legend>
+    <!-- Lead Form URL -->
+    {{ widget.lead_form_url | edit_url_field: "Lead Form URL", "example: //path/to/my/leads/service" }}
+
+    <!-- Secondary Lead Form URL -->
+    {{ widget.secondary_lead_form_url | edit_url_field: "Secondary Lead Form URL", "example: //path/to/my/leads/service" }}
+
+    <!-- Core Store ID -->
+    {{ widget.core_store_id | edit_text_field: "Core Store ID or Location URN", "example: 1234" }}
+
+    <!-- Floorplans Service Host -->
+    {{ widget.floorplans_service_host | edit_url_field: "Floorplans Service Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Max Unit Availability -->
+    {{ widget.max_unit_availability | edit_integer_field: "Max Unit Availability", "6", "value_or_default", "", 1, 200 }}
+
+    <!-- Lease Terms Toggle -->
+    {{ widget.lease_terms | edit_toggle_field: "Lease Terms?", "value_or_default" }}
+
+    <!-- Successful Submission Redirect URL -->
+    {{ widget.success_redirect_url | edit_url_field: "Successful Submission Redirect URL" }}
+
+    <!--  Secondary Successful Submission Redirect URL -->
+    {{ widget.secondary_success_redirect_url | edit_url_field: "Secondary Successful Submission Redirect URL" }}
+  </fieldset>
+  <fieldset>
+    <legend>Calls To Action</legend>
+    <!-- Unit CTA Text -->
+    {{ widget.unit_cta_text | edit_text_field: "Unit CTA Text", "", "best_value" }}
+
+    <!-- Unit Secondary CTA Text -->
+    {{ widget.unit_secondary_cta_text | edit_text_field: "Unit Secondary CTA Text", "", "best_value" }}
+
+    <!-- Limited Availability Text -->
+    {{ widget.limited_availability_text | edit_text_field: "Limited Availability Text", "", "value_or_default" }}
+
+    <!-- Step One Nav Text -->
+    {{ widget.step_one_text | edit_text_field: "Step One Nav Text" }}
+
+    <!-- Step Two Nav Text -->
+    {{ widget.step_two_text | edit_text_field: "Step Two Nav Text" }}
+
+    <!-- Step Three Nav Text -->
+    {{ widget.step_three_text | edit_text_field: "Step Three Nav Text" }}
+
+    <!-- Step Four Nav Text -->
+    {{ widget.step_four_text | edit_text_field: "Step Four Nav Text" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-cogs", "Realpage" }}
+  <fieldset>
+    <legend>Realpage Settings (optional)</legend>
+    <!-- Secondary CTA Links to Realpage -->
+    {{ widget.secondary_cta_linkout | edit_toggle_field: "Secondary CTA Links to Realpage?" }}
+
+    <!-- Realpage Search URL -->
+    {{ widget.search_url | edit_url_field: "Realpage Search URL", "search_url" }}
+
+    <!-- Site ID -->
+    {{ widget.site_id | edit_text_field: "Realpage Site ID" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+    <!-- Primary Color -->
+    {{ widget.primary_color | edit_color_field: "Primary Color", "#252b32", "value_or_default" }}
+
+    <!-- Secondary Color -->
+    {{ widget.secondary_color | edit_color_field: "Secondary Color", "#005892", "value_or_default" }}
+
+    <!-- Accent Color 1 -->
+    {{ widget.accent_color_1 | edit_color_field: "Accent Color 1", "#fe7b6f", "value_or_default" }}
+
+    <!-- Accent Color 2 -->
+    {{ widget.accent_color_2 | edit_color_field: "Accent Color 2", "#526173", "value_or_default" }}
+
+    <!-- Text Color Dark -->
+    {{ widget.text_color_dark | edit_color_field: "Text Color Dark", "#000000", "value_or_default" }}
+
+    <!-- Nav Text Color -->
+    {{ widget.nav_text_color | edit_color_field: "Nav Text Color", "#000000", "value_or_default" }}
+
+    <!-- Scroll Selector Offset -->
+    {{ widget.scroll_selector_offset | edit_text_field: "Scroll Selector Offset", "", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>
+

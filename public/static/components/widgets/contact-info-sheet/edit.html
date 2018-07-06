@@ -1,0 +1,78 @@
+<form action="{{ widget.form_action.value }}" class="h-entry">
+  <div class="data" data-cls-url="{{ widget.secure_cls_url }}" data-form-endpoint="{{ widget.form_endpoint.value_or_default }}" data-selected-lead-type="{{ widget.form_type.value }}"></div>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+        {{ widget.show_home | edit_toggle_field: "Show Home Button", "value_or_default", "", true }}
+
+        {{ widget.show_phone | edit_toggle_field: "Show Phone Button", "value_or_default", "", true }}
+
+        {{ widget.show_email | edit_toggle_field: "Show Email Button", "value_or_default", "", true }}
+
+        {{ widget.show_scroll | edit_toggle_field: "Show Scroll Arrows", "value_or_default", "", true }}
+    </fieldset>
+    <fieldset>
+        <!-- Phone Number -->
+        {{ widget.phone_number | edit_tel_field: "Phone Number", "location_phone_number", "value_or_default", "", true  }}
+    </fieldset>
+
+    <fieldset>
+        <!-- Contact Page URL -->
+        {{ widget.contact_url | edit_page_field: "Contact Page URL", "value_or_default", "", "Select a Page" }}
+
+        {{ widget.show_contact_form | edit_toggle_field: "Show Contact Form (uncheck to link directly to contact page)", "value_or_default", "", true }}
+    </fieldset>
+
+    <fieldset>
+        <!-- 3rd Party Chat HTML -->
+        {{ widget.third_party_chat_code | edit_textarea_field: "3rd Party Chat HTML" }}
+
+        <!-- 3rd Party Chat URL -->
+        {{ widget.third_party_chat_url | edit_url_field: "3rd Party Chat URL" }}
+
+        <!-- 3rd Party Chat Window Width -->
+        {{ widget.chat_width | edit_integer_field: "3rd Party Chat Window Width", "640", "value_or_default", "", 160, 1600 }}
+
+        <!-- 3rd Party Chat Window Height -->
+        {{ widget.chat_height | edit_integer_field: "3rd Party Chat Window Height", "480", "value_or_default", "", 80, 900 }}
+    </fieldset>
+
+    <fieldset>
+      <!-- Lead Types get dynamically injected into the select from the edit-form-types -->
+      <div class="lead-types-select">
+        {{ widget.form_type | edit_select_field: "Form Type" }}
+      </div>
+
+      <!-- Successful Submission Redirect URL -->
+      {{ widget.success_redirect_url | edit_url_field: "Successful Submission Redirect URL" }}
+
+      <!-- Client URN -->
+      {{ widget.client_urn | edit_text_field: "Client URN", "client_urn", "value_or_default", "", true }}
+
+      <!-- Location URN -->
+      {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default", "", true  }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <!-- Widget window position -->
+    {% assign layout_opts = '{"default": "Default", "left": "Left", "right": "Right", "b-left": "Bottom Left", "b-right": "Bottom Right"}' %}
+    {{ widget.cis_layout | edit_radio_field: "Align", layout_opts, "value_or_default" }}
+
+    <fieldset>
+      {{ widget.background_color | edit_color_field: "Background Color", "rgba(27, 29, 29, 0.75) or #1b191d", "value_or_default" }}
+
+      {{ widget.icon_color | edit_color_field: "Icon Color", "#fff", "value_or_default" }}
+
+      <!-- Fade Delay in Seconds -->
+      {{ widget.fade_delay | edit_integer_field: "Fade Delay in Seconds", "8", "value_or_default", "", 1, 20  }}
+
+
+    </fieldset>
+  {{ widget | end_tab}}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

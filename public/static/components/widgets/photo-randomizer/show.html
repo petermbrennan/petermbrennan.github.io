@@ -1,0 +1,41 @@
+{% capture widgetId %}photo-randomizer-{{ widget.id }}{% endcapture %}
+<div class="photo-randomizer widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "photos": [
+        { "url": "{{ widget.photo_1_url.value }}", "alt": "{{ widget.photo_1_alt.value }}" },
+        { "url": "{{ widget.photo_2_url.value }}", "alt": "{{ widget.photo_2_alt.value }}" },
+        { "url": "{{ widget.photo_3_url.value }}", "alt": "{{ widget.photo_3_alt.value }}" },
+        { "url": "{{ widget.photo_4_url.value }}", "alt": "{{ widget.photo_4_alt.value }}" },
+        { "url": "{{ widget.photo_5_url.value }}", "alt": "{{ widget.photo_5_alt.value }}" }
+      ],
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style type="text/css">
+    {% if widget.photo_filter.value != 'false' %}
+      {% if widget.photo_filter_color.value != '' %}
+        .photo-randomizer.{{ widgetId }} .filter {
+          background: {{widget.photo_filter_color.value}};
+        }
+      {% endif %}
+
+      {% if widget.photo_label.value != '' %}
+      .photo-randomizer.{{ widgetId }} .label {
+          background: {{widget.photo_label.value_or_default}};
+        }
+      {% endif %}
+    {% endif %}
+  </style>
+
+  {% if widget.photo_1_url.value != blank %}
+  <figure class="photo-ret photo h-media">
+    <div class="photo-wrapper">
+      {% if widget.photo_filter.value == 'true' %}
+      <div class="filter {{widget.photo_opacity.value}}"></div>
+      {% endif %}
+    </div>
+  </figure>
+  {% endif %}
+</div>

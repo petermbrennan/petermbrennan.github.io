@@ -1,0 +1,61 @@
+{% capture widgetId %}city-state-zip-search-{{ widget.id }}{% endcapture %}
+<div id="{{widgetId}}" class="city-state-zip-search widget {{widgetId}} {% if widget.search_results_page.value != blank %} mini-version{% endif %}">
+  <script class="config" type="application/json">
+    {
+      "clientURN": "{{ widget.client_urn.best_value }}",
+      "searchResultsPage": "{{ widget.search_results_page.value }}",
+      "serviceURL": "{{ widget.service_url.value_or_default }}",
+      "searchRadius": {{ widget.search_radius.value_or_default }},
+      "phoneServiceURL":"{{ widget.phone_service_url.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    {% if widget.form_background_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-top{ background-color:{{ widget.form_background_color.value }}; }
+    {% endif %}
+
+    {% if widget.form_text_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-heading{ color:{{ widget.form_text_color.value }};}
+    {% endif %}
+
+    {% if widget.form_button_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-button { background: {{ widget.form_button_color.value }}; }
+    {% endif %}
+
+    {% if widget.result_background_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-location { background:{{ widget.result_background_color.value }}; }
+    {% endif %}
+
+    {% if widget.result_text_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-location span{ color:{{ widget.result_text_color.value }}; }
+    {% endif %}
+
+    {% if widget.result_button_color.value != blank %}
+      .city-state-zip-search.{{widgetId}} .zip-search-location span.branded-name{ color:{{ widget.result_button_color.value }}; }
+      .city-state-zip-search.{{widgetId}} .zip-search-location-link,
+      .city-state-zip-search.{{widgetId}} .view-all-link { background-color:{{ widget.result_button_color.value }}; }
+    {% endif %}
+  </style>
+
+  <div class="zip-search-top">
+    <div class="zip-search-heading">
+      {% if widget.form_text.value == blank %}
+        Find A Location
+      {% else %}
+        {{ widget.form_text.value }}
+      {% endif %}
+    </div>
+    <form class="zip-search-form">
+      <span class="zip-search-input">
+        <input type="text" name="search" placeholder="Search by city, state or zip">
+      </span>
+      <span class="zip-search-button">
+        <button>GO</button>
+      </span>
+    </form>
+  </div>
+
+  <div class="zip-search-results"></div>
+</div>

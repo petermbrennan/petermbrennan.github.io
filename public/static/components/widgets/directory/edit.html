@@ -1,0 +1,63 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+     <!-- Location Label -->
+    {{ widget.location_label | edit_text_field: "Location Label", "Location", "value_or_default" }}
+
+     <!-- Services Label -->
+    {{ widget.services_label | edit_text_field: "Services Label", "Services", "value_or_default" }}
+
+    <!-- Expand Options Select -->
+    {% assign expand_opts = '{"first_open": "First State Open", "all_open": "All States Open", "none_open": "No States Open"}' %}
+    {{ widget.expand_option | edit_select_field: "Expand Options", expand_opts, "value_or_default" }}
+
+    <!-- Show Pending Locations Toggle -->
+    {{ widget.show_pending | edit_toggle_field: "Show Pending Locations?", "value_or_default" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+
+    <!-- Background Color -->
+    {{ widget.background_color | edit_color_field: "Background Color", "#ffffff", "value_or_default" }}
+
+    <!-- Icon Color -->
+    {{ widget.icon_color | edit_color_field: "Icon Color", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Icon Shape Select -->
+    {% assign icon_shape_opts = '{"check-icons": "Check", "circle-icons": "Circle", "plus-icons": "Plus", "square-icons": "Square", "star-icons": "Star"}' %}
+    {{ widget.icon_shape | edit_select_field: "Icon Shape", icon_shape_opts, "value_or_default" }}
+
+    <!-- Primary Heading Color -->
+    {{ widget.primary_heading_color | edit_color_field: "Primary Heading Color", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Secondary Heading Color -->
+    {{ widget.secondary_heading_color | edit_color_field: "Secondary Heading Color", "theme_secondary_color", "value_or_default", "", true }}
+
+
+    <!-- TODO: Enable once area pages are set up
+
+    <div class="form-field">
+      {{ widget.area_page_button_color.id_hidden_field }}
+      <label for="{{ widget.area_page_button_color.value_field_id }}" >
+        Area Page Button Color
+      </label>
+      <input type="text"
+        id="{{ widget.area_page_button_color.value_field_id }}"
+        name="{{ widget.area_page_button_color.value_field_name }}"
+        placeholder="{%raw%}{{theme_secondary_color}}{%endraw%}"
+        value="{{ widget.area_page_button_color.value_or_default }}"
+      />
+    </div>
+
+    //-->
+
+    <!-- Text Color -->
+    {{ widget.text_color | edit_color_field: "Text Color", "#000000", "value_or_default" }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

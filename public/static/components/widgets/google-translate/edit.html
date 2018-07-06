@@ -1,0 +1,22 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- Languages -->
+    {{ widget.languages | edit_text_field: "Languages", "en,es", "best_value" }}
+
+    <!-- Append Options -->
+    {% assign append_opts = '{"default": "Default", "append_true": "Append", "prepend_true": "Prepend"}' %}
+
+    {{ widget.append_options | edit_radio_field: "Append / Prepend Translate to different Element", append_opts, "value_or_default" }}
+
+    <!-- Destination Element for Append/ Prepend -->
+    {{ widget.append_element | edit_text_field: "Destination Element for Append/ Prepend (i.e. - .some-selector)" }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

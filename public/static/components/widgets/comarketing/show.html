@@ -1,0 +1,63 @@
+{% capture widgetId %}comarketing-{{ widget.id }}{% endcapture %}
+
+{% assign has_locations = false %}
+{% if widget.location_urn_1.value != blank or widget.location_urn_2.value != blank or widget.location_urn_3.value != blank or widget.location_urn_4.value != blank or widget.location_urn_5.value != blank %}
+  {% assign has_locations = true %}
+{% endif %}
+
+{% if widget.hide_map.value_or_default == "true" or has_locations == false %}
+  {% assign map_class = 'no-map' %}
+{% else %}
+  {% assign map_class = 'has-map' %}
+{% endif %}
+
+<div class="comarketing area-page widget {{ map_class }}" id="{{ widgetId }}">
+  {% if widget.hide_navigation.value_or_default == "true" %}
+  <script type="text/javascript">
+    document.getElementsByTagName('body')[0].className+=' hide-navigation'
+  </script>
+  {% endif %}
+
+  {% if map_class == 'has-map' %}
+  <script class="config" type="application/json">
+    {
+      "addresses": {{ widget | location_address_list }},
+      "panZoom": true,
+      "mapType": "ROADMAP",
+      "cpnsUrl": "{{ widget.client_cpns_url.value_or_default }}",
+      "clientUrn": "{{ widget.client_urn.value_or_default }}",
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+  {% endif %}
+
+  {% if widget.comarketing_title.value != blank %}
+  <h2>{{ widget.comarketing_title.value }}</h2>
+  {% endif %}
+
+  <div class="area-page-locations">
+    {% if widget.location_urn_1.value != blank %}
+      {{ widget.location_urn_1 | location_listing }}
+    {% endif %}
+
+    {% if widget.location_urn_2.value != blank %}
+      {{ widget.location_urn_2 | location_listing }}
+    {% endif %}
+
+    {% if widget.location_urn_3.value != blank %}
+      {{ widget.location_urn_3 | location_listing }}
+    {% endif %}
+
+    {% if widget.location_urn_4.value != blank %}
+      {{ widget.location_urn_4 | location_listing }}
+    {% endif %}
+
+    {% if widget.location_urn_5.value != blank %} 
+      {{ widget.location_urn_5 | location_listing }}
+    {% endif %}
+  </div>
+
+  {% if map_class == 'has-map' %}
+  <div class='canvas'></div>
+  {% endif %}
+</div>

@@ -1,0 +1,135 @@
+{% capture widgetId %}accordion-{{ widget.id }}{% endcapture %}
+
+<div class="accordion widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "start_open": "{{ widget.start_open.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    .accordion.{{widgetId}} .accordion-section-title { background-color: {{widget.title_background.value_or_default}} !important; }
+    .accordion.{{widgetId}} .accordion-section-title.active,
+    .accordion.{{widgetId}} .accordion-section-title:focus,
+    .accordion.{{widgetId}} .accordion-section-title:hover {
+      background-color: {{ widget.title_background.value_or_default_parsed | darken: '10%'; }} !important;
+      color: #fff;
+    }
+
+    {% if widget.title_color.value_or_default != blank %}
+      .accordion.{{widgetId}} .accordion-section-title,
+      .accordion.{{widgetId}} .accordion-section-title.active,
+      .accordion.{{widgetId}} .accordion-section-title:focus,
+      .accordion.{{widgetId}} .accordion-section-title:hover { color: {{widget.title_color.value}} !important; }
+    {% endif %}
+
+    {% if widget.content_background.value != blank %}
+      .accordion.{{widgetId}} .accordion-section-content { background-color: {{widget.content_background.value}} !important; }
+    {% endif %}
+
+    {% if widget.content_color.value != blank %}
+      .accordion.{{widgetId}} .accordion-section-content { color: {{ widget.content_color.value}} !important; }
+    {% endif %}
+  </style>
+
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-1-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_1.value }}</a>
+
+    <div id="accordion-1-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_1.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+
+  {% if widget.section_2.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-2-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_2.value }}</a>
+
+    <div id="accordion-2-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_2.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_3.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-3-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_3.value }}</a>
+
+    <div id="accordion-3-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_3.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_4.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-4-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_4.value }}</a>
+
+    <div id="accordion-4-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_4.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_5.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-5-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_5.value }}</a>
+
+    <div id="accordion-5-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_5.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_6.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-6-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_6.value }}</a>
+
+    <div id="accordion-6-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_6.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_7.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-7-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_7.value }}</a>
+
+    <div id="accordion-7-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_7.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_8.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-8-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_8.value }}</a>
+
+    <div id="accordion-8-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_8.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_9.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-9-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_9.value }}</a>
+
+    <div id="accordion-9-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_9.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  {% if widget.section_10.value != blank %}
+  <div class="accordion-section">
+    <a class="accordion-section-title" href="#accordion-10-{{widget.id}}"><span class="acc-arrow"></span>{{ widget.title_10.value }}</a>
+
+    <div id="accordion-10-{{widget.id}}" class="accordion-section-content">
+      <p>{{ widget.section_10.value }}</p>
+    </div><!--end .accordion-section-content-->
+  </div><!--end .accordion-section-->
+  {% endif %}
+
+  </div><!--end .accordion-section-->
+</div>

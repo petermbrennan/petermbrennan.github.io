@@ -1,0 +1,90 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      {{ widget.title | edit_text_field: "Title", "Career Opportunities" }}
+
+      {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+      {{ widget.title_position | edit_radio_field: "Title Position", position_opts, "value_or_default" }}
+
+      {{ widget.publisher_id | edit_text_field: "Publisher ID (Required)", "Publisher ID", "value_or_default" }}
+
+      {{ widget.channel | edit_text_field: "Channel Name", "Channel Name, "value" }}
+
+      {{ widget.client_name | edit_text_field: "Client Name", "Client Name" }}
+
+      <!-- Allow wildcard variations of Client Name -->
+      {{ widget.client_name_wildcard | edit_toggle_field: "Allow variations of Client Name", "value_or_default" }}
+    </fieldset>
+
+    <fieldset>
+      {% assign sort_opts = '{"formattedDate": "Date Posted", "company": "Company", "jobtitle": "Job Title", "city": "City, State"}' %}
+      {{ widget.sort_by | edit_select_field: "Default Listings Sort Order", sort_opts, "value_or_default", "select-sort-order" }}
+
+
+      {{ widget.search_radius | edit_integer_field: "Search Radius (miles)", "25", "value_or_default", "", 1, 1000 }}
+
+      {{ widget.results_count | edit_integer_field: "Results Per Page", "10", "value_or_default", "", 1, 1000 }}
+
+      {{ widget.date_range | edit_integer_field: "Date Range (days)", "60", "value_or_default", "", 1, 365 }}
+    </fieldset>
+
+    <fieldset>
+      {{ widget.api_proxy | edit_url_field: "API Proxy URL", widget.api_proxy.value_or_default, "value_or_default" }}
+
+      {{ widget.indeed_api | edit_url_field: "Indeed API URL", widget.indeed_api.value_or_default, "value_or_default" }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset class="thirds">
+      <legend>Border</legend>
+      {{ widget.border_color | edit_color_field: "Border Color", "theme_primary_color", "value", "", true }}
+
+      {{ widget.spinner_color | edit_color_field: "Loading Spinner Color", "#333" }}
+
+      {{ widget.border_radius | edit_toggle_field: "Round corners", "value_or_default" }}
+    </fieldset>
+
+    <fieldset class="halves">
+      <legend>Text</legend>
+      {{ widget.title_color | edit_color_field: "Title Color", "#000000" }}
+
+      {{ widget.text_color | edit_color_field: "Text Color", "#000000" }}
+
+      {{ widget.link_color | edit_color_field: "Text Link Color", "theme_primary_color", "value", "", true }}
+    </fieldset>
+
+    <fieldset class="thirds">
+      <legend>Header</legend>
+      {{ widget.header_bg | edit_color_field: "Header Bar Background Color", "theme_primary_color", "value", "", true }}
+
+      {{ widget.header_color | edit_color_field: "Header Bar Text Color", "#ffffff" }}
+
+      {{ widget.sort_selection_color | edit_color_field: "Sort Selection Arrow Color", "#ffffff" }}
+    </fieldset>
+
+    <fieldset class="halves">
+      <legend>Buttons</legend>
+      {{ widget.post_btn_bg | edit_color_field: "View Post Button Background Color", "theme_primary_color", "value", "", true }}
+
+      {{ widget.post_btn_color | edit_color_field: "View Post Button Text Color", "#ffffff" }}
+    </fieldset>
+
+    <fieldset class="halves">
+      <legend>Job Post</legend>
+      {{ widget.post_bg | edit_color_field: "Post Background Color", "#ffffff" }}
+
+      {{ widget.post_alt_bg | edit_color_field: "Post Alternating Background Color", "#efefef" }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

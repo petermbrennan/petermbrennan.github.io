@@ -1,0 +1,14 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- CSS Override Textarea -->
+    {% assign css_placeholder = "p { font-style: italic ! important }" %}
+    {{ widget.css_override | edit_textarea_field: "CSS Override", css_placeholder, "value", "", 40, 12 }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

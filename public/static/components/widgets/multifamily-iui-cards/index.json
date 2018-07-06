@@ -1,0 +1,132 @@
+{
+  "name": "Multifamily IUI Cards",
+  "widget_id": 29,
+  "widget_type": null,
+  "summary": "Multifamily cards style floorplans",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-6870' target='_blank'>Multifamily IUI Cards Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [
+    "jquery.fancybox.pack.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living"
+  ],
+  "page_widget": true,
+  "eol": true,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "lead_form_url",
+      "default_value": ""
+    },
+    {
+      "name": "secondary_lead_form_url",
+      "default_value": ""
+    },
+    {
+      "name": "core_store_id",
+      "default_value": ""
+    },
+    {
+      "name": "floorplans_service_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "max_unit_availability",
+      "default_value": "6"
+    },
+    {
+      "name": "lease_terms",
+      "default_value": "false"
+    },
+    {
+      "name": "success_redirect_url",
+      "default_value": ""
+    },
+    {
+      "name": "secondary_success_redirect_url",
+      "default_value": ""
+    },
+    {
+      "name": "search_url",
+      "default_value": ""
+    },
+    {
+      "name": "site_id",
+      "default_value": ""
+    },
+    {
+      "name": "secondary_cta_linkout",
+      "default_value": "false"
+    },
+    {
+      "name": "unit_cta_text",
+      "default_value": "Hold Now"
+    },
+    {
+      "name": "unit_secondary_cta_text",
+      "default_value": "Apply Online"
+    },
+    {
+      "name": "limited_availability_text",
+      "default_value": "Limited"
+    },
+    {
+      "name": "step_one_text",
+      "default_value": "Choose Size"
+    },
+    {
+      "name": "step_two_text",
+      "default_value": "Choose Floor Plan"
+    },
+    {
+      "name": "step_three_text",
+      "default_value": "Select Unit"
+    },
+    {
+      "name": "step_four_text",
+      "default_value": "Reserve"
+    },
+    {
+      "name": "primary_color",
+      "default_value": "#252b32"
+    },
+    {
+      "name": "secondary_color",
+      "default_value": "#005892"
+    },
+    {
+      "name": "accent_color_1",
+      "default_value": "#fe7b6f"
+    },
+    {
+      "name": "accent_color_2",
+      "default_value": "#526173"
+    },
+    {
+      "name": "text_color_dark",
+      "default_value": "#000000"
+    },
+    {
+      "name": "nav_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "scroll_selector_offset",
+      "default_value": ""
+    }
+  ]
+}

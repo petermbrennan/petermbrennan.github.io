@@ -1,0 +1,39 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <!-- Title -->
+    {{ widget.comarketing_title | edit_text_field: "Comarketing TItle" }}
+
+    <!-- Hide Navigation -->
+    <!-- TEMP DISABLED until themes are convereed to work with hidden nav
+    {{ widget.hide_navigation | edit_toggle_field: "Hide Site Navigation", "value_or_default" }}
+    -->
+
+    <!-- Hide Map -->
+    {{ widget.hide_map | edit_toggle_field: "Hide Map", "value_or_default" }}
+
+    <p class="alert alert-info">WARNING: You have duplicate locations selected.</p>
+
+    {% assign loc_class = "location-select" %}
+    {% assign loc_empty = "-- Choose a Location --" %}
+    <!-- Location 1 Select -->
+    {{ widget.location_urn_1 | edit_location_field: "Location 1", "value", loc_class, loc_empty }}
+
+    <!-- Location 2 Select -->
+    {{ widget.location_urn_2 | edit_location_field: "Location 2", "value", loc_class, loc_empty }}
+
+    <!-- Location 3 Select -->
+    {{ widget.location_urn_3 | edit_location_field: "Location 3", "value", loc_class, loc_empty }}
+
+    <!-- Location 4 Select -->
+    {{ widget.location_urn_4 | edit_location_field: "Location 4", "value", loc_class, loc_empty }}
+
+    <!-- Location 5 Select -->
+    {{ widget.location_urn_5 | edit_location_field: "Location 5", "value", loc_class, loc_empty }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

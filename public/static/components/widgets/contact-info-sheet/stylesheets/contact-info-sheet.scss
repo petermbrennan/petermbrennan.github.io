@@ -1,0 +1,245 @@
+$link-size: 50px;
+
+@mixin clearfix {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after { clear: both; }
+}
+
+.contact-info-sheet {
+  font-size: 16px;
+  position: fixed;
+  z-index: 9999;
+
+  &.hidden { display: none; }
+
+  // All nav buttons
+  .cis-btn {
+    color: #fff;
+    display: block;
+  }
+
+  .web-home-template & .info-sheet-home-btn {
+    display: none;
+  }
+
+  .info-sheet-content {
+    min-height: 75px;
+    padding: 1em 30px;
+  }
+
+  .info-sheet-nav,
+  .info-sheet-content { background: rgba(27, 29, 29, 0.75); }
+
+
+  // Hides scroll arrows on tablet and below
+  @media screen and (max-width: 1169px) {
+    .info-sheet-pagination { display: none; }
+  }
+
+
+  // Hides chat button on mobile
+  @media screen and (max-width: 909px) {
+    .info-sheet-chat-btn { display: none; }
+  }
+
+
+  // Hides fly outs and positions widget
+  // along bottom of browser
+  @media screen and (max-width: 736px) {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    &.opened { bottom: 100%; }
+
+    .info-sheet-nav {
+      @include clearfix;
+      padding: 0 1em;
+    }
+
+
+    // Only phone and email buttons
+    .cis-btn {
+      color: #fff;
+      font-size: 1.125em;
+      float: left;
+      padding: 0.5em 0;
+
+      i {
+        line-height: inherit;
+        margin-right: 0.5em;
+      }
+    }
+
+    .info-sheet-phone-btn {
+      min-width: 50%;
+    }
+
+    .has-home-btn {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+
+      .cis-btn {
+        float: none;
+        min-width: 0;
+        -webkit-flex-grow: 1;
+        -moz-flex-grow: 1;
+        -ms-flex-grow: 1;
+        flex-grow: 1;
+      }
+
+      .info-sheet-home-btn i,
+      .info-sheet-email-btn i { margin-right: 0; }
+
+      .info-sheet-home-btn span,
+      .info-sheet-email-btn span { display: none; }
+
+      .cis-btn.info-sheet-phone-btn { text-align: center; }
+      .cis-btn.info-sheet-email-btn { text-align: right; }
+    }
+
+    .info-sheet-content { display: none !important; }
+  }
+
+
+  @media screen and (min-width: 737px) {
+    width: 375px;
+
+    .info-sheet-nav {
+      position: fixed;
+      z-index: 100;
+    }
+
+    .cis-btn {
+      cursor: pointer;
+      height: $link-size;
+      width: $link-size;
+      overflow: hidden;
+      position: relative;
+
+      i {
+        font-size: 1.5em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .fa-angle-up,
+      .fa-angle-down {
+        font-size: 2em;
+      }
+
+      // Visually hide nav button text
+      span { display: none; }
+    }
+
+    .info-sheet-phone {
+      font-weight: 700;
+      font-size: 2em;
+    }
+
+    .info-sheet-icon.chat-code img {
+      max-width: $link-size;
+      max-height: $link-size;
+    }
+
+    .info-sheet-content {
+      color: #fff;
+      overflow-y: auto;
+      position: absolute;
+      -ms-transition-property: transform;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      transition-duration: 300ms;
+      transition-timing-function: ease;
+      width: 100%;
+    }
+
+
+    // Left side layouts
+    &.default,
+    &.left,
+    &.b-left {
+      &,
+      .info-sheet-nav {
+        left: 0;
+      }
+
+      .info-sheet-content {
+        left: -375px;
+      }
+
+      &.opened .info-sheet-content {
+        -ms-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+      }
+    }
+
+    // Right side layouts
+    &.right,
+    &.b-right {
+      &,
+      .info-sheet-nav {
+        right: 0;
+      }
+
+      .info-sheet-content {
+        right: -375px;
+      }
+
+      &.opened .info-sheet-content {
+        -ms-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+      }
+    }
+
+    // Vertical layouts
+    &.default,
+    &.left,
+    &.right {
+      top: 155px;
+    }
+
+    &.default,
+    &.left {
+      &.opened .info-sheet-content {
+        margin-left: $link-size;
+      }
+    }
+
+    &.right.opened .info-sheet-content {
+      margin-right: $link-size;
+    }
+
+    // Horizontal layouts
+    &.b-left,
+    &.b-right {
+      &,
+      .info-sheet-nav {
+        bottom: 0;
+      }
+
+      .info-sheet-content {
+        bottom: $link-size;
+        max-height: calc(100vh - 60px);
+      }
+
+      .cis-btn {
+        float: left;
+      }
+    }
+  }
+}

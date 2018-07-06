@@ -1,0 +1,22 @@
+{
+  "theme_id": 22,
+  "name": "William Warren Group",
+  "summary": "Self Storage Theme",
+  "primary_color": "#00bff3",
+  "secondary_color": "#224270",
+  "tertiary_color": "#0b203e",
+  "primary_font": "museo-sans",
+  "secondary_font": "museo-sans",
+  "primary_font_variations": ["n3"],
+  "secondary_font_variations": ["n3"],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-iedcpw65-the-william-warren-group"
+  ],
+  "pending": false,
+  "group": "William Warren Group",
+  "theme_type": "corporate",
+  "verticals": [
+    "self-storage"
+  ]
+}

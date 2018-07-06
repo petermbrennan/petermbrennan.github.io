@@ -1,0 +1,51 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    {{ widget.mf_iui_home_heading | edit_text_field: "MF IUI Heading", "Floor Plans", "value_or_default" }}
+
+    {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+    {{ widget.mf_iui_home_heading_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+
+    <!-- Cloud location URN -->
+    {{ widget.location_urn | edit_text_field: "location_urn", "location_urn", "value_or_default", true }}
+
+    <!-- Floorplans Service Host -->
+    {{ widget.floorplans_service_host | edit_url_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Floorplans Page Url -->
+    {{ widget.floorplan_page_url | edit_url_field: "Floor Plans Page URL", "/location_vertical_slug/location_state_slug/location_city_slug/floorplans", "value_or_default" }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+
+     <legend>Style Settings</legend>
+     <!-- Button Background Color -->
+     {{ widget.btn_bg | edit_color_field: "Button Background Color", "theme_secondary_color", "value_or_default", true }}
+
+     <!-- View All Button Background Color -->
+     {{ widget.view_all_btn_bg | edit_color_field: "View All Button Background Color", "theme_tertiary_color", "value_or_default", true }}
+
+     <!-- Button Hover Background Color -->
+     {{ widget.btn_hover_bg | edit_color_field: "Button Hover Background Color", "theme_secondary_color", "value_or_default", true }}
+
+     <!-- Button Text Background Color -->
+     {{ widget.btn_text_color | edit_color_field: "Button Text Color", "#ffffff", "value_or_default" }}
+
+     <!-- Call To Action Background Color -->
+     {{ widget.cta_background_color | edit_color_field: "Call To Action Background Color", "#B7BBB8", "value_or_default", true }}
+
+     <!-- Call To Action Button Color -->
+     {{ widget.cta_button_color | edit_color_field: "Call To Action Button Color", "theme_primary_color", "value_or_default", true }}
+
+     <!-- Call To Action Text Color -->
+     {{ widget.cta_text_color | edit_color_field: "Call To Action Text Color", "#ffffff", "value_or_default", true }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

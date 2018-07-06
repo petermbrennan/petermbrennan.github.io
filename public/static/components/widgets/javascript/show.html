@@ -1,0 +1,12 @@
+{% capture widgetId %}javascript-{{ widget.id }}{% endcapture %}
+
+{% if widget.disabled.value == "false" %}
+  <script class="javascript-config" type="application/json" id="{{widgetId}}">
+    {
+      "script": "{{ widget.javascript.value | uglify | escape_double_quotes }}",
+      "noscript": "{{ widget.no_script.value | escape_double_quotes }}",
+      "widgetId": "{{ widgetId }}",
+      "srcUrl": "{{ widget.src_url.value }}"
+    }
+  </script>
+{% endif %}

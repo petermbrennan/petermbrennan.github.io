@@ -1,0 +1,25 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- Location Branded Name -->
+    {{ widget.branded_name | edit_text_field: "Location Branded Name", "location_name", "value_or_default", "", true }}
+
+    <!-- Core Store ID -->
+    {{ widget.location_core_store_id | edit_hidden_field: "value_or_default", "core-id"}}
+
+    <!-- Path to Full Text Reviews -->
+    {{ widget.review_page_url | edit_url_field: "Path to Full Text Reviews", "example: /relative/path/to/review-page" }}
+
+    <!-- Element Selector For Summary -->
+    {{ widget.insert_review_schema | edit_text_field: "Element Selector For Summary", ".contact-info", "value_or_default" }}
+
+    <!-- Display Full Review Text -->
+    {{ widget.full_review_content | edit_toggle_field: "Display Full Review Text", "value_or_default" }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+</form>

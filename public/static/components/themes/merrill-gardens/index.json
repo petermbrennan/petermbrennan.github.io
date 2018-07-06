@@ -1,0 +1,23 @@
+{
+  "theme_id": 24,
+  "name": "Merrill Gardens",
+  "summary": "Custom corp and location theme for Merrill Gardens",
+  "primary_color": "#254f65",
+  "secondary_color": "#689c95",
+  "tertiary_color": "#d1b245",
+  "primary_font": "adobe-caslon-pro",
+  "secondary_font": "franklin-gothic-urw-comp",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": true,
+  "private_clients": ["g5-cms-iqbdd9s4-merrill-garden", "localhost"],
+  "pending": false,
+  "group": "Merrill Gardens",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

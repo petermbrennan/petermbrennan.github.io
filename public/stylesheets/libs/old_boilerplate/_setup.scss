@@ -1,0 +1,28 @@
+// ********************************************
+//
+//  Boilerplate Setup
+//
+// ********************************************
+
+// ============================================
+//  Collection of mixins, variables, and extends
+// ============================================
+
+// Mixins
+// bourbon.io
+@import 'bourbon/bourbon';
+
+// CSS reset
+// necolas.github.io/normalize.css
+@import 'normalize';
+
+// Theme variables. These can be overridden in your theme
+@import 'partials/variables';
+
+@import 'partials/fortawesome-icons';
+
+// Additional mixins
+@import 'partials/helpers';
+
+// SASS extends for common styles
+@import 'partials/extends';

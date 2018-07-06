@@ -1,0 +1,37 @@
+{% capture widgetId %}events-{{ widget.id }}{% endcapture %}
+<div class="events widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "newsServiceDomain":     "{{ widget.news_service_domain.value_or_default }}",
+      "locationURN":           "{{ widget.location_urn.value_or_default }}",
+      "locationName":          "{{ widget.location_name.value }}",
+      "numberOfPosts":         "{{ widget.number_of_posts.value_or_default }}",
+      "headingText":           "{{ widget.heading_text.value_or_default }}",
+      "titleBackgroundColor":  "{{ widget.title_background_color.value_or_default }}",
+      "titleTextColor":        "{{ widget.title_text_color.value_or_default }}",
+      "buttonBackgroundColor": "{{ widget.button_background_color.value_or_default }}",
+      "buttonTextColor":       "{{ widget.button_text_color.value_or_default }}",
+      "defaultImage":          "{{ widget.default_image.value_or_default }}",
+      "widgetId":              "{{ widgetId }}"
+    }
+  </script>
+
+  <style>
+    {% if widget.title_background_color.value_or_default != blank %}
+      .events.widget.{{widgetId}} .event-summary .event-title{ background-color:{{ widget.title_background_color.value_or_default }};}
+    {% endif %}
+    {% if widget.title_text_color.value_or_default != blank %}
+      .events.widget.{{widgetId}} .event-summary .event-title{ color:{{ widget.title_text_color.value_or_default }};}
+    {% endif %}
+    {% if widget.button_background_color.value_or_default != blank %}
+      .events.widget.{{widgetId}} .event-summary .event-details-button{ background-color:{{ widget.button_background_color.value_or_default }};}
+    {% endif %}
+    {% if widget.button_text_color.value_or_default != blank %}
+      .events.widget.{{widgetId}} .event-summary .event-details-button{ color:{{ widget.button_text_color.value_or_default }};}
+    {% endif %}
+  </style>
+
+  {% if widget.heading_text.value_or_default != blank %}
+    <h2 class="events-widget-heading">{{ widget.heading_text.value_or_default }}</h2>
+  {% endif %}
+</div>

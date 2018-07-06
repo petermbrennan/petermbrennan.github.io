@@ -1,0 +1,38 @@
+{% capture widgetId %}walkscore-{{ widget.id }}{% endcapture %}
+<div class="walkscore widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "walkscore_location" : "{{ widget.walkscore_location.value_or_default }}",
+      "address": "{{ widget.location_street_address.value_or_default }}",
+      "city": "{{ widget.location_city.value_or_default }}",
+      "state": "{{ widget.location_state.value_or_default }}",
+      "latitude": "{{ widget.location_latitude.value_or_default }}",
+      "longitude": "{{ widget.location_longitude.value_or_default }}",
+      "primary_color": "{{ widget.primary_color.value }}",
+      "border_color": "{{ widget.border_color.value }}",
+      "secondary_color": "{{ widget.secondary_color.value }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+   {% if widget.primary_color.value != blank or widget.border_color.value != blank or widget.secondary_color.value != blank %}
+    <style>
+      {% if widget.primary_color.value != blank %}
+        /* Button BG Color color customizations */
+        .{{widgetId}} .walkscore-listing { background:{{widget.primary_color.value}} !important; }
+      {% endif %}
+      {% if widget.border_color.value != blank %}
+        /* Border Color color customizations */
+        .{{widgetId}} .walkscore-listing { border: 1px solid {{widget.border_color.value}} !important; }
+      {% endif %}
+      {% if widget.secondary_color.value != blank %}
+        /* Secondary  color customizations */
+        .{{widgetId}} .walkscore-listing a span{ color:{{widget.secondary_color.value}}; }
+      {% endif %}
+    </style>
+  {% endif %}
+  <div class="walkscore-listing {% if widget.primary_color.value != blank %}btn{% endif %}">
+  </div>
+</div>
+
+

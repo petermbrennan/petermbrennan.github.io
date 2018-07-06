@@ -1,0 +1,138 @@
+{% capture widgetId %}storage-size-guide-{{ widget.id }}{% endcapture %}
+
+<div class="storage-size-guide widget {{widgetId}} {% if widget.square_edges.value == "square" %}square-edges{% endif %}" id="{{widgetId}}">
+
+  <script class="config" type="application/json">
+    {
+      "widgetId": "{{widgetId}}",
+      "storageImageType": "{{ widget.storage_image_type.value_or_default }}",
+      "tabContent": [
+        { "storageSize":          "{{ widget.storage_size_1.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_1.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_1.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_1.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_2.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_2.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_2.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_2.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_3.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_3.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_3.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_3.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_4.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_4.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_4.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_4.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_5.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_5.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_5.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_5.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_6.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_6.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_6.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_6.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_7.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_7.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_7.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_7.value_or_default }}" },
+
+        { "storageSize":          "{{ widget.storage_size_8.value_or_default }}",
+          "storageDescription":   "{{ widget.storage_description_8.value_or_default }}",
+          "storageImageCustom":   "{{ widget.storage_image_custom_8.value_or_default }}",
+          "storageImageAltTag":   "{{ widget.storage_image_alt_tag_8.value_or_default }}" }
+      ],
+
+      "tabDefaults": [
+        { "storageSize":          "5 x 5",
+          "storageDescription":   "<h2>UNIT SIZE: 5'X5' (25 SQ. FT.)</h2><p>Equivalent to: Regular Closet</p><p>This Unit will hold: Personal items, clothes, boxes, skis, children's toys, small furniture items, business records and sales rep materials.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/5x5.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/5x5-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/5x5-1x.png" },
+
+        { "storageSize":          "5 x 10",
+          "storageDescription":   "<h2>UNIT SIZE: 5'X10' (50 SQ. FT.)</h2><p>Equivalent to: Walk-in Closet</p><p>This Unit will hold: Small amounts of furniture, sofas, chairs, chest of drawers, boxspring and mattress, business supplies and records. Plus other small items and boxes.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/5x10.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/5x10-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/5x10-1x.png" },
+
+        { "storageSize":          "5 x 15",
+          "storageDescription":   "<h2>UNIT SIZE: 5'X15' (75 SQ. FT.)</h2><p>Equivalent to: Large Closet</p><p>This Unit will hold: Small amounts of furniture, sofas, chairs, chest of drawers, boxspring and mattress, business supplies and records. Plus other small items and boxes.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/5x15.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/5x15-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/5x15-1x.png" },
+
+        { "storageSize":          "10 x 10",
+          "storageDescription":   "<h2>UNIT SIZE: 10'X10' (100 SQ. FT.)</h2><p>Equivalent to: Half of a one-car garage</p><p>This Unit will hold: One-bedroom apartment with major appliances, other furniture and supplies.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/10x10.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/10x10-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/10x10-1x.png" },
+
+        { "storageSize":          "10 x 15",
+          "storageDescription":   "<h2>UNIT SIZE: 10'X15' (150 SQ. FT.)</h2><p>Equivalent to: Two-thirds of a one-car garage</p><p>This Unit will hold: A two-bedroom apartment or house, including appliances, boxes and miscellaneous items and commercial storage inventory.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/10x15.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/10x15-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/10x15-1x.png" },
+
+        { "storageSize":          "10 x 20",
+          "storageDescription":   "<h2>UNIT SIZE: 10'X20' (200 SQ. FT.)</h2><p>Equivalent to: Standard one-car garage</p><p>This Unit will hold: A three-bedroom house with major appliances, plus lots of boxes. Business storage files and inventory ideal for storage racks.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/10x20.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/10x20-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/10x20-1x.png" },
+
+        { "storageSize":          "10 x 25",
+          "storageDescription":   "<h2>UNIT SIZE: 10'X25' (250 SQ. FT.)</h2><p>Equivalent to: One-car garage</p><p>This Unit will hold: A three-bedroom house with major appliances, lots of boxes plus a home office. Business storage files and inventory ideal for storage racks.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/10x25.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/10x25-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/10x25-1x.png" },
+
+        { "storageSize":          "10 x 30",
+          "storageDescription":   "<h2>UNIT SIZE: 10'X30' (300 SQ. FT.)</h2><p>Equivalent to: Standard two-car garage</p><p>This Unit will hold: A four-to five-bedroom house with major appliances and room for boxes. Excellent for business storage of files, equipment and permanent records.</p>",
+          "storageImageOverview": "//widgets.g5dxm.com/storage-size-guide/plan-view/1x/10x30.png",
+          "storageImageManInBox": "//widgets.g5dxm.com/storage-size-guide/man-in-the-box/1x/10x30-man.png",
+          "storageImage3dView": "//widgets.g5dxm.com/storage-size-guide/3d-view/1x/10x30-1x.png" }
+      ]
+    }
+  </script>
+
+  <style>
+    {% if widget.size_guide_heading_color.value != blank %}
+      .storage-size-guide .storage-size-guide-heading { color: {{ widget.size_guide_heading_color.value }}; }
+    {% endif %}
+    .storage-size-guide .storage-size-container { background: {{ widget.inactive_tabs_background_color.value_or_default }}; border-color: {{ widget.base_color.value_or_default }}; }
+    .storage-size-guide .resp-tabs-list li { color: {{ widget.inactive_tabs_text_color.value_or_default }}; }
+    .storage-size-guide .resp-tabs-list li.resp-tab-active { color: {{ widget.active_tab_text_color.value_or_default }}; }
+    {% if widget.desc_active_tab_background_color.value != blank %}
+      .storage-size-guide .resp-tabs-container { background: {{ widget.desc_active_tab_background_color.value }}; }
+      .storage-size-guide .resp-tab-active { background-color: {{ widget.desc_active_tab_background_color.value }} !important; }
+    {% endif %}
+    {% if widget.image_border.value == "off" %}
+      .storage-size-guide .storage-image .unit-image { border: 0; }
+    {% endif %}
+    .storage-size-guide .description h2 { font-size: {{ widget.desc_heading_size.value_or_default }}; }
+    .storage-size-guide .description h2, .storage-size-guide .description p, .storage-size-guide .description { color: {{ widget.base_color.value_or_default }}; }
+    .storage-size-guide .storage-image .unit-image { background: {{ widget.image_background_color.value_or_default }}; }
+    .storage-size-guide h2.storage-size-guide-heading { text-align: {{ widget.size_guide_heading_position.value_or_default }}; }
+    .row-uneven-thirds-1 .storage-size-guide h2.resp-accordion  { background: {{ widget.inactive_tabs_background_color.value_or_default }} !important; }
+    .row-uneven-thirds-2 .storage-size-guide h2.resp-accordion  { background: {{ widget.inactive_tabs_background_color.value_or_default }} !important; }
+    .row-halves .storage-size-guide h2.resp-accordion  { background: {{ widget.inactive_tabs_background_color.value_or_default }} !important; }
+
+    @media only screen and (max-width: 1080px) {
+      .storage-size-guide h2.resp-accordion  { background: {{ widget.inactive_tabs_background_color.value_or_default }} !important; }
+    }
+  </style>
+
+  <div class="size-guide-content">
+    <h2 class="storage-size-guide-heading">{{ widget.size_guide_heading.value_or_default }}</h2>
+    <div class="storage-size storage-size-container">
+      <ul class="resp-tabs-list hor_1"></ul>
+      <div class="resp-tabs-container hor_1"></div>
+    </div>
+  </div>
+
+</div>

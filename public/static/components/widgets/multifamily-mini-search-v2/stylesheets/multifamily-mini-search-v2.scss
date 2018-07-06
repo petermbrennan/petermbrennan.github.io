@@ -1,0 +1,102 @@
+.multifamily-mini-search-v2 {
+  z-index: 100;
+  .search-form { text-align: center; }
+
+  .search-fields { overflow: hidden; }
+
+  span {
+    float: left;
+    position: relative;
+  }
+
+  .btn,
+  select {
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    line-height: 1;
+    display: block;
+    padding: 0.5em;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://widgets.g5dxm.com/multifamily-search/select-triangle.png) right 10px center no-repeat;
+    width: 100%;
+
+    option { color: #000; }
+
+    &::-ms-expand { display: none; }
+  }
+
+  .city,
+  .state {
+    margin-bottom: 2%;
+  }
+
+  .city:after,
+  .state:after{
+    pointer-events: none;
+  }
+
+  .state {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 479px) {
+    .search-fields .state{
+      width:100%;
+    }
+    .search-fields .city{
+      margin-left:0;
+      width:100%;
+    }
+  }
+
+  .city {
+    width: 58%;
+    margin-left: 2%;
+  }
+
+  .search-button,
+  .twitter-typeahead {
+    background-color: transparent;
+    display: block;
+    width: 100%;
+  }
+  .twitter-typeahead > input:first-of-type {
+    display: none;
+  }
+  .tt-menu {
+    background: white;
+    color: black;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+  }
+  .tt-dataset {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+  .mf-search-input {
+    padding: 10px;
+    color: black !important;
+    background-color: white !important;
+    height: 50px;
+    border-radius: 0;
+    border: 0;
+  }
+  .tt-suggestion:hover, .tt-cursor {
+    background-color: #00b4ff;
+  }
+  .tt-suggestion:hover {
+    cursor: pointer;
+  }
+  .btn {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+}

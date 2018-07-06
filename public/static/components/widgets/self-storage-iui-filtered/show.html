@@ -1,0 +1,22 @@
+<div class="self-storage-iui-filtered widget">
+  <script type="text/javascript">
+    if (typeof(window.G5) === 'undefined'){
+      window.G5 = {};
+    }
+    window.G5.unitOwnershipId = {{ widget.unit_ownership_id.value}};
+    window.G5.iuiContainer = 'iui-container';
+  </script>
+
+  <div class="iui-loading" style="display:hidden;"></div>
+  <div id="iui-container"></div>
+
+  <script>
+    window.onload = function() {
+      DS.RESTAdapter.reopen({
+        host: 'https://www.g5search.com'
+      });
+      window.App = require('appkit/app')["default"].create();
+    };
+  </script>
+
+</div>

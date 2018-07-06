@@ -1,0 +1,166 @@
+/* -------------------
+For padding option css, look in the Boilerplate
+public/stylesheets/libs/boilerplate/defaults/required-widgets.scss
+----------------------*/
+
+.row:before,
+.row:after,
+.row-grid:before,
+.row-grid:after {
+  content: " ";
+  display: table;
+}
+.row:after,
+.row-grid:after {
+  clear: both;
+}
+
+.row-grid {
+  margin: 0 -15px;
+}
+
+.col {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.row-halves .col,
+.row-uneven-thirds-1 .col,
+.row-uneven-thirds-2 .col,
+.row-thirds .col,
+.row-quarters .col {
+  float: left;
+}
+
+.row-halves .col {
+  width: 50%;
+}
+
+.row-thirds .col {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-1 {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-2 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-1 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-2 {
+  width: 33.33333%;
+}
+
+.row-quarters .col {
+  width: 25%;
+}
+
+.row-overlay {
+  position: relative;
+}
+
+.row.row-overlay::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-tile-x-top,
+.bg-tile-y-left {
+  background-position: left top;
+}
+
+.bg-cover,
+.bg-centered {
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.bg-cover-top {
+  background-position: center top;
+}
+
+.bg-cover-bottom {
+  background-position: center bottom;
+}
+
+.bg-cover,
+.bg-cover-top,
+.bg-cover-bottom {
+  background-size: cover;
+}
+
+.bg-tile-x-top,
+.bg-tile-x-bottom {
+  background-repeat: repeat-x;
+}
+
+.bg-tile-y-left,
+.bg-tile-y-right {
+  background-repeat: repeat-y;
+}
+
+.bg-tile-x-bottom {
+  background-position: left bottom;
+}
+
+.bg-tile-y-right {
+  background-position: right top;
+}
+
+.row-divider {
+  position: relative;
+  z-index: 100;
+}
+
+.row-divider img {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.row-divider.center img {
+  left: 50%;
+}
+.row-divider.left img,
+.row-divider.right img {
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.row-divider.left img {
+  left: 15px;
+}
+.row-divider.right img {
+  left: auto;
+  right: 15px;
+}
+
+@media screen and (max-width: 909px) {
+  .row-divider img {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .fixed-bg {
+    background-attachment: fixed;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+  }
+}

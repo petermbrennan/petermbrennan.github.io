@@ -1,0 +1,57 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Self Storage Search Home Settings</legend>
+  <!-- API Host -->
+  {{ widget.api_host | edit_text_field: "API Host", "//inventory.g5marketingcloud.com", "value_or_default", "" }}
+
+  <!-- Client URN -->
+  {{ widget.client_urn | edit_text_field: "Client URN (Comma Seperated - urn1, urn2)", "client_urn", "value_or_default", "", true }}
+
+  <!-- Show Pending Locations Toggle -->
+  {{ widget.pending_location_toggle | edit_toggle_field: "Show Pending Locations?", "value_or_default"}}
+  <!-- Hide Category Select -->
+  {{ widget.hide_categories | edit_toggle_field: "Hide Category Select", "value_or_default", "", false }}
+
+
+  <!-- Destination Page - Expected results -->
+  {{ widget.destination_page | edit_page_field: "Search Destination Page", "value", "", "-- Select a Page --" }}
+
+  {{ widget.location_placeholder_text | edit_text_field: "Search Input Placeholder Text", "location_placeholder_text", "value_or_default", "", true }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Storage Search Heading -->
+  {{ widget.search_heading | edit_text_field: "Storage Search Heading", "", "value_or_default" }}
+
+  {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+  {{ widget.search_heading_align | edit_radio_field: "Heading Text Alignment", position_opts, "value_or_default" }}
+
+  <!-- Search Criteria - BG Color -->
+  {{ widget.bg_search_criteria | edit_color_field: "Search Criteria - BG Color", "theme_primary_color", "value_or_default", "", true }}
+
+  <!-- Search H2 - Text Color -->
+  {{ widget.color_search_h2 | edit_color_field: "Search H2 - Text Color", "#000", "value", }}
+
+  <!-- Category Dropdown - BG Color -->
+  {{ widget.bg_category_dropdown | edit_color_field: "Category Dropdown - BG Color", "theme_secondary_color", "value", "", true }}
+
+  <!-- Category Dropdown - Text Color -->
+  {{ widget.color_category_dropdown | edit_color_field: "Category Dropdown - Text Color", "#fff", "value" }}
+
+  <!-- Search Btn - BG Color -->
+  {{ widget.bg_search_btn | edit_color_field: "Search Btn - BG Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+  <!-- Search Btn - Text Color -->
+  {{ widget.color_search_btn | edit_color_field: "Search Btn - Text Color", "#fff", "value" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

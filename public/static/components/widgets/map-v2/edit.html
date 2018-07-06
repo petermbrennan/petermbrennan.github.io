@@ -1,0 +1,46 @@
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <!-- Street Address -->
+  {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "value_or_default", "", true}}
+
+  <!-- City -->
+  {{ widget.location_city | edit_text_field: "City", "location_city", "value_or_default", "", true}}
+
+  <!-- State -->
+  {{ widget.location_state | edit_text_field: "State", "location_state",  "value_or_default", "", true }}
+
+  <!-- Postal Code -->
+  {{ widget.location_postal_code | edit_text_field: "Location Postal Code", "location_postal_code", "value_or_default", "", true}}
+
+  <!-- Allow Panning and Zooming toggle -->
+  {{ widget.map_allow_pan_zoom | edit_toggle_field: "Allow Panning and Zooming", "value_or_default" }}
+
+  {{ widget.map_styles | edit_hidden_field, "value_or_default", "map-values" }}
+  {{ widget.map_id| edit_hidden_field, "value_or_default", "map-id" }}
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-unlock-alt", "Overrides" }}
+  <fieldset>
+    <legend>Overrides Settings</legend>
+    <!-- Use Overrides -->
+    {{ widget.override_api_settings | edit_toggle_field: "Use Lat / Long to set marker (Hardcode or use from Liquid Variables)", "value_or_default"}}
+
+    <!-- Latitude -->
+    {{ widget.location_latitude | edit_text_field: "Latitude", "location_latitude", "value_or_default", "", true }}
+
+    <!-- Longitude -->
+    {{ widget.location_longitude | edit_text_field: "Longitude", "location_longitude", "value_or_default", "", true }}
+  </fieldset>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-map-marker", "Map Styles"}}
+  <!-- Map Styles -->
+  <div id="map-styles" class="form-field form-field-map-styles check-field "></div>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+{{ widget | end_tab: true }}
+
+</form>

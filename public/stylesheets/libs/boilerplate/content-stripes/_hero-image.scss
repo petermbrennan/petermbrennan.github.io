@@ -1,0 +1,140 @@
+// ********************************************
+//
+//  Hero Image
+//
+// ********************************************
+
+// VARIATIONS ARE AT THE BOTTOM
+
+// ============================================
+//  Home page large hero image
+// ============================================
+
+// Use this for large photo on home page at the top
+//
+// @import "hero-image";
+// Web builder must use the class "hero" on the row
+//
+// Use this widget configuration in the CMS:
+// Content Stripe (single col) > Column > (.row-1 > photo ) + .row-2 + .row-3...
+
+// Top padding will need to be added to .hero for positioning widgets
+
+
+// Replacing hero class with mixin to provide default styles for 'hero' images in first row
+// Add mixin to .web-home-template .row:first-of-type
+
+@mixin hero {
+  @extend %relative;
+  padding: 0;
+
+  .content {
+    margin: 0 auto;
+    max-width: $site-width;
+    position: static;
+  }
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  img {
+    border: none;
+  }
+
+  @include at-least($min-hero) {
+    height: 60vw; // maintains aspect ratio of 3:5 (3/5 = 60%)
+    max-height: em(900); // for large screens
+    padding-top: 20vw; // for placing widgets on top of hero
+
+    .content {
+      padding: 0 $half-whitespace;
+    }
+
+    .photo,
+    .gallery-basic {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    img {
+      @include center-el;
+    }
+  }
+}
+
+
+// Hero image creates the row space
+// Widgets need to be positioned in the theme
+// Add mixin to .web-home-template .row:first-of-type
+
+@mixin anti-hero {
+  padding: 0;
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  @include at-least($min-hero) {
+    .widget:not(.photo) {
+      position: absolute;
+    }
+  }
+}
+
+
+// ============================================
+//  Variation to have photo create row height
+// ============================================
+
+// Use this to override hero and have photo create the row space
+// Remove default hero padding
+// THEME WILL NEED TO POSITION WIDGETS OVER HERO
+@mixin override-hero {
+  height: auto;
+  padding: 0;
+
+  .photo,
+  .gallery-basic {
+    position: static;
+  }
+
+  img {
+    @include transform(none);
+    position: static;
+  }
+}
+
+
+// ============================================
+//  Variations for Widget placement in hero
+// ============================================
+
+// Absolutely position CTA in various spot
+.cta-center .action-calls {
+  @include at-least($min-hero) {
+    @include center-el;
+  }
+}
+
+.cta-bottom .action-calls {
+  @include at-least($min-hero) {
+    @include pos-bottom;
+  }
+}
+
+.cta-bottom-right .action-calls {
+  @include at-least($min-hero) {
+    @include pos-bottom-right;
+  }
+}
+
+.cta-bottom-left .action-calls {
+  @include at-least($min-hero) {
+    @include pos-bottom-left;
+  }
+}

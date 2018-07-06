@@ -1,0 +1,118 @@
+{
+  "name": "Social Feed",
+  "widget_id": 41,
+  "widget_type": null,
+  "summary": "Twitter and Blog Feeds",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469067-Social-Feed-Widget' target='_blank'>Social Feed Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "Sortable.min.js"
+  ],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "blog_feed_toggle",
+      "default_value": "true"
+    },
+    {
+      "name": "blog_feed_url",
+      "default_value": ""
+    },
+    {
+      "name": "blog_feed_display_summary",
+      "default_value": "false"
+    },
+    {
+      "name": "blog_feed_display_author",
+      "default_value": "false"
+    },
+    {
+      "name": "blog_feed_number_to_display",
+      "default_value": "3"
+    },
+    {
+      "name": "twitter_toggle",
+      "default_value": "true"
+    },
+    {
+      "name": "twitter_username",
+      "default_value": "{{location_twitter_id}}"
+    },
+    {
+      "name": "display_avatars",
+      "default_value": "true"
+    },
+    {
+      "name": "twitter_tweet_count",
+      "default_value": "3"
+    },
+    {
+      "name": "facebook_toggle",
+      "default_value": "true"
+    },
+    {
+      "name": "facebook_post_count",
+      "default_value": "3"
+    },
+    {
+      "name": "facebook_page_id",
+      "default_value": "{{location_facebook_id}}"
+    },
+    {
+      "name": "google_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "google_plus_post_count",
+      "default_value": "3"
+    },
+    {
+      "name": "google_plus_page_id",
+      "default_value": "{{location_google_plus_id}}"
+    },
+    {
+      "name": "instagram_toggle",
+      "default_value": "true"
+    },
+    {
+      "name": "instagram_user_id",
+      "default_value": "{{location_instagram_user_id}}"
+    },
+    {
+      "name": "instagram_user_name",
+      "default_value": "{{location_instagram_user_name}}"
+    },
+    {
+      "name": "instagram_number_of_photos",
+      "default_value": "12"
+    },
+    {
+      "name": "facebook_position",
+      "default_value": "1"
+    },
+    {
+      "name": "twitter_position",
+      "default_value": "2"
+    },
+    {
+      "name": "blog_position",
+      "default_value": "3"
+    },
+    {
+      "name": "google_position",
+      "default_value": "5"
+    },
+    {
+      "name": "instagram_position",
+      "default_value": "4"
+    }
+  ]
+}

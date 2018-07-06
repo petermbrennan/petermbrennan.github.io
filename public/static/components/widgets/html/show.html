@@ -1,0 +1,70 @@
+{% capture widgetId %}html-{{ widget.id }}{% endcapture %}
+<div class="{{widgetId}} html widget">
+
+<script class="config" type="application/json">
+  {
+    "paddingDesktop": "{{widget.padding.value}}",
+    "paddingMobile": "{{widget.padding_mobile.value}}"
+  }
+</script>
+
+<style>
+  {% if widget.text_color.value != blank %}
+    .{{widgetId}},
+    .{{widgetId}} p,
+    .{{widgetId}} h1,
+    .{{widgetId}} h2,
+    .{{widgetId}} h3,
+    .{{widgetId}} h4,
+    .{{widgetId}} h5,
+    .{{widgetId}} h6,
+    .{{widgetId}} li {
+      color: {{widget.text_color.value}} !important;
+    }
+  {% endif %}
+
+  {% if widget.background_color.value != blank %}
+    .{{widgetId}} .html-content {
+      background-color: {{widget.background_color.value_or_default_parsed | rgba: widget.background_color_opacity.value_or_default}} !important;
+    }
+  {% endif %}
+
+  {% if widget.border_width.value != blank %}
+    .{{widgetId}} .html-content {
+      border-width: {{widget.border_width.value}} !important;
+      border-color: {{widget.border_color.value}} !important;
+      border-style: solid !important;
+    }
+  {% endif %}
+
+  {% if widget.border_radius.value != blank %}
+    .{{widgetId}} .html-content {
+      border-radius: {{widget.border_radius.value}} !important;
+    }
+  {% endif %}
+
+  {% if widget.padding.value != blank %}
+    .{{widgetId}} .html-content {
+      padding: {{widget.padding.value}} !important;
+    }
+  {% endif %}
+
+  @media screen and (max-width: 767px) {
+    {% if widget.padding_mobile.value != blank %}
+      .{{widgetId}} .html-content {
+        padding: {{widget.padding_mobile.value}} !important;
+      }
+    {% endif %}
+    {% if widget.hide_on_mobile.value_or_default == "true" %}
+      .{{widgetId}} {
+        display: none !important;
+      }
+    {% endif %}
+  }
+
+</style>
+
+  <div class="html-content">
+    {{ widget.text.value }}
+  </div>
+</div>

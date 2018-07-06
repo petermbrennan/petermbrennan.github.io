@@ -1,0 +1,20 @@
+// TOC:
+// 1: Variables
+// 2: Mixins
+// 3: Media Query Mixins
+
+// 1: VARIABLES
+$action-color: #6dbde2;
+$modal-width: 750px;
+
+// 2: MIXINS
+@mixin inline-block{
+  display: inline-block;
+}
+
+// 3: MEDIA QUERY MIXINS
+@mixin modal-wide-screen {
+  @media (min-width: #{$modal-width}) {
+    @content;
+  }
+}

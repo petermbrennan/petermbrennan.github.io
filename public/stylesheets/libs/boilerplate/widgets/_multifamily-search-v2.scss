@@ -1,0 +1,27 @@
+// *************************************
+//
+//  Multifamily Search Cloud
+//
+// *************************************
+
+.text-light {
+  .mf-search-cloud-wrapper,
+  .mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+    h2,
+    .filter-results label,
+    .searchResultsInfo {
+        color: #fff !important;
+    }
+  }
+}
+
+.text-dark {
+  .mf-search-cloud-wrapper,
+  .mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+    h2,
+    .filter-results label,
+    .searchResultsInfo {
+        color: #000 !important;
+    }
+  }
+}

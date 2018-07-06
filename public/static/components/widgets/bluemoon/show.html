@@ -1,0 +1,47 @@
+{% capture widgetId %}bluemoon-button-{{ widget.id }}{% endcapture %}
+<div class="bluemoon button-{{widget.bluemoon_button_layout.value_or_default}} {{widgetId}} widget">
+  <style>
+    {% if widget.bluemoon_button_background_color.value_or_default != blank %}
+    .bluemoon.{{ widgetId }} .bluemoon-button {
+      background-color: {{widget.bluemoon_button_background_color.value_or_default}};
+    }
+    .bluemoon.{{ widgetId }} .bluemoon-button:hover {
+      background-color: {{ widget.bluemoon_button_background_color.value_or_default_parsed | darken: '10%'; }};
+    }
+    {% endif %}
+    {% if widget.bluemoon_button_border_color.value_or_default != blank %}
+    .bluemoon.{{ widgetId }} .bluemoon-button {
+      border: {{widget.bluemoon_button_border_color.value_or_default}};
+    }
+    {% endif %}
+    {% if widget.bluemoon_button_text_color.value_or_default != blank %}
+    .bluemoon.{{ widgetId }} .bluemoon-button {
+      color: {{widget.bluemoon_button_text_color.value_or_default}} !important;
+    }
+    {% endif %}
+  </style>
+  <form action="https://www.bluemoonforms.com/rentalapp/index.php" method="post" target="_blank">
+  <input name="IMPORTXML" type="hidden" value="
+    <BLUEMOON>
+      <LOGIN>
+        <SERIAL-NUMBER>{{ widget.bluemoon_button_property_id.value }}</SERIAL-NUMBER>
+      </LOGIN>
+      <RENTALAPP>
+        <SETTINGS>
+          <TO-EMAIL>{{ widget.bluemoon_button_location_email.value }}</TO-EMAIL>
+          {% if widget.bluemoon_receipt_confirm_url.value != blank %}
+          <RECEIPT-CONFIRM-URL>{{ widget.bluemoon_receipt_confirm_url.value }}</RECEIPT-CONFIRM-URL>
+          {% endif %}
+          {% if widget.bluemoon_receipt_confirm_name.value != blank %}
+          <RECEIPT-CONFIRM-NAME>{{ widget.bluemoon_receipt_confirm_name.value }}</RECEIPT-CONFIRM-NAME>
+          {% endif %}
+        </SETTINGS>
+        <APPLICANT>
+          <NONREFUNDABLE-APPLICATION-FEE>{{ widget.bluemoon_button_application_fee.value }}</NONREFUNDABLE-APPLICATION-FEE>
+        </APPLICANT>
+      </RENTALAPP>
+    </BLUEMOON>
+  "/>
+    <button class="bluemoon-button" name="LAUNCHRENTALAPP" type="submit" value="Launch Rental Application">{{ widget.bluemoon_button_label.value_or_default }}</button>
+  </form>
+</div>

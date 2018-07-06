@@ -1,0 +1,50 @@
+// *************************************
+//
+//  Standard Footer Info
+//
+// *************************************
+
+.footer-info {
+  .social-links a {
+    @extend %float-none;
+    margin: 0 0 0 (em(11));
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  // Once widgets can use icon-font, update this css
+  .access {
+    @extend %icon;
+    background: transparent;
+
+    &:before {
+      @extend %block;
+      @extend %relative;
+      font-size: 21px;
+    }
+  }
+
+  .handicap-icon {
+    @extend .icn-handicap;
+    width: 32px;
+
+    &:before {
+      left: -26px
+    }
+  }
+
+  .housing-icon {
+    @extend .icn-housing;
+    width: 36px;
+
+    &:before {
+      left: -32px;
+    }
+  }
+
+  .hours-wrapper {
+    margin-bottom: 10px;
+  }
+}

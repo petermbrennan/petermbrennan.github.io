@@ -1,0 +1,50 @@
+// *************************************
+//
+//  Self Storage Search Home - Horizontal Layout
+//
+// *************************************
+
+.self-storage-search-home {
+  .sss-search-criteria {
+    width: 100% !important;
+  }
+  @include at-least ($min-medium) {
+    .sss-search-input {
+      margin-bottom: 0;
+    }
+    .search-input {
+      float: left;
+      width: 38%;
+      margin-right: 1%;
+    }
+    .twitter-typeahead {
+      width: 100%;
+    }
+    .input-clear {
+      position: absolute;
+      right: auto;
+      left: 85%;
+    }
+    select, .unit-cta {
+      margin: 0;
+    }
+    .sss-search-select {
+      float: left;
+      width: 38%;
+      margin-right: 1%;
+    }
+    .sss-search-btn {
+      float: left;
+      width: 22%;
+    }
+  }
+  @include between($min-medium, $max-large) {
+    .search-input,
+    .sss-search-select {
+      font-size: 95%;
+    }
+    .sss-search-btn {
+      font-size: 115%;
+    }
+  }
+}

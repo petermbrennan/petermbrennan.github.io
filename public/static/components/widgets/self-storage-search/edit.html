@@ -1,0 +1,176 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Self Storage Search Settings</legend>
+    <!-- API HOST  *Required-->
+    {{ widget.api_host | edit_text_field: "API HOST", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Client URN *Required  (Comma Separated - urn1, urn2) -->
+    {{ widget.client_urn | edit_text_field: "Client URN  (Comma Separated - urn1, urn2)", "client_urn", "value_or_default", "", true }}
+
+    <!-- Move in Cost Service API -->
+    {{ widget.move_in_service_api | edit_text_field: "Move in Cost Service API", "https://vendor-leads.g5marketingcloud.com", "value_or_default"}}
+
+    <!-- Show Pending Locations Toggle -->
+    {{ widget.pending_location_toggle | edit_toggle_field: "Show Pending Locations?", "value_or_default"}}
+
+    <!-- Hide Category Select -->
+    {{ widget.hide_category_select | edit_toggle_field: "Hide Category Select", "value_or_default", "", false }}
+
+    <!-- Category Select Label - (Mobile) -->
+    {{ widget.mobile_select_category_label | edit_text_field: "Category Select Label - (Mobile)", "Select Category", "value"}}
+
+    <!-- Enable Empty Category Badge? -->
+    {{ widget.empty_category_badge_toggle | edit_toggle_field: "Enable Empty Category Badge?", "value_or_default"}}
+
+    <!-- Range Slider Start -->
+    {{ widget.range_start | edit_text_field: "Range Slider Start - (Distance in Miles)", "50", "value_or_default" }}
+
+    <!-- Range Slider Max Distance -->
+    {{ widget.range_max | edit_text_field: "Range Slider - Max Distance", "100", "value_or_default" }}
+
+    <!-- Range Slider - Increment Distance -->
+    {{ widget.range_step | edit_text_field: "Range Slider - Increment Distance", "5", "value_or_default" }}
+
+    <!-- Pagination - Per Page -->
+    {{ widget.pagination_per_page | edit_text_field: "Pagination - Per Page", "10", "value_or_default" }}
+
+    <!-- Prices - In Store Rate text -->
+    {{ widget.store_price_text | edit_text_field: "Prices - In Store Rate text", "In Store Rate:", "value_or_default" }}
+
+    <!-- Prices - Web Rate text -->
+    {{ widget.web_price_text | edit_text_field: "Prices - Web Rate text", "Web Rate:", "value_or_default" }}
+
+    <!-- Prices - Special Rate text -->
+    {{ widget.special_price_text | edit_text_field: "Prices - Special Rate text", "Special:", "value_or_default" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+    <!-- H2 Search Text -->
+    {{ widget.search_heading | edit_text_field: "H2 Search Text", "search_heading", "value_or_default" }}
+
+    {{ widget.search_input_placeholder | edit_text_field: "Search Input Placeholder Text", "search_input_placeholder", "value_or_default" }}
+
+    <!-- H2 Position for 'Find a Storage Unit' -->
+    {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+    {{ widget.search_heading_align | edit_radio_field: "H2 Position for 'Find a Storage Unit'", position_opts, "value_or_default" }}
+
+    <!-- CTA Elements - BG Color (Search Button, View all Units, Unit CTA)-->
+    {{ widget.bg_cta_elements | edit_color_field: "CTA Elements - BG Color (Search Button, View all Units, Unit CTA)", "theme_tertiary_color", "value", "", true }}
+
+    <!-- Phone CTA Color - Desktop Only -->
+    {{ widget.color_phone_desktop | edit_color_field: "Phone Desktop CTA - Color", "#hex", "value"}}
+
+    <!-- Search Criteria - BG Color -->
+    {{ widget.bg_search_criteria | edit_color_field: "Search Criteria - BG Color", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Search H2 - Text Color -->
+    {{ widget.color_search_h2 | edit_color_field: "Search H2 - Text Color", "#hex", "value"}}
+
+    <!-- Typeahead Select Hover - BG Color -->
+    {{ widget.tt_select_hover | edit_text_field: "Typeahead Select Hover - BG Color", "#hex", "value_or_default" }}
+
+    <!-- H1, (Showing XX Locations / Back) - Text Color -->
+    {{ widget.color_h1_locations_quantity | edit_color_field: "H1, (Showing XX Locations / Back) - Text Color", "#hex", "value"}}
+
+    <!-- Category Dropdown - BG Color -->
+    {{ widget.bg_category_dropdown | edit_color_field: "Category Dropdown - BG Color", "#hex", "value"}}
+
+    <!-- Category Dropdown - Text Color -->
+    {{ widget.color_category_dropdown | edit_color_field: "Category Dropdown - Text Color", "#hex", "value"}}
+
+    <!-- Category Badge - BG Color -->
+    {{ widget.bg_category_badge | edit_color_field: "Category Badge - BG Color", "theme_secondary_color", "value_or_default", "", true}}
+
+    <!-- Category Badge - Text Color -->
+    {{ widget.color_category_badge | edit_color_field: "Category Badge - Text Color", "#hex", "value"}}
+
+    <!-- Category Badge Active - BG Color -->
+    {{ widget.bg_category_badge_active | edit_color_field: "Category Badge Active - BG Color", "#hex", "value"}}
+
+    <!-- Category Badge Active - Text Color -->
+    {{ widget.color_category_badge_active | edit_color_field: "Category Badge Active - Text Color", "#hex", "value"}}
+
+    <!-- Popover Link - Text Color -->
+    {{ widget.color_popover_link | edit_text_field: "Popover Link - Text Color", "#hex", "value" }}
+
+    <!-- Popover Hover - BG Color -->
+    {{ widget.bg_popover_hover | edit_text_field: "Popover Hover - BG Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+    <!-- Popover Hover - Text Color -->
+    {{ widget.color_popover_hover | edit_text_field: "Popover Hover - Text Color", "#hex", "value" }}
+
+    <!-- Location Matrix - BG Color -->
+    {{ widget.bg_location_matrix | edit_color_field: "Location Matrix - BG Color", "#hex", "value"}}
+
+    <!-- Location Matrix (v-c-ret, units) -->
+    {{ widget.color_location_matrix | edit_color_field: "Location Matrix (v-c-ret, units)", "#hex", "value"}}
+
+    <!-- Unit Description Border - Border Top -->
+    {{ widget.unit_border_bottom | edit_color_field: "Unit Description Border - Border Top", "#hex", "value"}}
+
+    <!-- Unit Matrix - BG Color -->
+    {{ widget.bg_unit_matrix | edit_color_field: "Unit Matrix - BG Color", "#hex", "value"}}
+
+    <!-- Unit Matrix - Text Color -->
+    {{ widget.color_unit_matrix | edit_color_field: "Unit Matrix - Text Color", "#hex", "value"}}
+
+    <!-- Unit Matrix - Border -->
+    {{ widget.border_unit_matrix | edit_color_field: "Unit Matrix - Border", "#hex", "value"}}
+
+    <!-- Unit Separator - Border Bottom -->
+    {{ widget.unit_border_bottom | edit_color_field: "Unit Separator - Border Bottom", "#hex", "value"}}
+
+    <!-- Amenity Icon - BG Color -->
+    {{ widget.bg_amenity | edit_color_field: "Amenity Icon - BG Color", "#hex", "value_or_default"}}
+
+    <!-- Special Offer -->
+    {{ widget.color_special | edit_color_field: "Special Offer (Badge BG, Specials text inside Unit grid)", "#hex", "value"}}
+
+    <!-- Special Badge - Text Color -->
+    {{ widget.color_special_badge | edit_color_field: "Special Badge - Text Color", "#hex", "value"}}
+
+    <!-- Range Slider - BG Filled -->
+    {{ widget.bg_range_filled | edit_text_field: "Range Slider - BG Filled", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Rangel Slider - BG Empty -->
+    {{ widget.bg_range_empty | edit_text_field: "Range Slider - BG Empty", "#hex", "value" }}
+
+    <!-- Pagination - BG Color -->
+    {{ widget.bg_pagination | edit_color_field: "Pagination - BG Color", "#hex", "value"}}
+
+    <!-- Pagination - BG Color Inactive(Darker) -->
+    {{ widget.bg_pagination_inactive | edit_color_field: "Pagination - BG Color Current Page (active)", "#hex", "value"}}
+
+    <!-- Pagination - Text Color -->
+    {{ widget.color_pagination | edit_color_field: "Pagination - Text Color", "#hex", "value"}}
+
+    <!-- Pagination - Text Color Active -->
+    {{ widget.color_pagination_active | edit_text_field: "Pagination - Text Color Active", "#hex", "value" }}
+
+    <!-- Disabled Elements (Link Elements) - BG Color & Price Strikethrough Text Color -->
+    {{ widget.bg_disabled | edit_color_field: "Disabled Elements (Link Elements) - BG Color & Price Strikethrough Text Color", "#hex", "value"}}
+
+    <!-- Disabled Elements (Link Elements) - Text Color -->
+    {{ widget.color_disabled | edit_color_field: "Disabled Elements (Link Elements) - Text Color", "#hex", "value"}}
+
+    <!-- Color - Elease Valid Input -->
+    {{ widget.color_elease_valid | edit_color_field: "Color - Elease Valid Input", "#hex", "value" }}
+
+    <!-- Category Scroll Selector - For Offset -->
+    {{ widget.scroll_selector_offset | edit_text_field: "Category Scroll Selector - For Offset", "scroll_selector_offset", "value" }}
+
+    <!-- Widget Container Margin Top -->
+    {{ widget.widget_container_margin | edit_text_field: "Widget Container Margin Top", "0px", "value"}}
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

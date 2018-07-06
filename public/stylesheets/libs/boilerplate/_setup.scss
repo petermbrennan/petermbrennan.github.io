@@ -1,0 +1,34 @@
+// ********************************************
+//
+//  Boilerplate Setup
+//
+// ********************************************
+
+// ============================================
+//  Collection of mixins, variables, and extends
+// ============================================
+
+// *** denotes useful for widget and web builders
+
+// Mixins
+// bourbon.io
+@import 'setup/bourbon/bourbon';
+
+// Icon font
+// https://fortawesome.com/share/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJraXQiOiIyNjgwNWQ3OCJ9.1darMtBCIGWnYw8FjSqWh-2e3a9F4zTt_Gqm9pl_HOU/kit-documentation/icons
+@import 'setup/fortawesome_icons';
+
+// Old icon font being retired
+@import 'setup/icons';
+
+// Theme variables. These can be overridden in your theme
+@import 'setup/variables';
+
+// Additional mixins
+@import 'setup/mixins';
+
+// SASS extends and classes for common styles ***
+@import 'setup/helpers';
+
+// Mixins for various button styles
+@import 'setup/buttons';

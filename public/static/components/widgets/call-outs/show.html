@@ -1,0 +1,59 @@
+{% capture widgetId %}call-outs-{{ widget.id }}{% endcapture %}
+
+<div class="call-outs call-outs-{{widget.callout_layout.value_or_default}} widget {{widgetId}}" id="{{widgetId}}">
+
+  {% if widget.photo_filter.value != 'false' %}
+    <style type="text/css">
+      {% if widget.photo_filter_color.value != '' %}
+        .call-outs.{{ widgetId }} .filter {
+          background: {{widget.photo_filter_color.value}};
+        }
+      {% endif %}
+
+      {% if widget.photo_label.value != '' %}
+      .call-outs.{{ widgetId }} .label {
+          background: {{widget.photo_label.value_or_default}};
+        }
+      {% endif %}
+    </style>
+  {% endif %}
+
+
+  {% for i in (1..6) %}
+    {% capture callout_img_url %}callout_image_url_{{i}}{% endcapture %}
+    {% capture callout_url %}callout_url_{{i}}{% endcapture %}
+    {% capture callout_new_window %}callout_{{i}}_new_window{% endcapture %}
+    {% capture callout_img_alt %}callout_image_alt_{{i}}{% endcapture %}
+    {% capture callout_label %}callout_label_{{i}}{% endcapture %}
+
+    {% if widget[callout_img_url].value_or_default != blank %}
+    <span class="call-out">
+      {% if widget[callout_url].value_or_default != blank %}
+      <a href="{{ widget[callout_url].value_or_default }}" {% if widget[callout_new_window].value_or_default == "true" %}target="_blank"{% endif %}>
+      {% else %}
+        <div class="filter-container">
+      {% endif %}
+
+      {% if widget.photo_filter.value == 'true' %}
+        <div class="filter {{widget.photo_opacity.value}}"></div>
+      {% endif %}
+
+        {% if widget[callout_img_url].value_or_default != blank %}
+          <img src="{{ widget[callout_img_url].value_or_default }}" alt="{{widget[callout_img_alt].value_or_default}}" {{ widget[callout_img_url].value | srcset }} />
+        {% endif %}
+
+        {% if widget[callout_label].value_or_default != blank %}
+          <span class="label">
+            {{ widget[callout_label].value_or_default }}
+          </span>
+        {% endif %}
+      {% if widget[callout_url].value_or_default != blank %}
+      </a>
+      {% else %}
+      </div>
+      {% endif %}
+    </span>
+    {% endif %}
+  {% endfor %}
+
+</div>

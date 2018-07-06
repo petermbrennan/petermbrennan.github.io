@@ -1,0 +1,15 @@
+{% capture widgetId %}pdf-embed-{{ widget.id }}{% endcapture %}
+{% if widget.pdf_source_url.value != blank %}
+<div class="widget pdf-embed objectwrapper {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+
+  <iframe src="{{ widget.pdf_source_url.value }}#zoom=85" frameborder="0" scrolling="no">
+    <p>It appears your Web browser is not configured to support iFrames.
+    <a href="{{ widget.pdf_source_url.value }}">Please download the PDF file.</a></p>
+  </iframe>
+</div>
+{% endif %}

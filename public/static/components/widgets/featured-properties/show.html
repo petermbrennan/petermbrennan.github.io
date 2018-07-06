@@ -1,0 +1,199 @@
+{% capture widgetId %}featured-properties-{{ widget.id }}{% endcapture %}
+<div class="featured-properties gallery widget" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "widgetId": "{{widgetId}}",
+      "slideshow_speed": "{{ widget.slideshow_speed.value_or_default }}"
+    }
+  </script>
+
+  {% if widget.gallery_title.value != "" %}
+  <h2>{{ widget.gallery_title.value }}</h2>
+  {% endif %}
+
+  <div class="flexslider-container">
+    <div class="flexslider gallery-carousel full-gallery">
+      <ul class="slides">
+        {% if widget.gallery_photo1_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo1_url.value }}">
+            {% if widget.gallery_photo1_link.value != "" %}<a href="{{ widget.gallery_photo1_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo1_url.value }}" alt="{{ widget.gallery_photo1_alt_tag.value }}"  {{ widget.gallery_photo1_url.value | srcset }} />
+            {% if widget.gallery_photo1_caption.value != '' %} <p class="flex-caption">{{ widget.gallery_photo1_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo1_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo2_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo2_url.value }}">
+            {% if widget.gallery_photo2_link.value != "" %}<a href="{{ widget.gallery_photo2_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo2_url.value }}" alt="{{ widget.gallery_photo2_alt_tag.value }}" {{ widget.gallery_photo2_url.value | srcset }} />
+            {% if widget.gallery_photo2_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo2_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo2_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo3_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo3_url.value }}">
+            {% if widget.gallery_photo3_link.value != "" %}<a href="{{ widget.gallery_photo3_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo3_url.value }}" alt="{{ widget.gallery_photo3_alt_tag.value }}" {{ widget.gallery_photo3_url.value | srcset }} />
+            {% if widget.gallery_photo3_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo3_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo3_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo4_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo4_url.value }}">
+            {% if widget.gallery_photo4_link.value != "" %}<a href="{{ widget.gallery_photo4_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo4_url.value }}" alt="{{ widget.gallery_photo4_alt_tag.value }}" {{ widget.gallery_photo4_url.value | srcset }} />
+            {% if widget.gallery_photo4_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo4_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo4_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo5_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo5_url.value }}">
+            {% if widget.gallery_photo5_link.value != "" %}<a href="{{ widget.gallery_photo5_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo5_url.value }}" alt="{{ widget.gallery_photo5_alt_tag.value }}" {{ widget.gallery_photo5_url.value | srcset }} />
+            {% if widget.gallery_photo5_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo5_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo5_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo6_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo6_url.value }}">
+            {% if widget.gallery_photo6_link.value != "" %}<a href="{{ widget.gallery_photo6_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo6_url.value }}" alt="{{ widget.gallery_photo6_alt_tag.value }}" {{ widget.gallery_photo6_url.value | srcset }} />
+            {% if widget.gallery_photo6_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo6_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo6_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo7_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo7_url.value }}">
+            {% if widget.gallery_photo7_link.value != "" %}<a href="{{ widget.gallery_photo7_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo7_url.value }}" alt="{{ widget.gallery_photo7_alt_tag.value }}" {{ widget.gallery_photo7_url.value | srcset }} />
+            {% if widget.gallery_photo7_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo7_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo7_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo8_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo8_url.value }}">
+            {% if widget.gallery_photo8_link.value != "" %}<a href="{{ widget.gallery_photo8_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo8_url.value }}" alt="{{ widget.gallery_photo8_alt_tag.value }}" {{ widget.gallery_photo8_url.value | srcset }} />
+            {% if widget.gallery_photo8_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo8_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo8_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo9_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo9_url.value }}">
+            {% if widget.gallery_photo9_link.value != "" %}<a href="{{ widget.gallery_photo9_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo9_url.value }}" alt="{{ widget.gallery_photo9_alt_tag.value }}" {{ widget.gallery_photo9_url.value | srcset }} />
+            {% if widget.gallery_photo9_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo9_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo9_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo10_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo10_url.value }}">
+            {% if widget.gallery_photo10_link.value != "" %}<a href="{{ widget.gallery_photo10_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo10_url.value }}" alt="{{ widget.gallery_photo10_alt_tag.value }}" {{ widget.gallery_photo10_url.value | srcset }} />
+            {% if widget.gallery_photo10_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo10_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo10_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo11_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo11_url.value }}">
+            {% if widget.gallery_photo11_link.value != "" %}<a href="{{ widget.gallery_photo11_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo11_url.value }}" alt="{{ widget.gallery_photo11_alt_tag.value }}" {{ widget.gallery_photo11_url.value | srcset }} />
+            {% if widget.gallery_photo11_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo11_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo11_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo12_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo12_url.value }}">
+            {% if widget.gallery_photo12_link.value != "" %}<a href="{{ widget.gallery_photo12_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo12_url.value }}" alt="{{ widget.gallery_photo12_alt_tag.value }}" {{ widget.gallery_photo12_url.value | srcset }} />
+            {% if widget.gallery_photo12_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo12_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo12_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo13_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo13_url.value }}">
+            {% if widget.gallery_photo13_link.value != "" %}<a href="{{ widget.gallery_photo13_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo13_url.value }}" alt="{{ widget.gallery_photo13_alt_tag.value }}" {{ widget.gallery_photo13_url.value | srcset }} />
+            {% if widget.gallery_photo13_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo13_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo13_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo14_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo14_url.value }}">
+            {% if widget.gallery_photo14_link.value != "" %}<a href="{{ widget.gallery_photo14_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo14_url.value }}" alt="{{ widget.gallery_photo14_alt_tag.value }}" {{ widget.gallery_photo14_url.value | srcset }} />
+            {% if widget.gallery_photo14_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo14_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo14_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo15_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo15_url.value }}">
+            {% if widget.gallery_photo15_link.value != "" %}<a href="{{ widget.gallery_photo15_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo15_url.value }}" alt="{{ widget.gallery_photo15_alt_tag.value }}" {{ widget.gallery_photo15_url.value | srcset }} />
+            {% if widget.gallery_photo15_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo15_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo15_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo16_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo16_url.value }}">
+            {% if widget.gallery_photo16_link.value != "" %}<a href="{{ widget.gallery_photo16_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo16_url.value }}" alt="{{ widget.gallery_photo16_alt_tag.value }}" {{ widget.gallery_photo16_url.value | srcset }} />
+            {% if widget.gallery_photo16_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo16_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo16_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo17_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo17_url.value }}">
+            {% if widget.gallery_photo17_link.value != "" %}<a href="{{ widget.gallery_photo17_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo17_url.value }}" alt="{{ widget.gallery_photo17_alt_tag.value }}" {{ widget.gallery_photo17_url.value | srcset }} />
+            {% if widget.gallery_photo17_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo17_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo17_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo18_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo18_url.value }}">
+            {% if widget.gallery_photo18_link.value != "" %}<a href="{{ widget.gallery_photo18_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo18_url.value }}" alt="{{ widget.gallery_photo18_alt_tag.value }}" {{ widget.gallery_photo18_url.value | srcset }} />
+            {% if widget.gallery_photo18_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo18_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo18_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo19_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo19_url.value }}">
+            {% if widget.gallery_photo19_link.value != "" %}<a href="{{ widget.gallery_photo19_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo19_url.value }}" alt="{{ widget.gallery_photo19_alt_tag.value }}" {{ widget.gallery_photo19_url.value | srcset }} />
+            {% if widget.gallery_photo19_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo19_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo19_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+
+        {% if widget.gallery_photo20_url.value != "" %}
+          <li data-thumb="{{ widget.gallery_photo20_url.value }}">
+            {% if widget.gallery_photo20_link.value != "" %}<a href="{{ widget.gallery_photo20_link.value}}">{% endif %}
+            <img src="{{ widget.gallery_photo20_url.value }}" alt="{{ widget.gallery_photo20_alt_tag.value }}" {{ widget.gallery_photo20_url.value | srcset }} />
+            {% if widget.gallery_photo20_caption.value != '' %}<p class="flex-caption">{{ widget.gallery_photo20_caption.value }}</p>{% endif %}
+            {% if widget.gallery_photo20_link.value != "" %}</a>{% endif %}
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div> <!-- end .content -->

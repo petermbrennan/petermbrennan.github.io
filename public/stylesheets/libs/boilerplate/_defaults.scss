@@ -1,0 +1,41 @@
+// ********************************************
+//
+//  Boilerplate Defaults
+//
+// ********************************************
+
+// ============================================
+//  Site layout, typography, and widget styles
+// ============================================
+
+// Bourbon Neat grid system
+// http://neat.bourbon.io
+@import 'defaults/neat/neat';
+
+// Simple grid system
+@import 'defaults/grid';
+
+// CSS reset
+// necolas.github.io/normalize.css
+@import 'defaults/normalize';
+
+// General top level styles and typography
+@import 'defaults/base';
+
+// Default form and input styles
+@import 'defaults/forms';
+
+// Default site layout
+@import 'defaults/layout';
+
+// Behavior and button for mobile hidden nav
+@import 'defaults/mobile-navigation';
+
+// Content stripe text color overrides
+@import 'defaults/content-stripe';
+
+// Content stripe text color overrides
+@import 'defaults/404';
+
+// CSS Related to Widget Options
+@import 'defaults/required-widgets';

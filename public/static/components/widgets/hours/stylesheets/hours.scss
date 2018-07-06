@@ -1,0 +1,52 @@
+.hours {
+  .p-organization-name,
+  .h-adr,
+  .p-street-address,
+  .p-tel,
+  .p-url {
+    display: block;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  .p-name {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  li {
+    text-align: left;
+    list-style: none;
+    &::after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+
+    label {
+      font-weight: bold;
+    }
+  }
+
+  .hours-wrapper {
+    margin-bottom: 10px;
+  }
+
+  .office-hours-condensed label {
+    display: inline;
+    margin-right: 0.25em;
+    text-align: right;
+    font-weight: normal;
+  }
+
+  .office-hours-list label,
+  .office-hours-list span {
+    display: inline;
+  }
+  .office-hours-list label {
+    margin-right: 0.25em;
+    font-weight: normal;
+  }
+}

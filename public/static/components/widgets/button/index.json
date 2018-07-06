@@ -1,0 +1,87 @@
+{
+  "name": "Button",
+  "beta": false,
+  "widget_id": 4,
+  "widget_type": null,
+  "summary": "A link styled like a button",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468927-Button-Widget' target='_blank'>Button Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "button_label",
+      "default_value": ""
+    },
+    {
+      "name": "button_url",
+      "default_value": ""
+    },
+    {
+      "name": "button_new_window",
+      "default_value": "false"
+    },
+    {
+      "name": "button_color",
+      "default_value": ""
+    },
+    {
+      "name": "button_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "button_description",
+      "default_value": ""
+    },
+    {
+      "name": "button_image_url",
+      "default_value": ""
+    },
+    {
+      "name": "button_layout",
+      "default_value": "list"
+    },
+    {
+      "name": "button_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "button_border_width",
+      "default_value": ""
+    },
+    {
+      "name": "button_position",
+      "default_value": "default"
+    },
+    {
+      "name": "button_display",
+      "default_value": "default"
+    }
+  ]
+}

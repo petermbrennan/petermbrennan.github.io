@@ -1,0 +1,104 @@
+{
+  "name": "Photo",
+  "beta": false,
+  "widget_id": 34,
+  "widget_type": null,
+  "summary": "A single image",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468587-Photo-Widget' target='_blank'>Photo Documentation</a>",
+  "lib_javascripts": [
+    "jquery.unveil.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-photo-overlay.js",
+
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-photo-overlay.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "photo_source_url",
+      "default_value": "https://placehold.it/600x400&text=IMAGE+PLACEHOLDER"
+    },
+    {
+      "name": "photo_link_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "photo_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_alignment",
+      "default_value": "photo-block"
+    },
+    {
+      "name": "photo_class",
+      "default_value": ""
+    },
+    {
+      "name": "use_lazy_load",
+      "default_value": "true"
+    },
+     {
+      "name": "photo_filter",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_label",
+      "default_value": ""
+    },
+    {
+      "name": "photo_filter_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_opacity",
+      "default_value": "filter-half"
+    },
+    {
+      "name": "rollover_zoom",
+      "default_value": "false"
+    },
+    {
+      "name": "rollover_zoom_duration",
+      "default_value": "0.5"
+    },
+    {
+      "name": "rollover_zoom_scale",
+      "default_value": "1.05"
+    }
+  ]
+}

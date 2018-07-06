@@ -1,0 +1,443 @@
+// ********************************************
+//
+//  Venture Blueprint Theme - Bold Variation
+//
+//  CSS by Adam Sworob
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+
+[Table of contents]
+
+1. Imports & Variables
+2. Mixins
+3. Animations
+4. Base
+5. Layout
+6. Header / header[role=banner]
+7. Navigation / header[role=banner] .navigation-container
+8. Footer / footer[role=contentinfo]
+9. Hero Stripe / .hero
+10. Widgets in the Hero Stripe / .hero .widget
+11. Widgets and Other Elements / .widget
+12. G5 Corporate Website / .g5-corporate-website
+13. Area Page / .area
+14. No JS
+
+-------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------
+[ 1. Imports & Variables ]
+*/
+
+$base-opacity: 0.5;
+$less-opacity: 0.6;
+
+$border-heavy: 6px;
+$border-light: 2px;
+
+$border-combo: $border-heavy $border-light;
+
+$button-line-height: 43px;
+
+
+/*------------------------------------------------------------------
+[ 2. Mixins ]
+*/
+
+@mixin bold-style{
+	background-color: rgba($tertiaryColor, $base-opacity);
+	border-color: $tertiaryColor;
+	border-style: solid;
+	border-width: $border-combo;
+	&:hover{
+		background-color: rgba($tertiaryColor, 1);
+	}
+}
+
+/*------------------------------------------------------------------
+[ 6. Header / header[role=banner] ]
+*/
+
+@include at-least($min-hero) {
+	header[role=banner] .button {
+	  line-height: 44px;
+	}
+}
+
+@include until(400px) {
+	header[role=banner] .appended-phone {
+		&, &:hover{
+			background-color: transparent;
+			box-shadow: none;
+		}
+	}
+}
+
+
+/*------------------------------------------------------------------
+[ 7. Navigation / header[role=banner] .navigation-container ]
+*/
+
+.collapsable-btn{
+	&, &:hover{
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
+
+
+/*------------------------------------------------------------------
+[ 8. Footer / footer[role=contentinfo] ]
+*/
+
+footer[role=contentinfo]{
+	.footer-info .social-links{
+		margin-bottom: $button-pad;
+	}
+}
+
+
+/*------------------------------------------------------------------
+[ 9. Hero Stripe / .hero ]
+*/
+
+.hero-ctas .hero .action-calls a{
+	&.overlay, &:hover{
+		background-color: rgba($secondaryColor, $less-opacity);
+		span{
+			background-color: rgba($tertiaryColor, $base-opacity);
+			border-color: $tertiaryColor;
+			border-width: $border-combo;
+			line-height: $button-line-height;
+		}
+	}
+	span{
+		background-color: transparent;
+		border-color: $white;
+    border-width: $border-combo;
+    line-height: $button-line-height;
+    &:before{
+			content: none;
+    }
+	}
+}
+
+/*------------------------------------------------------------------
+[ 10. Widgets and Other Elements / .widget ]
+*/
+
+//  Button Widget / .button.widget
+
+a.button, .coupon button, .button .btn{
+	-webkit-background-clip: initial; /* for Safari */
+          background-clip: initial; /* for IE9+, Firefox 4+, Opera, Chrome */
+	background-color: rgba($secondaryColor, $base-opacity);
+	border-left: none;
+	&:hover{
+		background-color: rgba($secondaryColor, 1);
+	}
+}
+
+@include at-least($min-hero) {
+	a.button, .button .btn{
+		border: $border-light solid $secondaryColor;
+	}
+}
+
+// Contact Info
+
+[role=main] .contact-info.h-c-ret,
+[role=main] .contact-info.h-card{
+	border-bottom: $border-heavy solid $base-color;
+	border-top: $border-heavy solid $base-color;
+	&.phone-and-email .email{
+
+	}
+	&.has-social-links{
+		border-bottom: 0;
+		& + .social-links{
+			border-right: $border-light solid $base-color;
+			border-top: none;
+			&:before{
+				content: none;
+			}
+		}
+	}
+}
+
+[role=main] .text-light .contact-info.h-c-ret,
+[role=main] .text-light .contact-info.h-card{
+	&.has-social-links{
+		border-top: $border-heavy solid $white;
+		& + .social-links{
+			border-right: $border-light solid $white;
+		}
+	}
+}
+
+[role=main] .text-dark .contact-info.h-c-ret,
+[role=main] .text-dark .contact-info.h-card{
+	&.has-social-links{
+		border-top: $border-heavy solid $black;
+		& + .social-links{
+			border-right: $border-light solid $black;
+		}
+	}
+}
+
+
+// Contact Info Sheet (Sticky Nav)
+
+@include at-least(737px) {
+	.contact-info-sheet .info-sheet-nav .cis-btn{
+  	border-color: $secondaryColor;
+  	&:hover{
+  		border-color: $white;
+	    border-right: $border-light solid $white;
+	    margin-right: -$border-light;
+	    width: 55px;
+	    z-index: 1;
+  	}
+  }
+}
+
+// Coupon
+
+.coupon.widget .btn{
+	border: $border-light solid $secondaryColor;
+}
+
+// CTAs
+
+.row:not(.hero) {
+	.action-calls a{
+		line-height: $button-line-height;
+		@include bold-style;
+		&:hover{
+			border-color: $tertiaryColor;
+			border-style: solid;
+			border-width: $border-combo;
+		}
+	}
+}
+
+// Directions
+
+.directions .canvas{
+	background-color: transparent;
+	border: $border-light solid $base-color;
+	padding: $border-heavy;
+	& > div{
+		bottom: $border-heavy !important;
+		height: calc(100% - #{$border-heavy} * 2) !important;
+		left: $border-heavy !important;
+		overflow: hidden;
+		right: $border-heavy !important;
+		top: $border-heavy !important;
+		width: calc(100% - #{$border-heavy} * 2) !important;
+	}
+}
+
+.multi-family-iui-cards-v3 {
+	.move-in-date-picker {
+		input {
+			padding: 7px;
+		}
+	}
+	select {
+    width: auto;
+  }
+	.iui-cards-filter-select-wrapper .down-arrow {
+		top: 11px;
+	}
+}
+
+
+// Forms
+
+.lead-form{
+	.p-author{
+		margin-right: 0;
+	}
+}
+
+input[type=submit] {
+	&, .lead-form & {
+		@include bold-style;
+	}
+}
+
+// Gallery
+
+.gallery.widget {
+
+	.flex-caption{
+
+	}
+
+  .flex-direction-nav{
+  	.flex-prev, .flex-next{
+  		background-color: rgba($secondaryColor, $base-opacity);
+  		-webkit-background-clip: initial;
+    					background-clip: initial;
+  		border-bottom: $border-light solid $secondaryColor;
+  		border-left: $border-light solid $secondaryColor;
+  		border-right: $border-light solid $secondaryColor;
+  		border-top: $border-light solid $secondaryColor;
+  		width: $social-size;
+  		&:hover{
+  			background-color: rgba($secondaryColor, 1);
+  			border-bottom: $border-light solid $secondaryColor;
+	  		border-left: $border-light solid $secondaryColor;
+	  		border-right: $border-light solid $secondaryColor;
+	  		border-top: $border-light solid $secondaryColor;
+  		}
+  	}
+  }
+
+}
+
+.gallery.widget .mini-gallery{
+	.flex-direction-nav a {
+		&.flex-prev, &.flex-next{
+			&:after{
+				-webkit-background-clip: padding-box;
+    						background-clip: padding-box;
+				background-color: rgba($secondaryColor, $base-opacity);
+				border: $border-light solid $secondaryColor;
+				height: $social-size;
+				@include transition(background-color 0.2s ease);
+				&:hover{
+					background-color: $secondaryColor;
+				}
+			}
+		}
+		&.flex-prev:after{
+			left: -1px;
+		}
+		&.flex-next:after{
+			right: -1px;
+		}
+	}
+	.flex-caption{
+		border: none;
+	}
+}
+
+.flex-caption{
+	border: $border-light solid $secondaryColor;
+}
+
+// Lead Form / .lead-form
+
+@include at-least(600px) {
+	.lead-form{
+		&.horizontal-form {
+			input[type=submit]{
+		    margin: 10px 0;
+		    padding: $button-pad 30px;
+		    border-width: $border-size;
+			}
+		}
+	}
+}
+
+// IUIs
+
+[class*="home-multifamily-iui"], .ss-featured-unit-categories{
+	&.widget .iui-size.iui-view-all a{
+		background-color: rgba($tertiaryColor, $base-opacity);
+		border-width: $border-combo;
+		line-height: $button-line-height;
+	}
+}
+
+
+// Map
+
+.map{
+	border: $border-light solid $base-color;
+	padding: $border-heavy;
+}
+
+.text-light .map{
+	border-color: $white;
+}
+
+.text-dark .map{
+	border-color: $black;
+}
+
+// Mini Blog Feed
+
+.mini-blog-feed.widget{
+	a{
+		&.news-item-link{
+			background-color: rgba($secondaryColor, $base-opacity);
+			border: $border-light solid $secondaryColor;
+			&:hover{
+				background-color: $secondaryColor;
+			}
+		}
+		&.all-news-link{
+			background-color: rgba($secondaryColor, $base-opacity);
+			&:hover{
+				background-color: $secondaryColor;
+			}
+		}
+	}
+}
+
+// Social Links
+
+.social-links{
+	border-color: $base-color;
+	border-style: solid;
+	border-width: $border-combo;
+	a{
+		border: none;
+		margin: 0;
+	}
+}
+
+.text-light {
+	.social-links.widget{
+		border-color: $white;
+		svg path{
+			fill: $white !important;
+		}
+	}
+}
+
+footer[role=contentinfo]{
+	.social-links{
+		border-color: $white;
+		display: inline-block;
+		padding: 0;
+		a{
+			margin: 0;
+		}
+		path{
+			fill: $white !important;
+		}
+	}
+}
+
+.text-dark{
+	.social-links.widget{
+		border-color: $black;
+		path{
+			fill: $black;
+		}
+	}
+}
+
+// SS Filtered
+
+.ss-search-filtered div.sss-cat.view-all {
+	@include bold-style;
+	@include transition(background-color 0.2s ease);
+}

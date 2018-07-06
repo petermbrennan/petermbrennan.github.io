@@ -1,0 +1,19 @@
+// *************************************
+//
+//  Standard Contact Info Sheet
+//
+// *************************************
+
+.contact-info-sheet {
+  font-family: $primary-font;
+  z-index: 999;
+
+  textarea,
+  #{$all-text-inputs} {
+    padding: 0.5em;
+  }
+
+  textarea {
+    height: 4em;
+  }
+}

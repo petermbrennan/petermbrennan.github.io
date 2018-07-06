@@ -1,0 +1,77 @@
+{% capture widgetId %}self-storage-search-home-{{ widget.id }}{% endcapture %}
+<div class="self-storage-search-home widget {{widgetId}}" id="{{widgetId}}">
+  <script type="text/javascript">
+    if (window.G5Leads == null) {
+      window.G5Leads = {};
+    }
+    window.G5Leads.disableWebshims = true;
+  </script>
+
+  <script class="config" type="application/json">
+    {
+      "apiHost": "{{ widget.api_host.value_or_default }}",
+      "clientUrn": "{{ widget.client_urn.value_or_default }}",
+      "destinationPage": "{{ widget.destination_page.value }}",
+      "includePending":"{{ widget.pending_location_toggle.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    .self-storage-search-home.{{widgetId}} .sss-search-criteria h2 {
+      text-align: {{ widget.search_heading_align.value_or_default }} !important;
+      {% if widget.color_search_h2.value != blank %}
+        color: {{widget.color_search_h2.value}} !important;
+      {% endif %}
+    }
+
+    .self-storage-search-home.{{widgetId}} .sss-search-criteria {
+        background-color: {{ widget.theme_primary_color.value }};
+        {% if widget.bg_search_criteria.value != blank %}
+          /* bg_search_criteria customizations PRIMARY-criteria*/
+          background-color: {{widget.bg_search_criteria.value}} !important;
+        {% endif %}
+    }
+
+    {% if widget.bg_category_dropdown.value != blank %}
+      /* bg_category_dropdown customizations */
+      .self-storage-search-home.{{widgetId}} .sss-search-storage-categories-select { background-color: {{widget.bg_category_dropdown.value}} !important; }
+    {% endif %}
+
+    {% if widget.color_category_dropdown.value != blank %}
+      /* color_category_dropdown customizations */
+      .self-storage-search-home.{{widgetId}} .sss-search-storage-categories-select { color: {{widget.color_category_dropdown.value}} !important; }
+      .self-storage-search-home.{{widgetId}} .sss-search-select:after { border-top-color: {{widget.color_category_dropdown.value}} !important; }
+    {% endif %}
+
+    .self-storage-search-home.{{widgetId}} .sss-search-btn {
+      background-color: {{widget.theme_tertiary_color.value}};
+      {% if widget.bg_search_btn.value != blank %}
+        /* Button BG Color color customizations */
+         background-color: {{widget.bg_search_btn.value_or_default}} !important;
+      {% endif %}
+    }
+
+    {% if widget.color_search_btn.value != blank %}
+      /* color_search_btn customizations */
+      .self-storage-search-home.{{widgetId}} .sss-search-btn { color: {{widget.color_search_btn.value}} !important; }
+    {% endif %}
+  </style>
+
+  <form class="sss-search-criteria {% if widget.hide_categories.value_or_default == 'true' %}no-categories{% endif %}" action="">
+    <h2>{{ widget.search_heading.value_or_default }}</h2>
+    <div class="search-input">
+      <input class="sss-search-input typeahead tt-hint" type="text" placeholder="{{widget.location_placeholder_text.value_or_default}}">
+      <span class="input-clear"></span>
+    </div>
+
+    {% if widget.hide_categories.value_or_default == "false" %}
+    <div class="sss-search-select">
+      <select class="sss-search-storage-categories-select" data-ember-action="656">
+        <option value="">Select Category</option>
+      </select>
+    </div>
+    {% endif %}
+    <a class='sss-search-btn btn active' href='#'>Search</a>
+  </form>
+</div>

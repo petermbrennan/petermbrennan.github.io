@@ -1,0 +1,13 @@
+{% capture widgetId %}chat-liveengage-{{ widget.id }}{% endcapture %}
+
+<div class="chat-liveengage {{widgetId}} widget h-media" id="{{widgetId}}">
+
+  <script class="config chat-liveengage-config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}",
+      "liveEngageClientId" : "{{ widget.liveengage_client_id.value_or_default }}",
+      "liveEngageMobile" : "{{ widget.liveengage_mobile.value_or_default }}"
+    }
+  </script>
+
+</div>

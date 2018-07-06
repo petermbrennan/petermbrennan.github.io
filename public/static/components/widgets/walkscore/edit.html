@@ -1,0 +1,43 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Walkscore Settings</legend>
+  <!-- Config Label Name -->
+  {{ widget.walkscore_location | edit_text_field: "Location Urn", "location_urn", "value_or_default", "", true }}
+
+  <!-- Street Address -->
+  {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "value_or_default", "", true }}
+
+  <!-- City -->
+  {{ widget.location_city | edit_text_field: "City", "location_city", "value_or_default", "", true }}
+
+  <!-- State -->
+  {{ widget.location_state | edit_text_field: "State", "location_state", "value_or_default", "", true }}
+
+  <!-- Latitude -->
+  {{ widget.location_latitude | edit_text_field: "latitude", "location_latitude", "value_or_default", "", true }}
+
+   <!-- Longitude -->
+  {{ widget.location_longitude | edit_text_field: "longitude", "location_longitude", "value_or_default", "", true }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- WalkScore BG Color -->
+  {{ widget.primary_color | edit_color_field: "WalkScore BG Color", "#ffffff", "value_or_default" }}
+
+  <!-- Walkscore Border Color -->
+  {{ widget.border_color | edit_color_field: "Walkscore Border Color", "#eeeeee", "value_or_default" }}
+
+  <!-- Walkscore Text Color -->
+  {{ widget.secondary_color | edit_color_field: "Walkscore Text Color", "#000000", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

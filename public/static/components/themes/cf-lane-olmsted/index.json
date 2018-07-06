@@ -1,0 +1,24 @@
+{
+  "theme_id": 35,
+  "name": "CFLane Olmsted",
+  "summary": "Custom theme",
+  "primary_color": "#c4d2d6",
+  "secondary_color": "#c99700",
+  "tertiary_color": "#ba6124",
+  "primary_font": "p22-underground-pc",
+  "secondary_font": "adobe-garamond-pro",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-1t7d1ppp-cflane"
+  ],
+  "pending": false,
+  "group": "CFLane",
+  "theme_type": "location",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments"
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "name": "Photo Cards",
+  "beta": false,
+  "widget_id": 2,
+  "widget_type": null,
+  "summary": "A row of photos with overlaid title and hover caption",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/220971247' target='_blank'>Photo Cards Documentation</a>",
+  "lib_javascripts": [
+    "imagesloaded.pkgd.min.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-gallery.js",
+    
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-gallery.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "max_width",
+      "editable": true,
+      "default_value": "1000"
+    },
+    {
+      "name": "max_height",
+      "editable": true,
+      "default_value": "667"
+    },
+    {
+      "name": "photo_cards_heading",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_heading_alignment",
+      "default_value": "center"
+    },
+    {
+      "name": "photo_cards_animation",
+      "default_value": "a-overlay"
+    },
+    {
+      "name": "photo_cards_spacing",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_mobile_breakpoint",
+      "default_value": "740px"
+    },
+    {
+      "name": "photo_cards_title_size",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_title_position",
+      "default_value": "title-middle"
+    },
+    {
+      "name": "photo_cards_title_alignment",
+      "default_value": "title-center"
+    },
+    {
+      "name": "photo_cards_title_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_title_background",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_caption_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_caption_background",
+      "default_value": "#fff"
+    },
+    {
+      "name": "photo_cards_caption_background_opacity",
+      "default_value": "1"
+    },
+    {
+      "name": "photo_cards_img_overlay_background",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_img_overlay_opacity",
+      "default_value": "0.25"
+    },
+    {
+      "name": "photo_cards_1_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_1_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_1_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_1_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_1_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_1_large_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_2_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_2_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_2_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_2_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_2_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_2_large_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_3_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_3_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_3_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_3_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_3_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_3_large_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_4_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_4_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_4_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_4_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_4_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_4_large_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_5_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_5_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_5_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_5_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_5_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_5_large_caption",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_6_link",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_6_link_target",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_cards_6_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_6_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_6_title",
+      "default_value": ""
+    },
+    {
+      "name": "photo_cards_6_large_caption",
+      "default_value": ""
+    }
+  ],
+  "aliases": [
+    "beta-photo-cards"
+  ]
+}

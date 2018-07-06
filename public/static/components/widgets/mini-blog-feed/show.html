@@ -1,0 +1,27 @@
+{% capture widgetId %}mini-blog-feed-{{ widget.id }}{% endcapture %}
+<div class="mini-blog-feed mini-news-feed-widget widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "newsServiceDomain": "{{ widget.news_service_domain.value_or_default }}",
+      "locationURN":       "{{ widget.location_urn.value_or_default }}",
+      "numberOfPosts":     "{{ widget.number_of_posts.value_or_default }}",
+      "headingText":       "{{ widget.heading_text.value }}",
+      "newsPagePath":      "{{ widget.news_page_path.best_value }}",
+      "backgroundColor":   "{{ widget.background_color.value }}",
+      "displayPhotos":     "{{ widget.display_photos.value_or_default }}",
+      "defaultImage":      "{{ widget.default_image.value }}",
+      "seeMoreNewsText":   "{{ widget.see_more_news_text.value_or_default }}",
+      "widgetId":          "{{ widgetId }}",
+      "usesStaticPages":   "{{ widget.uses_static_pages.value }}"
+    }
+  </script>
+
+  <style>
+    .mini-blog-feed.{{widgetId}} .all-news-link{ background-color:{{ widget.background_color.value_or_default }} !important; }
+    .mini-blog-feed.{{widgetId}} .news-item-link{ background-color:{{ widget.read_more_background_color.value_or_default }} !important; }
+  </style>
+
+  {% if widget.heading_text.value != blank %}
+    <h2 class="news-feed-top">{{ widget.heading_text.value }}</h2>
+  {% endif %}
+</div>

@@ -1,0 +1,64 @@
+{
+  "name": "Events",
+  "widget_id": 110,
+  "widget_type": "",
+  "summary": "test",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468997-Events-Widget' target='_blank'>Events Documentation</a>",
+  "lib_javascripts": [
+
+  ],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "news_service_domain",
+      "default_value": "{{client_nae_url}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "number_of_posts",
+      "default_value": "10"
+    },
+    {
+      "name": "heading_text",
+      "default_value": ""
+    },
+    {
+      "name": "title_background_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "title_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "button_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "button_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "default_image",
+      "default_value": "https://widgets.g5dxm.com/events/calendar-default.jpg"
+    }
+  ]
+}

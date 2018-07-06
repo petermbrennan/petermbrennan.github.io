@@ -1,0 +1,36 @@
+.social-order{
+  position: relative;
+  float: left;
+  display: block;
+  width: 100%;
+  margin: 0 0 5px 0;
+}
+
+.social-order .item{
+  display: block;
+  float: left;
+  list-style-type: none;
+  padding: 5px 12px;
+  border-right: 3px solid #f0f0f0;
+  background-color: #cbcbcb;
+  cursor: move;
+  text-align: center;
+}
+
+.social-order .ghost {
+  opacity: 0.4;
+}
+
+.social-order .chosen {
+  color: #fff;
+  background-color: #6DBDDE;
+  border-right: 3px solid #6DBDDE;
+}
+
+.social-position {
+  display: none;
+}
+
+.social-opts{ display: block;}
+
+legend label { font-weight: 700;}

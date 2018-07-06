@@ -1,0 +1,23 @@
+{
+  "theme_id": 21,
+  "name": "Wellborne Traditions",
+  "summary": "Blueprint for Wellborne Traditions",
+  "primary_color": "#1b2642",
+  "secondary_color": "#d1ccc1",
+  "tertiary_color": "#5a7cd1",
+  "primary_font": "ff-tisa-web-pro",
+  "secondary_font": "ff-tisa-sans-web-pro",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Wellborne",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

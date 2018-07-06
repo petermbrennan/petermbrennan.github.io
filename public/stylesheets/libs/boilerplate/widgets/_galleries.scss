@@ -1,0 +1,92 @@
+// *************************************
+//
+//  Standard Galleries
+//
+// *************************************
+
+.gallery {
+  h2 {
+    @extend %text-center;
+  }
+
+  // Normal default gallery or carousel
+  .full-gallery {
+    .flex-control-nav {
+      padding-top: 1em;
+    }
+
+    .flex-control-thumbs {
+      margin-left: -5px;
+      margin-right: -5px;
+      width: auto;
+
+      li {
+        float: none;
+        padding: 0 5px 10px;
+      }
+    }
+
+    .flex-caption {
+      @extend %text-center;
+      color: $black;
+      padding: 1em $half-whitespace;
+      width: 100%;
+    }
+
+    .slides li {
+      @extend %relative;
+    }
+  }
+
+  // Gallery with large photo on left, captions/thumbs on right
+  .mini-gallery {
+    .flex-direction-nav {
+      a {
+        background-size: auto;
+      }
+    }
+
+    .flex-prev {
+      background-position: -12px center;
+    }
+
+    .flex-next {
+      background-position: -64px center;
+    }
+
+    // This breakpoint is in the widget css
+    @include until(909px) {
+      .flex-title,
+      .flex-caption {
+        margin: .5em 15px 1em;
+      }
+    }
+
+    @include until($max-small) {
+
+      .flex-control-thumbs {
+        display: none;
+      }
+    }
+
+    @include at-least(910px) {
+      .flex-title,
+      .flex-caption {
+        padding: 0 15px;
+      }
+
+      .flex-prev {
+        background-position: left center;
+      }
+
+      .flex-next {
+        background-position: right center;
+      }
+
+      .flex-control-thumbs {
+        margin: 0;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,1 @@
+"use strict";var selectors={primary:".form-field-default-image input:text",hasMaxWidthMaxHeight:!1};new G5ImageEditor(selectors,function(){});

@@ -1,0 +1,24 @@
+{% if widget.display_corporate_navigation.value == "true" %}
+  {% if widget.display_navigation.value == "true" %}
+    {% assign show_desktop = " show-desktop" %}
+  {% else %}
+    {% assign show_desktop = "" %}
+  {% endif %}
+  <nav class="corporate-navigation widget{{show_desktop}}">
+    {{ widget.show_corporate_navigation }}
+  </nav>
+{% endif %}
+
+{% if widget.display_navigation.value == "true" %}
+  <nav class="navigation widget">
+    {{ widget.show_location_navigation }}
+  </nav>
+{% endif %}
+
+{% if widget.display_navigation.value != "true" %}
+  <style>
+  .collapsable-btn{
+    display: none !important;
+  }
+  </style>
+{% endif %}

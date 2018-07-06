@@ -1,0 +1,119 @@
+{% capture widgetId %}contact-info-sheet-{{ widget.id }}{% endcapture %}
+{% capture contactFormClass %}{{widget.show_contact_form.value_or_default}}-toggle{% endcapture %}
+
+<!--[if IE 9]><script type="text/javascript">var noStickyNavForIE9 = true;</script><![endif]-->
+<div class="contact-info-sheet widget hidden {{widget.cis_layout.value_or_default}} {{widgetId}}" id="{{widgetId}}">
+  <script class="config contact-info-sheet-config" type="application/json">
+    {
+      "clientUrn": "{{widget.client_urn.value_or_default}}",
+      "cpnsUrl": "{{widget.client_cpns_url.value_or_default}}",
+      "linkMode": "on",
+      "locationUrn": "{{widget.location_urn.value_or_default}}",
+      "fadeDelay":"{{widget.fade_delay.value_or_default}}",
+      "third_party_chat":"{{widget.third_party_chat_url.value}}",
+      "chat_width":"{{widget.chat_width.value_or_default}}",
+      "chat_height":"{{widget.chat_height.value_or_default}}",
+      "widgetId": "{{widgetId}}",
+      "layout": "{{widget.cis_layout.value_or_default}}",
+      "showScroll": "{{widget.show_scroll.value_or_default}}",
+      "showHome": "{{widget.show_home.value_or_default}}"
+    }
+  </script>
+
+  {% if widget.background_color.value != blank  or widget.icon_color.value != blank %}
+    <style>
+      {% if widget.background_color.value != blank %}
+        .{{widgetId}} .info-sheet-nav,
+        .{{widgetId}} .info-sheet-content {
+          background-color: {{widget.background_color.value}} !important;
+        }
+
+        .{{widgetId}} .cis-btn {
+          background-color: transparent !important;
+        }
+      {% endif %}
+
+      {% if widget.icon_color.value != blank  %}
+        .{{widgetId}} .info-sheet-nav i {
+          color: {{widget.icon_color.value}} !important;
+        }
+
+        .{{widgetId}} .info-sheet-nav i:hover {
+          color: {{widget.icon_color.value | lighten: '10%'}} !important;
+        }
+      {% endif %}
+    </style>
+  {% endif %}
+
+  <!-- Navigation Icons -->
+  <div class="info-sheet-nav {{widget.cis_layout.value_or_default}}">
+    {% if widget.show_home.value_or_default == 'yes' %}
+      <a class="info-sheet-home-btn cis-btn" href="#" title="Home">
+        <i class="fa fa-home-bts"></i>
+        <span>Home</span>
+      </a>
+    {% endif %}
+
+    {% if widget.show_phone.value_or_default == 'yes' %}
+      <!-- use phone service for this number -->
+      <a class="number info-sheet-phone-btn info-sheet-toggle cis-btn" href="tel:{{ widget.phone_number.value }}" title="Phone Number">
+        <i class="fa fa-phone"></i>
+        <span class="p-tel">{{ widget.phone_number.value_or_default }}</span>
+      </a>
+    {% endif %}
+
+    {% if widget.show_email.value_or_default == 'yes' %}
+      <a class="info-sheet-email-btn info-sheet-toggle cis-btn {{contactFormClass}}" href="{{ widget.contact_url.value_or_default }}" title="Email">
+        <i class="fa fa-envelope-2"></i>
+        <span>Email</span>
+      </a>
+    {% endif %}
+
+    {% if widget.third_party_chat_code.value != blank %}
+      <span class="info-sheet-chat-btn info-sheet-icon chat-code cis-btn" title="Chat">
+        <i class="fa fa-comment"></i>
+        <span>{{widget.third_party_chat_code.value}}</span>
+      </span>
+    {% endif %}
+
+    {% if widget.show_scroll.value_or_default == 'yes' %}
+      <div class="info-sheet-page-up info-sheet-pagination cis-btn" title="Scroll Up">
+        <i class="fa fa-angle-up"></i>
+        <span>UP</span>
+      </div>
+
+      <div class="info-sheet-page-down info-sheet-pagination cis-btn" title="Scroll Down">
+        <i class="fa fa-angle-down"></i>
+        <span>DOWN</span>
+      </div>
+    {% endif %}
+  </div>
+
+
+  <!-- Main Content / Fly Outs -->
+  <div class="info-sheet-content">
+    {% if widget.show_phone.value_or_default == 'yes' %}
+      <div class="info-sheet-phone p-tel">{{ widget.phone_number.value_or_default }}</div> <!-- end .info-sheet-phone -->
+    {% endif %}
+
+    {% if widget.show_email.value_or_default == 'yes' %}
+      <div class="info-sheet-email">
+
+        <div class="g5-enhanced-form">
+          <script class="config" type="application/json">
+            {
+              {% if widget.success_redirect_url.value != '' %}
+                "successRedirectUrl": "{{ widget.success_redirect_url.value}}",
+              {% endif %}
+              "formUrl": "{{ widget.secure_cls_url }}/api/v1/locations/{{ widget.location_urn.value_or_default }}/html_forms/{{ widget.form_type.value_or_default }}"
+            }
+          </script>
+
+          <p>
+            You are using an older, unsupported browser. Please <a href="{{ widget.secure_cls_url }}/api/v1/locations/{{ widget.location_urn.value_or_default }}/html_forms/{{ widget.form_type.value }}.html" target="_blank">visit this link</a> to contact us.
+          </p>
+        </div> <!-- end form -->
+      </div> <!-- end .info-sheet-email -->
+    {% endif %}
+  </div> <!-- end .info-sheet-content -->
+</div> <!-- end .contact-info-sheet -->

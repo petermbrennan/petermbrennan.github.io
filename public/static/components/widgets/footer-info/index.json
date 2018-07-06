@@ -1,0 +1,159 @@
+{
+  "name": "Footer Info",
+  "widget_id": 18,
+  "widget_type": null,
+  "summary": "Copyright and Logo",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468977-Footer-Widget' target='_blank'>Footer Info Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": false,
+  "settings": [
+    {
+      "name": "display_housing_icon",
+      "default_value": "true"
+    },
+    {
+      "name": "housing_icon_link",
+      "default_value": "https://www.hud.gov/program_offices/fair_housing_equal_opp"
+    },
+    {
+      "name": "display_copyright",
+      "default_value": "true"
+    },
+    {
+      "name": "display_handicap_icon",
+      "default_value": "true"
+    },
+    { "name": "handicap_icon_link",
+      "default_value": "https://www.hud.gov/program_offices/fair_housing_equal_opp/disabilities/accessibilityR"
+    },
+    {
+      "name": "display_office_hours",
+      "default_value": "true"
+    },
+    {
+      "name": "office_hours_format",
+      "default_value": "condensed"
+    },
+    {
+      "name": "display_office_hours_note",
+      "default_value": "true"
+    },
+    {
+      "name": "display_access_hours",
+      "default_value": "false"
+    },
+    {
+      "name": "office_hours_label",
+      "default_value": "Office Hours"
+    },
+    {
+      "name": "access_hours_label",
+      "default_value": "Access Hours"
+    },
+    {
+      "name": "display_social_icons",
+      "default_value": "true"
+    },
+    {
+      "name": "location_name",
+      "default_value": "{{location_name}}"
+    },
+    {
+      "name": "client_name",
+      "default_value": "{{client_name}}"
+    },
+    {
+      "name": "corporate_url",
+      "default_value": "{{client_domain}}"
+    },
+    {
+      "name": "corporate_logo_url",
+      "default_value": ""
+    },
+    {
+      "name": "custom_link_1_url",
+      "default_value": ""
+    },
+    {
+      "name": "custom_link_1_text",
+      "default_value": ""
+    },
+    {
+      "name": "custom_link_1_new_window",
+      "default_value": "false"
+    },
+    {
+      "name": "custom_link_2_url",
+      "default_value": ""
+    },
+    {
+      "name": "custom_link_2_text",
+      "default_value": ""
+    },
+    {
+      "name": "custom_link_2_new_window",
+      "default_value": "false"
+    },
+    {
+      "name": "twitter_username",
+      "default_value": "{{location_twitter_id}}"
+    },
+    {
+      "name": "facebook_username",
+      "default_value": "{{location_facebook_id}}"
+    },
+    {
+      "name": "yelp_username",
+      "default_value": "{{location_yelp_id}}"
+    },
+    {
+      "name": "google_plus_id",
+      "default_value": "{{location_google_plus_id}}"
+    },
+    {
+      "name": "google_cid",
+      "default_value": "{{location_google_cid}}"
+    },
+    {
+      "name": "linkedin_username",
+      "default_value": "{{location_linkedin_id}}"
+    },
+    {
+      "name": "linkedin_account_type",
+      "default_value": "{{location_linkedin_account_type}}"
+    },
+    {
+      "name": "foursquare_username",
+      "default_value": "{{location_foursquare_id}}"
+    },
+    {
+      "name": "pinterest_username",
+      "default_value": "{{location_pinterest_id}}"
+    },
+    {
+      "name": "tumblr_username",
+      "default_value": "{{location_tumblr_id}}"
+    },
+    {
+      "name": "instagram_username",
+      "default_value": "{{location_instagram_id}}"
+    },
+    {
+      "name": "vimeo_username",
+      "default_value": "{{location_vimeo_id}}"
+    },
+    {
+      "name": "youtube_username",
+      "default_value": "{{location_youtube_id}}"
+    }
+  ]
+}

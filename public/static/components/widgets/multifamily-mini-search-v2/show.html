@@ -1,0 +1,89 @@
+{% capture widgetId %}multifamily-mini-search-{{ widget.id }}{% endcapture %}
+<div class="multifamily-mini-search-v2 mf-corp-search-v2 widget {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "clientURN": "{{ widget.client_urn.value }}",
+      "serviceURL": "{{ widget.cloud_service_url.value}}",
+      "corpSearchPage": "{{ widget.corp_search_page.value }}",
+      "externalSearchURL": "{{ widget.external_search_url.value }}",
+      "widgetId": "{{widgetId}}",
+      "useUniversalSearch": "{{widget.universal_search_enabled.value}}"
+    }
+  </script>
+
+  <style>
+    .multifamily-mini-search-v2 span { background-color: {{widget.secondary_color.value_or_default}}; }
+    .multifamily-mini-search-v2 button { background-color: {{widget.tertiary_color.value_or_default}}; }
+
+    {% if widget.search_background.value != blank %}
+      .{{widgetId}} {
+        background-color: {{widget.search_background.value}} !important;
+        padding: 20px;
+      }
+    {% endif %}
+
+    {% if widget.text_color.value != blank %}
+      .{{widgetId}} .search-heading { color: {{widget.text_color.value}} !important; }
+    {% endif %}
+
+    {% if widget.heading_text_position.value_or_default != blank %}
+     .{{widgetId}} .search-heading { text-align: {{ widget.heading_text_position.value_or_default }}; }
+    {% endif %}
+
+    {% if widget.city_state_button_bg_color.value != blank %}
+      .{{widgetId}} .state,
+      .{{widgetId}} .city { background-color: {{widget.city_state_button_bg_color.value}} !important; }
+    {% endif %}
+
+    {% if widget.city_state_button_text_color.value != blank %}
+      .{{widgetId}} select {
+        background-color: none;
+        color: {{widget.city_state_button_text_color.value}};
+      }
+    {% endif %}
+
+    {% if widget.search_button_color.value != blank %}
+      .{{widgetId}} .btn { background-color: {{widget.search_button_color.value}} !important; }
+    {% endif %}
+
+    {% if widget.search_button_text_color.value != blank %}
+      .{{widgetId}} .btn { color: {{widget.search_button_text_color.value}} !important; }
+    {% endif %}
+
+    {% if widget.universal_search_enabled.value != "true" %}
+    .{{widgetId}} .mf-search-input {
+      display: none !important;
+    }
+    {% else %}
+    .{{widgetId}} .state {
+      display: none !important;
+    }
+    .{{widgetId}} .city {
+      display: none !important;
+    }
+    {% endif %}
+  </style>
+
+  <div class="search-form">
+    <h2 class="search-heading">{{ widget.heading_text.value }}</h2>
+
+    <div class="search-fields">
+      <span class="state">
+        <select class="mf-search-states default-select">
+          <option value="">State</option>
+        </select>
+      </span>
+      <span class="city">
+        <select class="mf-search-cities default-select">
+          <option value="">City</option>
+        </select>
+      </span>
+      <div class="search-input">
+        <input class="mf-search-input typeahead tt-hint" type="text" placeholder="Search"></input>
+      </div>
+      <span class="search-button">
+        <button class="mf-search-go-button search default-submit-button btn">{{ widget.search_button_text.value_or_default }}</button>
+      </span>
+    </div>
+  </div>
+</div>

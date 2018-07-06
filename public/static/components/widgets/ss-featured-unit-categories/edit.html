@@ -1,0 +1,45 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>SS Featured Unit Category Settings</legend>
+  <!-- Units Service Host - API -->
+  {{ widget.unit_service_host | edit_text_field: "Units Service Host - API", "//inventory.g5marketingcloud.com", "value_or_default", ""  }}
+
+  <!-- Location URN -->
+  {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default", "", true  }}
+
+  <!-- Unit Category Link Destination Page -->
+  {{ widget.unit_page_url | edit_page_field: "Unit Category Link Destination Page", "value", "", "-- Select a Page --" }}
+
+  <!-- Destination Type (Self Storage Cards of Self Storage Filtered) -->
+  {% assign destination_type_opts = '{"ss_filtered": "Self Storage Filtered", "ss_iui_cards": "Self Storage IUI Cards"}' %}
+  {{ widget.destination_type | edit_radio_field: "Destination Type", destination_type_opts, "value_or_default" }}
+
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  {{ widget.ss_featured_unit_categories_heading | edit_text_field: "SS Featured Unit Categories Heading", "", "value_or_default" }}
+
+  {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+  {{ widget.ss_featured_unit_categories_heading_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+
+  <!-- Button BG Color -->
+  {{ widget.primary_color | edit_color_field: "Button BG Color", "#999999" }}
+
+  <!-- View All Button BG Color -->
+  {{ widget.view_all_color | edit_color_field: "View All Button BG Color", "#999999" }}
+
+  <!-- Text Color -->
+  {{ widget.secondary_color | edit_color_field: "Text Color", "#005892" }}
+
+  <!-- Config Label Name -->
+  {{ widget.accent_color_1 | edit_color_field: "Accent Color ('Select a Size' header color if needed)", "#eeeeee" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+</form>

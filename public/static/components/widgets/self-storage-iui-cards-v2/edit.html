@@ -1,0 +1,93 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Self Storage IUI Cards v2 Settings</legend>
+  <!-- Max Lease Start Days -->
+  {{ widget.max_lease_days | edit_integer_field: "Max Lease Start Days", "", "value_or_default" }}
+
+  <!-- Unit Size Help URL -->
+  {{ widget.unit_size_help_url | edit_text_field: "Unit Size Help URL", "", "value" }}
+
+  <!-- Unit Size Help Label -->
+  {{ widget.unit_size_help_label | edit_text_field: "Unit Size Help Label", "", "value" }}
+
+  <!-- Disclaimer Text -->
+  {{ widget.disclaimer_text | edit_text_field: "Disclaimer Text", "", "value_or_default" }}
+
+  <!-- Final Instructions (1st Paragraph) -->
+  {{ widget.final_instructions_1| edit_text_field: "Final Instructions (1st Paragraph)", "", "value_or_default" }}
+
+  <!-- Final Instructions (2nd Paragraph) -->
+  {{ widget.final_instructions_2| edit_text_field: "Final Instructions (2nd Paragraph)", "", "value_or_default" }}
+
+  <!-- Final Instructions (3rd Paragraph) -->
+  {{ widget.final_instructions_3| edit_text_field: "Final Instructions (3rd Paragraph)", "", "value_or_default" }}
+
+  <!-- Map Page -->
+  {{ widget.page_slug_1 | edit_page_field: "Map Page", "value", "", "-- Select a Page --", true }}
+
+  <!-- Return to Site Page -->
+  {{ widget.page_slug_2 | edit_page_field: "Return to Site Page", "value", "", "-- Select a Page --", true }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+  <!-- Primary Color -->
+  {{ widget.primary_color | edit_text_field: "Primary Color", "", "value_or_default" }}
+
+  <!-- Secondary Color -->
+  {{ widget.secondary_color | edit_text_field: "Secondary Color", "", "value_or_default" }}
+
+  <!-- Accent Color -->
+  {{ widget.accent_color | edit_text_field: "Accent Color", "", "value_or_default" }}
+
+  <!-- Text Color -->
+  {{ widget.text_color | edit_text_field: "Text Color", "", "value_or_default" }}
+
+  <!-- Button Text Color -->
+  {{ widget.button_text_color | edit_text_field: "Button Text Color", "", "value_or_default" }}
+
+  <!-- Arrow Toggle Color -->
+  {{ widget.toggle_color | edit_text_field: "Arrow Toggle Color", "", "value_or_default" }}
+
+  <!-- Amenity Icon Color -->
+  {{ widget.amenity_color | edit_text_field: "Amenity Icon Color", "", "value_or_default" }}
+
+  <!-- Elease Nav Color 1 -->
+  {{ widget.elease_nav_color_1 | edit_text_field: "Elease Nav Color 1", "", "value_or_default" }}
+
+  <!-- Elease Nav Color 2 -->
+  {{ widget.elease_nav_color_2 | edit_text_field: "Elease Nav Color 2", "", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-cogs", "Advanced" }}
+  <fieldset>
+    <legend>Advanced Settings</legend>
+  <!-- Store URN -->
+  {{ widget.store_urn | edit_text_field: "Store URN", "", "value_or_default" }}
+
+  <!-- Inventory Service Host -->
+  {{ widget.service_host | edit_text_field: "Inventory Service Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+  <!-- Move In Cost Service Host -->
+  {{ widget.move_in_cost_service_host | edit_text_field: "Move In Cost Service Host", "", "value_or_default" }}
+
+   <!-- No Units Heading Text -->
+  {{ widget.no_units_heading_text | edit_text_field: "No Units Heading Text", "", "value_or_default" }}
+
+  <!-- No Units Sub-Heading Text -->
+  {{ widget.no_units_sub_heading_text | edit_text_field: "No Units Sub-Heading Text", "", "value_or_default" }}
+
+   <!-- No Units Form Type -->
+  {% assign form_opts = '{"apply":"Apply", "contact":"Contact", "corp_contact":"Corp Contact", "maintenance":"Maintenance", "request":"Request", "suggestion":"Suggestion", "tour": "Tour", "inquiry":"Integrated Inquiry", "contact_us":"Integrated Contact Us", "online_application":"Integrated Online Application", "tour_request": "Integrated Tour Request", "nva_contact": "NVA Contact Form", "nva_appt": "NVA Appointment Request"}' %}
+  {{ widget.no_units_form_type | edit_select_field: "No Units Form Type", form_opts, "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

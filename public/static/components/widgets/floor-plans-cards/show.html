@@ -1,0 +1,17 @@
+{% capture widgetId %}floorplans-cards-{{ widget.id }}{% endcapture %}
+<div class="floorplans-cards widget" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "locationUrn": "{{ widget.location_urn.value_or_default }}",
+      "ctaText": "{{ widget.cta_text.value }}",
+      "headingColor": "{{ widget.heading_color.value }}",
+      "ctaColor": "{{ widget.cta_color.value }}",
+      "accentColor1": "{{ widget.accent_color_1.value }}",
+      "accentColor2": "{{ widget.accent_color_2.value }}",
+      "textColor": "{{ widget.text_color.value }}",
+      "widgetId": "{{widgetId}}",
+      "openFPinNewTab": "{{widget.open_fp_in_new_tab.value_or_default}}"
+    }
+  </script>
+  <h2>{{ widget.header_text.value}}</h2>
+</div>

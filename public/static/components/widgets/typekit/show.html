@@ -1,0 +1,18 @@
+{% if widget.theme_typekit_id.value_or_default_parsed != "" %}
+  <script type="text/javascript" src="//use.typekit.net/{{ widget.theme_typekit_id.value_or_default_parsed }}.js"></script>
+  <script type="text/javascript">
+    try {
+      Typekit.isReady = false;
+      Typekit.typekitReady = function(){
+        var e = document.createEvent('Event');
+        e.initEvent('typekitReady', true, true);
+        Typekit.isReady = true;
+        return window.dispatchEvent(e);
+      }
+      Typekit.load({
+        active: function(){ Typekit.typekitReady(); },
+        inactive: function(){ Typekit.typekitReady(); }
+      });
+    } catch(e){}
+  </script>
+{% endif %}

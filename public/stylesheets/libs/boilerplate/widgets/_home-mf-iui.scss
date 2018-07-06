@@ -1,0 +1,144 @@
+// *************************************
+//
+//  Home Multifamily IUI
+//
+// *************************************
+
+
+// Taken from the Berkshire Urban theme
+
+.home-multifamily-iui,
+.home-multifamily-iui-v2 {
+  @extend %clearfix;
+  padding: 0;
+
+  .iui-steps {
+    @extend %hidden;
+  }
+
+  .iui-title {
+    @extend %text-center;
+    font-family: $primary-font;
+    font-size: em(21);
+    margin-bottom: .5em;
+  }
+
+  .iui-size {
+    @extend %block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
+  .btn {
+    @extend %relative;
+    @extend %block;
+    background-color: rgba($black, .2);
+    color: $base-color;
+    font-size: em(18);
+    margin: em(5) em(5) .5em;
+    padding: .5em 1em;
+  }
+
+  .iui-view-all .btn {
+    @extend %block;
+    background-color: $primaryColor;
+    color: $white;
+  }
+
+  .btn {
+    &:focus,
+    &:hover {
+      background-color: $secondaryColor;
+
+      &,
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  // Adds line between # and text
+  .btn-beds {
+    strong {
+      @extend %absolute;
+      border-right: 1px solid $base-color;
+      font-size: em(32, 18);
+      line-height: 1;
+      left: 0;
+      top: 0;
+      height: 100%;
+      padding: .2em .25em;
+      width: 1.25em;
+    }
+
+    &:hover {
+      strong {
+        border-right-color: $base-hover-color;
+      }
+    }
+  }
+
+  @include at-least($min-hero) {
+    .iui-container {
+      display: table;
+      width: 100%;
+    }
+
+    .iui-size {
+      display: table-cell;
+    }
+
+    .iui-view-all .btn {
+      margin-right: 0;
+    }
+  }
+
+  @include at-least($min-hero) {
+    .iui-title {
+      text-align: left;
+    }
+
+    // Overrides widget css widths for old design
+    .iui-size:nth-child(3):last-child,
+    .iui-size:nth-child(5) {
+      width: auto;
+    }
+
+    .btn {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: .5em;
+    }
+
+    .btn-beds {
+      padding: .5em .5em .5em 2.5em;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-container {
+      width: 100%;
+    }
+
+    .btn {
+      font-size: em(24);
+    }
+  }
+
+  @include at-least($min-large) {
+    .iui-title,
+    .iui-container {
+      float: left;
+    }
+
+    .iui-title {
+      margin-bottom: 0;
+      width: 20%;
+    }
+
+    .iui-container {
+      width: 80%;
+    }
+  }
+}

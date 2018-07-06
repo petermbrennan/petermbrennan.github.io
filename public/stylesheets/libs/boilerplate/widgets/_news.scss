@@ -1,0 +1,85 @@
+// *************************************
+//
+//  News Feeds
+//
+// *************************************
+
+// This is just a little clean up and fine tuning
+
+// -------------------------------------
+//   Large News Feed
+// -------------------------------------
+
+.blog-feed {
+  .news-feed-post {
+    border-bottom-color: $grey;
+  }
+
+  .post-date,
+  .post-author {
+    font-style: italic;
+  }
+
+  .posts-nav .post-toggle {
+    color: $base-color;
+    font-size: em(14);
+  }
+
+  .post-nav-top {
+    @include btn-alt;
+  }
+
+  .all-posts {
+    top: -1em;
+    padding: .5em;
+  }
+
+  .post-toggle.toggle-button {
+    @include btn-standard;
+    @include btn-arrow;
+    float: none;
+  }
+
+  @include at-least($min-xsmall) {
+    .post-toggle.toggle-button {
+      width: 50%;
+    }
+  }
+
+  @include at-least(600px) {
+    .post-toggle.toggle-button {
+      display: block;
+    }
+  }
+
+  @include at-least($min-large) {
+    .post-toggle.toggle-button {
+      width: 33%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Mini News Feed
+// -------------------------------------
+
+.mini-blog-feed {
+  .post-details {
+    border-bottom-color: $grey;
+  }
+
+  .post-date,
+  .post-author {
+    font-style: italic;
+  }
+
+  .news-item-link {
+    @include btn-standard;
+  }
+
+  .all-news-link {
+    bottom: -1em;
+    padding: .5em;
+  }
+}

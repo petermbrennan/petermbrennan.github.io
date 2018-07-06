@@ -1,0 +1,27 @@
+{
+  "name": "Floor Plans",
+  "widget_id": 16,
+  "widget_type": null,
+  "summary": "Displays the current floor plans pricing and availability for a location",
+  "liquid": true,
+  "widget_popover": "",
+  "lib_javascripts": [
+    "jquery.fancybox.pack.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "deprecated"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    }
+  ]
+}

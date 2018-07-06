@@ -1,0 +1,150 @@
+{% capture widgetId %}neighborhood-map-{{ widget.id }}{% endcapture %}
+<div class="widget map neighborhood-map {{ widgetId }}" id="{{widgetId}}">
+
+  <style>
+    @media screen and (min-width: 1100px) {
+      .{{widgetId}} .canvas {
+        height: {{widget.map_height.value_or_default}} !important;
+      }
+    }
+    {% if widget.poi_color_buttons.value == blank %}
+      .{{widgetId}} .neighborhood-map-filter button {
+        background: {{widget.theme_primary_color.value}};
+      }
+    {% endif %}
+    {% if widget.poi_color_buttons.value != blank %}
+      .{{widgetId}} .neighborhood-map-filter button {
+        background: {{widget.poi_color_buttons.value}};
+      }
+    {% endif %}
+    .{{widgetId}} .neighborhood-map-filter button.all.active + .food-drink,
+    .{{widgetId}} .neighborhood-map-filter button.food-drink.active {
+      background: {{widget.poi_color_food_drink.value_or_default}};
+    }
+    .{{widgetId}} .neighborhood-map-filter button.all.active + .food-drink + .entertainment,
+    .{{widgetId}} .neighborhood-map-filter button.entertainment.active {
+      background: {{widget.poi_color_entertainment.value_or_default}};
+    }
+    .{{widgetId}} .neighborhood-map-filter button.all.active + .food-drink + .entertainment + .shopping,
+    .{{widgetId}} .neighborhood-map-filter button.shopping.active {
+      background: {{widget.poi_color_shopping.value_or_default}};
+    }
+    .{{widgetId}} .neighborhood-map-filter button.all.active + .food-drink + .entertainment + .shopping + .activities,
+    .{{widgetId}} .neighborhood-map-filter button.activities.active {
+      background: {{widget.poi_color_activities.value_or_default}};
+    }
+    .{{widgetId}} .neighborhood-map-filter button.all.active + .food-drink + .entertainment + .shopping + .activities + .schools-community,
+    .{{widgetId}} .neighborhood-map-filter button.schools-community.active {
+      background: {{widget.poi_color_schools_community.value_or_default}};
+    }
+    {% if widget.poi_text_color_buttons.value != blank %}
+      .{{widgetId}} .neighborhood-map-filter button,
+      .{{widgetId}} .neighborhood-map-filter button.all.active i {
+        color: {{widget.poi_text_color_buttons.value}} !important;
+      }
+    {% endif %}
+    .{{widgetId}} .gm-style div div div div div div div div {
+      background-color: {{widget.iw_bg_color.value_or_default}} !important;
+    }
+    .{{widgetId}} .gm-style-iw {
+      background-image:
+        linear-gradient(to top, {{widget.iw_name_bg_color.value_or_default}}, {{widget.iw_name_bg_color.value_or_default}}),
+        linear-gradient(to top, {{widget.iw_bg_color.value_or_default}}, {{widget.iw_bg_color.value_or_default}}) !important;
+    }
+    .{{widgetId}} .gm-style .infowindow {
+      color: {{widget.iw_text_color.value_or_default}};
+    }
+    .{{widgetId}} .gm-style .infowindow .name {
+      color: {{widget.iw_name_text_color.value_or_default}} !important;
+    }
+    {% if widget.show_phone_number.value == "true" %}
+      .{{widgetId}} .gm-style .infowindow .phone {
+        display: block !important;
+      }
+    {% endif %}
+    {% if widget.show_google_map_link.value == "true" %}
+      .{{widgetId}} .gm-style .infowindow .map-link {
+        display: block !important;
+      }
+    {% endif %}
+    {% if widget.show_website_link.value == "true" %}
+      .{{widgetId}} .gm-style .infowindow .website-link {
+        display: block !important;
+      }
+    {% endif %}
+    {% if widget.alternate_button_layout.value == "false" %}
+      .neighborhood-map.{{widgetId}}.large .neighborhood-map-filter {
+        display: flex;
+      }
+      .neighborhood-map.{{widgetId}}.large .neighborhood-map-filter button {
+        flex-grow: 1;
+      }
+    {% endif %}
+    {% if widget.alternate_button_layout.value == "true" %}
+      .neighborhood-map.{{widgetId}}.large .neighborhood-map-filter {
+        position: relative;
+        z-index: 10;
+        opacity: 0.9;
+        height: 1px;
+      }
+      .neighborhood-map.{{widgetId}}.large .neighborhood-map-filter button {
+        float: none;
+        width: 180px;
+        height: 40px;
+        display: block;
+        font-size: 1em;
+        margin-bottom: 2px;
+        border-right: 0;
+        padding: 0;
+      }
+      .neighborhood-map.{{widgetId}}.large .neighborhood-map-filter button&:last-child {
+        width: 180px;
+      }
+    {% endif %}
+    {% if widget.fixed_height_buttons.value != blank %}
+      .{{widgetId}}.small .neighborhood-map-filter button {
+        height: {{widget.fixed_height_buttons.value}} !important;
+      }
+    {% endif %}
+  </style>
+
+  <script class="config" type="application/json">
+    {
+      "address": "{{ widget.location_street_address.best_value }}, {{ widget.location_city.best_value }}, {{ widget.location_state.best_value }} {{ widget.location_postal_code.best_value }}",
+      "panZoom": {{ widget.map_allow_pan_zoom.best_value }},
+      "widgetId": "{{ widgetId }}",
+      "styles": {{ widget.map_styles.value_or_default }},
+      "latitude": "{{ widget.location_latitude.value_or_default }}",
+      "longitude": "{{ widget.location_longitude.value_or_default }}",
+      "overrides": {{widget.override_api_settings.value_or_default}},
+      "locationPinColor": "{{widget.location_pin_color.value_or_default}}",
+      "poiColorFoodDrink": "{{widget.poi_color_food_drink.value_or_default}}",
+      "poiColorEntertainment": "{{widget.poi_color_entertainment.value_or_default}}",
+      "poiColorShopping": "{{widget.poi_color_shopping.value_or_default}}",
+      "poiColorActivities": "{{widget.poi_color_activities.value_or_default}}",
+      "poiColorSchoolsCommunity": "{{widget.poi_color_schools_community.value_or_default}}",
+      "poiColorButtons": "{{widget.poi_color_buttons.value_or_default}}",
+      "homeSvgPath": "{{widget.home_svg_path.value_or_default}}",
+      "homeSvgOpacity": "{{widget.home_svg_opacity.value_or_default}}",
+      "homeSvgStrokeWeight": "{{widget.home_svg_stroke_weight.value_or_default}}",
+      "homeSvgStrokeOpacity": "{{widget.home_svg_stroke_opacity.value_or_default}}",
+      "poiPinSvgPath": "{{widget.poi_pin_svg_path.value_or_default}}",
+      "poiPinSvgOpacity": "{{widget.poi_pin_svg_opacity.value_or_default}}",
+      "poiPinSvgStrokeWeight": "{{widget.poi_pin_svg_stroke_weight.value_or_default}}",
+      "poiPinSvgStrokeOpacity": "{{widget.poi_pin_svg_stroke_opacity.value_or_default}}",
+      "pointsOfInterest": {{ widget.location_points_of_interest }},
+      "categoryDefault": "{{ widget.category_default.value_or_default }}",
+      "labels": {
+        "food_drink": "{{ widget.poi_category_1.value_or_default }}",
+        "entertainment": "{{ widget.poi_category_2.value_or_default }}",
+        "shopping": "{{ widget.poi_category_3.value_or_default }}",
+        "activities": "{{ widget.poi_category_4.value_or_default }}",
+        "community": "{{ widget.poi_category_5.value_or_default }}"
+      }
+    }
+  </script>
+
+  <div class="neighborhood-map-filter"></div>
+
+  <div class="canvas"></div>
+</div>

@@ -1,0 +1,55 @@
+{
+  "name": "Multifamily IUI Home",
+  "widget_id": 21,
+  "widget_type": null,
+  "summary": "Home page-specific multifamily iui widget. Step 1",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-6881' target='_blank'>Home Page Multifamily IUI Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living"
+  ],
+  "page_widget": true,
+  "eol": true,
+  "settings": [
+    {
+      "name": "mf_iui_home_heading",
+      "default_value": ""
+    },
+    {
+      "name": "mf_iui_home_heading_position",
+      "default_value": "left"
+    },
+    {
+      "name": "core_store_id",
+      "default_value": ""
+    },
+    {
+      "name": "floorplans_service_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "floorplan_page_url",
+      "default_value": ""
+    },
+    {
+      "name": "btn_bg",
+      "default_value": ""
+    },
+    {
+      "name": "view_all_btn_bg",
+      "default_value": ""
+    },
+    {
+      "name": "btn_hover_bg",
+      "default_value": ""
+    },
+    {
+      "name": "btn_text_color",
+      "default_value": ""
+    }
+  ]
+}

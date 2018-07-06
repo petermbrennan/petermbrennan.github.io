@@ -1,0 +1,186 @@
+{% capture widgetId %}directory-{{ widget.id }}{% endcapture %}
+
+<div class="directory widget clearfix {{widgetId}}" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "expandOption": "{{ widget.expand_option.value_or_default }}",
+      "cpnsUrl": "{{ widget.client_cpns_url.value_or_default }}",
+      "clientUrn": "{{ widget.client_urn.value_or_default }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style type="text/css">
+  .directory.{{widgetId}} h3.directory-heading {
+    background-color: {{ widget.primary_heading_color.value_or_default }};
+  }
+  .directory.{{widgetId}} h3.directory-heading:hover {
+    background-color: {{ widget.primary_heading_color.value_or_default_parsed | darken: '10%'; }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table {
+    border: 1px solid {{ widget.primary_heading_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-header {
+    background-color: {{ widget.secondary_heading_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-header {
+    background-color: {{ widget.secondary_heading_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-row {
+    background-color: {{ widget.background_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-row:nth-child(even) {
+    background-color: {{ widget.background_color.value_or_default_parsed | darken: '5%' }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-row .directory-bullets:after {
+    color: {{ widget.icon_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table.square-icons .directory-row .directory-bullets:after,
+  .directory.{{widgetId}} table.directory-locations-table.circle-icons .directory-row .directory-bullets:after {
+    background-color: {{ widget.icon_color.value_or_default }};
+  }
+  .directory.{{widgetId}} table.directory-locations-table .directory-row td {
+    color: {{ widget.text_color.value_or_default }};
+  }
+  /* TODO: Turn this back on when area pages are ready
+  .directory-table table.directory-locations-table .directory-areapage a {
+    background-color: {{ widget.area_page_button_color.value_or_default }};
+  }
+  .directory-table table.directory-locations-table .directory-areapage a:after {
+    border-left-color: {{ widget.area_page_button_color.value_or_default }};
+  }
+  */
+  </style>
+
+  <div class="directory-table full">
+    {% if widget.show_pending.value_or_default == 'true' %}
+      {% assign all_locations = widget.live_and_pending_locations_by_state %}
+    {% else %}
+      {% assign all_locations = widget.live_locations_by_state %}
+    {% endif %}
+
+    {% for location_set in all_locations %}
+      {% assign state_name = location_set[0] %}
+      {% assign locations = location_set[1] %}
+
+      <h3 class="directory-heading notranslate"><span class="littleArrow"></span>{{ state_name }}</h3>
+
+      <div class="directory-locations">
+
+        <table class="directory-locations-table {{ widget.icon_shape.value_or_default }}">
+          <thead>
+            <tr class="directory-header">
+              <th class="directory-location-name">{{ widget.location_label.value_or_default }}</th>
+              <th class="directory-location-address">Address</th>
+              <th class="directory-location-phone">Phone</th>
+              <th class="directory-location-mobile-info">{{ widget.location_label.value_or_default }}</th>
+              {% if client.service_1 != '' %}
+                <th class="directory-bullets">{{ client.service_1 }}</th>
+              {% endif %}
+              {% if client.service_2 != '' %}
+                <th class="directory-bullets">{{ client.service_2 }}</th>
+              {% endif %}
+              {% if client.service_3 != '' %}
+                <th class="directory-bullets">{{ client.service_3 }}</th>
+              {% endif %}
+              {% if client.service_4 != '' %}
+                <th class="directory-bullets">{{ client.service_4 }}</th>
+              {% endif %}
+              {% if client.service_5 != '' %}
+                <th class="directory-bullets">{{ client.service_5 }}</th>
+              {% endif %}
+              <th class="directory-location-mobile-services">{{ widget.services_label.value_or_default }}</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for location in locations %}
+              {% assign locUrl = location.home_url %}
+              <tr id="directory-row-{{ location.id }}" class="directory-row h-c-ret v-c-ret h-card vcard" data-location-urn="{{ location.urn }}">
+                <td class="directory-location-name p-name">
+                  <a href="{{ locUrl }}" class="u-url"><span class="p-name notranslate">{{ location.name }}{% if location.status == 'Pending' %} - PENDING{% endif %}</span></a>
+                </td>
+                <td class="directory-location-address h-adr p-adr adr-ret adr">
+                  <div class="p-street-address street-address notranslate">{{ location.street_address }}</div>
+                  <div>
+                    <span class="p-locality locality notranslate">{{ location.city }}</span>,
+                    <span class="p-region region">{{ location.state }}</span>
+                    <span class="p-postal-code postal-code">{{ location.postal_code }}</span>
+                    {% if location.pay_online_url != blank %}
+                      <span class="pay-online"><a href="{{ location.pay_online_url }}" target="_blank">Pay Online</a></span>
+                    {% endif %}
+                  </div>
+                </td>
+                <td class="directory-location-phone">
+                  <a class="number" href="tel:{{ location.phone_number }}"><span class="p-tel tel">{{ location.phone_number }}</span></a>
+                </td>
+                <td class="directory-location-mobile-info">
+                  <div class="directory-location-mobile-name ">
+                    <a href="{{ locUrl }}">{{ location.name | google_no_translate }}{% if location.status == 'Pending' %} - PENDING{% endif %}</a>
+                  </div>
+                  <div>{{ location.street_address | google_no_translate }}</div>
+                  <div>{{ location.city | google_no_translate }}, {{ location.state }} {{ location.postal_code }}</div>
+                  {% if location.pay_online_url != blank %}
+                    <div><a href="{{ location.pay_online_url }}" target="_blank">Pay Online</a></div>
+                  {% endif %}
+                  <div><a class="number" href="tel:{{ location.phone_number }}"><span class="p-tel tel">{{ location.phone_number }}</span></a></div>
+                </td>
+                {% if client.service_1 != '' %}
+                  <td class="directory-bullets bullet-icon{% if location.service_1 == '' %} no-bullet{% endif %}"><span>{{ location.service_1 }}</span></td>
+                {% endif %}
+                {% if client.service_2 != '' %}
+                  <td class="directory-bullets bullet-icon{% if location.service_2 == '' %} no-bullet{% endif %}"><span>{{ location.service_2 }}</span></td>
+                {% endif %}
+                {% if client.service_3 != '' %}
+                  <td class="directory-bullets bullet-icon{% if location.service_3 == '' %} no-bullet{% endif %}"><span>{{ location.service_3 }}</span></td>
+                {% endif %}
+                {% if client.service_4 != '' %}
+                  <td class="directory-bullets bullet-icon{% if location.service_4 == '' %} no-bullet{% endif %}"><span>{{ location.service_4 }}</span></td>
+                {% endif %}
+                {% if client.service_5 != '' %}
+                  <td class="directory-bullets bullet-icon{% if location.service_5 == '' %} no-bullet{% endif %}"><span>{{ location.service_5 }}</span></td>
+                {% endif %}
+                <td class="directory-location-mobile-services">
+                  <ul>
+                    {% if client.service_1 != '' %}
+                      <li class="directory-bullets bullet-icon{% if location.service_1 == '' %} no-bullet{% endif %}"><span>{{ location.service_1 }}</span></li>
+                    {% endif %}
+                    {% if client.service_2 != '' %}
+                      <li class="directory-bullets bullet-icon{% if location.service_2 == '' %} no-bullet{% endif %}"><span>{{ location.service_2 }}</span></li>
+                    {% endif %}
+                    {% if client.service_3 != '' %}
+                      <li class="directory-bullets bullet-icon{% if location.service_3 == '' %} no-bullet{% endif %}"><span>{{ location.service_3 }}</span></li>
+                    {% endif %}
+                    {% if client.service_4 != '' %}
+                      <li class="directory-bullets bullet-icon{% if location.service_4 == '' %} no-bullet{% endif %}"><span>{{ location.service_4 }}</span></li>
+                    {% endif %}
+                    {% if client.service_5 != '' %}
+                      <li class="directory-bullets bullet-icon{% if location.service_5 == '' %} no-bullet{% endif %}"><span>{{ location.service_5 }}</span></li>
+                    {% endif %}
+                  </ul>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+          <!-- TODO: Add this page in once area page link URL is more clearly defined
+          <tfoot>
+            <tr>
+              <td class="directory-areapage" colspan="5">
+                {% capture loc_size %}{{ locations | size }}{% endcapture %}
+                {% assign loc_str = "Locations" %}
+                {% if loc_size == '1' %}
+                  {% assign loc_str = "Location" %}
+                {% endif %}
+                <a href="#">View our {{ loc_size }} {{ state_name }} {{ loc_str }}</a>
+              </td>
+            </tr>
+          </tfoot>
+          //-->
+        </table>
+
+    </div>
+
+    {% endfor %}
+  </div>
+
+</div>

@@ -1,0 +1,96 @@
+{% capture widgetId %}photo-{{ widget.id }}{% endcapture %}
+{% assign loader = "https://themes.g5dxm.com/shared/blank.png" %}
+
+{% if widget.rollover_zoom.value_or_default == "true" %}
+  {% capture rolloverZoomClass %}rollover-zoom{% endcapture %}
+{% else %}
+  {% capture rolloverZoomClass %}{% endcapture %}
+{% endif %}
+
+<figure class="photo-ret photo {{widgetId}} {{rolloverZoomClass}} {{widget.photo_alignment.value_or_default}} {{widget.photo_class.value}} widget h-media" id="{{widgetId}}">
+
+  <script class="config photo-config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+
+
+  <style>
+    {% if widget.photo_filter.value == "true" %}
+      {% if widget.photo_filter_color.value != '' %}
+        .{{ widgetId }} .filter {
+          background: {{widget.photo_filter_color.value}};
+        }
+      {% endif %}
+
+      {% if widget.photo_label.value != '' %}
+      .{{ widgetId }} figcaption {
+          background: {{widget.photo_label.value_or_default}};
+        }
+      {% endif %}
+    {% endif %}
+
+    {% if widget.rollover_zoom.value == "true" %}
+
+      .{{ widgetId }} img {
+        transition: {{widget.rollover_zoom_duration.value_or_default}}s transform ease;
+      }
+
+      .{{ widgetId }} img.lazy-load {
+        transition: 0.2s opacity ease-in, {{widget.rollover_zoom_duration.value_or_default}}s transform ease;
+      }
+
+      .{{ widgetId }}:hover img {
+        -webkit-transform: scale({{widget.rollover_zoom_scale.value_or_default}});
+           -moz-transform: scale({{widget.rollover_zoom_scale.value_or_default}});
+            -ms-transform: scale({{widget.rollover_zoom_scale.value_or_default}});
+             -o-transform: scale({{widget.rollover_zoom_scale.value_or_default}});
+                transform: scale({{widget.rollover_zoom_scale.value_or_default}});
+      }
+
+    {% endif %}
+
+  </style>
+
+  {% if widget.photo_filter.value == "true" %}
+  <div class="photo-wrapper">
+  {% endif %}
+
+
+    {% if widget.photo_link_url.value != blank %}
+    <a href="{{ widget.photo_link_url.value }}"{% if widget.photo_link_target.value_or_default == "true" %} target="_blank"{% endif %}>
+    {% endif %}
+
+    {% if widget.photo_filter.value == 'true' %}
+    <div class="filter {{widget.photo_opacity.value}}"></div>
+    {% endif %}
+
+    {% if widget.use_lazy_load.value_or_default == "true" %}
+      {% capture src %}class="u-photo lazy-load" src="{{loader}}" data-src="{{ widget.photo_source_url.value_or_default }}"{% endcapture %}
+    {% else %}
+      {% capture src %}class="u-photo" src="{{ widget.photo_source_url.value_or_default }}"{% endcapture %}
+    {% endif %}
+    <img {{src}} alt="{{ widget.photo_alt_tag.value }}" {{ widget.photo_source_url.value | srcset }} />
+    {% if widget.photo_link_url.value != blank %}
+    </a>
+    {% endif %}
+
+    {% if widget.photo_caption.value != blank %}
+      <figcaption class="p-name">
+        {% if widget.photo_link_url.value != blank %}
+        <a href="{{ widget.photo_link_url.value }}"{% if widget.photo_link_target.value_or_default == "true" %} target="_blank"{% endif %}>
+        {% endif %}
+
+        {{ widget.photo_caption.value }}
+
+        {% if widget.photo_link_url.value != blank %}
+        </a>
+        {% endif %}
+      </figcaption>
+    {% endif %}
+
+  {% if widget.photo_filter.value == "true" %}
+  </div>
+  {% endif %}
+</figure>

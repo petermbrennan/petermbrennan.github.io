@@ -1,0 +1,94 @@
+{
+  "name": "Coupon",
+  "beta": false,
+  "widget_id": 13,
+  "widget_type": null,
+  "summary": "Create a coupon with barcode",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468967-Coupon-Widget' target='_blank'>Coupon Documentation</a>",
+  "lib_javascripts": [
+    "google-maps-api.js"
+  ],
+  "lib_edit_javascripts": [
+    
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "fixed"
+    },
+    {
+      "name": "cropping_height",
+      "default_value": "400"
+    },
+    {
+      "name": "cropping_width",
+      "default_value": "600"
+    },
+    {
+      "name": "coupon_text",
+      "default_value": ""
+    },
+    {
+      "name": "coupon_description",
+      "default_value": ""
+    },
+    {
+      "name": "coupon_number",
+      "default_value": ""
+    },
+    {
+      "name": "coupon_barcode_url",
+      "default_value": ""
+    },
+    {
+      "name": "coupon_email_url",
+      "default_value": "#"
+    },
+    {
+      "name": "location_logo_url",
+      "default_value": ""
+    },
+    {
+      "name": "location_name",
+      "default_value": "{{location_name}}"
+    },
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "location_tel",
+      "default_value": "{{location_phone_number}}"
+    },
+    {
+      "name": "location_directions",
+      "default_value": ""
+    }
+  ]
+}

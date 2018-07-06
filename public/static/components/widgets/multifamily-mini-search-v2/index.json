@@ -1,0 +1,89 @@
+{
+  "name": "Multifamily Mini Search V2",
+  "widget_id": 56,
+  "widget_type": null,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/223242748' target='_blank'>Multi Family Mini Search Documentation</a>",
+  "liquid": true,
+  "remote_javascripts": [],
+  "lib_javascripts": [
+    "typeahead.bundle.min.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "beta": false,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "corp_search_page",
+      "default_value": ""
+    },
+    {
+      "name": "cloud_service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find an Apartment"
+    },
+    {
+      "name": "heading_text_position",
+      "default_value": "center"
+    },
+    {
+      "name": "external_search_url",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_text",
+      "default_value": "Search"
+    },
+    {
+      "name": "search_background",
+      "default_value": ""
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "city_state_button_bg_color",
+      "default_value": ""
+    },
+    {
+      "name": "city_state_button_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "secondary_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "tertiary_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "universal_search_enabled",
+      "default_value": "false"
+    }
+  ],
+  "aliases": [
+    "beta-mf-mini-search-v2"
+  ]
+}

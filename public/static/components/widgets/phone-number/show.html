@@ -1,0 +1,31 @@
+{% capture widgetId %}phone-number-{{ widget.id }}{% endcapture %}
+<div class="phone {{widgetId}} widget" id="{{widgetId}}">
+  <script class="config phone-config" type="application/json">
+    {
+      "clientUrn": "{{ widget.client_urn.value_or_default }}",
+      "cpnsUrl": "{{ widget.client_cpns_url.value_or_default }}",
+      "locationUrn": "{{ widget.location_urn.value_or_default }}",
+      "displayPhone": "{{ widget.display_phone.value }}",
+      "appendPhone": "{{ widget.append_phone.value }}",
+      "prependPhone": "{{ widget.prepend_phone.value }}",
+      "appendElements": "{{ widget.append_elements.value }}",
+      "defaultPhoneNumber": "{{ widget.phone_number.value }}",
+      "linkMode": "no-click",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  {% if widget.phone_color.value != blank %}
+  <style>
+    .{{ widgetId }} .p-tel {
+      color: {{widget.phone_color.value}} !important;
+    }
+  </style>
+  {% endif %}
+
+  {% if widget.display_phone.value == "true" %}
+  <a class="number h-c-ret v-c-ret h-card vcard" href="tel:{{ widget.phone_number.value_or_default }}">
+    <span class="p-tel tel">{{ widget.phone_number.value_or_default }}</span>
+  </a>
+  {% endif %}
+</div>

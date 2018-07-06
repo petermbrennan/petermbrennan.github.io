@@ -1,0 +1,50 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>Bluemoon Settings</legend>
+    <!-- Button Label -->
+    {{ widget.bluemoon_button_label | edit_text_field: "Button Label", "Begin Application", "value" }}
+
+    <!-- Bluemoon Property ID -->
+    {{ widget.bluemoon_button_property_id | edit_text_field: "Property ID (Required)", "12345", "value" }}
+
+    <!-- Location Email -->
+    {{ widget.bluemoon_button_location_email | edit_url_field: "Location email (Required)", "example@example.com", "value" }}
+
+    <!-- Application Fee -->
+    {{ widget.bluemoon_button_application_fee | edit_text_field: "Application Fee (Required)", "42.50", "value_or_default" }}
+
+    <!-- Receipt Confirm URL -->
+    {{ widget.bluemoon_receipt_confirm_url | edit_text_field: "Receipt Confirm URL", "http://www.example.com/apply_post.html", "value" }}
+
+    <!-- Receipt Confirm Name -->
+    {{ widget.bluemoon_receipt_confirm_name | edit_text_field: "Receipt Confirm Name", "Return to Website", "value" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset>
+      <legend>Style Settings</legend>
+    <!-- Button Background Color -->
+    {{ widget.bluemoon_button_background_color | edit_color_field: "Button Background Color", "theme_secondary_color", "value_or_default", true }}
+
+    <!-- Button Text Color -->
+    {{ widget.bluemoon_button_text_color | edit_color_field: "Button Text Color", "#fff", "value_or_default" }}
+
+      <!-- Button Border Color -->
+    {{ widget.bluemoon_button_border_color | edit_color_field: "Button Border Color", "none", "value_or_default" }}
+
+    <!-- Button Layout -->
+    {% assign layout_opts = '{"list": "List", "grid": "Grid", "inline": "Inline"}' %}
+    {{ widget.bluemoon_button_layout | edit_radio_field: "Button Layout", layout_opts, "value_or_default" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

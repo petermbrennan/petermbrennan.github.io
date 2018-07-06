@@ -1,0 +1,63 @@
+{% capture widgetId %}calls-to-action-{{ widget.id }}{% endcapture %}
+
+<nav class="action-calls custom-action-calls widget" id="{{widgetId}}">
+  <script class="config" type="application/json">
+    {
+      "previewUrl1": "{{ widget.preview_url_1 }}",
+      "previewUrl2": "{{ widget.preview_url_2 }}",
+      "previewUrl3": "{{ widget.preview_url_3 }}",
+      "previewUrl4": "{{ widget.preview_url_4 }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    {% if widget.text_color.value != blank %}
+      #{{widgetId}} li a{
+        color:{{widget.text_color.value}} !important;
+      }
+    {% endif %}
+    {% if widget.background_color.value != blank %}
+      #{{widgetId}} li a{
+        background-color: {{widget.background_color.value}} !important;
+      }
+      #{{widgetId}} li a:hover{
+        background-color: {{widget.background_color.value | darken: '10%'}} !important;
+      }
+    {% endif %}
+    {% if widget.border_color.value != blank %}
+      #{{widgetId}} li a{
+        border-color:{{widget.border_color.value}} !important;
+      }
+    {% endif %}
+  </style>
+
+  {% if widget.cta_heading.value_or_default != blank %}
+    <h2 class="cta-heading" style="text-align: {{widget.cta_heading_position.value_or_default}}">{{ widget.cta_heading.value_or_default }}</h2>
+  {% endif %}
+  <ul>
+    {% if widget.cta_text_1.value != blank %}
+      <li class="cta-item cta-item-1">
+        <a href="{{ widget.production_url_1 }}">{{ widget.cta_text_1.value }}</a>
+      </li>
+    {% endif %}
+
+    {% if widget.cta_text_2.value != blank %}
+      <li class="cta-item cta-item-2">
+        <a href="{{ widget.production_url_2}}">{{ widget.cta_text_2.value }}</a>
+      </li>
+    {% endif %}
+
+    {% if widget.cta_text_3.value != blank %}
+      <li class="cta-item cta-item-3">
+        <a href="{{ widget.production_url_3 }}">{{ widget.cta_text_3.value }}</a>
+      </li>
+    {% endif %}
+
+    {% if widget.cta_text_4.value != blank %}
+      <li class="cta-item cta-item-3">
+        <a href="{{ widget.production_url_4 }}">{{ widget.cta_text_4.value }}</a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

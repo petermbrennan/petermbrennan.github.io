@@ -1,0 +1,60 @@
+{
+  "name": "Directory",
+  "widget_id": 71,
+  "widget_type": null,
+  "summary": "Locations Directory",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7756' target='_blank'>Directory Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "location_label",
+      "default_value": "Location"
+    },
+    {
+      "name": "services_label",
+      "default_value": "Services"
+    },
+    {
+      "name": "expand_option",
+      "default_value": "first_open"
+    },
+    {
+      "name": "show_pending",
+      "default_value": "false"
+    },
+    {
+      "name": "background_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "icon_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "icon_shape",
+      "default_value": "check-icons"
+    },
+    {
+      "name": "primary_heading_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "secondary_heading_color",
+      "default_value": "{{theme_secondary_color}}"
+    }
+  ]
+}

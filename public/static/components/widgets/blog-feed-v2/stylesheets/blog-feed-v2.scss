@@ -1,0 +1,251 @@
+.blog-feed-v2 {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+
+  &.narrow .posts-nav {
+    .post-date, .post-author {
+      display: none;
+    }
+  }
+
+  .news-feed-single-post, .news-feed-post {
+    img {
+      margin-bottom: 0.5em;
+    }
+
+    .post-date, .post-date {
+      padding-right: 0.5em;
+    }
+
+    .post-author, .post-author {
+      padding-left: 0.5em;
+    }
+  }
+
+  .news-feed-top {
+    display: block;
+    position: relative;
+  }
+
+  .news-feed-post {
+    border-bottom: 1px solid #888;
+    clear: both;
+    display: block;
+    float: left;
+    margin: 10px 0;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+
+    .post-body {
+      display: none;
+    }
+  }
+
+  img {
+    max-width: 300px;
+  }
+
+  .post-toggle {
+    display: block;
+
+    &.toggle-button {
+      background-color: #77787b;
+      clear: both;
+      color: #fff;
+      float: left;
+      margin: 20px 0;
+      padding: .25em 1em;
+    }
+  }
+
+  .news-feed-single-post {
+    .article-tag {
+      background: #888;
+      border-radius: .25em;
+      color: #fff;
+      display: inline-block;
+      margin: .5em .5em 0 0;
+      padding: 0 .5em;
+    }
+
+    .article-top {
+      position: relative;
+      padding: 1em 0;
+
+      a {
+        visibility: hidden;
+
+        &.show {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .post-description {
+    padding: 1em 0 0.5em 0;
+  }
+
+  .post-body {
+    padding: 1em 0;
+
+    ul {
+      list-style-type: disc;
+      padding-left: 3em;
+    }
+
+    ol {
+      list-style-type: decimal;
+      padding-left: 3em;
+    }
+  }
+
+  .posts-nav {
+    border-top: 1px solid #888;
+    position: relative;
+    padding-top: 2em;
+    text-align: center;
+    width: 100%;
+
+    .post-toggle {
+      display: inline-block;
+      margin: 0 2%;
+      vertical-align: top;
+      width: 45%;
+    }
+
+    .post-nav-top {
+      border: 1px solid #888;
+      padding: 5px 10px;
+    }
+
+    .previous-post .post-nav-top {
+      text-align: left;
+    }
+
+    .next-post .post-nav-top {
+      text-align: right;
+    }
+
+    .all-posts {
+      background-color: #77787b;
+      border: 1px solid #888;
+      color: #fff;
+      display: block;
+      left: 50%;
+      line-height: 1em;
+      min-width: 33%;
+      padding: 0.25em 1em;
+      position: absolute;
+      text-align: center;
+      top: -0.75em;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      width: auto;
+    }
+
+    .author-divider {
+      display: none;
+    }
+
+    .post-title {
+      margin-top: 10px;
+    }
+  }
+
+  .post-image-wrapper {
+    border: 1px solid #888;
+    border-top: none;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    width: 100%;
+
+    & > div {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+    }
+  }
+
+  .a2a_default_style {
+    margin: 0 0 2em 0;
+    width: 100%;
+  }
+
+  .post-title {
+    font-size: 1.75em;
+  }
+
+  .blog-pagination {
+    clear: both;
+    margin-bottom: 2em;
+    position: relative;
+  }
+
+  .pagination-button {
+    background: transparent;
+    margin-right: 1px;
+    padding: 0.3em 0.5em;
+
+    .pagination-text {
+      background-color: transparent;
+      border: none;
+      text-transform: uppercase;
+    }
+  }
+
+  .news-feed-widget.narrow .pagination-text .previous-next {
+    display: none;
+  }
+
+  .prev {
+    margin-left: 10px;
+
+    &:before, &:after {
+      height: 20px;
+      position: absolute;
+      width: 20px;
+    }
+  }
+
+  .blog-loading {
+    text-align: center;
+  }
+}
+
+/* Modern Design Option */
+.blog-feed-v2.modern.photos {
+  .news-feed-post .post-title {
+    margin-bottom: 0.25em;
+    padding: 0;
+  }
+  @media screen and (min-width: 950px) {
+    .row-single & {
+      margin: 0 auto;
+      max-width: 75%;
+      text-align: center;
+      width: 100%;
+      .blog-pagination {
+        display: inline-block;
+      }
+    }
+    .news-feed-post {
+      min-height: 200px;
+      padding-left: 345px;
+      position: relative;
+      text-align: left;
+      img {
+        left: 0;
+        max-width: 325px;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}

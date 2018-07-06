@@ -1,0 +1,89 @@
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily Inventory Settings</legend>
+
+    <!-- Floorplans Service Host -->
+    {{ widget.floorplans_service_host | edit_url_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Move In Cost Service Host -->
+    {{ widget.move_in_cost_service_host | edit_url_field: "Move In Cost Service Host", "https://vendor-leads.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default"}}
+
+    <!-- Pagination Per Page -->
+    {{ widget.pagination_per_page | edit_text_field: "Pagination Per Page", "20", "value_or_default" }}
+
+  </fieldset>
+  <fieldset>
+    <legend>Calls To Action</legend>
+    <!-- Step One Nav Text -->
+    {{ widget.step_one_text | edit_text_field: "Step One Nav Text", "Select Size", "value_or_default" }}
+
+    <!-- Step Two Nav Text -->
+    {{ widget.step_two_text | edit_text_field: "Step Two Nav Text", "Select Floor Plan", "value_or_default" }}
+
+    <!-- Step Three Nav Text -->
+    {{ widget.step_three_text | edit_text_field: "Step Three Nav Text", "Select Unit", "value_or_default" }}
+
+    <!-- Step Four Nav Text -->
+    {{ widget.step_four_text | edit_text_field: "Step Four Nav Text", "Apartment Details", "value_or_default" }}
+
+
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+    <!-- Primary Color -->
+    {{ widget.primary_color | edit_color_field: "Primary Color: Floor Plan Card Title, Category Card Background & Border, Active Step Background, Unit Card Background (Category Card Hover is 20% Darker)", "theme_primary_color", "value_or_default" }}
+
+    <!-- Secondary Color -->
+    {{ widget.secondary_color | edit_color_field: "Secondary Color: Floor Plan Image Icon, Reserve Input Background, Previous Step(s) Background, Calendar Icon, Send Button Background, Floor Plan Sorting Arrow", "theme_secondary_color", "value_or_default" }}
+
+    <!-- Tertiary Color -->
+    {{ widget.tertiary_color | edit_color_field: "Tertiary Color: Unit Call To Action, Floor Plan Call To Action, Apply Now Call To Action, View All Call To Action, Unit Card # Bed/Bath", "theme_tertiary_color", "value_or_default" }}
+
+    <!-- Accent Color - NEW -->
+    {{ widget.accent_color_1 | edit_color_field: "Accent: Step 4 Optional Category Background(s) (Specials, Best Value, Move-In Options)", "theme_primary_color", "value_or_default" }}
+
+    <!-- Step 4 Inset Background(s) (Pricing, Lease Terms, CTAs 1&2) -->
+    {{ widget.inset_background_color | edit_color_field: "Step 4 Inset Background(s) (Pricing, Lease Terms, CTAs 1&2)", "#hex", "value_or_default" }}
+
+    <!-- Specials BG -->
+    {{ widget.specials_flag | edit_color_field: "Specials Flag", "#hex", "value_or_default" }}
+
+    <!-- Inactive Color-->
+    {{ widget.inactive_color | edit_color_field: "Inactive Color: Unvisited Steps Background", "#A1A1A1", "value_or_default" }}
+
+    <!-- Nav Text Color -->
+    {{ widget.nav_text_color | edit_color_field: "Nav Text Color", "#hex", "value", true }}
+
+    <!-- View All Button Color -->
+    {{ widget.view_all_button_color | edit_color_field: "View All Button Color", "#hex", "value", true }}
+
+    <!-- Unit card text color -->
+    {{ widget.unit_card_font_color | edit_color_field: "Unit Card Text Color", "#hex", "value", true }}
+
+    <!-- Floor plan card text color -->
+    {{ widget.floorplan_card_font_color | edit_color_field: "Floor Plan Card Text Color", "#hex", "value", true }}
+
+    <!-- Category card border color -->
+    {{ widget.category_card_border | edit_color_field: "Category Card Border Color", "theme_primary_color", "value_or_default" }}
+
+    <!-- Form unit_cta_text color -->
+    {{ widget.unit_cta_text_color | edit_color_field: "Text Color: Apply Now, Reserve Now, View All, View Unit, Unit Details", "#hex", "value_or_default", true }}
+
+    <!-- Form secondary_unit_cta_text color -->
+    {{ widget.secondary_unit_cta_text_color | edit_color_field: "Secondary Unit Call To Action Text Color", "#hex", "value_or_default", true }}
+
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

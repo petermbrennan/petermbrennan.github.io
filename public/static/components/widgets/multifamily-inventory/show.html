@@ -1,0 +1,304 @@
+<script src="https://use.fonticons.com/26805d78.js"></script>
+
+{% capture widgetId %}multi-family-iui-cards-v3-{{ widget.id }}{% endcapture %}
+<div class="multi-family-iui-cards-v3 widget {{widgetId}}">
+  <script>
+    var EmberAppConfig = {
+      "modulePrefix":"multi-family-iui-cards-v3",
+      "environment":"production",
+      "rootURL": '/',
+      "locationType":"hash",
+      "EmberENV":{
+        "FEATURES":{},
+        "PER_PAGE": "{{widget.pagination_per_page.value_or_default}}"
+      },
+      "APP":{
+        "rootElement":"#iui-container",
+        "serviceHost":"{{ widget.floorplans_service_host.value_or_default }}",
+        "moveInCostServiceHost":"{{ widget.move_in_cost_service_host.value }}",
+        'stepOneText':"{{widget.step_one_text.value_or_default}}",
+        'stepTwoText':"{{widget.step_two_text.value_or_default}}",
+        'stepThreeText':"{{widget.step_three_text.value_or_default}}",
+        'stepFourText':"{{widget.step_four_text.value_or_default}}",
+        'locationUrn': "{{widget.location_urn.best_value}}",
+        'clientUrn': "{{widget.client_urn.best_value}}",
+        "cpnsUrl": "{{ widget.client_cpns_url.value_or_default }}",
+        'pusherTimeoutDuration': 30000
+      },
+      "exportApplicationGlobal":false
+    }
+
+    var mfMetaConfig = document.createElement('meta');
+        mfMetaConfig.id="ember-meta";
+        mfMetaConfig.name = "multi-family-iui-cards-v3/config/environment";
+        mfMetaConfig.content = JSON.stringify(EmberAppConfig);
+    document.getElementsByTagName('head')[0].appendChild(mfMetaConfig);
+  </script>
+
+  <style>
+    /* Legit Primary color from color guide */
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .category-card,
+    .multi-family-iui-cards-v3 #step_3_units_and_text,
+    .multi-family-iui-cards-v3 #apartment-wrapper,
+    .multi-family-iui-cards-v3 #apartment-wrapper .apartment-pricing-options,
+    .multi-family-iui-cards-v3 .floorplan-card .floorplan-card-title,
+    .multi-family-iui-cards-v3 .iui-cards-nav .active.nav-text-wrapper,
+    .multi-family-iui-cards-v3 .iui-cards-nav .active.nav-text-wrapper:after,
+    .multi-family-iui-cards-v3 .iui-cards-pagination span.disabled .nav-text-wrapper:after,
+    .multi-family-iui-cards-v3.{{widgetId}} .iui-cards-pagination span.disabled a:hover :after,
+    .multi-family-iui-cards-v3 .iui-cards-pagination span.disabled a:hover{
+      background-color: {{widget.primary_color.value_or_default}};
+    }
+
+    /*  Legit Primary hovers -- ACCENT COLOR BASED OFF PRIMARY */
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories a:hover.hover-properties .category-card{
+      background-color: {{widget.primary_color.value_or_default_parsed | darken: '5%'}};
+    }
+
+    /*  Legit Primary -- ACCENT COLOR HOVERS BASED OFF PRIMARY */
+    .multi-family-iui-cards-v3 .cp-Panel-toggle:hover,
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories a:hover.hover-properties{
+      background-color: {{widget.primary_color.value_or_default_parsed | lighten: '15%'}};
+    }
+
+    .multi-family-iui-cards-v3 .floorplan-card .virtual-tour a.floorplan-virtual-tour,
+    .multi-family-iui-cards-v3 .floorplan-card .virtual-tour .floorplan-virtual-tour .fa-camera, 
+    .multi-family-iui-cards-v3 .floorplan-card .virtual-tour .floorplan-virtual-tour:hover .fa-camera{
+      color: {{widget.primary_color.value_or_default}};
+    }
+    /*---end legit primary---*/
+
+    /* Legit Secondary Color from guide */
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.has-call-to-action .category-card .call-to-action,
+    .multi-family-iui-cards-v3 #apartment-wrapper .cp-Panel:nth-child(2) a,
+    .multi-family-iui-cards-v3 .apartment-value .date-picker span i,
+    .multi-family-iui-cards-v3 .iui-cards-pagination span a:hover,
+    .multi-family-iui-cards-v3 .iui-cards-pagination span a:hover .nav-text-wrapper:after,
+    #iui-container .spinner > div,
+    .multi-family-iui-cards-v3 .floorplan-card a.floorplan-image div,
+    .multi-family-iui-cards-v3 .iui-cards-floorplan-details.reserve input[type=submit],
+    .multi-family-iui-cards-v3 input[type=submit],
+    .multi-family-iui-cards-v3 .iui-cards-nav .before-active.nav-text-wrapper:after,
+    .multi-family-iui-cards-v3 .iui-cards-nav .before-active.nav-text-wrapper{
+      background-color: {{widget.secondary_color.value_or_default}};
+    }
+    .multi-family-iui-cards-v3 .dropdown{
+      background: linear-gradient(
+        -90deg
+        , {{widget.secondary_color.value_or_default}} 0%
+        , {{widget.secondary_color.value_or_default}} 40px
+        , #fff 40px
+        , #fff 100%
+      )
+    }
+
+    .multi-family-iui-cards-v3 input[type=submit]{
+      color: #fff;
+    }
+
+    .multi-family-iui-cards-v3 .dropdown:after{
+      border-top: 10px solid {{widget.secondary_color.value_or_default}};
+    }
+
+    .multi-family-iui-cards-v3 #apartment-wrapper .cp-Panel:nth-child(2) a:hover{
+      background-color: {{widget.secondary_color.value_or_default_parsed | darken: '5%'}};
+    }
+
+    /*---end legit secondary----*/
+
+    /* Legit Tertiary color from color guide */
+    .multi-family-iui-cards-v3 #apartment-wrapper a.apartment-cta{
+      color: {{widget.unit_cta_text_color.value}};
+    }
+
+    .multi-family-iui-cards-v3 .floorplan-card .unit-baths span,
+    .multi-family-iui-cards-v3 .floorplan-card .unit-beds span{
+      color:{{widget.tertiary_color.value_or_default}};
+    }
+
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories a.iui-cards-view-all,
+    .multi-family-iui-cards-v3 .floorplan-card .floorplan-card-cta,
+    .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric a.apartment-details,
+    .multi-family-iui-cards-v3 #apartment-wrapper .apartment-forms .cp-Panel-toggle,
+    .multi-family-iui-cards-v3 #apartment-wrapper .cp-Panel:nth-child(1) a.apartment-cta{
+      background-color: {{widget.tertiary_color.value_or_default}};
+    }
+
+    /* Tertiary Hovers */
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories a.iui-cards-view-all:hover,
+    .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric a.apartment-details:hover,
+    .multi-family-iui-cards-v3 #apartment-wrapper .apartment-forms .cp-Panel-toggle:hover,
+    .multi-family-iui-cards-v3 .floorplan-card .floorplan-card-cta:hover,
+    .multi-family-iui-cards-v3 #apartment-wrapper .cp-Panel:nth-child(1) a.apartment-cta:hover{
+      background-color: {{ widget.tertiary_color.value_or_default_parsed | darken: '3%'}};
+    }
+    /*-- end legit tertiary --*/
+
+    {% capture accentColor %}{{widget.accent_color_1.value_or_default }}{%endcapture%}
+    {% if widget.accent_color_1.value_or_default == widget.primary_color.value_or_default %}
+      {% capture accentColor %}{{widget.primary_color.value_or_default_parsed | lighten: '20%'}}{%endcapture%}
+    {% endif %}
+
+    /* Legit Accent-color from color guide */
+    .multi-family-iui-cards-v3 .floorplan-special-notification,
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.has-call-to-action .category-card .category-specials-available,
+    .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric .apartment-specials-label,
+    .multi-family-iui-cards-v3 .cp-Panel-toggle,
+    .multi-family-iui-cards-v3 .sk-folding-cube .sk-cube:before {
+      background-color: {{accentColor}};
+    }
+
+    .multi-family-iui-cards-v3 .floorplan-special-notification:after{
+      border-left: 15px solid {{accentColor}};
+    }
+
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.has-call-to-action .category-card .category-specials-available:after{
+      border-left: 11px solid {{accentColor}};
+    }
+
+    .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric .apartment-specials-label:after{
+      border-left: 10px solid {{accentColor}};
+    }
+
+    .multi-family-iui-cards-v3 .cp-Panel-toggle:hover{
+      background-color: {{accentColor | darken: '5%'}};
+    }
+    /*---end legit accet-color--*/
+
+    {% if widget.specials_flag.value != blank %}
+      /* Specials Flag-color from */
+      .multi-family-iui-cards-v3 .floorplan-special-notification,
+      .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.has-call-to-action .category-card .category-specials-available,
+      .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric .apartment-specials-label{
+        background-color: {{widget.specials_flag.value}};
+      }
+
+      .multi-family-iui-cards-v3 .floorplan-special-notification:after{
+        border-left: 15px solid {{widget.specials_flag.value}};
+      }
+
+      .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.has-call-to-action .category-card .category-specials-available:after{
+        border-left: 11px solid {{widget.specials_flag.value}};
+      }
+
+      .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric .apartment-specials-label:after{
+        border-left: 10px solid {{widget.specials_flag.value}};
+      }
+      /*---end specials flag-color--*/
+    {% endif %}
+
+    /* Legit inactive color */
+    .multi-family-iui-cards-v3 .iui-cards-nav a .nav-text-wrapper,
+    .multi-family-iui-cards-v3 .iui-cards-nav a .nav-text-wrapper:after,
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card.disabled .category-card{
+      background-color: {{widget.inactive_color.value_or_default }};
+    }
+
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories .iui-cards-category-card {
+      border-color: {{widget.category_card_border.value_or_default}};
+    }
+
+    .multi-family-iui-cards-v3 .g5-submission-response.g5-submission-success {color: inherit;}
+
+    .multi-family-iui-cards-v3 .iui-cards-unit-categories a.iui-cards-view-all,
+    .multi-family-iui-cards-v3 .floorplan-card .floorplan-card-cta,
+    .multi-family-iui-cards-v3 .iui-cards-unit-card.unit-centric a.apartment-details,
+    .multi-family-iui-cards-v3 #apartment-wrapper .apartment-forms .cp-Panel-toggle{
+      color: {{widget.unit_cta_text_color.value_or_default}};
+    }
+
+    .multi-family-iui-cards-v3 .cp-Panel-body-inner {
+    background-color: {{widget.inset_background_color.value_or_default}};
+    }
+
+    .multi-family-iui-cards-v3 #apartment-wrapper .cp-Panel:nth-child(2) a{
+      color: {{widget.secondary_unit_cta_text_color.value_or_default}};
+    }
+
+    /* Conditional overrides */
+    {% if widget.view_all_button_color.value != blank %}
+      .{{widgetId}} .iui-cards-unit-categories a.iui-cards-view-all{ background-color: {{widget.widget.view_all_button_color.value}}; }
+      .{{widgetId}} .iui-cards-unit-categories a.iui-cards-view-all:hover{ background-color: {{widget.widget.view_all_button_color.value | darken: '5%'}}; }
+    {% endif %}
+
+    /* Text Colors */
+    {% if widget.nav_text_color.value != blank %}
+      .multi-family-iui-cards-v3 .iui-cards-nav a {
+        color: {{widget.nav_text_color.value}};
+      }
+    {% endif %}
+
+    {% if widget.floorplan_card_font_color.value != blank %}
+      .multi-family-iui-cards-v3 .floorplan-card .unit-details{ color: {{widget.floorplan_card_font_color.value}}; }
+    {% endif %}
+
+    {% if widget.unit_card_font_color.value != blank %}
+      .multi-family-iui-cards-v3 .unit-numbers{ color: {{widget.unit_card_font_color.value}}; }
+    {% endif %}
+
+    /* DatePickers -  datepicker */
+    .datepicker table tr td span.active.active{
+      background-image: none;
+      background-color: {{widget.secondary_color.value_or_default}};
+      border-color: none;
+    }
+
+    .datepicker table tr td.active.active{
+      background-image: none;
+      background-color: {{widget.secondary_color.value_or_default}};
+    }
+
+    .datepicker table tr td.active.active:hover,
+    .is-selected .pika-button:hover,
+    .pika-single .pika-table td.is-selected .pika-button:hover,
+    .datepicker table tr td span.active:hover.active:hover{
+      background-image: none;
+      background-color: {{ widget.secondary_color.value_or_default_parsed | darken: '3%'}};
+    }
+
+    /* Datepicker - pika */
+    .pika-single .pika-button{
+      text-align: center;
+      font-weight: bold;
+      padding: 8px 0;
+      color: #000;
+      background-color: transparent;
+    }
+
+    .pika-single .pika-table td.is-disabled .pika-button,
+    .pika-single .pika-table td.is-outside-current-month .pika-button{
+      background-color: #ddd;
+      opacity: 1;
+      color: #999;
+    }
+
+    .pika-single .pika-table td.is-today .pika-button{color: #000;}
+    .is-today .pika-button{color: #999;}
+    .is-today .pika-button:hover{color: #fff;}
+
+    .pika-single .pika-button:hover{
+      background-color: #eee;
+      color: #000;
+    }
+
+    .is-selected .pika-button,
+    .pika-single .pika-table td.is-selected .pika-button{
+      color: #fff;
+      background-color: {{widget.secondary_color.value_or_default}};
+      box-shadow: inset 0 1px 3px {{widget.secondary_color.value_or_default}};
+    }
+
+    .pika-button:active{
+      background: {{ widget.secondary_color.value_or_default_parsed | lighten: '10%'; }};
+    }
+    /*- end datepickers -*/
+  </style>
+
+  <div id="iui-container">
+    <div id="app-loading" class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+</div>

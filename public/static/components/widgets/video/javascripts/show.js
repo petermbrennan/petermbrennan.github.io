@@ -1,0 +1,1 @@
+(function(){$(function(){var i;if(i=$(".video.widget"),i.length)return i.fitVids()})}).call(this);

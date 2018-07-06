@@ -1,0 +1,1 @@
+(function(){$(function(){var e,n,t;if(n=$("#google-translate-config"),n.length){if(e=JSON.parse(n.html()),t=$("#google_translate_element"),"append_true"===e.appendOptions)return t.insertAfter(e.appendElement);if("prepend_true"===e.appendOptions)return t.insertBefore(e.appendElement)}})}).call(this);

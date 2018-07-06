@@ -1,0 +1,49 @@
+.modal.modal-fixed-footer .modal-content {
+  .form-field-row-css-custom,
+  .form-field-disabled,
+  .form-field-row-bg-color,
+  .form-field-row-bg-color,
+  .form-field-row-bg-image,
+  .form-field-row-bg-behavior,
+  .form-field-row-bg-overlay-color,
+  .form-field-row-bg-overlay-opacity,
+  .form-field-row-text-color,
+  .form-field-row-bg-position,
+  .form-field-row-divider-image,
+  .form-field-row-divider-position,
+  .form-field-custom-name {
+    display: block;
+    position: relative;
+    width: 49%;
+    float: left;
+    box-sizing: border-box;
+  }
+
+  .form-field-row-css-custom {
+    width: 33%;
+    margin: 0 1% 10px 0;
+  }
+  .form-field-row-bg-position {
+    margin: 0px 8px 0px 0px !important;
+  }
+  .form-field-disabled {
+    width: 16%;
+    margin: 0 0 10px 0;
+  }
+
+  .form-field-row-bg-position,
+  .form-field-row-bg-overlay-opacity,
+  .form-field-row-text-color,
+  .form-field-row-divider-position {
+    margin-left: 1%;
+  }
+
+  .form-field-disabled {
+    margin-bottom: 0;
+  }
+
+  .form-field-row-layout {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+}

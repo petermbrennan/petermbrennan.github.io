@@ -1,0 +1,95 @@
+{
+  "name": "Multifamily IUI Cards V2",
+  "widget_id": 75,
+  "widget_type": null,
+  "summary": "Multifamily cards style floorplans V2",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/223214967' target='_blank'>Multi Family Cards Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [
+    "jquery.fancybox.pack.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living"
+  ],
+  "page_widget": true,
+  "beta": false,
+  "settings": [
+    {
+      "name": "floorplans_service_host",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "move_in_cost_service_host",
+      "default_value": "https://vendor-leads.g5marketingcloud.com"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "location_country",
+      "default_value": "{{location_country}}"
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "step_one_text",
+      "default_value": "Choose Size"
+    },
+    {
+      "name": "step_two_text",
+      "default_value": "Choose Floor Plan"
+    },
+    {
+      "name": "step_three_text",
+      "default_value": "Select Apartment"
+    },
+    {
+      "name": "step_four_text",
+      "default_value": "Reserve"
+    },
+    {
+      "name": "primary_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "secondary_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "accent_color_1",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "accent_color_2",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "text_color_dark",
+      "default_value": "#000000"
+    },
+    {
+      "name": "nav_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "view_all_button_color",
+      "default_value": ""
+    },
+    {
+      "name": "step_circle_color",
+      "default_value": ""
+    }
+  ],
+  "aliases": [
+    "beta-mf-iui-cards-v2"
+  ]
+}

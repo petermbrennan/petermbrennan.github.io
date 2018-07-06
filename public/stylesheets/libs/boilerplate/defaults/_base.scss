@@ -1,0 +1,138 @@
+// *************************************
+//
+//  Base
+//
+// *************************************
+
+// =====================================
+//  General top level styles
+// =====================================
+
+// Set on all elements
+// Width now equals width
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: $base-font-size;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: $base-background;
+  color: $base-color;
+  font-family: $base-font-family;
+  font-size: 100%;
+  line-height: $base-line-height;
+  min-height: 100%;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+}
+
+
+// -------------------------------------
+// Images
+// -------------------------------------
+
+// Needed for responsive images
+video,
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+
+// -------------------------------------
+// Headings
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+
+// -------------------------------------
+//  Text
+// -------------------------------------
+
+p,
+.html li {
+  font-size: $text-font-size;
+}
+
+strong {
+  font-weight: $bold-font-weight;
+}
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+// -------------------------------------
+//  Links
+// -------------------------------------
+
+a {
+  @include transition(color 0.2s ease, background-color 0.2s ease);
+  color: $base-link-color;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $base-hover-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+
+// -------------------------------------
+//  Lists
+// -------------------------------------
+
+ul, ol {
+  list-style-type: none;
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+
+
+// This is the DXM logo in the footer
+.dxm {
+  @extend %inline;
+  background: url(https://themes.g5dxm.com/shared/dxm.png) no-repeat;
+  height: 23px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 100px;
+}
+
+
+// -------------------------------------
+//  Footer
+// -------------------------------------
+
+[role=contentinfo] {
+  background-color: $footerColor;
+
+   &,
+   a { color: $footerTextColor; }
+}

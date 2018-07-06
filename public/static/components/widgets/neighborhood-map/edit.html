@@ -1,0 +1,153 @@
+<form>
+
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+  <!-- Street Address -->
+  {{ widget.location_street_address | edit_text_field: "Street Address", "location_street_address", "value_or_default", "", true}}
+
+  <!-- City -->
+  {{ widget.location_city | edit_text_field: "City", "location_city", "value_or_default", "", true}}
+
+  <!-- State -->
+  {{ widget.location_state | edit_text_field: "State", "location_state",  "value_or_default", "", true }}
+
+  <!-- Postal Code -->
+  {{ widget.location_postal_code | edit_text_field: "Location Postal Code", "location_postal_code", "value_or_default", "", true}}
+
+  <!-- Allow Panning and Zooming toggle -->
+  {{ widget.map_allow_pan_zoom | edit_toggle_field: "Allow Panning and Zooming", "value_or_default" }}
+
+  <!-- Show POI phone number in infowindow -->
+  {{ widget.show_phone_number | edit_toggle_field: "Show Phone Number in Infowindow", "value_or_default" }}
+
+  <!-- Show POI google map link in infowindow -->
+  {{ widget.show_google_map_link | edit_toggle_field: "Show Google Map Link in Infowindow", "value_or_default" }}
+
+  <!-- Show POI website link in infowindow -->
+  {{ widget.show_website_link | edit_toggle_field: "Show Website Link in infowindow", "value_or_default" }}
+
+  {{ widget.map_styles | edit_hidden_field, "value_or_default", "map-values" }}
+
+  {{ widget.map_id| edit_hidden_field, "value_or_default", "map-id" }}
+
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-unlock-alt", "Overrides" }}
+  <fieldset>
+    <legend>Overrides Settings</legend>
+    <!-- Use Overrides -->
+    {{ widget.override_api_settings | edit_toggle_field: "Use Lat / Long to set marker (Hardcode or use from Liquid Variables)", "value_or_default"}}
+
+    <!-- Latitude -->
+    {{ widget.location_latitude | edit_text_field: "Latitude", "location_latitude", "value_or_default", "", true }}
+
+    <!-- Longitude -->
+    {{ widget.location_longitude | edit_text_field: "Longitude", "location_longitude", "value_or_default", "", true }}
+
+    <legend>Category Button Options</legend>
+
+    <!-- Allow alternate button display (stack left) between small and large displays -->
+    {{ widget.alternate_button_layout | edit_toggle_field: "Allow alternate button display (stack left) between small & large displays", "value_or_default" }}
+
+    <!-- Allow custom fixed height category buttons for small mobile devices -->
+    {{ widget.fixed_height_buttons | edit_text_field: "Set height in px for category buttons on mobile", "36px", "value_or_default" }}
+
+    <!-- Default Category to Display -->
+    <div class="form-field">
+      {% assign category_opts = '{"": "View All", "food_drink": "Food & Drink", "shopping": "Shopping", "entertainment": "Entertainment", "activities": "Activities", "schools_community": "Community"}' %}
+      {{ widget.category_default | edit_select_field: "What is the default category to display on load?", category_opts, "value", "select-arrow-type" }}
+    </div>
+
+    <!-- Category One Label -->
+    {{ widget.poi_category_1 | edit_text_field: "Category One Label (Food & Drink)", "poi_category_1",  "value_or_default", "", true }}
+
+    <!-- Category Two Label -->
+    {{ widget.poi_category_2 | edit_text_field: "Category Two Label (Entertainment)", "poi_category_2",  "value_or_default", "", true }}
+
+    <!-- Category Three Label -->
+    {{ widget.poi_category_3 | edit_text_field: "Category Three Label (Shopping)", "poi_category_3",  "value_or_default", "", true }}
+
+    <!-- Category Four Label -->
+    {{ widget.poi_category_4 | edit_text_field: "Category Four Label (Activities)", "poi_category_4",  "value_or_default", "", true }}
+
+    <!-- Category Five Label -->
+    {{ widget.poi_category_5 | edit_text_field: "Category Five Label (Community)", "poi_category_5", "value_or_default", "", true }}
+  </fieldset>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-map-marker", "Map Styles"}}
+<fieldset>
+  <!-- Allow custom height for map - will adjust for mobile -->
+  {{ widget.map_height | edit_text_field: "Map Height in Pixels", "map_height", "value_or_default" }}
+
+  <legend>Customize Location Marker</legend>
+  <!-- Allow custom color for client location marker -->
+  {{ widget.location_pin_color | edit_color_field: "Location Marker Color", "", "value_or_default" }}
+
+  <!--  Allow custom base color of category buttons (inactive) -->
+  {{ widget.poi_color_buttons | edit_color_field: "Base Category Button Color", "", "value_or_default" }}
+
+  <!-- Custom poi pin colors by category -->
+  {{ widget.poi_color_food_drink | edit_color_field: "Food & Drink Pin / Button Color", "", "value_or_default" }}
+
+  {{ widget.poi_color_entertainment | edit_color_field: "Entertainment Pin / Button Color", "", "value_or_default" }}
+
+  {{ widget.poi_color_shopping | edit_color_field: "Shopping Pin / Button Color", "", "value_or_default" }}
+
+  {{ widget.poi_color_activities | edit_color_field: "Activities Pin / Button Color", "", "value_or_default" }}
+
+  {{ widget.poi_color_schools_community | edit_color_field: "Community Pin / Button Color", "", "value_or_default" }}
+
+  <!-- Allow custom color for category button text -->
+  {{ widget.poi_text_color_buttons | edit_color_field: "Category Button Text Color", "", "value_or_default" }}
+
+  <!-- Allow custom svg path for home icon - single path only -->
+  {{ widget.home_svg_path | edit_text_field: "Home Icon SVG Path - Single Path Only", "home_svg_path", "value_or_default" }}
+
+  <!-- Home icon opacity (0.1, 0.2, etc to 1) -->
+  {{ widget.home_svg_opacity | edit_text_field: "Home Icon Opacity (0.1, 0.2, etc to 1)", "home_svg_opacity", "value_or_default" }}
+
+  <!-- Home icon stroke weight (1, 2, 3, etc) -->
+  {{ widget.home_svg_stroke_weight | edit_text_field: "Home Icon Stroke Weight (set to '0' to turn off)", "home_svg_stroke_weight", "value_or_default" }}
+
+  <!-- Home icon stroke opacity (0.1, 0.2, etc to 1) -->
+  {{ widget.home_svg_stroke_opacity | edit_text_field: "Home Icon Stroke Opacity (0.1, 0.2, etc to 1)", "home_svg_stroke_opacity", "value_or_default" }}
+
+  <!-- Allow custom svg path for poi pin - single path only -->
+  {{ widget.poi_pin_svg_path | edit_text_field: "Point of Interest Pin SVG Path - Single Path Only", "poi_pin_svg_path", "value_or_default" }}
+
+  <!-- POI icon opacity (0.1, 0.2, etc to 1) -->
+  {{ widget.poi_pin_svg_opacity | edit_text_field: "POI Icon Opacity (0.1, 0.2, etc to 1)", "poi_pin_svg_opacity", "value_or_default" }}
+
+  <!-- POI icon stroke weight (1, 2, 3, etc) -->
+  {{ widget.poi_pin_svg_stroke_weight | edit_text_field: "POI Icon Stroke Weight (set to '0' to turn off)", "poi_pin_svg_stroke_weight", "value_or_default" }}
+
+  <!-- POI icon stroke opacity (0.1, 0.2, etc to 1) -->
+  {{ widget.poi_pin_svg_stroke_opacity | edit_text_field: "POI Icon Stroke Opacity (0.1, 0.2, etc to 1)", "poi_pin_svg_stroke_opacity", "value_or_default" }}
+
+  <legend>Customize Info Window</legend>
+  <!-- All customization of the map infowindow -->
+  {{ widget.iw_bg_color | edit_color_field: "Info Window Background Color", "", "value_or_default" }}
+
+  {{ widget.iw_text_color | edit_color_field: "Info Window Text Color", "", "value_or_default" }}
+
+  {{ widget.iw_name_bg_color | edit_color_field: "Info Window: Name Background Color", "", "value_or_default" }}
+
+  {{ widget.iw_name_text_color | edit_color_field: "Info Window: Name Text Color", "", "value_or_default" }}
+
+</fieldset>
+
+<fieldset>
+  <legend>Select a Map Style</legend>
+  <!-- Map Styles -->
+  <div id="map-styles" class="form-field form-field-map-styles check-field "></div>
+</fieldset>
+
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+{{ widget | end_tab: true }}
+
+</form>

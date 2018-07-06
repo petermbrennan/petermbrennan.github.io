@@ -1,0 +1,74 @@
+.cinemagraph .ytplayer,
+.cinemagraph .fallback-image {
+  display: none;
+}
+.cinemagraph iframe,
+.cinemagraph .ytplayer {
+  pointer-events: none;
+  cursor: default;
+}
+.cinemagraph-absolute,
+.cinemagraph-full-width {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden !important;
+}
+.cinemagraph-absolute iframe,
+.cinemagraph-absolute .ytplayer {
+  position: absolute;
+  width: 100%;
+  height: 56vw !important;
+  max-height: 56.25em !important;
+  z-index: 0;
+
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);  
+}
+.cinemagraph-normal {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0;
+  height: 0;
+}
+.cinemagraph-normal iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cinemagraph-container .filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.cinemagraph-container .filter-quarter {
+  opacity: .25;
+}
+.cinemagraph-container .filter-half {
+  opacity: .5;
+}
+.cinemagraph-container .filter-three-quarters {
+  opacity: .75;
+}
+@media screen and (min-width: 980px) and (max-width: 1925px) {
+  .cinemagraph-full-width iframe,
+  .cinemagraph-full-width .ytplayer {
+    height: 67vw !important;
+    max-height: 67.25em !important; 
+  }
+}
+@media screen and (min-width: 1926px) {
+  .cinemagraph-full-width iframe,
+  .cinemagraph-full-width .ytplayer  {
+    height: 90vw !important;
+    max-height: 90.25em !important; 
+  }
+}

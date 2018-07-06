@@ -1,0 +1,196 @@
+{
+  "name": "Neighborhood Map",
+  "widget_id": 105,
+  "beta": false,
+  "widget_type": null,
+  "summary": "Custom Google Map with Filters",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/115006440247' target='_blank'>Neighborhood Map Documentation</a>",
+  "lib_javascripts": [
+    "google-maps-api.js",
+    "fort-awesome-api.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": ["edit-map-styles.css"],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "location_pin_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "map_allow_pan_zoom",
+      "default_value": "true"
+    },
+    {
+      "name": "override_api_settings",
+      "default_value": "false"
+    },
+    {
+      "name": "location_latitude",
+      "default_value": "{{location_latitude}}"
+    },
+    {
+      "name": "location_longitude",
+      "default_value": "{{location_longitude}}"
+    },
+    {
+      "name": "use_demo_data",
+      "default_value": "false"
+    },
+    {
+      "name": "fixed_height_buttons",
+      "default_value": ""
+    },
+    {
+      "name": "map_styles",
+      "default_value": "{}"
+    },
+    {
+      "name": "map_id",
+      "default_value": "1"
+    },
+    {
+      "name": "map_height",
+      "default_value": "800px"
+    },
+    {
+      "name": "poi_color_buttons",
+      "default_value": ""
+    },
+    {
+      "name": "poi_category_1",
+      "default_value": "Food & Drink"
+    },
+    {
+      "name": "poi_category_2",
+      "default_value": "Entertainment"
+    },
+    {
+      "name": "poi_category_3",
+      "default_value": "Shopping"
+    },
+    {
+      "name": "poi_category_4",
+      "default_value": "Activities"
+    },
+    {
+      "name": "poi_category_5",
+      "default_value": "Community"
+    },
+    {
+      "name": "poi_color_food_drink",
+      "default_value": "{{theme_secondary_color | lighten: '15%'}}"
+    },
+    {
+      "name": "poi_color_entertainment",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "poi_color_shopping",
+      "default_value": "{{theme_secondary_color | darken: '15%'}}"
+    },
+    {
+      "name": "poi_color_activities",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "poi_color_schools_community",
+      "default_value": "{{theme_tertiary_color | darken: '20%'}}"
+    },
+    {
+      "name": "home_svg_path",
+      "default_value": "M200,108.787L100,14.226L0,108.787h33.054v76.986H79.08v-58.576h37.657v58.576h46.025v-76.986H200z"
+    },
+    {
+      "name": "home_svg_opacity",
+      "default_value": ".8"
+    },
+    {
+      "name": "home_svg_stroke_weight",
+      "default_value": "1"
+    },
+    {
+      "name": "home_svg_stroke_opacity",
+      "default_value": "1"
+    },
+    {
+      "name": "poi_pin_svg_path",
+      "default_value": "M101.89,1.69a75.13,75.13,0,0,0-75,75c0,47.36,69.23,121,72.18,124.11a3.94,3.94,0,0,0,5.73,0c2.95-3.11,72.17-76.76,72.17-124.11A75.12,75.12,0,0,0,101.89,1.69Zm0,108.85a33.8,33.8,0,1,1,33.8-33.81A33.84,33.84,0,0,1,101.88,110.54Z"
+    },
+    {
+      "name": "poi_pin_svg_opacity",
+      "default_value": ".8"
+    },
+    {
+      "name": "poi_pin_svg_stroke_weight",
+      "default_value": "3"
+    },
+    {
+      "name": "poi_pin_svg_stroke_opacity",
+      "default_value": "1"
+    },
+    {
+      "name": "poi_text_color_buttons",
+      "default_value": ""
+    },
+    {
+      "name": "iw_bg_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "iw_text_color",
+      "default_value": "#333333"
+    },
+    {
+      "name": "iw_name_bg_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "iw_name_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "show_phone_number",
+      "default_value": "false"
+    },
+    {
+      "name": "show_google_map_link",
+      "default_value": "false"
+    },
+    {
+      "name": "show_website_link",
+      "default_value": "false"
+    },
+    {
+      "name": "category_default",
+      "default_value": ""
+    },
+    {
+      "name": "alternate_button_layout",
+      "default_value": "false"
+    }
+  ]
+}

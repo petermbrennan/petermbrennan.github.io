@@ -1,0 +1,68 @@
+{% assign use_colored_images_opts = '{"colored": "Colored", "black": "Black", "white": "White"}' %}
+
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+  <legend>Text Configuration</legend>
+  {{ widget.instructional_text | edit_text_field: "Instructional Text", "Select the icons below to add to the inventory", "value_or_default" }}
+  {{ widget.disclaimer_text | edit_text_field: "Disclaimer Text", "Disclaimer: Space sizes are approximate and for comparison purposes only. Spaces may be smaller than indicated in advertising or other size indicators.", "value_or_default" }}
+  {{ widget.first_tab_open | edit_toggle_field: "First tab open?",  "value_or_default" }}
+  </fieldset>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Feel</legend>
+  {{ widget.use_colored_images | edit_radio_field: "Image Color", use_colored_images_opts, "value_or_default", "value_or_default" }}
+  {{ widget.use_custom_font | edit_toggle_field: "Calculator Font?",  "value_or_default" }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Cover</legend>
+  {{ widget.calculator_border_color | edit_color_field: "Calculator Border Color", "theme_secondary_color", "value_or_default", "", true }}
+  {{ widget.calculator_inner_color | edit_color_field: "Calculator Inner Color", "theme_primary_color", "value_or_default", "", true }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Heading</legend>
+  {{ widget.heading_container_border_color | edit_color_field: "Heading Container Border Color", "theme_primary_color", "value_or_default", "", true }}
+  {{ widget.heading_container_background_color | edit_color_field: "Heading Container Background Color", "theme_secondary_color", "value_or_default", "", true }}
+  {{ widget.heading_background_color | edit_color_field: "Heading Background Color", "#F2F2F2", "value_or_default" }}
+  {{ widget.heading_text_color | edit_color_field: "Heading Text Color", "#000000", "value_or_default" }}
+  {{ widget.heading_border_color | edit_color_field: "Heading Border Color", "theme_secondary_color", "value_or_default", "", true }}
+  {{ widget.instructional_text_color | edit_color_field: "Instructional Text Color", "#FFFFFF", "value_or_default" }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Tabs</legend>
+  {{ widget.tab_heading_text_color | edit_color_field: "Tab Heading Color", "#FFFFFF", "value_or_default" }}
+  {{ widget.tab_divider_color | edit_color_field: "Tab Divider Color", "theme_secondary_color", "value_or_default", "", true }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Items</legend>
+  {{ widget.item_background_color | edit_color_field: "Item Background Color", "#F2F2F2", "value_or_default" }}
+  {{ widget.item_border_color | edit_color_field: "Item Border Color", "#72787C", "value_or_default" }}
+  {{ widget.item_text_color | edit_color_field: "Item Text Color", "#000000", "value_or_default" }}
+  </fieldset>
+
+  <fieldset>
+    <legend>Counter</legend>
+
+  {{ widget.counter_background_color | edit_color_field: "Counter Background Color", "theme_secondary_color", "value_or_default", "", true }}
+  {{ widget.counter_arrow_color | edit_color_field: "Counter Arrow Color", "#FFFFFF", "value_or_default" }}
+  {{ widget.counter_text_background_color | edit_color_field: "Counter Text Background Color", "#FFFFFF", "value_or_default" }}
+  {{ widget.counter_text_color | edit_color_field: "Counter Text Color", "#000000", "value_or_default" }}
+</fieldset>
+
+<fieldset>
+  <legend>Disclaimer</legend>
+  {{ widget.disclaimer_text_color | edit_color_field: "Disclaimer Text Color", "#000000", "value_or_default" }}
+</fieldset>
+{{ widget | end_tab }}
+
+{{ widget | start_tab: "fa fa-files-o", "Docs"}}
+  <h1>G5 Widget Document</h1>
+  <p>{{ widget.widget_documentation_link }}</p>
+{{ widget | end_tab: true }}
+</form>

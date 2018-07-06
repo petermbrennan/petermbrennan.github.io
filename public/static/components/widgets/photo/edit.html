@@ -1,0 +1,74 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <!-- Cropping Options -->
+    <fieldset>
+      {{ widget.photo_source_url | edit_image_field: "Source URL", "", "value_or_default", "", "photo" }}
+      <div class="col s5">
+        {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+        {{ widget.cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+      </div>
+
+      <div class="max-width-max-height">
+        <div class="col s2 offset-s1">
+          {{ widget.cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+        </div>
+
+        <div class="col s2 offset-s1">
+          {{ widget.cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+        </div>
+        <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <!-- Use Lazy Load -->
+      {{ widget.use_lazy_load | edit_toggle_field: "Use Lazy Load?", "value_or_default" }}
+
+      <!-- Link URL -->
+      {{ widget.photo_link_url | edit_url_field: "Link URL" }}
+
+      <!-- Open Link In New Window -->
+      {{ widget.photo_link_target | edit_toggle_field: "Open Link In New Window", "value_or_default" }}
+
+      <!-- Alt Tag -->
+      {{ widget.photo_alt_tag | edit_url_field: "Alt Tag" }}
+
+      <!-- Caption -->
+      {{ widget.photo_caption | edit_url_field: "Caption" }}
+
+      <!-- Photo Alignment -->
+      {% assign alignment_opts = '{"photo-block":"Block", "photo-left":"Left", "photo-right":"Right"}' %}
+      {{ widget.photo_alignment | edit_radio_field: "Photo Alignment", alignment_opts, "value_or_default" }}
+
+        <!-- Photo Class -->
+      {{ widget.photo_class | edit_url_field: "Photo Class" }}
+    </fieldset>
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+
+    <fieldset>
+
+      <!-- Rollover Zoom -->
+      {{ widget.rollover_zoom | edit_toggle_field: "Rollover Zoom", "value_or_default" }}
+
+      <div class="rollover-zoom-opts">
+        <!-- Rollover Zoom Duration -->
+        {{ widget.rollover_zoom_duration | edit_number_field: "Rollover Zoom Duration (secs; 0 - 10)", "0.5", "value_or_default", "", 0, 10 }}
+
+        <!-- Rollover Zoom Scale -->
+        {{ widget.rollover_zoom_scale | edit_number_field: "Rollover Zoom Scale (1.05 = 105%; 1 - 2)", "1.05", "value_or_default", "", 1, 2 }}
+      </div>
+
+    </fieldset>
+
+    {{ widget | edit_photo_overlay }}
+
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

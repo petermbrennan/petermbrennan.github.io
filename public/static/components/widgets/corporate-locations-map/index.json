@@ -1,0 +1,70 @@
+{
+  "name": "Corporate Locations Map",
+  "widget_id": 12,
+  "widget_type": null,
+  "summary": "Corporate Locations Map",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/221224287' target='_blank'>Corporate Locations Map Documentation</a>",
+  "lib_javascripts": [
+    "jquery.vmap.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "corporate_map",
+      "default_value": ""
+    },
+    {
+      "name": "search_widget",
+      "default_value": "area-page"
+    },
+    {
+      "name": "core_client_id",
+      "default_value": ""
+    },
+    {
+      "name": "corp_search_page",
+      "default_value": "apartment-search"
+    },
+    {
+      "name": "state_data_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "core_client_id_alt",
+      "default_value": ""
+    },
+    {
+      "name": "corp_search_page_alt",
+      "default_value": "commercial-search"
+    },
+    {
+      "name": "primary_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "hover_color",
+      "default_value": "{{theme_secondary_color | darken: '15%'}}"
+    },
+    {
+      "name": "country_code",
+      "default_value": "usa_en"
+    },
+    {
+      "name": "map_border_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "map_base_color",
+      "default_value": "#d6d6d6"
+    }
+  ]
+}

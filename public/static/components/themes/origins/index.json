@@ -1,0 +1,23 @@
+{
+  "theme_id": 27,
+  "name": "Origins",
+  "summary": "Updated version of Luxe",
+  "primary_color": "#003c49",
+  "secondary_color": "#1e91a8",
+  "tertiary_color": "#f26c4f",
+  "primary_font": "cora",
+  "secondary_font": "cora",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Origins",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

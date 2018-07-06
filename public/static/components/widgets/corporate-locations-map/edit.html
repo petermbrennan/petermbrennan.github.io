@@ -1,0 +1,55 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>Corporate Locations Map Settings</legend>
+      <!-- Target Search Widget -->
+      {% assign search_widget_opts = '{"area-page": "Area Page", "city-state-zip-search": "City State Zip Search", "corp-search": "Corporate Search"}' %}
+      {{ widget.search_widget | edit_select_field: "Target Search Widget", search_widget_opts, "value_or_default", "select-search-widget" }}
+
+      <!-- Core Client ID -->
+      {{ widget.core_client_id | edit_text_field: "Core Client Id (to use core data) required for map toggle", "", "value", "corp-search-field" }}
+
+      <!-- Corp Search Page -->
+      {{ widget.corp_search_page | edit_text_field: "Corp Search Page", "apartment-search/", "value", "corp-search-field city-state-zip-search-field corp-search-page" }}
+
+      <!-- Dual Maps Toggle -->
+      {{ widget.state_data_toggle | edit_toggle_field: "Dual Maps?", "value_or_default", "corp-search-field" }}
+
+      <!-- Core Client ID 2 -->
+      {{ widget.core_client_id_alt | edit_text_field: "Core Client Id 2 (to use core data)", "", "value", "corp-search-field" }}
+
+      <!-- Corp Search Page -->
+      {{ widget.corp_search_page_alt | edit_text_field: "Corp Search Page (Commercial)", "", "value", "corp-search-field" }}
+    </fieldset>
+
+    <!-- Display Canada Option-->
+    <div class="form-field">
+      {% assign country_opts = '{"usa_en": "USA Only", "usa_ca_en": "USA and Canada"}' %}
+      {{ widget.country_code | edit_select_field: "Map Will Include These Countries:", country_opts, "value_or_default", "select-country-option" }}
+    </div>
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset>
+      <legend>Style Settings</legend>
+      <!-- Map Base Color -->
+      {{ widget.map_base_color | edit_color_field: "Map Base Color", "#d6d6d6", "value_or_default" }}
+
+      <!-- Map Border Color -->
+      {{ widget.map_border_color | edit_color_field: "Map Border Color", "#ffffff", "value_or_default" }}
+
+      <!-- Active State Color -->
+      {{ widget.primary_color | edit_color_field: "Active State Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Active State Hover Color -->
+      {{ widget.hover_color | edit_color_field: "Active State Hover Color", "theme_secondary_color | darken: '15%'", "value_or_default", "", true }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

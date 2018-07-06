@@ -1,0 +1,318 @@
+{
+  "name": "Multifamily Search V2",
+  "widget_id": 200,
+  "widget_type": null,
+  "summary": "Multifamily Search V2",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/223215247' target='_blank'>Multifamily Search V2 Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "beta": false,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "cloud_service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find an Apartment"
+    },
+    {
+      "name": "heading_text_position",
+      "default_value": "left"
+    },
+    {
+      "name": "per_page",
+      "default_value": "20"
+    },
+    {
+      "name": "available_threshold",
+      "default_value": "1"
+    },
+    {
+      "name": "cta_available_text_threshold",
+      "default_value": "5"
+    },
+    {
+      "name": "cta_limited_text_threshold",
+      "default_value": "2"
+    },
+    {
+      "name": "cta_available_text",
+      "default_value": "Available | View Units"
+    },
+    {
+      "name": "cta_limited_text",
+      "default_value": "Limited Availability | Visit Site"
+    },
+    {
+      "name": "cta_low_text",
+      "default_value": "Low Availability | Visit Site"
+    },
+    {
+      "name": "location_link_in_new_tab",
+      "default_value": "false"
+    },
+    {
+      "name": "show_filters",
+      "default_value": "false"
+    },
+    {
+      "name": "show_sort_options",
+      "default_value": "true"
+    },
+    {
+      "name": "show_pending_locations",
+      "default_value": "false"
+    },
+    {
+      "name": "show_locations",
+      "default_value": "true"
+    },
+    {
+      "name": "default_search_radius",
+      "default_value": "20"
+    },
+    {
+      "name": "search_slider_min",
+      "default_value": "10"
+    },
+    {
+      "name": "search_slider_max",
+      "default_value": "50"
+    },
+    {
+      "name": "search_slider_step",
+      "default_value": "10"
+    },
+    {
+      "name": "enable_universal_search",
+      "default_value": "false"
+    },
+    {
+      "name": "display_neighborhood_filter",
+      "default_value": "true"
+    },
+    {
+      "name": "enable_geolocation",
+      "default_value": "false"
+    },
+    {
+      "name": "geolocation_button_text",
+      "default_value": "Find Locations Near Me"
+    },
+    {
+      "name": "search_results_message",
+      "default_value": ""
+    },
+    {
+      "name": "search_background",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "header_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "geolocation_link_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "button_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "button_border_radius",
+      "default_value": ""
+    },
+    {
+      "name": "text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "search_button_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "search_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "search_button_icon",
+      "default_value": "https://s3-us-west-2.amazonaws.com/g5-widget-garden/multifamily-search-v2/magnifying-glass-icon.png"
+    },
+    {
+      "name": "search_filter_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "filter_button_border",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "filter_background",
+      "default_value": "transparent"
+    },
+    {
+      "name": "filter_icon",
+      "default_value": "https://s3-us-west-2.amazonaws.com/g5-widget-garden/multifamily-search-v2/filters-icon-white.png"
+    },
+    {
+      "name": "search_results_message_color",
+      "default_value": "#000"
+    },
+    {
+      "name": "dropdown_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "dropdown_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "dropdown_arrow_type",
+      "default_value": ""
+    },
+    {
+      "name": "dropdown_arrow",
+      "default_value": "https://s3-us-west-2.amazonaws.com/g5-widget-garden/multifamily-search-v2/mf-search-select-white.png"
+    },
+    {
+      "name": "filter_box_border",
+      "default_value": ""
+    },
+    {
+      "name": "amenities_box_background",
+      "default_value": "transparent"
+    },
+    {
+      "name": "amenities_box_text",
+      "default_value": "#fff"
+    },
+    {
+      "name": "radius_slider_track",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "radius_slider_handle",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "radius_slider_warning",
+      "default_value": ""
+    },
+    {
+      "name": "pagination_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "pagination_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "card_background_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "card_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "unit_info_border",
+      "default_value": ""
+    },
+    {
+      "name": "sort_by_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "sort_by_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "card_address_bar",
+      "default_value": "{{theme_primary_color | lighten: '15%'}}"
+    },
+    {
+      "name": "cta_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "cta_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "map_pin_active",
+      "default_value": "https://widgets.g5dxm.com/multifamily-search/corp-search-pin-red.png"
+    },
+    {
+      "name": "map_pin_not_active",
+      "default_value": "https://widgets.g5dxm.com/multifamily-search/corp-search-pin-grey.png"
+    },
+    {
+      "name": "map_pin_available_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "map_pin_available_hover",
+      "default_value": "{{theme_tertiary_color | darken: '15%'}}"
+    },
+    {
+      "name": "map_pin_limited_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "map_pin_limited_hover",
+      "default_value": "{{theme_tertiary_color | darken: '15%'}}"
+    },
+    {
+      "name": "cluster_pin_color",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "cluster_pin_hover",
+      "default_value": "{{theme_tertiary_color | darken: '15%'}}"
+    },
+    {
+      "name": "enable_marker_highlight",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "amenity_icon_bg",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "amenity_icon_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "input_placeholder_color",
+      "default_value": ""
+    },
+    {
+      "name": "toggle_marker_numbers",
+      "default_value": "true"
+    }
+  ],
+  "aliases": [
+    "beta-mf-search-v2"
+  ]
+}

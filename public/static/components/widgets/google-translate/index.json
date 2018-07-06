@@ -1,0 +1,32 @@
+{
+  "name": "Google Translate",
+  "widget_id": 60,
+  "widget_type": null,
+  "summary": "Translate a page using Google Translate",
+  "liquid": false,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469007-Google-Translate-Widget' target='_blank'>Google Translate Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "languages",
+      "default_value": "en,es"
+    },
+    {
+      "name": "append_options",
+      "default_value": "default"
+    },
+    {
+      "name": "append_element",
+      "default_value": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{% capture widgetId %}logo-{{ widget.id }}{% endcapture %}
+{% if widget.display_logo.value == "true" %}
+<div class="h-c-ret h-card">
+  <a class="logo widget u-url" href="/" id="{{widgetId}}">
+    <script type="application/json" class="config">
+      {
+        "singleDomain":"{{widget.orion_single_domain.default_value_parsed}}",
+        "hrefSelector": "#{{widgetId}}"
+      }
+    </script>
+    <img class="u-logo p-name" src="{{ widget.logo_url.value }}" alt="{{ widget.business_name.value }}" {{ widget.logo_url.value | srcset }} />
+  </a>
+</div>
+{% endif %}

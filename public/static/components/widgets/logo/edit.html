@@ -1,0 +1,37 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <fieldset>
+        <legend>Logo Settings</legend>
+        {{ widget.logo_url | edit_image_field: "Logo URL", "", "value_or_default", "", "logo" }}
+        <div class="col s5">
+          {% assign cropping_opts = '{"fixed":"Fixed", "free":"Free", "none":"None"}' %}
+          {{ widget.cropping_style | edit_radio_field: "Cropping", cropping_opts, "value_or_default", }}
+        </div>
+        <div class="max-width-max-height">
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_width | edit_integer_field: "Width", "", "value_or_default", "", 1, 100000 }}
+          </div>
+
+          <div class="col s2 offset-s1">
+            {{ widget.cropping_height | edit_integer_field: "Height", "", "value_or_default", "", 1, 100000 }}
+          </div>
+          <label class="col s5 push-s1">* Width and height are required for "Fixed" cropping</label>
+        </div>
+
+      </fieldset>
+      <!-- Business Name -->
+      {{ widget.business_name | edit_text_field: "Business Name", "location_name", "value_or_default", "", true }}
+
+      <!-- Display Logo Toggle -->
+      {{ widget.display_logo | edit_toggle_field: "Display Logo", "value_or_default" }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

@@ -1,0 +1,94 @@
+{
+  "name": "Location Mini Search",
+  "widget_id": 38,
+  "widget_type": null,
+  "summary": "Search for Locations via typeahead or city/state from a Corp Site on the home page",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/115003421067' target='_blank'>Location Mini Search Documentation</a>",
+  "remote_javascripts": [],
+  "lib_javascripts": ["typeahead.bundle.min.js"],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "beta": false,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "pending_location_toggle",
+      "default_value": "false"
+    },
+    {
+      "name": "corp_search_page",
+      "default_value": ""
+    },
+    {
+      "name": "service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find a Location"
+    },
+    {
+      "name": "heading_text_position",
+      "default_value": "left"
+    },
+    {
+      "name": "search_button_text",
+      "default_value": "Search"
+    },
+    {
+      "name": "universal_search",
+      "default_value": "true"
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_form_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "header_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_bg",
+      "default_value": "{{theme_tertiary_color}}"
+    },
+    {
+      "name": "search_button_bg_hover",
+      "default_value": "{{theme_tertiary_color | darken: '5%';}}"
+    },
+    {
+      "name": "search_button_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "search_button_text_color_hover",
+      "default_value": "#fff"
+    },
+    {
+      "name": "dropdown_bg",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "dropdown_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_background",
+      "default_value": "{{theme_primary_color}}"
+    }
+  ]
+}

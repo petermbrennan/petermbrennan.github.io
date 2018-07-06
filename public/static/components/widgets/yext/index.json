@@ -1,0 +1,21 @@
+{
+  "name": "Yext",
+  "widget_id": 8,
+  "widget_type": null,
+  "summary": "Yext - Business Listing Scan",
+  "liquid": true,
+  "widget_popover": "<a href='#' target='_blank'>Yext Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "form_action_link",
+      "default_value": ""
+    }
+  ]
+}

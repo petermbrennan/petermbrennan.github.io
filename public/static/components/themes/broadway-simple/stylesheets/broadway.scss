@@ -1,0 +1,386 @@
+// ********************************************
+//
+//  Broadway Blueprint Theme
+//  - Simple Variation
+//
+// ********************************************
+
+@import "boilerplate/setup";
+
+
+// -------------------------------------
+//  Variables and Mixins
+// -------------------------------------
+
+$info-sheet-breakpoint: 737px;
+
+$border-radius: 0;
+
+@mixin border-radius { border-radius: $border-radius; }
+
+@mixin simple-background { background-color: rgba($primaryColor, .7); }
+
+@mixin theme-button {
+  border-right-width: 3px;
+  &:hover {
+    border-right-width: 3px;
+  }
+}
+
+@mixin widget-button-decal {
+  text-align: center;
+
+  &:after { display: none; }
+}
+
+// -------------------------------------
+//  Header
+// -------------------------------------
+
+[role=banner] {
+  .buttons .btn:not(.collapsable-btn) {
+    @include border-radius;
+    @include theme-button;
+  }
+
+  @include at-least($min-medium) {
+    .navigation { border: 0; }
+
+    .appended-phone {
+      font-size: 1.75em;
+      line-height: 1.8;
+
+      .has-small-nav & {
+        font-size: 1.25em;
+      }
+    }
+  }
+
+  @include at-least($min-large) {
+    .appended-phone {
+      font-size: 1.75em;
+    }
+  }
+}
+
+
+
+
+// -------------------------------------
+//  Hero Image & Widget Options
+// -------------------------------------
+
+.web-home-template:not(first-of-type),
+.web-page-template {
+  .bg-col {
+    @include simple-background;
+    @include border-radius;
+
+    &:before { display: none; }
+  }
+}
+
+.web-home-template .row:first-of-type .hero-widget-container .inner-widget-container {
+  @include simple-background;
+  @include border-radius;
+
+  &:before { display: none; }
+}
+
+
+// -------------------------------------
+//  CTAs
+// -------------------------------------
+
+.action-calls {
+  li,
+  a:after { @include border-radius; }
+
+  li { width: 100%; }
+  a { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Home MF IUI
+// -------------------------------------
+
+.home-multifamily-iui,
+.home-multifamily-iui-v2 {
+  .btn,
+  .btn:after { @include border-radius; }
+
+  .btn { @include widget-button-decal; }
+}
+.home-multifamily-iui-v2 {
+  .iui-size {
+    text-indent: 0px;
+    .dropdown-content {
+      text-indent: 0px;
+    }
+  }
+  .dropdown-content {
+    left: calc(50% - 75px)
+  }
+}
+
+// -------------------------------------
+//  Home MF IUI V2
+// -------------------------------------
+
+.home-multifamily-iui-v2 {
+  .btn-beds strong {
+    position: initial;
+  }
+}
+
+// -------------------------------------
+//  Self Storage Home IUI
+// -------------------------------------
+
+.self-storage-search-home {
+  .sss-search-criteria,
+  .sss-search-input,
+  .sss-search-storage-categories-select,
+  .sss-search-btn,
+  .sss-search-btn:after,
+  .sss-search-select:after { @include border-radius; }
+
+  .sss-search-btn { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Self Storage Featured Unit Categories
+// -------------------------------------
+
+.ss-featured-unit-categories {
+  a,
+  a:after { @include border-radius; }
+
+  a { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  MF Mini Search (Corp)
+// -------------------------------------
+
+.multifamily-mini-search .corpSearchWrapper .search-form {
+  .city:after,
+  .state:after,
+  select,
+  select:after,
+  .search-button button,
+  .search-button button:after { @include border-radius; }
+
+  .search-button button { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  MF Mini Search VERSION 2
+// -------------------------------------
+
+.multifamily-mini-search-v2 {
+  .city:after,
+  .state:after,
+  .mf-search-input,
+  select,
+  select:after,
+  .btn:after,
+  .btn { @include border-radius; }
+
+  .btn { @include widget-button-decal; }
+}
+
+
+// ------------------------------------
+//  MF IUI (full version)
+// ------------------------------------
+
+.corpSearchWrapper .search-form span {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// ---------------------------------------
+//  Simple Form (aka Skip Step Lead Form)
+// ---------------------------------------
+
+.g5-enhanced-form {
+  button[type=submit],
+  input[type=submit] {
+    @include border-radius;
+  }
+}
+
+
+// -------------------------------------
+//  City, Search, Zip Search
+// -------------------------------------
+
+.city-state-zip-search {
+  .zip-search-input,
+  .zip-search-button:after { @include border-radius; }
+
+  .zip-search-button { @include widget-button-decal; }
+}
+
+
+// -------------------------------------
+//  Locations Navigation
+// -------------------------------------
+
+.locations-navigation h3.locations-navigation-title {
+    &,
+    &:after { @include border-radius; }
+}
+
+
+// -------------------------------------
+//  Galleries
+// -------------------------------------
+
+.gallery-only {
+  .mini-gallery {
+    .flex-direction-nav {
+      a,
+      .flex-pref:before,
+      .flex-next:after { @include border-radius; }
+    }
+
+    .flex-control-thumbs img { @include border-radius; }
+  }
+
+  .full-gallery:not(.gallery-carousel) {
+    .flex-direction-nav a { @include border-radius; }
+    .flex-control-thumbs img { @include border-radius; }
+  }
+}
+
+.gallery .gallery-carousel {
+  .slides .flex-caption,
+  .slides li img:nth-last-child(2),
+  .flex-direction-nav a { @include border-radius; }
+}
+
+.featured-properties .gallery-carousel .slides a img:nth-last-child(2) {
+  @include border-radius;
+}
+
+
+// -------------------------------------
+//  Buttons
+// -------------------------------------
+
+.button .btn {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  Mini News Feed
+// -------------------------------------
+
+.mini-blog-feed {
+  .news-item-link,
+  .all-news-link { @include border-radius; }
+
+  .news-item-link { @include theme-button; }
+}
+
+
+// -------------------------------------
+//  Directions
+// -------------------------------------
+
+.directions .directions-submit {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  Contact Info Sheet
+// -------------------------------------
+
+.contact-info-sheet {
+  @include at-least($info-sheet-breakpoint) {
+    &.default,
+    &.left {
+      .info-sheet-nav { border-radius: 0 $border-radius $border-radius 0; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child { border-top-right-radius: $border-radius; }
+        &:last-child { border-bottom-right-radius: $border-radius; }
+      }
+    }
+
+    &.right {
+      .info-sheet-nav { border-radius: $border-radius 0 0 $border-radius; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child { border-top-left-radius: $border-radius; }
+        &:last-child { border-bottom-left-radius: $border-radius; }
+      }
+    }
+
+    &.b-left,
+    &.b-right {
+      .info-sheet-nav { border-radius: $border-radius $border-radius 0 0; }
+      .cis-btn {
+        .web-home-template &.info-sheet-home-btn + .cis-btn,
+        &:first-child {
+          border-top-left-radius: $border-radius;
+        }
+        &:last-child { border-top-right-radius: $border-radius; }
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Contact Info
+// -------------------------------------
+
+[role=main] .contact-info {
+  @include simple-background;
+  @include border-radius;
+
+  &:before { display: none; }
+}
+
+
+// -------------------------------------
+//  Promoted Reviews
+// -------------------------------------
+
+.promoted-reviews .review-body a {
+  @include border-radius;
+  @include theme-button;
+}
+
+
+// -------------------------------------
+//  Coupon
+// -------------------------------------
+
+.coupon {
+  button,
+  .coupon-info { @include border-radius; }
+
+  button { @include theme-button; }
+}
+
+
+// -------------------------------------
+//  Footer
+// -------------------------------------
+
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px;
+}

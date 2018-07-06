@@ -1,0 +1,24 @@
+{
+  "theme_id": 40,
+  "parent_theme_id": 29,
+  "name": "Venture - Classic",
+  "summary": "Classic variation of Venture family",
+  "primary_color": "#282b2d",
+  "secondary_color": "#94d2e4",
+  "tertiary_color": "#448ccb",
+  "primary_font": "proxima-nova",
+  "secondary_font": "adobe-caslon-pro",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Venture",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

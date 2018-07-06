@@ -1,0 +1,31 @@
+// *************************************
+//
+//  Standard Social Links
+//
+// *************************************
+
+.social-links {
+  @extend %clearfix;
+
+  a {
+    @extend %float-left;
+    margin: 0 $half-whitespace $half-whitespace 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .icon {
+    @include transition(background-color .2s ease);
+    background-color: $base-link-color;
+    // Add border radius to create circle icons
+    // border-radius: 50%;
+    height: 35px;
+    width: 35px;
+
+    &:hover {
+      background-color: $base-hover-color;
+    }
+  }
+}

@@ -1,0 +1,3234 @@
+// ********************************************
+//
+//  Focus Blueprint Theme
+//  - Simple Variation
+//
+// ********************************************
+
+// -----------------------------------------------------
+//  Table of Contents
+
+//  Imports and Variables
+//  Mixins & Extends
+//  Animations
+//  Base Styles
+//  Layout
+//  Forms
+//  Buttons
+//  Self Storage Widgets
+//  Multifamily Widgets
+//  Corporate Widgets
+//  Other Widgets
+//  Mobile Nav
+//  Header
+//  Footer
+//  Hero
+//  Area Page
+//  Simple version styles
+// -----------------------------------------------------
+
+
+// ============================================
+//  Available Content Stripe Classes
+// ============================================
+
+// .vert-align (vertically aligns the columns in a content stripe)
+
+
+// ============================================
+//  Imports and Variables
+// ============================================
+
+
+// Boilerplate variables and mixins
+@import 'boilerplate/setup';
+
+// +++ THEME +++
+// Colors
+$white: #fff;
+$black: #1c1e1f;
+$base-color: #666;
+
+$base-background: #fafafa;
+
+$primary-transparent: rgba($primary-dark, 0.8);
+$primary-med-dark: darken($primaryColor, 20%);
+
+// Changes default footer color
+@if $footerColor == $primaryColor {
+  $footerColor: $primary-med-dark;
+}
+
+
+// Typography
+$base-font-family: 'proxima-nova', $helvetica;
+$base-line-height: 1.5;
+
+$text-font-size: rem(17);
+
+$primary-font: $primaryFont, $helvetica;
+$secondary-font: $secondaryFont, $helvetica;
+
+$header-line-height: 1.2;
+$header-font-weight: 700;
+
+$base-hover-color: $body-link-light;
+
+
+// Spacing
+$base-whitespace: rem(30);
+$half-whitespace: $base-whitespace / 2;
+$quarter-whitespace: $base-whitespace / 4;
+
+$mobile-header-height: rem(36);
+
+$hero-height: 31vw;
+
+
+// Layout
+$site-width: 1511px;
+
+$max-xsmall: 479px;
+$min-xsmall: 480px;
+
+$max-msmall: 559px;
+$min-msmall: 560px;
+
+$max-small: 699px;
+$min-small: 700px;
+
+$max-medium: 979px;
+$min-medium: 980px;
+
+$max-large: 1199px;
+$min-large: 1200px;
+
+$max-xlarge: 1511px;
+$min-xlarge: 1512px;
+
+$max-layout: $max-small;
+$min-layout: $min-small;
+
+$max-nav: $max-small;
+$min-nav: $min-small;
+
+$max-large-nav: 1599px;
+$min-large-nav: 1600px;
+
+$max-hero: $max-medium;
+$min-hero: $min-medium;
+
+
+// Design
+$left-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAZCAQAAABNuxw9AAAAiElEQVR4AYWSJQJCQRCGceg4HAJpcBAsIkfBKhbReyANuQQUpOP2vbyzYSeO/2LTgxYXPVkCRjKZ5s4Gr5oMceBETE26WfEiIxcMgIpM1oCuTGZ5s8ClJuOc2RNQkz523EjKBTMgL5NtoKGDhQsekRTdxt3yE9PfEqWZE8mgmW+pjkFLqbzuEws45IT06oZIUQAAAABJRU5ErkJggg==';
+$right-arrow:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAZCAQAAABNuxw9AAAAhklEQVR4AYWSsaEBYAyE//ce6AEMAR2DgBJGAS0ogT2ggyVooAfAZ4DDuy5JkiR3MeyoGAUdIKNuOzOORDUQYMMKjwZiXJhg1UAOaBkFdaCgbgsjrsQ14GLJlqAGwhxY4NBAEhgYBSWgqm4bO/gnW3r/s4nurVcqJ8rgv3yrOqrl/8q//5MXn0CE9KC6MNgAAAAASUVORK5CYII=';
+$down-arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAALCAQAAAAg/u54AAAAnElEQVQoFY3BS6qBAQAG0G/gtQAZsAmZsRFlKlsRY2VqYCEylE0w4l8AxeTcureu5HlOFBaq+YqqhSIm2GjmI00bTJIYODvo5i1dB2eD/NGxdzHMS4Yu9jq50bDGTCkPlMyw1sg9ZXOs1HNH3Qpz5Txj5GqnnX/adq5GeU3P0Uk/v/SdHPXynpYtxirG2GrlMzVLFFiq5VummOapH+KDhPQbu3EzAAAAAElFTkSuQmCC';
+
+// --- BOILERPLATE ---
+// Boilerplate defaults
+@import 'boilerplate/defaults/404.scss';
+@import 'boilerplate/defaults/normalize';
+@import 'boilerplate/defaults/base';
+@import 'boilerplate/defaults/content-stripe';
+@import 'boilerplate/defaults/grid';
+@import 'boilerplate/defaults/forms';
+@import 'boilerplate/defaults/layout';
+@import "boilerplate/theme-types/stripes";
+@import 'boilerplate/defaults/required-widgets';
+
+// Boilerplate add-ons
+@import 'boilerplate/widgets/social-feed';
+@import 'boilerplate/widgets/news';
+@import 'boilerplate/widgets/multifamily-search-v2';
+
+
+// +++ THEME +++
+// ============================================
+//  Mixins & Extends
+// ============================================
+
+%btn-transition { transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease; }
+%bg-transition { transition: background-color 200ms ease; }
+%opacity-transition { transition: opacity 250ms ease; }
+%transform-transition { transition: transform 300ms ease; }
+
+%corners {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%base-type {
+  color: $base-color;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+}
+
+%reset-width {
+  max-width: none;
+  width: auto;
+}
+
+@mixin reset-width {
+  max-width: none;
+  width: auto;
+}
+
+%reset-height {
+  height: auto;
+  min-height: 0;
+  max-height: none;
+}
+
+@mixin tertiary-btn {
+  background-color: $tertiaryColor;
+  &:hover { background-color: $tertiary-light; }
+}
+
+%select-arrow {
+  content: '';
+  background: $tertiaryColor url($down-arrow) center center no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: em(45);
+}
+
+// ============================================
+//  Base Styles
+// ============================================
+
+html {
+  font-size: 100%;
+
+  @include at-least($min-xlarge) {
+    font-size: 18px;
+  }
+}
+
+body { font-weight: $base-font-weight; }
+
+p { font-size: 1rem; }
+
+.html p { font-size: rem(17); }
+
+%heading {
+  font-family: $secondary-font;
+  font-weight: $header-font-weight;
+  line-height: $header-line-height;
+  margin-bottom: 0.83em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %heading;
+
+  .row-2:last-child &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Used for large text taglines
+%h6,
+h6 {
+  font-size: 1.5em;
+
+  @include at-least($min-hero) {
+    font-size: em(32);
+  }
+
+  @include at-least($min-large) {
+    font-size: em(42);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p-tel {
+  letter-spacing: 0.05em;
+}
+
+
+// .hgroup class is added by the js to adjust spacing
+// between h1 and h2
+.hgroup {
+  h1 { margin-bottom: 0.5em; }
+  h2 { margin-bottom: 1.5em; }
+}
+
+
+// ============================================
+//  Layout
+// ============================================
+
+%margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row {
+  position: relative;
+
+  .row-grid { overflow: visible; }
+
+
+  @include at-least($min-nav) {
+    .col {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .widget { margin-bottom: 3rem; }
+  }
+
+
+  @include at-least($min-layout) {
+    .row-grid { @include display(flex); }
+  }
+}
+
+
+.row-divider { z-index: 1; }
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+.content {
+  @include at-least($min-hero) {
+    padding-left: $base-whitespace;
+    padding-right: $base-whitespace;
+  }
+
+  @include at-least($min-large) {
+    padding-left: $double-whitespace;
+    padding-right: $double-whitespace;
+  }
+}
+
+[class*=row-]:last-child > .widget {
+  margin-bottom: 0;
+}
+
+
+// ============================================
+//  Forms
+// ============================================
+
+label,
+select,
+#{$all-text-inputs} {
+  line-height: $base-line-height;
+}
+
+#{$all-text-inputs} {
+  padding: 0.5em;
+}
+
+// this appears to be a field that should be hidden
+#lead_comments {
+  position: absolute;
+}
+
+// this is a config in the lead form widget
+.horizontal-form {
+  .form-field {
+    @include until($max-xsmall) {
+      display: block;
+    }
+
+    @include at-least(600px) {
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+  }
+}
+
+
+// ============================================
+//  Buttons
+// ============================================
+
+%btn-base {
+  @extend %btn-transition;
+  background-color: $secondaryColor;
+  border: 0;
+  color: $white;
+  font-family: $primary-font;
+  font-weight: $bold-font-weight;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-align: center;
+  display: inline-block;
+  padding: 0.5em 1em;
+
+  &:hover {
+    background-color: $secondary-light;
+    color: $white;
+  }
+}
+
+
+%btn-arrow {
+  position: relative;
+
+  &::after {
+    @include transform(translate(-50%, -50%));
+    background: url($right-arrow) 0 0 no-repeat;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 25px;
+  }
+}
+
+
+.btn,
+button,
+input[type=submit] {
+  @extend %btn-base;
+}
+
+// this makes button same height as text inputs
+// lin-height: 1.5 + .125 to account for input border
+input[type=submit] {
+  line-height: 1.625;
+}
+
+.button-list .btn { display: block; }
+
+
+// ============================================
+//  Multifamily Widgets
+// ============================================
+
+// --------------------------------------------
+//  Home Multifamily IUI
+// --------------------------------------------
+
+.home-multifamily-iui,
+.home-multifamily-iui-v2 {
+  font-size: 0.9em;
+  @extend %margin-auto;
+  padding: 0;
+
+  .iui-steps,
+  .iui-title {
+    display: none;
+  }
+
+  .btn {
+    background-color: $white;
+    color: $base-color;
+
+    &:hover {
+      background-color: rgba($white, 0.9);
+      color: $base-color;
+    }
+  }
+  .dropdown-content {
+    transform: translate(0%);
+  }
+
+  .mf-iui-home-heading {
+    @extend %heading;
+    text-align: center;
+  }
+
+  .iui-size {
+    float: left;
+    margin: 0;
+  }
+
+  .btn {
+    display: block;
+
+    &,
+    strong {
+      font-weight: $base-font-weight;
+    }
+  }
+
+  .iui-view-all .btn {
+    @include tertiary-btn;
+    color: $white;
+  }
+
+
+  @include until($max-hero) {
+    .iui-container { margin-top: -5px; }
+  }
+
+  @include at-least($min-msmall) {
+    text-align: center;
+
+    .iui-container { display: inline-block; }
+
+    .iui-size,
+    .iui-size:nth-child(3):last-child,
+    .iui-size:nth-child(5) {
+      width: auto;
+    }
+
+    .iui-size { padding: 0 1px; }
+
+    .btn {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
+}
+
+.home-multifamily-iui-v2 {
+  .iui-container {
+    overflow: inherit;
+  }
+  [data-category] {
+    height: auto !important;
+  }
+
+  font-size: 0.9em;
+  .btn {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+  }
+  @media (max-width: $max-medium) {
+    .iui-size {
+      height: 60px;
+      a {
+        height: 50px;
+      }
+      width: 50% !important;;
+      &:last-of-type {
+        width: 100% !important;
+      }
+      &.active {
+        .dropdown-content {
+          display: grid !important;
+          position: relative;
+        }
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .iui-container {
+      height: 150px;
+    }
+    .btn {
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+    .iui-size {
+      padding: 1px;
+      position: relative;
+      &:not(:last-of-type) .btn {
+        border-right: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+
+
+// --------------------------------------------
+//  Multifamily IUI Cards
+// --------------------------------------------
+
+// Lots of widget overrides for better mobile styles
+.multifamily-iui-cards {
+  @extend %margin-auto;
+  max-width: rem(980);
+  padding: 0;
+
+  .iui-cards-nav a {
+    padding-top: rem(6);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  h3:empty { display: none; }
+
+  .iui-cards-unit-categories .iui-cards-view-all {
+    @extend %opacity-transition;
+    background-image: none;
+  }
+
+
+  @include at-least(rem(630)) {
+    .iui-cards-nav {
+      @include reset-width;
+      float: right;
+
+      a {
+        float: left;
+        position: relative;
+        left: 0 !important; // Needed to override super specific widget css
+        margin-right: 5vw;
+      }
+    }
+  }
+
+
+  // Step 1
+  .iui-cards-unit-categories {
+
+    @include until($max-medium) {
+      $iui-card: rem(175);
+      $iui-card-inner: $iui-card - rem(20);
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: rem(10);
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: rem(5);
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span { font-weight: $bold-font-weight; }
+
+        span:nth-of-type(1) {
+          font-size: 2em;
+          line-height: 1;
+          padding-top: .75em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.5em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.5em;
+          padding-top: 2em;
+        }
+      }
+    }
+
+
+    @include until(rem(730)) {
+      $iui-card: rem(130);
+      $iui-card-inner: $iui-card - rem(10);
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: rem(5);
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: rem(5);
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span { font-weight: $bold-font-weight; }
+
+        span:nth-of-type(1) {
+          font-size: 1.5em;
+          line-height: 1;
+          padding-top: .5em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.125em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.125em;
+          padding-top: 1.5em;
+        }
+      }
+    }
+  }
+
+
+  // Step 3
+  // need tons of classes for specificity :(
+  .iui-cards-wrapper .iui-cards-step .iui-cards-floorplan-details {
+    .iui-cards-unit-card { width: rem(200); }
+
+    @include until(rem(800)) {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+
+      .iui-cards-unit-card { width: 100%; }
+    }
+  }
+}
+
+// FLOORPLANS CARDS WIDGET
+a.floorplan-view-link div { font-size: 17px; }
+
+.fancybox-overlay { z-index: 10000; }
+
+// ============================================
+//  Multifamily Search Cloud
+// ============================================
+
+.mf-search-cloud #mf-search-cloud-container .mf-search-cloud-wrapper {
+  .map.visible {
+    &+.search-column {
+      width: 65%;
+    }
+  }
+  .result-top {
+    height: 80px;
+  }
+  #map {
+    width: 35%;
+  }
+  .search-bottom-section .radius-slider .slider.slider-disabled:before {
+    left: 0;
+  }
+  .store-summary {
+    .result-contact-info .result-address {
+      line-height: 1.1em;
+    }
+    .result-location-info {
+      .result-phone {
+        padding: 4px 0 0;
+      }
+      .result-unit-info {
+        padding: 4px 0;
+        min-height: 26px;
+      }
+    }
+  }
+  .search-form {
+    div, span, select, input, button, .search-bottom-section .results-message {
+      font-family: $primary-font;
+    }
+    label,
+    a.cp-Panel-toggle {
+      font-weight: normal;
+    }
+  }
+  .filter-results,
+  .pagination-nav .pagination-controls {
+    font-family: $primary-font;
+  }
+  &.medium {
+    .search-form-inner {
+      select {
+        font-size: 98%;
+      }
+    }
+  }
+}
+
+
+
+.mf-search-cloud {
+  .search-form {
+    div, span, select, input, button, .search-bottom-section .results-message {
+      font-family: $primary-font;
+    }
+  }
+  .filter-results,
+  .pagination-nav .pagination-controls {
+    font-family: $primary-font;
+  }
+}
+
+
+
+// ============================================
+//  Self Storage Widgets
+// ============================================
+
+// --------------------------------------------
+//  Self Storage Filtered
+// --------------------------------------------
+
+// Set font size to px so increasing font size doesn't screw up widget
+div.self-storage-filtered {
+  overflow: visible;
+  font-size: 16px;
+}
+
+.self-storage-filtered {
+  overflow: visible;
+
+  .sss-locations-matrix {
+    overflow: visible;
+    width: 100%;
+  }
+
+  .sss-location {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .sss-cat a {
+    .cat-price:after {
+      font-size: 16px;
+      position: static;
+      margin-left: 10px;
+      margin-right: -22px;
+      vertical-align: -8px;
+    }
+
+    &.active {
+      &:before {
+        border-bottom-color: $primaryColor;
+        border-width: 21px;
+        margin-left: -21px;
+        bottom: -33px;
+      }
+
+      .cat-price:after {
+        border: 6px solid transparent;
+        visibility: hidden;
+      }
+    }
+  }
+
+  .view-all .btn {
+    background-color: transparent;
+    line-height: 1.4;
+  }
+
+  .sss-unit-matrix { border: 1px solid $primaryColor; }
+
+  .sss-unit-cta .unit-cta {
+    @extend %btn-base;
+    position: relative;
+
+    .cta-text {
+      @include center-el-y;
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage IUI Cards
+// --------------------------------------------
+
+.self-storage-iui-cards {
+  @extend %margin-auto;
+  max-width: rem(980);
+
+  .iui-cards-nav-outer {
+    background-color: transparent;
+    border-bottom: 0;
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+
+  .iui-cards-nav {
+    max-width: none;
+
+    a:nth-of-type(2) { margin-left: -15px; }
+
+    a:nth-of-type(3) {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  h3 { width: auto; }
+
+  .iui-cards-unit-header:hover,
+  .iui-cards-unit.iui-cards-show-details,
+  .iui-cards-unit-actions a:hover {
+    box-shadow: none;
+  }
+
+  .iui-cards-unit .iui-cards-unit-details {
+    @extend %clearfix;
+    border: 1px solid $grey;
+    border-top: 0;
+  }
+
+  .iui-cards-wrapper .leads-form input {
+    height: auto;
+    padding: 0.5em;
+  }
+
+  @include at-least($min-msmall) {
+    .iui-cards-nav-outer {
+      float: right;
+      width: auto;
+    }
+
+    .iui-cards-nav { margin-top: 0; }
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Search Widgets
+// --------------------------------------------
+
+[class*=self-storage-search] {
+  color: inherit;
+  line-height: inherit;
+
+  .sss-search-criteria {
+    @extend %clearfix;
+  }
+
+  .sss-search-criteria h2 {
+    font-size: 1.5em;
+  }
+
+  .search-input input {
+    text-indent: 0;
+    padding: 0.5em 1em;
+  }
+
+  .sss-search-select {
+    background-color: $white;
+
+    &::after {
+      content: '';
+      border: 0;
+      background: $tertiaryColor url($down-arrow) center center no-repeat;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: em(45);
+    }
+  }
+
+  .sss-search-storage-categories-select {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 0.5em 2em 0.5em 1em;
+    position: relative;
+  }
+
+  .sss-search-btn {
+    color: $white;
+    font-family: $primary-font;
+    font-size: em(18);
+    font-weight: $bold-font-weight;
+    line-height: $base-line-height;
+    display: block;
+    width: auto;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+    &:hover {
+      background-color: $tertiary-light;
+      color: $white;
+    }
+  }
+
+
+  @include at-least($max-hero) {
+    .sss-search-criteria h2 { font-size: 1.5em; }
+  }
+
+
+  @include until(599px) {
+    .sss-search-select { margin-bottom: 2%; }
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Search Home
+// --------------------------------------------
+
+.self-storage-search-home {
+
+  &.xlarge .sss-search-criteria,
+  &.large .sss-search-criteria,
+  &.medium .sss-search-criteria {
+    width: 100%;
+  }
+
+  h2 {
+    color: white;
+  }
+
+  @include at-least(rem(600)) {
+    .sss-search-criteria input,
+    .sss-search-criteria select {
+      height: 49px;
+    }
+
+    .no-categories {
+      text-align: center;
+
+      .search-input,
+      .btn {
+        float: none;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+
+    .search-input input,
+    .sss-search-select {
+      margin-bottom: 0;
+    }
+
+    .search-input,
+    .sss-search-select {
+      float: left;
+      margin-right: 2%;
+    }
+
+    .search-input { width: 41%; }
+
+    .sss-search-select { width: 34%; }
+
+    .sss-search-btn {
+      float: left;
+      width: 20%;
+      height: 49px;
+    }
+  }
+
+  @include at-least($min-layout) {
+    .row-thirds &,
+    .row-uneven-thirds-1 .col-1 &,
+    .row-uneven-thirds-2 .col-2 & {
+      .search-input,
+      .sss-search-select {
+        margin: 0 0 0.5em;
+        width: 100%;
+      }
+
+      .sss-search-btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Self Storage Search
+// --------------------------------------------
+
+.self-storage-search {
+  // prevents text in widget from enlarging due
+  // to font size increase on large screen
+  font-size: 16px;
+
+  .sss-search-select {
+    margin-bottom: em(10);
+  }
+
+  .sss-pagination div span.current a { border-bottom: 0; }
+
+  .sss-unit-matrix { border: 1px solid $primaryColor; }
+
+  .sss-cat a.active::before {
+    border-bottom-color: $primaryColor;
+    border-width: 21px;
+    margin-left: -21px;
+    bottom: -33px;
+  }
+}
+
+
+// --------------------------------------------
+//  SS Featured Unit Categories
+// --------------------------------------------
+
+.ss-featured-unit-categories {
+  background-color: transparent;
+  padding: 0;
+
+  .iui-steps {
+    display: none;
+
+    &:before {
+      background-color: $base-color;
+      width: 15vw;
+    }
+
+    span {
+      background-color: $base-color;
+      color: $white;
+      margin-right: 5vw;
+
+      &:last-child { margin-right: 0; }
+    }
+  }
+
+  .iui-title {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+
+  .iui-size {
+    float: left;
+
+    &:nth-last-child(2):nth-child(odd),
+    &:nth-last-child(odd):nth-child(odd) {
+      width: 50%;
+    }
+
+    .btn {
+      background-color: $base-color;
+      padding: 0.75em 1em;
+
+      &:hover { background-color: $black; }
+    }
+  }
+
+  .iui-view-all .btn {
+    @include tertiary-btn;
+    color: $white;
+  }
+
+  .iui-size:nth-child(odd):last-child .btn { display: block; }
+
+
+  @include at-least($min-layout) {
+    .iui-title { text-align: left; }
+  }
+
+  @include at-least($min-medium) {
+    .iui-steps { float: right; }
+  }
+}
+
+
+.row-single .ss-featured-unit-categories {
+
+  @include at-least($min-layout) {
+    .iui-container {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    .iui-steps {
+      float: right;
+
+      &:before { width: 27vw; }
+
+      span {
+        margin-right: 10vw;
+
+        &:last-child { margin-right: 0; }
+      }
+    }
+
+    .iui-size {
+      padding: 10px;
+
+      &,
+      &:nth-last-child(2):nth-child(odd),
+      &:nth-last-child(odd):nth-child(odd) {
+        width: 33.3333333%;
+      }
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-size,
+    .iui-size:nth-last-child(2):nth-child(odd),
+    .iui-size:nth-last-child(odd):nth-child(odd) {
+      width: 25%;
+    }
+  }
+}
+
+
+.hero-widgets .ss-featured-unit-categories {
+  .iui-size:not(.iui-view-all) .btn {
+    background-color: $white;
+    color: $base-color;
+    font-weight: $base-font-weight;
+
+    &:hover {
+      background-color: rgba($white, 0.9);
+      color: $base-color;
+    }
+  }
+
+  @include at-least($min-msmall) {
+    text-align: center;
+
+    .iui-container { display: inline-block; }
+
+    .iui-size,
+    .iui-size:nth-last-child(2):nth-child(odd),
+    .iui-size:nth-last-child(odd):nth-child(odd) {
+      width: auto;
+    }
+
+    .iui-size { padding: 1px; }
+
+    .btn {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
+}
+
+
+
+
+
+// ============================================
+//  Corporate Widgets
+// ============================================
+
+// --------------------------------------------
+//  City State Zip Search
+// --------------------------------------------
+
+.city-state-zip-search {
+  @extend %margin-auto;
+  font-family: $primary-font;
+
+  .zip-search-top {
+    background-color: transparent;
+    float: none;
+    overflow: visible;
+    width: 100%;
+  }
+
+  .zip-search-heading {
+    @extend %heading;
+    color: $base-color;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .zip-search-form {
+    @extend %margin-auto;
+    position: relative;
+    max-width: rem(400);
+  }
+
+  .zip-search-input {
+    float: none;
+    padding: 0;
+    width: 100%;
+
+    input {
+      border: 0;
+      padding-right: em(60);
+    }
+  }
+
+  .zip-search-button {
+    @extend %btn-arrow;
+    @extend %bg-transition;
+    @include tertiary-btn;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: em(48);
+
+    &::after {
+      color: $white;
+      right: 12px;
+    }
+
+    button {
+      @extend %corners;
+      padding: 0;
+      position: absolute;
+      z-index: 100;
+      text-indent: 150%;
+      overflow: hidden;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: transparent;
+        outline: none;
+      }
+    }
+  }
+
+  .zip-search-location { margin-left: 0; }
+
+  .zip-search-location-link { display: block; }
+
+  &.mini-version .zip-search-top {
+    max-width: none;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+
+// --------------------------------------------
+//  Directory
+// --------------------------------------------
+
+.directory {
+  @extend %margin-auto;
+  max-width: rem(980);
+
+  .directory-table { padding-bottom: 0; }
+
+  h3.directory-heading {
+    font-family: $primary-font;
+    font-weight: $bold-font-weight;
+
+    &:first-of-type { margin-top: 0; }
+
+    .littleArrow {
+      background: url($right-arrow) 0 0 no-repeat;
+      border: 0;
+      height: 25px;
+      width: 11px;
+      margin: -12.5px 0 0;
+      position: absolute;
+      top: 50%;
+      right: 1em;
+    }
+  }
+
+  table.directory-locations-table { margin-bottom: 0; }
+}
+
+
+// --------------------------------------------
+//  Locations Navigation
+// --------------------------------------------
+
+.locations-navigation {
+  @extend %margin-auto;
+  font-family: $primary-font;
+  max-width: rem(300);
+
+  h3.locations-navigation-title {
+    @include tertiary-btn;
+    font-family: $primary-font;
+    font-size: em(21);
+    text-align: center;
+    padding: 0.5em 1em;
+
+    .littleArrow { display: none; }
+  }
+
+  .locations-navigation-state-list {
+    transition-property: opacity;
+    width: 100% !important; // Overrides weird widget behavior
+
+    &.open { box-shadow: none; }
+  }
+
+  .locations-navigation-state { background-color: $primary-transparent; }
+}
+
+
+// --------------------------------------------
+//  Multifamily Mini Search
+// --------------------------------------------
+
+.multifamily-mini-search {
+  @extend %margin-auto;
+  font-family: $primary-font;
+
+  .corpSearchWrapper {
+    .search-form-center,
+    .search-form-inner {
+      float: none;
+      left: 0;
+    }
+
+    .search-form {
+      background-color: transparent;
+
+      h2 {
+        @extend %heading;
+        color: inherit;
+        padding: 0;
+      }
+
+      span {
+        @extend %reset-height;
+        background-color: $white;
+      }
+
+      select {
+        @extend %base-type;
+        background: transparent;
+        padding: 0.5em 2.5em 0.5em 1em;
+        position: relative;
+        z-index: 1;
+        line-height: 1.15;
+
+        &:focus {
+          outline: 0;
+          box-shadow: none;
+        }
+      }
+
+      .state::after,
+      .city::after {
+        @extend %select-arrow;
+      }
+
+      .city { width: 58%; }
+
+      .search-button {
+        @extend %reset-height;
+
+        &,
+        button { @include tertiary-btn; }
+
+        button {
+          font-weight: $bold-font-weight;
+          padding: 0.5em 1em;
+        }
+      }
+    }
+  }
+
+
+  @include until($max-xsmall) {
+    .corpSearchWrapper .search-form .state { width: 40%; }
+  }
+
+
+  @include at-least($min-xsmall) {
+    .corpSearchWrapper .search-form {
+      .state,
+      .city { margin-bottom: 0; }
+
+      .city { width: 46%; }
+
+      .search-button {
+        margin-left: 2%;
+        width: 20%;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Multifamily Mini Search VERSION 2
+// --------------------------------------------
+
+.multifamily-mini-search-v2 {
+  font-family: $primary-font;
+
+  .state, .city, .search-button { background-color: $white; }
+
+  select {
+    background: transparent;
+    color: $base-color;
+    padding: 0.5em 2.5em 0.5em 1em;
+    z-index: 1;
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+
+  .state::after,
+  .city::after {
+    @extend %select-arrow;
+  }
+
+  .btn { @include tertiary-btn; }
+  .mf-search-input {
+    height: 2.5em;
+    margin-bottom: 10px;
+  }
+  .btn,
+  select { line-height: $base-line-height; }
+
+  @include at-least($min-xsmall) {
+    .state,
+    .city { margin-bottom: 0; }
+    .twitter-typeahead { width: 76%; }
+    .state { width: 30%; }
+    .city { width: 44%; }
+
+    .search-button {
+      margin-left: 2%;
+      width: 22%;
+    }
+  }
+}
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+.multifamily-search {
+  font-family: $primary-font;
+  font-size: 16px;
+
+  .corpSearchWrapper .loading-gray {
+    width: 104%;
+    height: 104%;
+    top: -2%;
+    left: -2%;
+    background-position: center;
+  }
+
+  .search-form {
+    h2 {
+      color: $white;
+      font-family: $secondary-font;
+      font-size: em(32);
+    }
+
+    span {
+      background-color: $white;
+      color: $base-color;
+      position: relative;
+      z-index: 100;
+    }
+
+    label { color: $base-color; }
+
+    select {
+      background: transparent;
+      color: $base-color;
+      position: relative;
+      z-index: 100;
+    }
+
+    input {
+      border: 1px solid $grey;
+      color: $base-color;
+      display: inline-block;
+      padding-right: 0.5em;
+    }
+
+    .state,
+    .city,
+    .neighborhood,
+    .bedrooms,
+    .bathrooms {
+      position: relative;
+
+      &::after { @extend %select-arrow; }
+    }
+
+    .state { width: 110px; }
+    .city { width: 140px; }
+    .bedrooms { width: 155px; }
+    .bathrooms { width: 108px; }
+    .neighborhood { width: 245px; }
+
+    .price-range,
+    .square-feet-range,
+    .search-button {
+      width: 258px;
+    }
+
+    .search-button {
+      @extend %bg-transition;
+      @include tertiary-btn;
+      font-weight: $bold-font-weight;
+    }
+  }
+
+  .corpSearchWrapper.narrow {
+    .bedrooms { width: 142px; }
+    .bathrooms { width: 108px; }
+    .neighborhood { width: 258px; }
+  }
+
+  .corpSearchWrapper .pagination-nav {
+    .previous { border-right-color: $primaryColor; }
+    .next { border-left-color: $primaryColor; }
+    a.page { color: $primaryColor; }
+    span.page { background-color: $primaryColor; }
+  }
+
+  .store-summary .resultAvailability { @extend %btn-base; }
+
+  .pagination-nav .range { margin-bottom: 0.5em; }
+}
+
+
+
+// ============================================
+//  Other Widgets
+// ============================================
+
+// --------------------------------------------
+//  Calls to Action
+// --------------------------------------------
+
+.action-calls {
+  font-family: $primary-font;
+  text-align: center;
+
+  ul { margin-bottom: 0; }
+
+  li {
+    margin: 0 auto 1rem;
+    max-width: 21.875rem;
+    overflow: hidden;
+
+    &:last-child { margin-bottom: 0; }
+
+    &:first-child:last-child {
+      @extend %margin-auto;
+      display: block;
+      max-width: rem(350);
+    }
+  }
+
+  a {
+    @extend %btn-base;
+    @include tertiary-btn;
+    font-size: em(21);
+    font-weight: $bold-font-weight;
+    display: block;
+  }
+
+  @include at-least($min-small) {
+    .row-single & li {
+      display: inline-block;
+      margin: 0 rem(5);
+
+      &:first-child { margin-left: 0; }
+      &:last-child { margin-right: 0; }
+
+      &:first-child:last-child {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Cinemagraph and Photo
+// --------------------------------------------
+
+.cinemagraph h2,
+.web-home-template .row:first-child figcaption,
+.hero figcaption {
+  @extend %h6;
+  @include transform(translateY(-50%));
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+
+// --------------------------------------------
+//  Contact Info
+// --------------------------------------------
+
+.contact-info {
+  .p-name { font-family: $primary-font; }
+  p { margin-bottom: 0.25em; }
+  a { color: inherit; }
+}
+
+[role=main] .contact-info {
+  font-family: $primary-font;
+
+  .p-name { font-size: em(24); }
+
+  .p-tel,
+  .adr-ret,
+  .tel,
+  .adr,
+  .fax,
+  .email,
+  .chat {
+    @extend %icon;
+
+    &:before {
+      @extend %inline;
+      font-size: 1.25em;
+      margin-top: -0.25em;
+      margin-right: .5em;
+      vertical-align: middle;
+    }
+  }
+
+  .p-tel, .tel { @extend .icn-phone; }
+  .email { @extend .icn-envelope; }
+  .fax { @extend .icn-fax; }
+  .chat { @extend .icn-comment; }
+  .adr-ret, .adr {
+    @extend .icn-location;
+
+    a {
+      @extend %inline;
+      vertical-align: middle;
+    }
+  }
+
+  .social-links,
+  .google-translate {
+    margin-top: 1em;
+  }
+
+  .social-links {
+    text-align: left;
+  }
+}
+
+// Full width contact info widget
+.row-single .contact-info {
+  @include at-least($min-msmall) {
+    .p-name {
+      text-align: center;
+      width: 100%;
+    }
+
+    p {
+      clear: left;
+      float: left;
+    }
+
+    .social-links,
+    .ratings-summary-outer {
+      text-align: right;
+    }
+  }
+
+  @include at-least($min-medium) {
+    @include display(flex);
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    text-align: center;
+    margin-top: -$half-whitespace;
+    margin-bottom: -$half-whitespace !important; // This overrides 0 bottom margin on last widget (L 308)
+
+    .p-name,
+    p,
+    .social-links,
+    .ratings-summary-outer {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: $half-whitespace;
+      vertical-align: middle;
+    }
+
+    .p-name { width: auto; }
+
+    p { text-align: left; }
+
+    .social-links { font-size: em(18); }
+  }
+}
+
+
+// --------------------------------------------
+//  Contact Info Sheet
+// --------------------------------------------
+
+.contact-info-sheet {
+  background-color: transparent;
+  z-index: 9999;
+  display: block !important;
+
+  .info-sheet-nav,
+  .info-sheet-content {
+    background-color: $primary-transparent;
+  }
+
+  .info-sheet-nav { z-index: 100; }
+
+  .form-instruction,
+  .required:after { color: $white; }
+
+  .info-sheet-phone { text-align: center; }
+
+  .form-instruction { font-weight: $bold-font-weight; }
+
+  textarea { height: 4em; }
+
+  textarea,
+  input {
+    border: 1px solid $white;
+  }
+
+  input[type=submit] {
+    border-color: transparent;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  @include at-least(737px) {
+    i { transition: color 300ms ease; }
+
+    .active i,
+    .cis-btn:hover i { color: $secondaryColor; }
+  }
+}
+
+
+// --------------------------------------------
+//  Coupon
+// --------------------------------------------
+
+.coupon {
+  background-color: $primaryColor;
+  padding: $half-whitespace;
+  max-width: em(500);
+
+  &,
+  h2,
+  p {
+    color: $white !important; // Prevents color from changing due to "text-dark" class
+  }
+
+  .coupon-offer {
+    font-weight: $bold-font-weight;
+  }
+
+  .coupon-description {
+    font-weight: $base-font-weight;
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+
+  .btn { margin-bottom: 0.5em; }
+
+  @include at-least($min-large) {
+    padding: $base-whitespace;
+  }
+}
+
+
+// --------------------------------------------
+//  Events Widget
+// --------------------------------------------
+
+.events-widget {
+  .events-widget-heading {
+    text-align: center;
+  }
+}
+
+
+// --------------------------------------------
+//  Floorp Plans Cards
+// --------------------------------------------
+
+.floorplans-cards {
+  h2 {
+    text-align: center;
+  }
+}
+
+
+// --------------------------------------------
+//  Gallery
+// --------------------------------------------
+
+// All gallery styles
+.gallery {
+  h2 {
+    text-align: center;
+  }
+
+  .flexslider .slides img { display: inline-block; }
+
+  .flex-caption { font-size: em(18); }
+
+  .flex-control-thumbs img {
+    border: 2px solid transparent;
+
+    &.flex-active { border-color: $secondaryColor; }
+  }
+
+  // All gallery navigation arrows
+  .flex-direction-nav {
+    a {
+      background-color: rgba($secondaryColor, 0.8);
+      background-image: none;
+      text-indent: 100%;
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      margin-top: -25px;
+
+      &:hover { background-color: $secondary-dark; }
+
+      &::before {
+        content:'';
+        background-position: center center;
+        background-repeat: no-repeat;
+        text-indent: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 50px;
+        width: 50px;
+      }
+    }
+
+    .flex-prev::before { background-image: url($left-arrow); }
+    .flex-next:before { background-image: url($right-arrow); }
+  }
+
+  .flexslider:hover {
+    .flex-prev { left: $half-whitespace; }
+    .flex-next { right: $half-whitespace; }
+  }
+
+  .flex-control-paging li a {
+    background-color: $secondaryColor;
+    &.active { background-color: $secondary-dark; }
+  }
+}
+
+
+// Normal default gallery slideshow
+.full-gallery.gallery-slideshow {
+  .slides {
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .slide-wrapper {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+  }
+
+  .flex-title,
+  .flex-caption {
+    color: $white;
+    font-size: em(14);
+    padding: 0.5em 1em;
+  }
+
+  .flex-title {
+    @include transform(translateY(-50%));
+    font-size: em(24);
+    font-weight: $bold-font-weight;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+  }
+
+  .flex-caption {
+    background-color: rgba($secondaryColor, 0.5);
+    color: $white;
+    font-size: em(18);
+    margin: 0;
+    padding: 0.5em 1em;
+  }
+
+  .flex-control-nav { padding-top: 1rem; }
+
+  .flex-control-thumbs {
+    margin-left: -5px;
+    margin-right: -5px;
+
+    li {
+      float: none;
+      padding: 0 5px 10px;
+      width: 20%;
+    }
+  }
+
+
+  @include until($max-xsmall) {
+    a,
+    a:hover {
+      background-color: transparent;
+    }
+  }
+
+
+  @include at-least($min-small) {
+    // Normal default gallery or carousel
+    .flex-title {
+      font-size: em(40);
+      padding: 1em;
+    }
+
+    .flex-caption {
+      font-size: em(21);
+      padding: 1em;
+    }
+
+    .flex-control-thumbs li {
+      width: 80px;
+    }
+  }
+}
+
+
+.gallery-only .mini-gallery {
+  text-align: center;
+
+  .flex-title {
+    @extend %heading;
+    font-size: em(24);
+    font-weight: $bold-font-weight;
+  }
+
+
+  // This breakpoint is in the widget css
+  @include until(909px) {
+    .flex-direction-nav a {
+      &,
+      &:hover {
+        background-color: transparent;
+      }
+
+      &::before {
+        background-color: $secondaryColor;
+        top: 50%;
+        margin-top: -25px;
+      }
+    }
+
+    .flex-control-thumbs { display: none; }
+  }
+
+
+  @include at-least(910px) {
+    text-align: left;
+
+    .flex-title,
+    .flex-caption {
+      padding: 0 15px;
+    }
+
+    .flex-title {
+      font-size: em(32);
+      margin-top: 0.5em;
+      margin-bottom: 0;
+    }
+
+    .flex-control-thumbs {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: -10px;
+      margin-right: -10px;
+
+      li { padding-bottom: 0; }
+    }
+
+    .flex-direction-nav a {
+      height: 50px !important; // Overrides widget css
+      top: 50%;
+      margin-top: -25px;
+    }
+
+    .flex-direction-nav .flex-next {
+      right: 50%;
+      margin-right: $half-whitespace;
+    }
+  }
+
+
+  @include at-least($min-large) {
+    .slides img { width: 67%; }
+
+    .flex-title,
+    .flex-caption,
+    .flex-control-thumbs {
+      width: 33%;
+    }
+
+    .flex-direction-nav .flex-next {
+      right: 33%;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Gallery Carousel & Featured Properties
+// --------------------------------------------
+
+.gallery-carousel {
+  .slides li { position: relative; }
+
+  .flex-caption {
+    background-color: rgba($secondaryColor, 0.5);
+    color: $white;
+    margin: 0;
+    padding: 0.5em 1em;
+  }
+
+  @include until($max-xsmall) {
+    .flex-direction-nav a,
+    .flex-direction-nav a:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Google Translate
+// --------------------------------------------
+
+.google-translate {
+  display: block;
+
+  .widget + & {
+    margin-top: -1em;
+
+    @include at-least($min-nav) {
+      margin-top: -2em;
+    }
+  }
+}
+
+.goog-te-gadget { display: inline-block; }
+
+
+// --------------------------------------------
+//  Hours
+// --------------------------------------------
+
+.hours {
+  @extend %clearfix;
+
+  hr { display: none; }
+
+  .office-hours,
+  .access-hours {
+    float: left;
+  }
+
+  .office-hours { padding-right: $half-whitespace; }
+}
+
+
+
+// --------------------------------------------
+//  HTML
+// --------------------------------------------
+
+.html {
+  overflow: visible;
+
+  ul, ol { padding-left: em(50); }
+
+  li {
+    margin-bottom: 0.5em;
+    &:last-child { margin-bottom: 0; }
+  }
+
+  @include until($max-layout) {
+    .row-single & .html-content {
+      max-width: 100%;
+    }
+  }
+
+  @include at-least($min-small) {
+    h2 { font-size: em(28); }
+    h3 { font-size: em(21); }
+  }
+}
+
+
+// --------------------------------------------
+//  Map and directions
+// --------------------------------------------
+
+// ### ADD TO BOILERPLATE
+.directions {
+  padding: 0;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: em(700);
+
+  .text {
+    .directions-start,
+    .directions-submit[type=submit] {
+      line-height: normal;
+    }
+
+    .directions-start { padding: 0.5em; }
+
+    .directions-submit[type=submit] {
+      border: 1px solid $secondaryColor;
+      padding: 0.5em 2em;
+    }
+  }
+
+  .canvas {
+    width: 100%;
+  }
+
+  &.wide {
+    .canvas,
+    .panel {
+      float: none;
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  @include until($max-msmall) {
+    .text { padding-bottom: 3em; }
+
+    .directions-submit[type=submit] {
+      position: absolute;
+      bottom: 0.5em;
+      right: 0;
+    }
+
+    .directions-start {
+      width: 100% !important; // Overrides widget css on element
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  News and Mini News Feed
+// --------------------------------------------
+
+[class*=blog-feed] {
+  @extend %margin-auto;
+  text-align: left;
+
+  .post-details {
+    border-bottom: 0;
+    font-weight: $bold-font-weight;
+    margin: 0;
+    padding: 0;
+  }
+
+  .all-news-link,
+  .all-posts {
+    @extend %btn-base;
+  }
+
+  .all-news { border-bottom-color: $secondaryColor; }
+
+  .nav-bling { display: none; }
+
+  .news-feed-post:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .post-toggle.toggle-button {
+    font-weight: $bold-font-weight;
+    padding: 0.5em 1em;
+
+    &::before { content: ''; }
+  }
+
+  .posts-nav { border-top-color: $secondaryColor; }
+
+  .post-nav-top,
+  .post-nav-top:hover {
+    background-color: transparent;
+    color: $black;
+  }
+
+  @include until($max-layout) {
+    .news-item-preview {
+      padding: 0;
+      width: 100%;
+    }
+
+    img { max-width: none; }
+  }
+}
+
+.blog-feed { max-width: rem(800); }
+
+
+// --------------------------------------------
+//  Promoted Reviews
+// --------------------------------------------
+
+.ratings-summary-outer {
+  line-height: 1;
+  padding-bottom: 1em;
+
+  .ratings-summary { width: auto; }
+
+  .average-rating {
+    display: inline-block;
+    margin-right: $quarter-whitespace;
+  }
+}
+
+
+// --------------------------------------------
+//  Quote
+// --------------------------------------------
+
+blockquote {
+  margin: 0;
+
+  p {
+    color: $primary-dark;
+    font-family: $secondary-font;
+    font-size: em(21);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+  }
+
+  cite {
+    font-style: normal;
+    font-weight: $base-font-weight;
+  }
+
+  @include at-least($min-xsmall) {
+    p { font-size: em(32); }
+  }
+
+  @include at-least($min-small) {
+    p {
+      .row-uneven-thirds-2 .col-2 &,
+      .row-uneven-thirds-1 .col-1 &,
+      .row-thirds & {
+        font-size: em(24);
+      }
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Social Feed
+// --------------------------------------------
+
+.social-feed {
+  .feed-switcher {
+    @include display(block);
+  }
+  .feed-switch {
+    background-color: transparent;
+    height: 50px;
+    margin-top: 0;
+
+    svg { opacity: 0.2; }
+  }
+
+  .btn {
+    padding-left: 2em;
+    padding-right: 2em;
+    width: auto;
+  }
+}
+
+#feed-switch-blog.active {
+  path { stroke: $secondaryColor; }
+  circle { fill: $secondaryColor; }
+}
+
+#feed-switch-twitter.active path,
+#feed-switch-facebook.active path,
+#feed-switch-google.active path {
+  fill: $secondaryColor;
+}
+
+
+// --------------------------------------------
+//  Social Links
+// --------------------------------------------
+
+.social-links {
+  text-align: center;
+
+  a:last-child { margin-right: 0; }
+
+  .icon {
+    @extend %bg-transition;
+    background-color: $base-link-color;
+    padding: em(5);
+    height: em(40);
+    width: em(40);
+
+    &:hover { background-color: $base-hover-color; }
+  }
+}
+
+
+// --------------------------------------------
+//  Video
+// --------------------------------------------
+
+.video.widget {
+  h2 {
+    text-align: center;
+  }
+}
+
+
+// --------------------------------------------
+//  Walkscore
+// --------------------------------------------
+
+.walkscore {
+  text-align: center;
+
+  .btn a {
+    color: $white;
+    padding: 0.5em 1em;
+  }
+}
+
+// ============================================
+//  Header
+// ============================================
+
+// --------------------------------------------
+//  Collapsable Navigation Menu
+// --------------------------------------------
+
+// Button to show/hide navigation
+.collapsable-btn {
+  background-color: transparent;
+  font-size: 1em;
+  cursor: pointer;
+  display: none;
+  float: left;
+  padding: 0;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+
+  .bars {
+    display: inline-block;
+
+    span {
+      @extend %transform-transition;
+      @include backface-visibility(hidden);
+      border-bottom: 2px solid $headerTextColor;
+      display: block;
+      margin: 6px 0;
+      width: $base-whitespace;
+    }
+  }
+
+  &.on .bars span {
+    &:nth-child(2) { border-color: transparent; }
+    &:first-child { @include transform(rotate(45deg) translate(5px, 5px)); }
+    &:last-child { @include transform(rotate(-45deg) translate(6px, -7px)); }
+  }
+
+
+  @include until($max-large) {
+    .text { display: none; }
+  }
+
+
+  @include until($max-large-nav) {
+    margin: rem(3) $half-whitespace 0 0;
+  }
+
+
+  @include at-least($min-nav) {
+    .bars span {
+      border-bottom-width: 4px;
+      margin: 4px 0;
+    }
+  }
+
+  // hero
+  @include at-least($min-large) {
+    &:focus,
+    &:hover {
+      color: $white;
+    }
+
+    .text {
+      color: $headerTextColor;
+      font-size: em(21);
+      font-weight: $bold-font-weight;
+      text-transform: uppercase;
+      float: right;
+      margin: 4px 0 0 $half-whitespace;
+    }
+  }
+
+  @include at-least($min-large-nav) {
+    position: absolute;
+    left: $double-whitespace;
+  }
+}
+
+
+// This controls the showing/hiding of mobile navigation
+.collapsable-content {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: $mobile-header-height;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+
+  &.collapse { transition: height 0.35s ease; }
+  &.collapse.in { height: auto; }
+
+  .navigation {
+    @extend %opacity-transition;
+    opacity: 0;
+  }
+
+  &.collapse.in .navigation {
+    opacity: 1;
+  }
+
+  @include at-least($min-xsmall) {
+    max-width: 250px;
+  }
+
+  @include at-least($min-nav) {
+    left: $half-whitespace;
+  }
+
+  @include at-least($min-hero) {
+    left: $base-whitespace;
+    top: 3em;
+  }
+
+  @include at-least($min-large) {
+    left: $double-whitespace;
+    top: 3em;
+  }
+}
+
+
+// --------------------------------------------
+//  Header All Sizes
+// --------------------------------------------
+
+[role=banner] {
+  padding-top: 0.5rem;
+
+  h1 { font-size: 1em; }
+  ul { margin: 0; }
+  .content { max-width: none; }
+}
+
+
+.logo-container {
+  @extend %margin-auto;
+  text-align: center;
+  margin-bottom: 1em;
+
+  img {
+    max-height: em(150);
+
+    @include at-least($min-xsmall) {
+      max-width: em(350);
+    }
+  }
+}
+
+.buttons .button .btn {
+  @include until($max-xsmall) {
+    font-size: em(14);
+    margin-top: em(8, 14);
+  }
+
+  @include at-least($min-xsmall) {
+    font-size: em(18);
+  }
+}
+
+[role=banner] .appended-phone {
+  color: $headerTextColor;
+  display: inline-block;
+}
+
+nav.corporate-navigation { display: none; }
+
+[role=banner] {
+  .has-subnav > a {
+    position: relative;
+
+    &::before {
+      @include transform(translateY(-50%));
+      background: url($right-arrow) 0 0 no-repeat;
+      background-size: 100%;
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: $half-whitespace;
+      width: 7px;
+      height: 16px;
+    }
+  }
+
+  .navigation a {
+    color: $headerTextColor;
+    font-family: $primary-font;
+    text-align: center;
+    display: block;
+    padding: 0.5em $half-whitespace;
+  }
+
+  .top-nav > li > a {
+    font-size: em(18);
+  }
+
+  .subnav a {
+    font-size: em(14);
+    border-top: 1px solid rgba($headerTextColor, 0.5);
+  }
+}
+
+
+// --------------------------------------------
+//  Header Small
+// --------------------------------------------
+
+@include until($max-large-nav) {
+  [role=banner] .appended-phone {
+    float: left;
+    margin-top: 0.5em;
+  }
+}
+
+// xlarge
+@include until($max-large) {
+  .buttons .corporate-home {
+    display: none;
+  }
+}
+
+
+@include until($max-hero) {
+  .buttons {
+    .corporate-home { display: none; }
+    .button { float: right; }
+  }
+}
+
+
+@include until($max-nav) {
+  [role=banner] {
+    &,
+    .navigation-container {
+      background-color: $headerColor;
+    }
+
+    .content { padding: 0; }
+
+    .u-logo { max-height: 12vw; }
+  }
+
+  .logo-container { max-width: 80%; }
+
+  .navigation-container {
+    @include clearfix;
+    padding: 0 $half-whitespace;
+    position: relative;
+
+    &.fixed {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 9999;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Header Large
+// --------------------------------------------
+
+@include at-least($min-nav) {
+  [role=banner],
+  .logo-container {
+    position: absolute;
+    top: 0;
+  }
+
+  [role=banner] {
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+
+    h1 { margin: 0; }
+  }
+
+  .logo-container {
+    @include transform(translateX(-50%));
+    left: 50%;
+    max-width: rem(350);
+  }
+
+  [role=banner] .appended-phone {
+    font-size: em(18);
+    font-weight: $bold-font-weight;
+    margin-top: 0.25em;
+
+    &:hover { color: $header-text-dark; }
+  }
+}
+
+
+// Override the widget css
+@include at-least(980px) {
+  .corporate-navigation.show-desktop { display: none; }
+  .navigation .corporate-home { display: block; }
+
+  .subnav {
+    position: static;
+    width: 100%;
+  }
+}
+
+
+@include at-least($min-hero) {
+  [role=banner] {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+
+
+  .buttons {
+    float: right;
+    margin-left: $half-whitespace;
+    overflow: hidden;
+  }
+
+  [role=banner] .appended-phone {
+    font-size: em(21);
+    line-height: 1.8;
+    margin-top: 0;
+  }
+}
+
+
+@include at-least($min-large) {
+  .navigation .corporate-home { display: none; }
+
+  .buttons .button {
+    display: inline-block;
+    margin-left: $half-whitespace;
+    vertical-align: top;
+  }
+}
+
+@include at-least($min-large-nav) {
+  .navigation-container {
+    text-align: right;
+    float: right;
+  }
+}
+
+
+
+// ============================================
+//  Footer
+// ============================================
+
+[role=contentinfo] {
+  @extend %clearfix;
+  font-weight: $bold-font-weight;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+
+  &, p { font-size: rem(14); }
+  a:hover { color: $footer-text-light; }
+
+  h1, h2, h3, h4, h5, h6, .p-name {
+    color: inherit;
+    font-family: $base-font-family;
+  }
+
+  .widget { margin-bottom: 2rem; }
+
+  .contact-info .p-name {
+    margin-bottom: 0.25em;
+  }
+
+
+  @include at-least($min-xsmall) {
+    .contact-info { float: left; }
+    .social-links { text-align: right; }
+  }
+}
+
+
+.footer-info {
+  @include until($max-xsmall) {
+    float: none;
+    text-align: left;
+  }
+
+  .nav a {
+    padding: 0.5em 0.5rem 0.5em 0;
+
+    & + a::before {
+      content: '';
+      border-left: 1px solid $footerTextColor;
+      height: 1em;
+      display: inline-block;
+      margin-right: 0.5rem;
+      vertical-align: -(em(2, 14));
+    }
+
+
+    @include at-least($min-xsmall) {
+      padding: 0.5em 0 0.5em 0.5rem;
+    }
+  }
+
+  .access { background-image: url(https://themes.g5dxm.com/shared/access-icons-light.png); }
+}
+
+
+
+// ============================================
+//  Hero
+// ============================================
+
+.hero,
+.web-home-template .row:first-child {
+  color: $white;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .row-grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .content {
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    position: static;
+  }
+
+  .col { padding: 0; }
+
+  .photo-wrapper {
+    display: block;
+  }
+
+  .photo,
+  .cinemagraph,
+  .gallery-basic {
+    margin: 0 !important; // Overrides margins from theme
+    max-height: 75vh;
+    overflow: hidden;
+  }
+
+  .photo,
+  .gallery-basic {
+   img {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  // Photo Filter
+  .photo {
+    .photo-wrapper {
+      display: block;
+    }
+    .filter {
+      max-width: 100%;
+    }
+  }
+
+
+  @include until($max-hero) {
+    background-color: $primaryColor;
+  }
+}
+
+
+// --------------------------------------------
+//  All First Row Widgets
+// --------------------------------------------
+
+.row:first-child {
+  .multifamily-mini-search .corpSearchWrapper .search-form {
+    padding: 0;
+  }
+
+  .self-storage-search-home .sss-search-criteria {
+    @extend %clearfix;
+    background-color: transparent !important; // Overrides widget css
+    padding: 0;
+  }
+
+  .lead-form {
+    &:not(.horizontal-form) input {
+      display: block;
+      width: 100%;
+    }
+
+    .form-instruction {
+      color: $white;
+      margin-left: 0;
+    }
+  }
+
+  .self-storage-search {
+    min-height: 0 !important; // Overrides widget css
+  }
+
+  @include until($max-hero) {
+    .form-heading { text-align: center; }
+  }
+
+  @include at-least($min-hero) {
+    .action-calls a {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .self-storage-search-home .sss-search-criteria {
+      width: 100%;
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Hero Widgets
+// --------------------------------------------
+
+.web-home-template .row:first-child .widget:not(.photo):not(.cinemagraph):not(.gallery-basic) {
+  @include at-least($min-hero) {
+    display: none;
+  }
+}
+
+.hero-widgets {
+  @extend %margin-auto;
+  @extend %clearfix;
+  color: $white;
+  max-width: rem(800);
+  padding: 1em $half-whitespace;
+  position: relative;
+  z-index: 100;
+
+  .widget {
+    @extend %margin-auto;
+    margin-bottom: 0;
+  }
+
+  .html h6,
+  .widget h2,
+  .form-heading,
+  .zip-search-heading,
+  .multifamily-mini-search .search-form h2,
+  .multifamily-mini-search-v2 h2,
+  .mf-iui-home-heading {
+    color: $white;
+    text-align: center;
+  }
+
+  .html-content { max-width: none; }
+
+
+  @include at-least($min-hero) {
+    @include transform(translate(-50%, -50%));
+    transition: opacity 500ms ease;
+    opacity: 0;
+    margin-top: rem(25);
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+
+    .row:first-child & .widget:not(.photo):not(.cinemagraph):not(.gallery-basic) {
+      display: block;
+    }
+
+    .locations-navigation h3.locations-navigation-title {
+      font-size: em(21);
+    }
+
+    .widget h2,
+    .form-heading,
+    .zip-search-heading,
+    .multifamily-mini-search .search-form h2,
+    .multifamily-mini-search-v2 h2,
+    .mf-iui-home-heading {
+      font-size: em(32);
+    }
+  }
+
+  @include at-least($min-large) {
+    .widget h2,
+    .form-heading,
+    .zip-search-heading,
+    .multifamily-mini-search .search-form h2,
+    .multifamily-mini-search-v2 h2,
+    .mf-iui-home-heading {
+      font-size: em(42);
+    }
+  }
+}
+
+
+// --------------------------------------------
+//  Internal Hero
+// --------------------------------------------
+
+.web-page-template {
+  .row:first-child {
+    background-color: $primaryColor;
+    color: $white;
+
+    .widget {
+      @extend %margin-auto;
+      max-width: rem(800);
+      position: relative;
+      z-index: 100;
+    }
+
+    .locations-navigation {
+      max-width: none;
+    }
+
+    .widget h2,
+    .form-heading,
+    .zip-search-heading,
+    .multifamily-mini-search .search-form h2,
+    .multifamily-mini-search-v2 h2,
+    .mf-iui-home-heading {
+      font-size: em(21);
+      text-align: center;
+    }
+
+    .html h2 {
+      text-align: initial;
+    }
+
+    @include until($max-small) {
+      .photo,
+      .cinemagraph {
+        margin-top: -2em;
+        margin-bottom: -2em;
+        margin-right: -$half-whitespace;
+        margin-left: -$half-whitespace;
+      }
+    }
+
+    @include at-least($min-small) {
+      .content,
+      .photo-wrapper { position: static; }
+
+      .photo,
+      .cinemagraph {
+        overflow: hidden;
+        margin: 0;
+        max-width: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      figure img {
+        @include center-el;
+        max-width: none;
+        min-width: 100%;
+        min-height: 100%;
+      }
+    }
+
+    @include at-least($min-hero) {
+      .col {
+        padding-top: 2rem;
+      }
+    }
+  }
+}
+
+
+
+// ============================================
+//  Content Stripe / Column Classes
+// ============================================
+
+.vert-align .row-grid { @include align-items(center); }
+
+
+// ============================================
+//  Boilerplate content stripe classes
+// ============================================
+
+.light-padding .col {
+  @include until($max-layout) {
+    &:first-of-type { padding-top: 1em !important; }
+    &:last-of-type { padding-bottom: 1em !important; }
+  }
+
+  @include at-least($min-layout) {
+    padding-top: 1.5em !important;
+    padding-bottom: 1.5em !important;
+  }
+}
+
+.super-padding {
+  padding-top: 0 !important; // Overrides boilerplate padding placed on row
+  padding-bottom: 0 !important;
+
+  .col {
+    @include until($max-layout) {
+      &:first-of-type { padding-top: 4em !important; }
+      &:last-of-type { padding-bottom: 4em !important; }
+    }
+
+    @include at-least($min-layout) {
+      padding-top: 9em !important;
+      padding-bottom: 9em !important;
+    }
+  }
+}
+
+[class*=cta-bg-] .action-calls {
+  padding: 1em $half-whitespace;
+}
+
+
+// ============================================
+//  Area Page
+// ============================================
+
+@include at-least($min-small) {
+  .area [role=main]{
+    &:before{
+      background-color: $primaryColor;
+      content: "";
+      display: block;
+      height: 200px;
+    }
+  }
+}
+
+
+// ********************************************
+//
+//  Simple version of Focus blueprint
+//
+// ********************************************
+
+@mixin border-radius { border-radius: 0; }
+
+
+// ---------------------------------------------
+//  Multifamily Search a.k.a. Corporate Search
+// ---------------------------------------------
+
+.multifamily-search .store-summary .resultAvailability {
+  @include border-radius;
+}
+
+
+// --------------------------------------------
+//  Self Storage Filtered
+// --------------------------------------------
+
+.self-storage-filtered {
+  @include clearfix;
+
+  select { min-height: 2em; }
+
+  .sss-unit-matrix {
+    @include border-radius;
+  }
+}
+
+
+// ============================================
+//  Header
+// ============================================
+
+[role=banner] .navigation {
+  background-color: $headerColor;
+
+  a:hover { background-color: $header-light; }
+
+  .corporate-home a {
+    background-color: $header-dark;
+    &:hover { background-color: $header-light; }
+  }
+}
+
+
+// ============================================
+//  Boilerplate content stripe classes
+// ============================================
+
+.text-light {
+  .ss-featured-unit-categories {
+    .iui-steps:before,
+    .iui-steps span,
+    .iui-size:not(.iui-view-all) .btn {
+      background-color: $white;
+    }
+
+    .iui-steps span,
+    .iui-title,
+    .iui-size:not(.iui-view-all) .btn {
+      color: $base-color;
+    }
+
+    .iui-view-all .btn,
+    .zip-search-heading {
+      color: $white;
+    }
+
+    .iui-size:not(.iui-view-all) .btn:hover {
+      background-color: rgba($white, 0.8);
+      color: $base-color !important;
+    }
+  }
+}

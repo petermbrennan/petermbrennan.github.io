@@ -1,0 +1,25 @@
+// Boilerplate variables and helpers
+@import 'boilerplate/setup';
+
+// Boilerplate css
+@import 'boilerplate/defaults';
+
+// Some widgets need a little help
+// This should probably be moved into each widget stylesheet
+@import 'boilerplate/widgets';
+
+// Page components
+@import 'boilerplate/page-components/header-1';
+
+@import 'boilerplate/page-components/footer';
+
+// Theme types
+@import 'boilerplate/theme-types/stripes';
+
+// Content stripes
+@import 'boilerplate/content-stripes/hero-image';
+
+// Default custom color and font usage
+@import 'boilerplate/defaults/theme-defaults-v1';
+
+// Nothing else here! This is as naked as the Boilerplate™ gets!

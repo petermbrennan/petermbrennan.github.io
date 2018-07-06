@@ -1,0 +1,25 @@
+{
+  "theme_id": 2,
+  "name": "Berkshire A+ Resort",
+  "summary": "Multi-Family Theme",
+  "primary_color": "#0e202c",
+  "secondary_color": "#6cabe2",
+  "tertiary_color": "#e9e9e7",
+  "primary_font": "museo-sans",
+  "secondary_font": "minion-pro",
+  "primary_font_variations": ["n3"],
+  "secondary_font_variations": ["n4"],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-1t2d31r8-berkshire-communities",
+    "g5-c-1szcnbet-berkshire-communities"
+  ],
+  "pending": false,
+  "group": "Berkshire",
+  "theme_type": "location",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments"
+  ]
+}

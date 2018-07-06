@@ -1,0 +1,56 @@
+{
+  "name": "Floor Plans Cards",
+  "widget_id": 17,
+  "widget_type": null,
+  "summary": "Cards style floor plans",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7179' target='_blank'>Floorplans Cards Documentation</a>",
+  "lib_javascripts": [
+    "jquery.fancybox.pack.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "apartments"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "open_fp_in_new_tab",
+      "default_value": "false"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "header_text",
+      "default_value": "Choose Floor Plan"
+    },
+    {
+      "name": "cta_text",
+      "default_value": "Contact Us"
+    },
+    {
+      "name": "heading_color",
+      "default_value": "#252b32"
+    },
+    {
+      "name": "cta_color",
+      "default_value": "#005892"
+    },
+    {
+      "name": "accent_color_1",
+      "default_value": "#fe7b6f"
+    },
+    {
+      "name": "accent_color_2",
+      "default_value": "#526173"
+    },
+    {
+      "name": "text_color",
+      "default_value": "#000000"
+    }
+  ]
+}

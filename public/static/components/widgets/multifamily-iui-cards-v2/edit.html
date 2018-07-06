@@ -1,0 +1,66 @@
+<form>
+{{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+  <fieldset>
+    <legend>Multifamily IUI Cards V2 Settings</legend>
+
+    <!-- Floorplans Service Host -->
+    {{ widget.floorplans_service_host | edit_url_field: "Inventory Host", "//inventory.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Move In Cost Service Host -->
+    {{ widget.move_in_cost_service_host | edit_url_field: "Move In Cost Service Host", "https://vendor-leads.g5marketingcloud.com", "value_or_default" }}
+
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default", "", true }}
+
+  </fieldset>
+  <fieldset>
+    <legend>Calls To Action</legend>
+    <!-- Step One Nav Text -->
+    {{ widget.step_one_text | edit_text_field: "Step One Nav Text", "Choose Size", "value_or_default" }}
+
+    <!-- Step Two Nav Text -->
+    {{ widget.step_two_text | edit_text_field: "Step Two Nav Text", "Choose Floor Plan", "value_or_default" }}
+
+    <!-- Step Three Nav Text -->
+    {{ widget.step_three_text | edit_text_field: "Step Three Nav Text", "Select Apartment", "value_or_default" }}
+
+    <!-- Step Four Nav Text -->
+    {{ widget.step_four_text | edit_text_field: "Step Four Nav Text", "Reserve", "value_or_default" }}
+  </fieldset>
+  {{ widget | end_tab }}
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+  <fieldset>
+    <legend>Style Settings</legend>
+    <!-- Primary Color -->
+    {{ widget.primary_color | edit_color_field: "Primary Color (Unit Category Background, Card Heading, Unit Heading)", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Secondary Color -->
+    {{ widget.secondary_color | edit_color_field: "Secondary Color (Active Step, View Icon, Submit)", "theme_secondary_color", "value_or_default", "", true }}
+
+    <!-- Tertiary Color -->
+    {{ widget.accent_color_1 | edit_color_field: "Tertiary Color (View All, CTAs)", "theme_tertiary_color", "value_or_default", "", true }}
+
+    <!-- Accent Color -->
+    {{ widget.accent_color_2 | edit_color_field: "Accent Color (Inactive Steps, Floor Plan Icon, Sort / Bed/Bath / Unit & Form Container Background)", "theme_primary_color", "value_or_default", "", true }}
+
+    <!-- Text Color Dark -->
+    {{ widget.text_color_dark | edit_color_field: "Card Text Color", "#000000", "value_or_default", true }}
+
+    <!-- Nav Text Color -->
+    {{ widget.nav_text_color | edit_color_field: "Nav Text Color (Text Labels Below Four Steps)", "#000000", "value_or_default", true }}
+
+    <!-- View All Button Color -->
+    {{ widget.view_all_button_color | edit_color_field: "View All Button Color", "", "value", true }}
+
+    <!-- Step Circle Background Color -->
+    {{ widget.step_circle_color | edit_color_field: "Step 1-4 Background Color (not active)", "", "value", true }}
+
+  </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs" }}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

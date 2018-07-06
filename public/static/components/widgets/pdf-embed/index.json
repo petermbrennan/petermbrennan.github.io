@@ -1,0 +1,37 @@
+{
+  "name": "PDF Embed",
+  "widget_id": 53,
+  "widget_type": null,
+  "summary": "Embeds a PDF",
+  "liquid": false,
+  "beta": false,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469027-PDF-Embed-Widget' target='_blank'>Documentation</a>",
+  "lib_javascripts": [
+
+  ],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "cropping_style",
+      "default_value": "none"
+    },
+    {
+      "name": "pdf_source_url",
+      "default_value": ""
+    }
+  ]
+}

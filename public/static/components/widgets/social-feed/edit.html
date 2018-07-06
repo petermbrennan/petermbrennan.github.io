@@ -1,0 +1,89 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <fieldset>
+      <legend>Tab order (drag to reorder)</legend>
+      <ul class="social-order">
+        <li class="item" data-class="facebook">facebook</li>
+        <li class="item" data-class="twitter">twitter</li>
+        <li class="item" data-class="blog">blog feed</li>
+        <li class="item" data-class="google">google+</li>
+        <li class="item" data-class="instagram">instagram</li>
+      </ul>
+
+      <div class="social-position">
+        {{ widget.facebook_position | edit_text_field: "facebook position", "", "value_or_default", "facebook" }}
+        {{ widget.twitter_position  | edit_text_field: "twitter position",  "", "value_or_default", "twitter" }}
+        {{ widget.blog_position     | edit_text_field: "blog position",     "", "value_or_default", "blog" }}
+        {{ widget.google_position   | edit_text_field: "google position",   "", "value_or_default", "google" }}
+        {{ widget.instagram_position   | edit_text_field: "instagram position",   "", "value_or_default", "instagram" }}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Images and Avatars</legend>
+      <!-- Show Avatars -->
+      {{ widget.display_avatars | edit_toggle_field: "Show Avatars", "value_or_default" }}
+    </fieldset>
+    <fieldset>
+      <legend>{{ widget.blog_feed_toggle | edit_toggle_field: "Blog Feed On/off", "value_or_default", "on-off-toggle" }}</legend>
+
+        {{ widget.blog_feed_url | edit_url_field: "RSS/Atom Feed URL", "example: //someurl.com/feed.rss", "best_value" }}
+
+
+        {{ widget.blog_feed_display_summary | edit_toggle_field: "Show Summary", "value_or_default" }}
+
+
+        {{ widget.blog_feed_display_author | edit_toggle_field: "Show Author", "value_or_default" }}
+
+
+        {{ widget.blog_feed_number_to_display | edit_integer_field: "Number of Entries to Show", "3", "value_or_default", "", 1, 20  }}
+    </fieldset>
+
+    <fieldset>
+
+      <legend>{{ widget.twitter_toggle | edit_toggle_field: "Twitter Feed On/off", "value_or_default", "on-off-toggle" }}</legend>
+
+        {{ widget.twitter_username | edit_text_field: "Twitter Username", "location_twitter_id", "best_value", "", true  }}
+
+        {{ widget.twitter_tweet_count | edit_integer_field: "Number of Tweets to Show", "3", "best_value", "", 1, 20 }}
+
+    </fieldset>
+
+    <fieldset>
+        <legend>{{ widget.facebook_toggle | edit_toggle_field: "Facebook Feed On/off", "value_or_default", "on-off-toggle" }}</legend>
+
+        {{ widget.facebook_page_id | edit_text_field: "Facebook Page ID", "location_facebook_id", "best_value", "", true  }}
+
+        {{ widget.facebook_post_count | edit_integer_field: "Number of Posts to Show", "3", "best_value", "", 1, 20 }}
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ widget.instagram_toggle | edit_toggle_field: "Instagram Feed On/off", "value_or_default", "on-off-toggle" }}</legend>
+
+      {{ widget.instagram_user_id | edit_text_field: "Instagram User ID (not username)", "location_instagram_user_id", "best_value", "", true  }}
+
+      {{ widget.instagram_user_name | edit_text_field: "Instagram User Name", "location_instagram_user_name", "best_value", "", true  }}
+
+      {{ widget.instagram_number_of_photos | edit_integer_field: "Number of Images to Show", "12", "best_value", "", 1, 20 }}
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ widget.google_toggle | edit_toggle_field: "Google Plus Feed On/off", "value_or_default", "on-off-toggle" }}</legend>
+
+      {{ widget.google_plus_page_id | edit_text_field: "Google Plus Page ID", "location_google_plus_id", "best_value", "", true  }}
+
+
+      {{ widget.google_plus_post_count | edit_integer_field: "Number of Posts to Show", "3", "best_value", "", 1, 20 }}
+    </fieldset>
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

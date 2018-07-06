@@ -1,0 +1,111 @@
+{
+  "name": "Storage Calculator",
+  "beta": false,
+  "widget_id": 199,
+  "widget_type": null,
+  "summary": "This widget allows for users to accurately predict the correct sized storage unit they may need.",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/115001888467' target='_blank'>Storage Calculator Documentation</a>",
+  "remote_javascripts": [],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "self-storage"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "use_colored_images",
+      "default_value": "colored"
+    },
+    {
+      "name": "use_custom_font",
+      "default_value": "false"
+    },
+    {
+      "name": "calculator_border_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "calculator_inner_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "heading_container_border_color",
+      "default_value": "{{theme_primary_color}}"
+    },
+    {
+      "name": "heading_container_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "heading_border_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "heading_background_color",
+      "default_value": "#F2F2F2"
+    },
+    {
+      "name": "heading_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "tab_heading_text_color",
+      "default_value": "#FFFFFF"
+    },
+    {
+      "name": "tab_divider_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "item_background_color",
+      "default_value": "#F2F2F2"
+    },
+    {
+      "name": "item_border_color",
+      "default_value": "#72787C"
+    },
+    {
+      "name": "item_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "counter_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "counter_arrow_color",
+      "default_value": "#FFFFFF"
+    },
+    {
+      "name": "counter_text_background_color",
+      "default_value": "#FFFFFF"
+    },
+    {
+      "name": "counter_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "instructional_text",
+      "default_value": "Select the icons below to add to the inventory"
+    },
+    {
+      "name": "instructional_text_color",
+      "default_value": "#FFFFFF"
+    },
+    {
+      "name": "disclaimer_text",
+      "default_value": "Disclaimer: Space sizes are approximate and for comparison purposes only. Spaces may be smaller than indicated in advertising or other size indicators."
+    },
+    {
+      "name": "disclaimer_text_color",
+      "default_value": "#000000"
+    },
+    {
+      "name": "first_tab_open",
+      "default_value": "false"
+    }
+  ]
+}

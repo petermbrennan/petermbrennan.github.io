@@ -1,0 +1,61 @@
+// *************************************
+//
+//  Footer
+//
+// *************************************
+
+// =====================================
+//  Standard version. Address left,
+//  everything else right
+// =====================================
+
+[role=contentinfo] {
+  @extend %clearfix;
+  font-size: em(14);
+  padding: 2em 0;
+
+  .widget {
+    margin-bottom: 2em;
+  }
+
+  &,
+  a,
+  h1,h2,h3,h4,h5,h6 {
+    color: $footerTextColor;
+  }
+
+  .contact-info {
+    .p-name {
+      font-family: $base-font-family;
+      font-size: 100%;
+    }
+    h4.p-name{
+      font-family: $base-font-family;
+      font-size: 121.5%;
+      font-weight: normal;
+    }
+    .p-name,
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  @include at-least($min-small) {
+    .contact-info {
+      float: left;
+    }
+  }
+}
+
+// This widget contains social icons,
+// links, copyright, logo, housing icons
+.footer-info {
+  @include until($max-small) {
+    float: none;
+    text-align: left;
+  }
+
+  .nav a {
+    padding: .5em 0 .5em .5em;
+  }
+}

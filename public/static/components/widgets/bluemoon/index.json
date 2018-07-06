@@ -1,0 +1,57 @@
+{
+  "name": "Bluemoon",
+  "widget_id": 102,
+  "widget_type": null,
+  "summary": "Creates button to link out to Bluemoon forms",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468917-Bluemoon-Widget' target='_blank'>Bluemoon Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "bluemoon_button_label",
+      "default_value": "Begin Application"
+    },
+    {
+      "name": "bluemoon_button_property_id",
+      "default_value": ""
+    },
+    {
+      "name": "bluemoon_button_location_email",
+      "default_value": ""
+    },
+    {
+      "name": "bluemoon_button_application_fee",
+      "default_value": ""
+    },
+    {
+      "name": "bluemoon_receipt_confirm_url",
+      "default_value": ""
+    },
+    {
+      "name": "bluemoon_receipt_confirm_name",
+      "default_value": ""
+    },
+    {
+      "name": "bluemoon_button_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "bluemoon_button_text_color",
+      "default_value": "#fff"
+    },
+    {
+      "name": "bluemoon_button_border_color",
+      "default_value": "none"
+    },
+    {
+      "name": "bluemoon_button_layout",
+      "default_value": "list"
+    }
+  ]
+}

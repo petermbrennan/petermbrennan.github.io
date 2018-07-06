@@ -1,0 +1,23 @@
+{
+  "theme_id": 20,
+  "name": "Wellborne",
+  "summary": "Blueprint for Wellborne - V2",
+  "primary_color": "#1b2642",
+  "secondary_color": "#d1ccc1",
+  "tertiary_color": "#5a7cd1",
+  "primary_font": null,
+  "secondary_font": null,
+  "primary_font_variations": [],
+  "secondary_font_variations": [],
+  "is_private": false,
+  "private_clients": [],
+  "pending": false,
+  "group": "Wellborne",
+  "theme_type": "global",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ]
+}

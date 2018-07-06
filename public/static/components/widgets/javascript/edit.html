@@ -1,0 +1,38 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <p class="note"><i class="fa fa-warning"></i> Custom Javascript should be used with extreme care! Bugs in your Javascript can break your website.</p>
+
+    <!-- Javascript Widget Enabled -->
+    {{ widget.disabled | edit_toggle_field: "Disable Javascript Widget?" }}
+
+    <!-- Javascript Custom Name -->
+    {{ widget.custom_name | edit_text_field: "Custom Javascript Name", "Javascript", "value", "", false, 80 }}
+
+    <!-- External Javascript Src URL -->
+    {{ widget.src_url | edit_url_field: "External Javascript URL", "script url", "value", "", false, 80 }}
+
+    <!-- Javascript Textarea -->
+    {% assign js_placeholder = "var js = 'place javascript here';" %}
+    {{ widget.javascript | edit_textarea_field: "Custom Javascript (omit &lt;script&gt; tags)", js_placeholder, "value", "", 40, 12 }}
+    {{ widget.no_script | edit_textarea_field: "No Script Fallback (omit &lt;noscript&gt; tags)", "", "value", "", 40, 4 }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-sticky-note-o", "Javascript Description" }}
+
+    <h1>Note the history and use of this javascript</h1>
+    <!-- Descriptive text explaining javascript use and origin  -->
+
+    {{ widget.script_description | edit_ckeditor_field: "Descriptive text explaining javascript use and origin" }}
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+
+  {{ widget | end_tab: true }}
+
+</form>

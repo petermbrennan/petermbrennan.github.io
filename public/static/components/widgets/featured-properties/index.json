@@ -1,0 +1,371 @@
+{
+  "name": "Featured Properties",
+  "beta": false,
+  "widget_id": 15,
+  "widget_type": null,
+  "summary": "Gallery of Featured Properties",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219469097-Featured-Properties-Widget' target='_blank'>Featured Property Gallery Documentation</a>",
+  "lib_javascripts": [
+    "jquery.flexslider-min.js",
+    "flex-slider-widget.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-gallery.js",
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-gallery.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "slideshow_speed",
+      "default_value": "6000"
+    },
+    {
+      "name": "max_width",
+      "editable": true,
+      "default_value": "354"
+    },
+    {
+      "name": "max_height",
+      "editable": true,
+      "default_value": "228"
+    },
+    {
+      "name": "gallery_title",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo1_url",
+      "default_value": "https://placehold.it/400x600&text=Photo+1"
+    },
+    {
+      "name": "gallery_photo1_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo1_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo1_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo2_url",
+      "default_value": "https://placehold.it/600x400&text=Photo+2"
+    },
+    {
+      "name": "gallery_photo2_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo2_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo2_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo3_url",
+      "default_value": "https://placehold.it/600x600&text=Photo+3"
+    },
+    {
+      "name": "gallery_photo3_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo3_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo3_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo4_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo4_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo4_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo4_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo5_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo5_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo5_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo5_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo6_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo6_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo6_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo6_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo7_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo7_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo7_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo7_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo8_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo8_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo8_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo8_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo9_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo9_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo9_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo9_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo10_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo10_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo10_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo10_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo11_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo11_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo11_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo11_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo12_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo12_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo12_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo12_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo13_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo13_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo13_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo13_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo14_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo14_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo14_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo14_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo15_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo15_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo15_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo15_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo16_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo16_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo16_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo16_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo17_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo17_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo17_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo17_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo18_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo18_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo18_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo18_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo19_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo19_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo19_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo19_caption",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo20_url",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo20_alt_tag",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo20_link",
+      "default_value": ""
+    },
+    {
+      "name": "gallery_photo20_caption",
+      "default_value": ""
+    }
+  ]
+}

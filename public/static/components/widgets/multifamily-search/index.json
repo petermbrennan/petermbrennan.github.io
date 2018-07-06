@@ -1,0 +1,143 @@
+{
+  "name": "Multifamily Search",
+  "widget_id": 31,
+  "widget_type": null,
+  "summary": "Multifamily Search",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/221400327' target='_blank'>Multifamily Search Documentation</a>",
+  "remote_javascripts": [
+    "show-v2.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "eol": true,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "core_client_id",
+      "default_value": ""
+    },
+    {
+      "name": "core_service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "orion_single_domain",
+      "default_value": "{{client_single_domain}}"
+    },
+    {
+      "name": "client_vertical_slug",
+      "default_value": "{{client_vertical_slug}}"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find an Apartment"
+    },
+    {
+      "name": "links_use_target_blank",
+      "default_value": "false"
+    },
+    {
+      "name": "per_page",
+      "default_value": "20"
+    },
+    {
+      "name": "available_threshold",
+      "default_value": "1"
+    },
+    {
+      "name": "cta_available_text_threshold",
+      "default_value": "5"
+    },
+    {
+      "name": "cta_limited_text_threshold",
+      "default_value": "2"
+    },
+    {
+      "name": "cta_available_text",
+      "default_value": "Available | View Units"
+    },
+    {
+      "name": "cta_limited_text",
+      "default_value": "Limited Availability | Visit Site"
+    },
+    {
+      "name": "cta_low_text",
+      "default_value": "Low Availability | Visit Site"
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_border_color",
+      "default_value": ""
+    },
+    {
+      "name": "pagination_background_color",
+      "default_value": ""
+    },
+    {
+      "name": "pagination_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "card_background_color",
+      "default_value": ""
+    },
+    {
+      "name": "card_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "unit_info_border",
+      "default_value": ""
+    },
+    {
+      "name": "cta_color",
+      "default_value": ""
+    },
+    {
+      "name": "cta_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "header_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_filter_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "dropdown_color",
+      "default_value": ""
+    },
+    {
+      "name": "dropdown_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_background",
+      "default_value": ""
+    }
+  ]
+}

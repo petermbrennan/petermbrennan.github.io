@@ -1,0 +1,131 @@
+{
+  "name": "Careers",
+  "widget_id": 40,
+  "beta": false,
+  "widget_type": "",
+  "summary": "A careers feed that consumes data from Indeed and displays it on client website",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/115001889107' target='_blank'>Careers Documentation</a>",
+  "lib_javascripts": [
+    "jquery.simplePagination.min.js",
+    "fort-awesome-api.js"
+  ],
+  "lib_edit_javascripts": [
+
+  ],
+  "lib_edit_stylesheets": [
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "api_proxy",
+      "default_value": "https://g5-api-proxy.g5marketingcloud.com/api/v1/proxy?api_url="
+    },
+    {
+      "name": "indeed_api",
+      "default_value": "http://api.indeed.com/ads/apisearch"
+    },
+    {
+      "name": "title",
+      "default_value": ""
+    },
+    {
+      "name": "publisher_id",
+      "default_value": "4939995490406430"
+    },
+    {
+      "name": "client_name",
+      "default_value": ""
+    },
+    {
+      "name": "client_name_wildcard",
+      "default_value": "false"
+    },
+    {
+      "name": "search_radius",
+      "default_value": "25"
+    },
+    {
+      "name": "results_count",
+      "default_value": "10"
+    },
+    {
+      "name": "date_range",
+      "default_value": "60"
+    },
+    {
+      "name": "channel",
+      "default_value": ""
+    },
+    {
+      "name": "title_color",
+      "default_value": ""
+    },
+    {
+      "name": "title_position",
+      "default_value": "center"
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "link_color",
+      "default_value": ""
+    },
+    {
+      "name": "header_bg",
+      "default_value": ""
+    },
+    {
+      "name": "header_color",
+      "default_value": ""
+    },
+    {
+      "name": "post_btn_color",
+      "default_value": ""
+    },
+    {
+      "name": "post_btn_bg",
+      "default_value": ""
+    },
+    {
+      "name": "post_bg",
+      "default_value": ""
+    },
+    {
+      "name": "post_alt_bg",
+      "default_value": ""
+    },
+    {
+      "name": "post_color",
+      "default_value": ""
+    },
+    {
+      "name": "border_color",
+      "default_value": ""
+    },
+    {
+      "name": "border_radius",
+      "default_value": "false"
+    },
+    {
+      "name": "sort_by",
+      "default_value": "formattedDate"
+    },
+    {
+      "name": "spinner_color",
+      "default_value": ""
+    },
+    {
+      "name": "sort_selection_color",
+      "default_value": ""
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <!-- Featured Properties Gallery Title -->
+    {{ widget.gallery_title | edit_text_field: "Gallery Title" }}
+
+    <p class="note">To remove photos, simply delete the URL and Caption</p>
+
+    {% assign photo_opts = "url,alt_tag,link,caption" %}
+    <fieldset>
+      <legend>Photo Settings</legend>
+
+      {{ widget.max_width | edit_integer_field: "Max Width", "667", "value_or_default", "gallery-image-max-width", 1, 100000 }}
+
+      {{ widget.max_height | edit_integer_field: "Max Height", "1000", "value_or_default", "gallery-image-max-height", 1, 100000 }}
+
+      <!-- Time between slide transitions -->
+      {{ widget.slideshow_speed | edit_integer_field: "Time between slide transitions - milliseconds", "6000", "value_or_default", "", 1, 1000000 }}
+
+      <a href="#" data-tags="gallery" data-location-urn='{{ widget.location_urn.value }}' data-client-urn='{{ widget.client_urn.value }}' class="publish-button cloudinary-bulk-asset btn confirm cloudinary-asset-btn cloudinary-upload">Quick Image Upload <i class="fa fa-upload" aria-hidden="true"></i></a>
+
+    </fieldset>
+
+    {{ widget | edit_gallery_fields: 20, photo_opts, "value", "", "gallery_photo", "featured-properties" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

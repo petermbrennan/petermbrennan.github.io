@@ -1,0 +1,132 @@
+{
+  "name": "Contact Info",
+  "widget_id": 9,
+  "widget_type": null,
+  "summary": "Business Contact Information",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468957-Contact-Info-Widget' target='_blank'>Contact Info Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "location_name",
+      "default_value": "{{location_name}}"
+    },
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "location_country",
+      "default_value": ""
+    },
+    {
+      "name": "maps_new_tab",
+      "default_value": "false"
+    },
+    {
+      "name": "maps_url",
+      "default_value": "/"
+    },
+    {
+      "name": "location_tel",
+      "default_value": "{{location_phone_number}}"
+    },
+    {
+      "name": "location_email",
+      "default_value": ""
+    },
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "location_chat_url",
+      "default_value": ""
+    },
+    {
+      "name": "display_social_links",
+      "default_value": "false"
+    },
+    {
+      "name": "twitter_username",
+      "default_value": "{{location_twitter_id}}"
+    },
+    {
+      "name": "facebook_username",
+      "default_value": "{{location_facebook_id}}"
+    },
+    {
+      "name": "yelp_username",
+      "default_value": "{{location_yelp_id}}"
+    },
+    {
+      "name": "google_cid",
+      "default_value": "{{location_google_cid}}"
+    },
+    {
+      "name": "google_plus_id",
+      "default_value": "{{location_google_plus_id}}"
+    },
+    {
+      "name": "linkedin_username",
+      "default_value": "{{location_linkedin_id}}"
+    },
+    {
+      "name": "linkedin_account_type",
+      "default_value": "{{location_linkedin_account_type}}"
+    },
+    {
+      "name": "foursquare_username",
+      "default_value": "{{location_foursquare_id}}"
+    },
+    {
+      "name": "pinterest_username",
+      "default_value": "{{location_pinterest_id}}"
+    },
+    {
+      "name": "tumblr_username",
+      "default_value": "{{location_tumblr_id}}"
+    },
+    {
+      "name": "instagram_username",
+      "default_value": "{{location_instagram_id}}"
+    },
+    {
+      "name": "vimeo_username",
+      "default_value": "{{location_vimeo_id}}"
+    },
+    {
+      "name": "youtube_username",
+      "default_value": "{{location_youtube_id}}"
+    },
+    {
+      "name": "fax_number",
+      "default_value": ""
+    }
+  ]
+}

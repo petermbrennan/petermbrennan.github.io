@@ -1,0 +1,24 @@
+{
+  "theme_id": 12,
+  "name": "Compass Rock Corporate",
+  "summary": "Private theme for Compass Rock Corporate",
+  "primary_color": "#1772a2",
+  "secondary_color": "#eae9e9",
+  "tertiary_color": null,
+  "primary_font": null,
+  "secondary_font": null,
+  "primary_font_variations": [],
+  "secondary_font_variations": [],
+  "is_private": true,
+  "private_clients": [
+    "g5-c-1slhp2tc-compass-rock-real-estate"
+  ],
+  "pending": false,
+  "group": "Compass Rock",
+  "theme_type": "corporate",
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments"
+  ]
+}

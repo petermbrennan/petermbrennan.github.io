@@ -1,0 +1,26 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <fieldset>
+      <legend>Video Settings</legend>
+    <!-- Video Title -->
+    {{ widget.video_title | edit_text_field: "Video Title" }}
+
+    <!-- Video ID -->
+    {{ widget.video_id | edit_text_field: "Video ID" }}
+
+    <!-- Video Source -->
+    {% assign source_opts = '{"//www.youtube.com/embed/":"YouTube","//player.vimeo.com/video/":"Vimeo"}' %}
+    {{ widget.source | edit_select_field: "Video Source", source_opts, "value_or_default" }}
+    </fieldset>
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

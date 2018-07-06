@@ -1,0 +1,49 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+
+    <fieldset>
+      <legend>Custom Link 1</legend>
+      {{ widget.custom_link_1_text | edit_text_field: "Text", "e.g. Privacy Policy" }}
+      {{ widget.custom_link_1_url | edit_url_field: "URI" }}
+      {{ widget.custom_link_1_new_window| edit_toggle_field: "Opens Link in a New Window", "value_or_default" }}
+    </fieldset>
+
+    <fieldset>
+      <legend>Custom Link 2</legend>
+      {{ widget.custom_link_2_text | edit_text_field: "Text", "e.g. Privacy Policy" }}
+      {{ widget.custom_link_2_url | edit_url_field: "URI" }}
+      {{ widget.custom_link_2_new_window | edit_toggle_field: "Opens Link in a New Window", "value_or_default" }}
+    </fieldset>
+
+    {{ widget.corporate_url | edit_text_field: "Corporate Site URL", "client_domain", "value_or_default", "", true }}
+    {{ widget.corporate_logo_url | edit_url_field: "Corporate Logo URL" }}
+
+    <fieldset>
+      <legend>Icons</legend>
+      {{ widget.display_housing_icon | edit_toggle_field: "Display Equal Opportunity Housing Icon", "value_or_default" }}
+      {{ widget.housing_icon_link | edit_text_field: "Equal Opportunity Housing URL", "website url", "value_or_default" }}
+      {{ widget.display_handicap_icon | edit_toggle_field: "Display Handicap Friendly Icon", "value_or_default" }}
+      {{ widget.handicap_icon_link | edit_text_field: "Handicap Friendly URL", "website url", "value_or_default" }}
+      {{ widget.display_social_icons | edit_toggle_field: "Display Social Icons", "value_or_default" }}
+      {{ widget.display_copyright | edit_toggle_field: "Display Copyright", "value_or_default" }}
+    </fieldset>
+
+    <fieldset>
+      <legend>Hours</legend>
+      {{ widget.display_office_hours | edit_toggle_field: "Display Office Hours", "value_or_default" }}
+      {% assign format_opts = '{"list": "List", "condensed": "Condensed"}' %}
+      {{ widget.office_hours_label | edit_text_field: "Office Hours Label", "Office Hours", "value_or_default" }}
+      {{ widget.office_hours_format | edit_radio_field: "Office Hours Format", format_opts, "value_or_default" }}
+      {{ widget.display_office_hours_note | edit_toggle_field: "Show Office Hours Note", "value_or_default" }}
+      {{ widget.access_hours_label | edit_text_field: "Access Hours Label", "Access Hours", "value_or_default" }}
+      {{ widget.display_access_hours | edit_toggle_field: "Display Access Hours", "value_or_default" }}
+    </fieldset>
+
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

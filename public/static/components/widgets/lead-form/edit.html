@@ -1,0 +1,67 @@
+<style type='text/css'>
+  .edit-opts{display: block;}
+</style>
+
+<form action="{{ widget.form_action.value }}" class="h-entry">
+  <div class="data" data-cls-url="{{ widget.secure_cls_url }}" data-form-endpoint="{{ widget.form_endpoint.value_or_default }}" data-selected-lead-type="{{ widget.form_type.value }}"></div>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "value_or_default", "", true }}
+
+    <!-- Form Heading -->
+    <div class="form-field">
+      {{ widget.form_heading | edit_text_field: "Form Heading", "", "value_or_default" }}
+
+      {% assign position_opts = '{"left": "Left", "center": "Center", "right": "Right"}' %}
+      {{ widget.form_heading_position | edit_radio_field: "Heading Position", position_opts, "value_or_default" }}
+    </div>
+
+    <!-- Form Note -->
+    {{ widget.form_note | edit_text_field: "Form Note" }}
+
+    <!-- Lead Types get dynamically injected into the select from the edit-form-types -->
+    <div class="lead-types-select">
+      {{ widget.form_type | edit_select_field: "Form Type" }}
+    </div>
+
+    <div class="form-align">
+      {% assign form_position_opts = '{"vertical": "Vertical", "horizontal": "Horizontal"}' %}
+      {{ widget.form_alignment | edit_radio_field: "Form Alignment", form_position_opts, "value_or_default" }}
+    </div>
+
+    <!-- Successful Submission Redirect URL -->
+    {{ widget.success_redirect_url | edit_url_field: "Successful Submission Redirect URL" }}
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-tachometer", "Advanced" }}
+    <!-- User Select Form Options -->
+    {{ widget.user_select_forms | edit_textarea_field: "User Select Form Options - **G5 Staff Only**", css_placeholder, "value", "", 20, 12 }}
+    <fieldset>
+      <!-- Hack Form URN -->
+      <legend>{{ widget.hack_urn | edit_toggle_field: "Location Select Options", "value_or_default", "on-off-toggle"}}</legend>
+
+      <!-- Form to Display Location Select -->
+      {{ widget.form_to_append_location_select | edit_text_field: "Form to Display Location Select", "form-slug", "value" }}
+
+      <!-- Show Pending Locations in Dropdown -->
+      {% assign pending_opts = '{"false": "Live Locations Only" , "true": "Include Pending Locations"}' %}
+      {{ widget.show_pending | edit_radio_field: "Show Pending Locations in Dropdown", pending_opts, "value_or_default" }}
+
+      <!-- Location Select Ordering -->
+      {% assign layout_opts = '{"order_by_state": "Order By State", "order_by_city": "Order by City"}' %}
+      {{ widget.select_ordering | edit_radio_field: "Select Ordering/Display", layout_opts, "value_or_default" }}
+
+      <!-- Location Select Heading -->
+      {{ widget.select_dropdown_label | edit_text_field: "Location Select Heading", "Send this form to specific Location?", "value_or_default" }}
+
+      <!-- Location Select Default Label -->
+      {{ widget.disabled_option_label | edit_text_field: "Location Select Default Label", "Choose a Location", "value_or_default" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

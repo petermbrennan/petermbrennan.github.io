@@ -1,0 +1,98 @@
+{
+  "name": "Photo Randomizer",
+  "beta": false,
+  "widget_id": 51,
+  "widget_type": null,
+  "summary": "Add 5 photos, display 1 Randomly",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468557-Photo-Randomizer-Widget' target='_blank'>Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [
+    "edit-draggable.js",
+    "edit-gallery.js",
+    "edit-photo-overlay.js",
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-gallery.css",
+    "edit-photo-overlay.css",
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "max_width",
+      "editable": true,
+      "default_value": "500"
+    },
+    {
+      "name": "max_height",
+      "editable": true,
+      "default_value": "300"
+    },
+    {
+      "name": "photo_1_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_1_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_2_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_2_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_3_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_3_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_4_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_4_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_5_url",
+      "default_value": ""
+    },
+    {
+      "name": "photo_5_alt",
+      "default_value": ""
+    },
+    {
+      "name": "photo_filter",
+      "default_value": "false"
+    },
+    {
+      "name": "photo_label",
+      "default_value": ""
+    },
+    {
+      "name": "photo_filter_color",
+      "default_value": ""
+    },
+    {
+      "name": "photo_opacity",
+      "default_value": "filter-half"
+    }
+  ]
+}

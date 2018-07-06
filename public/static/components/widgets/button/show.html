@@ -1,0 +1,59 @@
+{% capture widgetId %}button-{{ widget.id }}{% endcapture %}
+{% if widget.button_label.value_or_default != blank or widget.button_image_url.value_or_default != blank %}
+
+<span class="button button-{{widget.button_layout.value_or_default}} button-{{widget.button_position.value_or_default}} button-display-{{widget.button_display.value_or_default}} {{widgetId}} widget" id="{{widgetId}}">
+
+  <style>
+    {% if widget.button_color.value != blank %}
+    .button.{{ widgetId }} .btn {
+      background-color: {{widget.button_color.value}} !important;
+    }
+    .button.{{ widgetId }} .btn:hover {
+      background-color: {{widget.button_color.value | lighten: '10%';}} !important;
+    }
+    {% endif %}
+
+    {% if widget.button_text_color.value != blank %}
+    .button.{{ widgetId }} .btn {
+      color: {{widget.button_text_color.value}} !important;
+    }
+    .button.{{ widgetId }} .btn:hover {
+      color: {{widget.button_text_color.value | lighten: '10%';}} !important;
+    }
+    {% endif %}
+
+    {% if widget.button_border_color.value != blank %}
+    .button.{{ widgetId }} .btn {
+      border-color: {{widget.button_border_color.value}} !important;
+    }
+    .button.{{ widgetId }} .btn:hover {
+      border-color: {{widget.button_border_color.value | lighten: '10%';}} !important;
+    }
+    {% endif %}
+
+    {% if widget.button_border_width.value != blank %}
+    .button.{{ widgetId }} .btn {
+      border-style: solid;
+      border-width: {{widget.button_border_width.value}} !important;
+      height: auto !important;
+    }
+    {% endif %}
+  </style>
+
+  <a href="{{ widget.button_url.value_or_default }}" {% if widget.button_new_window.value_or_default == "true" %}target="_blank"{% endif %}>
+    {% if widget.button_image_url.value_or_default != blank %}
+      <img class="btn-img" src="{{ widget.button_image_url.value_or_default }}" {{ widget.button_image_url.value | srcset }} />
+    {% endif %}
+
+    {% if widget.button_label.value_or_default != blank %}
+      <span class="btn">
+        {{ widget.button_label.value_or_default }}
+      </span>
+    {% endif %}
+  </a>
+
+  {% if widget.button_description.value_or_default != blank %}
+    <p class="button-description">{{ widget.button_description.value_or_default }}</p>
+  {% endif %}
+</span>
+{% endif %}

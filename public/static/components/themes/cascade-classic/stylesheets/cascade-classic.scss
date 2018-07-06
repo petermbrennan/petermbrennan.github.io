@@ -1,0 +1,453 @@
+// ********************************************
+//
+//  Cascade Blueprint Theme - Classic Variation
+//
+//  CSS by Adam Sworob
+//
+// ********************************************
+
+/*------------------------------------------------------------------
+[ 2. Mixins ]
+*/
+
+@mixin classy($the-br: "#{$base-border-radius}", $the-after: "&") {
+  border-radius: #{$the-br};
+
+  #{$the-after}:after {
+    content: none;
+  }
+}
+
+/*------------------------------------------------------------------
+[ 4. Layout ]
+*/
+
+body {
+  font-size: 16px;
+}
+
+/*------------------------------------------------------------------
+[ 5. Header & Navigation / header[role=banner] & .navigation-container ]
+*/
+body:not(.desktop-toggle-menu) {
+  @include nav-font-increase;
+}
+
+/*------------------------------------------------------------------
+[ 10. Second Stripe / .row:nth-of-type(2) ]
+*/
+
+.row:nth-of-type(2):not([class*='diagonal-']):not(.chevron):not(.straight) {
+  @include chevron;
+}
+
+/*------------------------------------------------------------------
+[ 11. Mosaic Classes ]
+*/
+
+.row {
+  @include mosaic-child-theme-styles($padding-default);
+
+  &.light-padding {
+    @include mosaic-child-theme-styles($padding-light);
+  }
+
+  &.no-padding {
+    @include mosaic-child-theme-styles($padding-none);
+  }
+
+  &.super-padding {
+    @include mosaic-child-theme-styles($padding-super);
+  }
+}
+
+/*------------------------------------------------------------------s
+[ 12. Contact Info Sheet (Sticky Nav) / .contact-info-sheet ]
+*/
+
+@include at-least($min-medium) {
+  .contact-info-sheet {
+    &.left, &.default {
+      .info-sheet-nav {
+        & > a, & > div {
+          &:first-child {
+            border-top-right-radius: $base-border-radius;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: $base-border-radius;
+          }
+        }
+      }
+    }
+
+    &.right .info-sheet-nav {
+      & > a, & > div {
+        &:first-child {
+          border-top-left-radius: $base-border-radius;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $base-border-radius;
+        }
+      }
+    }
+
+    &.b-left {
+      .info-sheet-nav {
+        & > a, & > div {
+          &:last-child {
+            border-bottom-right-radius: $base-border-radius;
+            border-top-right-radius: $base-border-radius;
+          }
+        }
+      }
+
+      .info-sheet-content {
+        border-bottom-right-radius: $base-border-radius;
+        border-top-right-radius: $base-border-radius;
+      }
+    }
+
+    &.b-right {
+      .info-sheet-nav {
+        & > a, & > div {
+          &:first-child {
+            border-bottom-left-radius: $base-border-radius;
+            border-top-left-radius: $base-border-radius;
+          }
+        }
+      }
+
+      .info-sheet-content {
+        border-bottom-left-radius: $base-border-radius;
+        border-top-left-radius: $base-border-radius;
+      }
+    }
+
+    &:not([class*='b-']) .info-sheet-content {
+      border-radius: $base-border-radius;
+    }
+  }
+}
+
+
+/*------------------------------------------------------------------
+13. Widgets and Other Elements / .widget
+*/
+
+.widget {
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 27px;
+  }
+
+  h3, h4 {
+    font-size: 25px;
+  }
+
+  h6 {
+    font-size: 45px;
+  }
+
+  @include at-least($min-xlarge) {
+    h1 {
+      font-size: 48px;
+    }
+
+    h2 {
+      font-size: 42px;
+    }
+
+    h3, h4 {
+      font-size: 36px;
+    }
+
+    h6 {
+      font-size: 52px;
+    }
+  }
+}
+
+// Action Calls / .action-calls
+
+.action-calls a {
+  @include classy;
+}
+
+// Button
+
+.button a span {
+  @include classy;
+}
+
+// City State Zip Search
+
+.zip-search-input input {
+  border-radius: $base-border-radius 0 0 $base-border-radius;
+}
+
+.zip-search-button button {
+  @include classy("0 #{$base-border-radius} #{$base-border-radius} 0");
+}
+
+// Contact Info
+
+.contact-info {
+  border-radius: $base-border-radius;
+
+  & > p {
+    & > a > span, & > span {
+      &:before {
+        border-radius: $base-border-radius;
+      }
+    }
+  }
+}
+
+.column.bg-col {
+  border-radius: $base-border-radius;
+}
+
+// Coupon
+
+.coupon button {
+  @include classy;
+}
+
+// Hours
+.office-hours hr, .access-hours hr {
+  display: none;
+}
+.office-hours-condensed, .office-hours-list {
+  font-size: 17px;
+}
+
+// Map and Directions
+
+.directions {
+  div.text {
+    .directions-submit-wrapper:after {
+      content: none;
+    }
+
+    input[type=submit].directions-submit {
+      text-align: center;
+    }
+
+    @include until($max-small) {
+      .directions-start, .directions-submit-wrapper {
+        border-radius: $base-border-radius;
+      }
+    }
+
+
+    @include at-least($min-small) {
+      .directions-start {
+        border-radius: $base-border-radius 0 0 $base-border-radius;
+      }
+
+      .directions-submit-wrapper {
+        border-radius: 0 $base-border-radius $base-border-radius 0;
+      }
+    }
+  }
+
+  .canvas, .panel {
+    border-radius: $base-border-radius;
+  }
+}
+
+// Lead Forms
+
+.widget .form input[type=submit] {
+  border-radius: $base-border-radius;
+}
+
+.lead-form {
+  input, textarea {
+    border-radius: $base-border-radius;
+  }
+
+  &.horizontal-form {
+    @include at-least($min-small) {
+      .form-field {
+        float: left;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 50%;
+
+        &:first-of-type input {
+          border-radius: $base-border-radius 0 0 $base-border-radius;
+        }
+
+        &:last-of-type input {
+          border-radius: 0 $base-border-radius $base-border-radius 0;
+        }
+
+        input {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+// Locations Navigation
+
+nav.locations-navigation.widget {
+  h3.locations-navigation-title {
+    border-radius: $base-border-radius;
+
+    &.open {
+      border-radius: $base-border-radius $base-border-radius 0 0;
+    }
+  }
+
+  .locations-navigation-state-list {
+    // border-radius: $base-border-radius;
+    overflow: hidden;
+
+    &.open {
+      border-radius: 0 0 $base-border-radius $base-border-radius;
+    }
+  }
+}
+
+h3.locations-navigation-title {
+  &, &.open {
+    &:hover:after {
+      animation-name: none;
+    }
+  }
+}
+
+.locations-navigation-heading {
+  &, &.open {
+    & > a:hover:after {
+      animation-name: none;
+    }
+  }
+}
+
+// Multifamily Home IUI
+
+[class*='home-multifamily-iui'] {
+
+  .iui-size {
+    @include until($max-small) {
+      a {
+        border-radius: $base-border-radius;
+      }
+    }
+
+    @include at-least($min-small) {
+      &:first-of-type a {
+        border-radius: $base-border-radius 0 0 $base-border-radius;
+      }
+
+      &:nth-last-of-type(2) a {
+        border-radius: 0 $base-border-radius $base-border-radius 0;
+      }
+    }
+  }
+
+  .iui-view-all a {
+    border-radius: $base-border-radius;
+  }
+
+}
+
+// Multifamily Mini Search
+
+div[class*='multifamily-mini-search'].widget div.search-form {
+  .state {
+    &, & .default-select {
+      border-radius: $base-border-radius 0 0 $base-border-radius;
+    }
+  }
+
+  .city {
+    &, & .default-select {
+      border-radius: 0 $base-border-radius $base-border-radius 0;
+    }
+  }
+
+  .search-button {
+    border-radius: $base-border-radius;
+  }
+
+  .btn {
+    @include classy;
+  }
+}
+
+// Self Storage Search Filtered
+
+.ss-search-filtered {
+  .sss-cat {
+    &, a {
+      border-radius: $base-border-radius;
+    }
+  }
+  .sss-unit-matrix {
+    border-radius: $base-border-radius;
+  }
+}
+
+// Self Storage Search Filtered
+
+.ss-search-filtered {
+  .location-category-select {
+    border-radius: $base-border-radius;
+  }
+  .unit-cta.btn {
+    border-radius: $base-border-radius;
+    &:after {
+      content: none;
+    }
+  }
+}
+
+// Self Storage Search Home
+
+.self-storage-search-home.widget form.sss-search-criteria {
+  .sss-search-storage-categories-select, .sss-search-input, .sss-search-btn {
+    border-radius: $base-border-radius;
+  }
+
+  .input-clear {
+    border-radius: 0 $base-border-radius $base-border-radius 0;
+  }
+
+  .sss-search-btn:after {
+    content: none;
+  }
+
+  @include until($max-layout) {
+    .input-clear:after {
+      border-radius: 0 $base-border-radius $base-border-radius 0;
+    }
+  }
+
+
+  @include at-least($min-layout) {
+    .sss-search-input {
+      border-radius: $base-border-radius 0 0 $base-border-radius;
+    }
+
+    .sss-search-storage-categories-select {
+      border-radius: 0 $base-border-radius $base-border-radius 0;
+    }
+  }
+}
+
+// Social Links
+
+.social-links a {
+  border-radius: $base-border-radius;
+}

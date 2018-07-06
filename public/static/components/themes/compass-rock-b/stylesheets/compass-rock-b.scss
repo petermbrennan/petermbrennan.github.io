@@ -1,0 +1,1927 @@
+@import 'old_boilerplate/bourbon/bourbon.scss';
+@import 'global-classes.scss';
+
+// *************************************
+//
+//   Settings
+//
+// *************************************
+
+// ----- Base Colors ----- //
+$white: #fff;
+$black: #1b1d1d;
+$grey: #404040;
+$light-grey: #ececec;
+$dark-grey: #2b2c2c;
+
+// ----- Text Colors ----- //
+$base-color: #707070;
+$dark-color: #000;
+$inverse-color: #fff;
+$base-link-color: $secondaryColor;
+$base-hover-color: $dark-color;
+
+$inverted-color: #fff;
+$primary-light: lighten(desaturate($primaryColor, 10%), 20);
+
+// ----- Background Colors ----- //
+$base-background: #fff;
+$alt-background: $black;
+// ----- Borders ----- //
+$base-border: 1px solid $black;
+
+// ----- Typography ----- //
+$base-fontFamily: 'futura-pt', $helvetica;
+$base-fontWeight: 400;
+$base-fontSize: 18px;
+$base-fontUnit: 18;
+$base-lineHeight: 1.3;
+$alt-fontFamily: "proxima-nova-alt-ext-cond", $helvetica;
+$alt-fontWeight: 300;
+
+$light-fontWeight: 300;
+$bold-fontWeight: 700;
+
+
+// ----- Whitespace ----- //
+$base-whitespace: 30px;
+$half-whitespace: $base-whitespace / 2;
+$double-whitespace: $base-whitespace * 2;
+
+// ----- Contexts ----- //
+$site-width: 1170px;
+
+// ----- Layout ----- //
+$maxWidth: $site-width;
+$max-xsmall: em(479, $base-fontUnit);
+$min-xsmall: em(480, $base-fontUnit);
+$max-small: em(640, $base-fontUnit);
+$min-small: em(641, $base-fontUnit);
+$max-medium: em(909, $base-fontUnit);
+$min-medium: em(910, $base-fontUnit);
+$max-large: em(1169, $base-fontUnit);
+$min-large: em(1170, $base-fontUnit);
+$max-xlarge: em(1599, $base-fontUnit);
+$min-xlarge: em(1600, $base-fontUnit);
+
+// *************************************
+//
+//   Helpers
+//
+// *************************************
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+@mixin at-least($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin until($query) {
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+@mixin between($min-query, $max-query) {
+  @media screen and (min-width: $min-query) and (max-width: $max-query) {
+    @content;
+  }
+}
+
+@mixin grid-row {
+  @include clearfix;
+  clear: both;
+  margin-left: -$half-whitespace;
+  margin-right: -$half-whitespace;
+}
+
+@mixin grid-defaults {
+  float: left;
+  padding-left: $half-whitespace;
+  padding-right: $half-whitespace;
+}
+
+@mixin grid-column($n: 1) {
+  width: #{$n/12*100}#{"%"};
+}
+
+// -------------------------------------
+//   404 Styles
+// -------------------------------------
+
+@import 'boilerplate/defaults/404.scss';
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+@function percent($target, $context: $maxWidth) {
+  @return #{$target / $context * 100}#{"%"};
+}
+
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+%row {
+  @include grid-row;
+}
+
+%clearfix {
+  @include clearfix;
+}
+
+%hidden {
+  display: none !important;
+}
+
+%visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+%ir {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+%overflow {
+  overflow: hidden;
+}
+
+%relative {
+  position: relative;
+}
+
+%absolute {
+  position: absolute;
+}
+
+%hide-mobile {
+  @include at-least($min-medium) {
+    display: none !important;
+  }
+}
+
+%show-desktop {
+  @include until($max-medium) {
+    display: none !important;
+  }
+}
+
+%shout {
+  text-transform: uppercase;
+}
+
+%inline {
+  display: inline-block;
+}
+
+%inverse {
+  color: $inverse-color;
+}
+
+%center {
+  text-align: center;
+}
+
+%lead {
+  font-size: 131.25%;
+}
+
+%pullLeft {
+  float: left;
+}
+
+%pullRight {
+  float: right;
+}
+
+
+// *************************************
+//
+//   Base
+//
+// *************************************
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: $base-fontSize;
+  height: 100%;
+  @include until($max-small) {
+    font-size: $base-fontSize - 2;
+  }
+  @include between($min-small, $max-medium) {
+    font-size: $base-fontSize - 1;
+  }
+}
+
+body {
+  background: $base-background;
+  color: $base-color;
+  font-family: $base-fontFamily;
+  font-size: 100%;
+  line-height: $base-lineHeight;
+  min-height: 100%;
+}
+
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+
+// *************************************
+//
+//   Layout
+//
+// *************************************
+
+.rows-layout {
+  overflow: hidden;
+}
+
+// -------------------------------------
+//   Container
+// -------------------------------------
+
+%content,
+.content {
+  @extend %clearfix;
+  @extend %relative;
+  @include box-sizing(content-box);
+  margin: 0 auto;
+  max-width: $maxWidth;
+  padding: 0 $half-whitespace;
+}
+
+
+// -------------------------------------
+//   Rows
+// -------------------------------------
+
+.row:before,
+.row:after,
+.row-grid:before,
+.row-grid:after {
+  content: " ";
+  display: table;
+}
+.row:after,
+.row-grid:after {
+  clear: both;
+}
+
+.row-grid {
+  margin: 0 -15px;
+}
+
+.col {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.row-halves .col,
+.row-uneven-thirds-1 .col,
+.row-uneven-thirds-2 .col,
+.row-thirds .col,
+.row-quarters .col {
+  float: left;
+}
+
+.row-halves .col {
+  width: 50%;
+}
+
+.row-thirds .col {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-1 {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-2 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-1 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-2 {
+  width: 33.33333%;
+}
+
+.row-quarters .col {
+  width: 25%;
+}
+
+
+.row {
+  padding: 2em 0;
+  overflow: hidden;
+  @include until($max-medium) {
+    .col {
+      width: 100%;
+    }
+  }
+  .row-grid {
+    @include at-least($min-medium) {
+      margin: 0 -30px;
+    }
+  }
+  .col {
+    @include until($max-medium) {
+      margin-bottom: 1em;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    @include at-least($min-medium) {
+      padding-right: $base-whitespace;
+      padding-left: $base-whitespace;
+    }
+  }
+  .row-single .col {
+    margin-bottom: 0;
+  }
+}
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+
+// *************************************
+//
+//   Typography
+//
+// *************************************
+
+// -------------------------------------
+//   Headings
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  .widget &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  @extend %shout;
+  color: $grey;
+  font-family: $alt-fontFamily;
+  font-weight: $alt-fontWeight;
+  font-size: em(26, $base-fontUnit);
+  margin-bottom: .25em;
+  @include at-least($min-medium) {
+    font-size: em(42, $base-fontUnit);
+  }
+}
+
+h2 {
+  font-size: 1em;
+  font-weight: $bold-fontWeight;
+  color: $primaryColor;
+  @include at-least($min-medium) {
+    font-size: em(20, $base-fontUnit);
+  }
+}
+
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+.html {
+  @extend %clearfix;
+  ul {
+    list-style-type: none;
+  }
+  li {
+    margin-bottom: .5em;
+    position: relative;
+    &:before {
+      content: "\00BB";
+      position: absolute;
+      left: -$base-whitespace;
+    }
+    @include at-least($min-large) {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Links
+// -------------------------------------
+
+a {
+  @include transition(color 0.2s ease, background-color 0.2s ease);
+  color: $base-link-color;
+  &:hover {
+    color: $base-hover-color;
+  }
+}
+
+
+// -------------------------------------
+//   Buttons
+// -------------------------------------
+
+%btn {
+  @extend %shout;
+  border: none;
+  color: $white !important;
+  color: rgba($white, .9);
+  line-height: 1;
+  text-align: center;
+  display: block;
+  padding: .5em $half-whitespace;
+}
+
+.btn {
+  @extend %btn;
+  background: $secondaryColor;
+  letter-spacing: .1em;
+}
+
+
+// *************************************
+//
+//   Main Sections
+//
+// *************************************
+
+// -------------------------------------
+//   Header
+// -------------------------------------
+
+.logo {
+  display: inline-block;
+  text-align: left;
+  width: 50%;
+  img {
+    max-height: 100%;
+  }
+  @include until($max-medium) {
+    width: auto;
+    &,
+    img {
+      height: 34px;
+    }
+    img {
+      vertical-align: top;
+    }
+  }
+}
+#drop-target-logo {
+  @include until($max-medium) {
+    position: fixed;
+    top: 5px;
+    left: $half-whitespace;
+    z-index: 6000;
+  }
+}
+
+[role=banner] {
+  background: rgba($white, .65);
+  a:focus {
+    outline: none;
+  }
+  .h-c-ret,
+  .h-card {
+    font-size: em(26, $base-fontUnit);
+    text-align: center;
+  }
+  .navigation {
+    text-align: center;
+    font-size: em(15, $base-fontUnit);
+    overflow-y: auto;
+    a {
+      @extend %shout;
+      color: $dark-color;
+      display: block;
+    }
+  }
+  .has-subnav {
+    position: relative;
+  }
+  .has-subnav > a:after {
+    @include transform(rotate(90deg) scale(2));
+    content: '\203A';
+    display: inline-block;
+    margin-left: 1em;
+  }
+  @include until($max-medium) {
+    padding-top: 44px;
+    .navigation-container {
+      background: $white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 6000;
+    }
+    .collapsable-content {
+      width: 100%;
+    }
+    .navigation {
+      font-size: em(21, $base-fontUnit);
+      padding-bottom: 1em;
+      a {
+        border-top: 1px solid $light-grey;
+        padding: .5em;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .logo {
+      position: absolute;
+      bottom: .50em;
+      left: $half-whitespace;
+      width: 20%;
+      height: 2em;
+    }
+    .navigation-container {
+      padding-top: 2em;
+    }
+    .navigation {
+      float: right;
+      width: 70%;
+      display: table;
+      ul {
+        display: table-row;
+      }
+      li {
+        display: table-cell;
+        padding: 0 5px;
+        vertical-align: bottom;
+      }
+      a {
+        border-bottom: $half-whitespace solid transparent;
+        padding-bottom: 2em;
+        &.active {
+          border-color: lighten($primaryColor, 15);
+        }
+        &:focus,
+        &:hover {
+          border-color: $primaryColor;
+        }
+      }
+    }
+    .h-c-ret,
+    .h-card {
+      font-size: em(42, $base-fontUnit);
+      margin-bottom: 0;
+    }
+    .subnav {
+      background: rgba($white, .65);
+      text-align: left;
+      display: block;
+      width: auto;
+      min-width: 100%;
+      max-height: 0;
+      position: absolute;
+      z-index: 9999;
+      top: 63.5px;
+      left: 0;
+
+      li {
+        display: block;
+        padding: 0;
+      }
+
+      a {
+        border: none;
+        padding: .5em 10px;
+        &:hover,
+        &:focus {
+          background-color: $white;
+        }
+      }
+    }
+    .show-subnav {
+      max-height: 1000px;
+    }
+  }
+  @include at-least($min-large) {
+    .logo {
+      width: 25%;
+      height: 2em;
+    }
+    .navigation-container {
+      padding-top: 3em;
+    }
+    .navigation li {
+      padding: 0 10px;
+    }
+    .subnav {
+      li {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.collapsable-btn {
+  display: inline-block;
+  cursor: pointer; }
+.collapsable-content,
+.collapsable-content.collapse {
+  height: 0;
+  overflow: hidden; }
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease; }
+.collapse.in {
+  height: auto; }
+
+@media (min-width: $min-medium) {
+  .collapsable-btn {
+    display: none !important;
+  }
+  .collapsable-content {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+.collapsable-btn {
+  background-color: transparent;
+  border-left-color: $secondaryColor;
+  color: $black;
+  float: right;
+  margin: .5em 0;
+  padding: 2px 6px !important;
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+  .text,
+  .bars {
+    display: inline-block;
+  }
+  .text {
+    @extend %shout;
+    color: #000;
+    font-family: $alt-fontFamily;
+    font-size: em(26, $base-fontUnit);
+    margin-right: 10px;
+    vertical-align: top;
+  }
+  .bars {
+    span {
+      border-bottom: 3px solid $black;
+      display: block;
+      margin: 3px 0;
+      width: $half-whitespace;
+    }
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+
+// -------------------------------------
+//   Footer
+// -------------------------------------
+
+[role=contentinfo] {
+  @extend %clearfix;
+  background-color: $grey;
+  padding: 1em 0;
+  &,
+  a,
+  .contact-info a {
+    color: $inverse-color
+  }
+  .access {
+    background-image: url("//themes.g5dxm.com/shared/access-icons-light.png");
+  }
+  .widget {
+    @extend %shout;
+  }
+  .footer-info {
+    @include until($max-small) {
+      float: none;
+      text-align: left;
+    }
+    @include at-least($min-medium) {
+      font-size: em(16, $base-fontUnit);
+    }
+  }
+  .social-links {
+    margin-bottom: .5em;
+  }
+  .nav {
+    margin-bottom: 0;
+    a {
+      float: left;
+      padding: 0 1em;
+      &:last-child {
+        border-left: 1px solid $base-link-color;
+        padding-right: 0;
+      }
+    }
+  }
+  @include until($max-small) {
+    background-color: $primaryColor;
+    border-top: 70px solid $black;
+    &,
+    a,
+    .contact-info a {
+      color: $grey;
+    }
+    .contact-info,
+    .social-links {
+      background-color: $primary-light;
+      padding: 1em $base-whitespace;
+    }
+    .contact-info {
+      margin-top: -4em;
+    }
+  }
+  @include at-least($min-small) {
+    border-top: 10px solid $primaryColor;
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: '';
+      background-color: $dark-grey;
+      background-image: url(https://themes.g5dxm.com/compass-rock/footer-arrow.png);
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      display: block;
+      position: absolute;
+      width: 40%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .contact-info {
+      border-left: 7px solid $primaryColor;
+      font-size: em(12, $base-fontUnit);
+      font-weight: $base-fontWeight;
+      float: left;
+      margin-right: 2em;
+      padding-left: $base-whitespace;
+      position: relative;
+      h4,
+      p {
+        margin: 0 0 .5em;
+        padding: 0;
+      }
+      .p-name {
+        border-bottom: none;
+        color: $inverse-color;
+        font-family: $base-fontFamily;
+        font-weight: $base-fontWeight;
+        font-size: em(21, $base-fontUnit);
+      }
+      .adr-ret,
+      .p-tel,
+      .adr,
+      .tel,
+      .email,
+      .chat {
+        background: none;
+        min-height: 0;
+        padding-left: 0;
+      }
+    }
+    .nav a:last-child {
+      border-color: $inverse-color
+    }
+  }
+}
+
+
+
+// *************************************
+//
+//   Widgets
+//
+// *************************************
+
+// -------------------------------------
+//   Calls to Action
+// -------------------------------------
+
+.action-calls {
+  font-family: $alt-fontFamily;
+  font-weight: $alt-fontWeight;
+  font-size: em(21, $base-fontUnit);
+  a {
+    @extend %btn;
+    background: $primaryColor;
+    margin-bottom: .5em;
+    &:hover {
+      background: lighten($primaryColor, 10%);
+    }
+  }
+  li:last-of-type a {
+    margin-bottom: 0;
+  }
+  @include between($min-small, $min-large) {
+    @include clearfix;
+    margin-left: -5px;
+    margin-right: -5px;
+    li {
+      float: left;
+      width: 50%;
+      padding: 0 5px;
+    }
+  }
+  @include at-least($min-large) {
+    font-size: em(28, $base-fontUnit);
+    a {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Photo
+// -------------------------------------
+
+.photo {
+  img {
+    display: block;
+  }
+}
+
+.html img {
+  height: auto !important;
+  width: auto !important;
+}
+
+
+// -------------------------------------
+//   Gallery
+// -------------------------------------
+
+.gallery {
+  @extend %overflow;
+
+  .gallery-slideshow.full-gallery img {
+    width: 100%;
+  }
+  .mini-gallery {
+    .flex-caption {
+      color: $primaryColor;
+      font-size: em(21, $base-fontUnit);
+      font-weight: $alt-fontWeight;
+      text-align: left;
+      padding: 0 $base-whitespace;
+    }
+    .flex-direction-nav a {
+      background-size: 100% 100%;
+      opacity: 1 !important;
+      width: 70px;
+    }
+    .flex-direction-nav .flex-prev {
+      background-image: url(https://themes.g5dxm.com/compass-rock/gallery-prev.png);
+      background-position: right center;
+      &:hover {
+        background-image: url(https://themes.g5dxm.com/compass-rock/gallery-prev-hover.png);
+      }
+    }
+    .flex-direction-nav .flex-next {
+      background-image: url(https://themes.g5dxm.com/compass-rock/gallery-next.png);
+      background-position: left center;
+      &:hover {
+        background-image: url(https://themes.g5dxm.com/compass-rock/gallery-next-hover.png);
+      }
+    }
+    @include between($min-small, $max-medium) {
+      .flex-direction-nav a {
+        width: 115px;
+      }
+    }
+    @include at-least($min-medium) {
+      .flex-caption {
+        font-size: em(24, $base-fontUnit);
+        padding-right: 60px;
+        padding-left: $base-whitespace;
+      }
+      .flex-control-thumbs {
+        padding-right: 100px;
+        bottom: 1em;
+      }
+      .flex-direction-nav a {
+        opacity: 1;
+      }
+      .flex-direction-nav a {
+        width: 100px;
+      }
+    }
+    @include at-least($min-large) {
+      .flex-caption {
+        margin-top: 3em;
+      }
+    }
+  }
+
+  .full-gallery {
+    .slides {
+      position: relative;
+      &:before {
+        content: '';
+        width: 40%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: url(https://themes.g5dxm.com/compass-rock/gallery-overlay.png) right center no-repeat;
+        background-size: cover;
+        z-index: 100;
+      }
+      > li {
+        overflow: hidden;
+      }
+    }
+    .flex-caption {
+      background: rgba($black, 0.7);
+      color: $white;
+      padding: 1em $base-whitespace;
+      position: absolute;
+      bottom: 0;
+      z-index: 200;
+      @include until($max-small) {
+        display: none;
+      }
+    }
+    .flex-control-thumbs {
+      left: -5px;
+      right: -5px;
+      width: auto;
+      li {
+        padding: $half-whitespace 5px 0;
+        &:nth-child(4n+1) {
+          clear: none;
+        }
+      }
+      @include at-least($min-medium) {
+        li {
+          padding: $base-whitespace 5px 0;
+          width: 20%;
+        }
+      }
+      @include at-least($min-large) {
+        li {
+          width: 80px;
+        }
+      }
+    }
+    .flex-direction-nav {
+      a {
+        background-image: url(https://themes.g5dxm.com/compass-rock/full-gallery-nav.png);
+        background-size: cover;
+        background-position: 0 0;
+        height: 55px;
+        width: 30px;
+        margin: 0;
+        opacity: 1 !important;
+        z-index: 200;
+      }
+      .flex-prev {
+        top: 30px;
+        left: 0;
+      }
+      .flex-next {
+        background-position: -30px 0;
+        bottom: 30px;
+        top: auto;
+        right: 0;
+      }
+      @include at-least($min-small) {
+        a {
+          height: 94px;
+          width: 52px;
+        }
+        .flex-prev {
+          top: 50px;
+        }
+        .flex-next {
+          background-position: -51px 0;
+          bottom: 85px;
+        }
+      }
+    }
+  }
+
+  .gallery-slideshow.full-gallery {
+    .slides {
+      .csstransforms .loaded & img {
+        @include transform(translateX(-50%) translateY(-50%));
+        position: absolute;
+        left: 50%;
+        // overrides js setting max height to photo which causes stretching with the width 100%
+        max-height: none !important;
+      }
+    }
+  }
+}
+
+.web-home-template {
+  .gallery {
+    background: $grey;
+    margin: -2em 0;
+    padding-bottom: 2em;
+    @include at-least($min-medium) {
+      padding-bottom: 0;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Quote
+// -------------------------------------
+.quote {
+  margin-top: 1em;
+  @include at-least($min-large) {
+    margin-top: 3em;
+  }
+}
+blockquote {
+  margin: 0;
+  padding-left: 2em;
+  position: relative;
+  p {
+    color: $primaryColor;
+    font-family: $alt-fontFamily;
+    font-size: em(28, $base-fontUnit);
+    font-weight: $alt-fontWeight;
+    line-height: 1.2;
+    margin-top: 0;
+  }
+  p:before {
+    font-family: $georgia;
+    font-size: em(36, $base-fontUnit);
+    position: absolute;
+    left: 0;
+    top: -.15em;
+  }
+  p:after {
+    content: '';
+  }
+  cite {
+    font-size: em(18, $base-fontUnit);
+    font-style: normal;
+  }
+}
+
+// -------------------------------------
+//   Forms
+// -------------------------------------
+
+.form {
+  label {
+    margin-bottom: .5em;
+  }
+  input[type=radio],
+  input[type=checkbox] {
+    display: inline-block;
+    width: auto;
+  }
+  .required:after {
+    content: '*';
+    color: red;
+    margin-left: .25em;
+  }
+  textarea,
+  #{$all-text-inputs} {
+    background: #f8f8f9;
+    border: 1px solid #c2c2c2;
+    outline: none;
+    padding: .5em $half-whitespace;
+    width: 100%;
+    &:focus {
+      border-color: $primaryColor;
+      box-shadow: 0 0 10px $primaryColor;
+    }
+  }
+  .form-field {
+    margin-bottom: 1em;
+  }
+  .form-instruction {
+    color: red;
+    font-style: italic;
+    display: inline-block;
+    margin: .5em 0 0 25px;
+  }
+  input[type=submit] {
+    @extend %btn;
+    background-color: $black;
+  }
+}
+
+
+// -------------------------------------
+//   Contact Info
+// -------------------------------------
+
+
+.contact-info {
+  font-weight: $alt-fontWeight;
+  a {
+    color: $base-color;
+    &:hover {
+      color: $secondaryColor;
+    }
+  }
+  p {
+    font-size: em(21, $base-fontUnit);
+    line-height: 1;
+  }
+  .p-name {
+    @extend %shout;
+    border-bottom: $base-border;
+    color: $secondaryColor;
+    font-family: $alt-fontFamily;
+    font-size: em(21, $base-fontUnit);
+    font-weight: $base-fontWeight;
+    padding-bottom: .5em;
+  }
+  .adr-ret,
+  .p-tel,
+  .adr,
+  .tel,
+  .email,
+  .chat {
+    background: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') no-repeat;
+    min-height: 35px;
+    padding-left: 40px;
+  }
+  .p-tel,
+  .tel {
+    background-position: 0 0;
+  }
+  .adr-ret,
+  .adr {
+    background-position: 0 -65px;
+  }
+  .email {
+    background-position: 0 -146px;
+  }
+  .chat {
+    background-position: 0 -225px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  [role=main] & {
+    @include between($min-small, $max-medium) {
+      p {
+        display: inline-block;
+        margin-right: $base-whitespace;
+        vertical-align: top;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .p-name {
+      font-size: em(28, $base-fontUnit);
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Coupon
+// -------------------------------------
+.coupon {
+  h2 {
+    font-size: em(18, $base-fontUnit);
+    border-bottom-color: $secondaryColor;
+    color: $secondaryColor;
+  }
+  .p-name,
+  .btn {
+    font-size: em(14, $base-fontUnit);
+  }
+  .btn {
+    cursor: pointer;
+    padding: .65em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+
+
+// -------------------------------------
+//   Social Feed
+// -------------------------------------
+
+.social-feed {
+  color: $base-color;
+  font-size: em(14, $base-fontUnit);
+  line-height: 1.25;
+  .feed-switch {
+    background-color: $white;
+    border-right-color: 1px solid $grey;
+  }
+  .p-name,
+  .tweet-name {
+    font-weight: $bold-fontWeight;
+  }
+  .p-summary,
+  .tweet-text {
+    font-weight: $light-fontWeight;
+    a {
+      color: $secondaryColor;
+    }
+  }
+  .btn {
+    width: 50%;
+  }
+}
+
+
+// -------------------------------------
+//   Social Links
+// -------------------------------------
+
+.social-links {
+  a {
+    margin-left: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .icon {
+    @include transition(background-color .2s ease);
+    background-color: $secondaryColor;
+    height: 45px;
+    width: 45px;
+    &:hover {
+      background-color: $black;
+    }
+  }
+}
+
+// -------------------------------------
+//   IUI
+// -------------------------------------
+
+.home-multifamily-iui {
+  font-family: $alt-fontFamily;
+  .iui-steps {
+    &:before {
+      background-color: $white;
+    }
+    span {
+      background-color: $white;
+      color: $secondaryColor;
+      &:first-child {
+        background-color: $primaryColor;
+        color: $white;
+      }
+    }
+  }
+  .iui-title {
+    @extend %shout;
+    font-size: em(40, $base-fontUnit);
+  }
+  .btn {
+    background-color: $primaryColor;
+    font-size: em(24, $base-fontUnit);
+    &:hover {
+      background: lighten($primaryColor, 10%);
+    }
+  }
+}
+
+.web-page-template .row:nth-child(2) .col:first-of-type .multifamily-iui-cards.widget {
+  @include until($max-xsmall) {
+    padding: 1em 7px;
+  }
+}
+
+
+.multi-family-iui-cards-v3 {
+  .iui-cards-filter-select-wrapper .down-arrow {
+    left: -38px;
+    top: 11px;
+  }
+}
+// *************************************
+//
+//   Home Page
+//
+// *************************************
+
+// -------------------------------------
+//   All Versions
+// -------------------------------------
+
+.web-home-template {
+  .row:first-of-type {
+    padding-bottom: 0;
+    .col {
+      position: static;
+    }
+    .home-multifamily-iui,
+    .html {
+      background-color: $black;
+      &,
+      h1 {
+        color: $inverse-color;
+      }
+    }
+  }
+  .col {
+    position: relative;
+  }
+  .photo img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .photo:before {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+  }
+  @include until($max-medium) {
+    .action-calls {
+      margin-bottom: 1em;
+    }
+    .col:first-of-type .photo:before {
+      background-position: center bottom;
+    }
+    .col:last-of-type .photo:before {
+      background-position: center top;
+    }
+    .dark-row-home {
+      .col:first-of-type .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-dark-up.png);
+      }
+      .col:last-of-type .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-dark-down.png);
+      }
+    }
+    .light-row-home {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-light-up.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-light-down.png);
+      }
+    }
+    .photo,
+    .gallery {
+      margin-left: -$half-whitespace;
+      margin-right: -$half-whitespace;
+      position: relative;
+      &:before {
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .col:first-of-type .photo:before {
+      background-position: right center;
+      right: $base-whitespace;
+    }
+    .col:last-of-type .photo:before {
+      background-position: left center;
+      left: $base-whitespace;
+    }
+    .photo:before {
+      top: -2em;
+      bottom: -2em;
+    }
+    .dark-row-home {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-dark-left.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-dark-right.png);
+      }
+    }
+    .light-row-home {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-light-left.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock/arrow-light-right.png);
+      }
+    }
+    .photo,
+    .map {
+      margin: -2em 0;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Interior Pages
+//
+// *************************************
+
+.web-page-template {
+  .row:nth-child(odd) {
+    background-color: $alt-background;
+    &,
+    h1 {
+      color: $inverse-color;
+    }
+    a {
+      color: $light-grey;
+    }
+    .contact-info {
+      .p-name {
+        border-color: $inverse-color;
+      }
+      .adr-ret,
+      .p-tel,
+      .adr,
+      .tel,
+      .email,
+      .chat {
+        background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png');
+      }
+    }
+  }
+  [role=main] {
+    .widget {
+      margin-bottom: 2em;
+    }
+    .row:first-of-type .widget {
+      margin-bottom: 0;
+    }
+  }
+  .row:first-of-type {
+    background-color: transparent;
+    color: $inverse-color;
+    h1 {
+      color: $inverse-color;
+    }
+    @include until($max-medium) {
+      .content {
+        padding-bottom: 6em;
+      }
+      .col:first-of-type {
+        background: $grey;
+        position: absolute;
+        bottom: -2em;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0;
+        padding: 1em 15px 4em;
+      }
+    }
+    @include at-least($min-medium) {
+      background-color: $grey;
+    }
+  }
+  .row:nth-child(2) {
+    overflow: visible;
+    .col:first-of-type {
+      .widget {
+        background-color: $base-background;
+      }
+      .gallery {
+        background: transparent;
+        padding: 0;
+        @include at-least ($min-large) {
+          padding: 0 $base-whitespace;
+        }
+      }
+      .photo {
+        background-color: transparent;
+        margin-left: -$base-whitespace;
+        margin-right: -$base-whitespace;
+      }
+    }
+    .row-single .col:first-of-type .widget {
+      padding: 0;
+    }
+    @include at-least($min-large) {
+      .col:first-of-type {
+        margin-top: -7em;
+        .widget {
+          margin-left: -$base-whitespace;
+          padding: 1em $base-whitespace;
+          margin-bottom: 0;
+        }
+        .photo {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .row .row-single .col:first-of-type {
+    margin-top: 0;
+  }
+  &.page-residents {
+    .row:first-of-type {
+      .col:first-of-type {
+        padding-bottom: 1em;
+      }
+    }
+    .row:nth-child(2) {
+      .col:first-of-type {
+        margin-top: 0;
+        .widget {
+          margin-left: 0;
+          padding: 0;
+          margin-bottom: 2em;
+        }
+      }
+
+    }
+  }
+}
+
+.contact-info-sheet {
+  @extend %clearfix;
+  .form-field {
+    margin-bottom: .5em;
+  }
+  label,
+  legend {
+    font-size: em(15, 18);
+  }
+  label {
+    margin-bottom: .25em;
+  }
+  fieldset label {
+    display:inline-block;
+    padding: 0 $base-whitespace 0 0;
+  }
+  .form-instruction {
+    color: $grey;
+    margin: 1em 0 0;
+  }
+  input[type=submit] {
+    font-size: em(13, $base-fontUnit);
+    width: 100%;
+  }
+  @include until(736px) {
+    .info-sheet-toggle {
+      color: $inverse-color;
+      font-family: $alt-fontFamily;
+      font-size: em(21, $base-fontUnit);
+      font-weight: $alt-fontWeight;
+      text-transform: uppercase;
+    }
+  }
+  @include at-least(737px) {
+    .info-sheet-toggle.active {
+      outline: 1px solid $primaryColor;
+    }
+  }
+  @include between(737px, $max-medium) {
+    top: 200px !important;
+  }
+}
+
+// -------------------------------------
+//   Version B
+// -------------------------------------
+
+.web-home-template .row:nth-child(even) {
+  background-color: $alt-background;
+  &,
+  h1 {
+    color: $inverse-color;
+  }
+  a {
+    color: $light-grey;
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+  .contact-info {
+    .p-name {
+      border-color: $inverse-color;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png');
+    }
+  }
+}
+
+.web-home-template .row:nth-child(2n+3) {
+  background-color: $base-background;
+  &,
+  h1 {
+    color: $base-color;
+  }
+  a {
+    color: $black;
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: $base-border;
+    }
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons.png');
+    }
+  }
+}
+
+.web-home-template .row:first-of-type {
+  .photo:after {
+    background-image: url(https://themes.g5dxm.com/compass-rock/large-down-arrow.png);
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 50;
+  }
+  .home-multifamily-iui,
+  .html {
+    background-color: $black;
+    margin-left: -15px;
+    margin-right: -15px;
+    &,
+    h1 {
+      color: $inverse-color;
+    }
+  }
+  .html-content {
+    padding: 1em $base-whitespace;
+  }
+  @include until($max-medium) {
+    .photo,
+    .map {
+      margin-left: -15px;
+      margin-right: -15px;
+      position: relative;
+    }
+  }
+  @include at-least($min-small) {
+    padding: 50px 0 0;
+    overflow: hidden;
+    position: relative;
+    .content {
+      position: static;
+    }
+    .action-calls,
+    .home-multifamily-iui,
+    .html {
+      position: relative;
+      z-index: 100;
+    }
+  }
+  @include between($min-small, $max-medium) {
+    .photo:after {
+    }
+  }
+  @include at-least($min-medium) {
+    padding: 175px 0 75px;
+    .photo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 100%;
+        min-width: 100%;
+        max-width: none;
+        width: auto;
+        .csstransforms & {
+          @include transform(translateX(-50%) translateY(-50%));
+          left: 50%;
+          top: 50%;
+        }
+      }
+    }
+    .photo:after {
+      right: -19%;
+    }
+    .action-calls,
+    .home-multifamily-iui,
+    .html {
+      width: 60%;
+    }
+    .home-multifamily-iui,
+    .html {
+      background: rgba($black, .5);
+      float: right;
+      margin: 0;
+    }
+  }
+  @include at-least($min-large) {
+    padding-top: 200px;
+    .photo:after {
+      right: -10%;
+    }
+  }
+}
+
+.web-home-template {
+  [role=main] .contact-info {
+    margin-bottom: 2em;
+  }
+  @include at-least($min-small) {
+    .action-calls {
+      text-align: center;
+      margin-left: -5px;
+      margin-right: -5px;
+      li {
+        float: left;
+        width: 50%;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    .action-calls a,
+    .home-multifamily-iui .btn {
+      background-color: rgba($primaryColor, 0.8);
+      &:focus,
+      &:hover {
+        background-color: rgba($primaryColor, 1.0);
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    [role=banner] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .action-calls {
+      font-size: em(28);
+      margin-bottom: 300px;
+      float: right;
+    }
+  }
+  @include at-least($min-large) {
+    .action-calls {
+      margin-bottom: 300px;
+    }
+  }
+}
+
+
+// This comes from an optional setting on the Row widget to set text color
+.text-light {
+  color: $white;
+  p,
+  .html,
+  .blockquote,
+  .coupon,
+  .contact-info,
+  .contact-info a,
+  .form label {
+    color: $white !important;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: 1px solid $white !important;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png') !important;
+    }
+  }
+}
+
+.text-dark {
+  color: $base-color;
+  p,
+  .html,
+  .blockquote,
+  .coupon,
+  .contact-info,
+  .contact-info a,
+  .form label {
+    color: $base-color !important;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: $base-border;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') !important;
+    }
+  }
+}
+
+
+// =====================================
+//Multi Family Mini Search V2
+// =====================================
+
+.multifamily-mini-search-v2 {
+  .mf-search-input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 47px;
+  }
+  .mf-search-go-button {
+    height: 47px;
+  }
+  .city,
+  .state {
+    height: 47px;
+  }
+  .search-form {
+    padding: 10px;
+  }
+}

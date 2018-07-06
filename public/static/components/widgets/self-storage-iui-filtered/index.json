@@ -1,0 +1,24 @@
+{
+  "name": "Self Storage IUI Filtered",
+  "widget_id": 39,
+  "widget_type": "Self-Storage",
+  "summary": "Units grid with filters for category, size and amenities",
+  "liquid": false,
+  "widget_popover": "",
+  "remote_javascripts": [
+    "show.js"
+  ],
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "deprecated"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "unit_ownership_id",
+      "default_value": "1766"
+    }
+  ]
+}

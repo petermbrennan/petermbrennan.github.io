@@ -1,0 +1,29 @@
+{% capture widgetId %}promoted-reviews-{{ widget.id }}{% endcapture %}
+<div id="{{widgetId}}" class="promoted-reviews widget">
+{% if widget.full_review_content.value == "true" %}
+  <script class="config" type="application/json">
+    {
+      "review_type": "full",
+      "branded_name": "{{ widget.branded_name.value }}",
+      "review_page_url": "{{ widget.review_page_url.value }}",
+      "insert_review_schema": "{{ widget.insert_review_schema.value }}",
+      "full_review_content": "{{ widget.full_review_content.value }}",
+      "widgetId": "{{widgetId}}",
+      "apiUrlId" : "{{widget.location_core_store_id.value_or_default}}"
+    }
+  </script>
+  <div class="promoted-reviews-content"></div>
+{% else %}
+  <script class="config" type="application/json">
+    {
+      "review_type": "hcard",
+      "branded_name": "{{ widget.branded_name.value }}",
+      "review_page_url": "{{ widget.review_page_url.value }}",
+      "insert_review_schema": "{{ widget.insert_review_schema.value }}",
+      "full_review_content": "{{ widget.full_review_content.value }}",
+      "widgetId": "{{widgetId}}",
+      "apiUrlId" : "{{widget.location_core_store_id.value_or_default}}"
+    }
+  </script>
+{% endif %}
+</div>

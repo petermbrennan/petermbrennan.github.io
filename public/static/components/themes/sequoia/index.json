@@ -1,0 +1,22 @@
+{
+  "theme_id": 31,
+  "name": "Sequoia",
+  "summary": "Custom theme",
+  "primary_color": "#30261d",
+  "secondary_color": "#5B9ad4",
+  "tertiary_color": "#d1d45e",
+  "primary_font": "proxima-nova",
+  "secondary_font": "proxima-nova",
+  "primary_font_variations": ["n4"],
+  "secondary_font_variations": ["n4"],
+  "is_private": true,
+  "private_clients": [
+  ],
+  "pending": false,
+  "group": "Sequoia",
+  "theme_type": "corporate",
+  "verticals": [
+    "senior-living",
+    "apartments"
+  ]
+}

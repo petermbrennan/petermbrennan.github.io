@@ -1,0 +1,1 @@
+"use strict";var selectors={primary:".form-field-pdf-source-url input:text",croppingStyleSelector:".form-field-cropping-style input:checked",hasMaxWidthMaxHeight:!1};new G5ImageEditor(selectors,function(){});

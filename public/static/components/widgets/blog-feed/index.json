@@ -1,0 +1,91 @@
+{
+  "name": "Blog Feed",
+  "widget_id": 66,
+  "widget_type": "",
+  "summary": "test",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468907-Blog-Feed-Widget' target='_blank'>Blog Feed Documentation</a>",
+  "lib_javascripts": [
+    "fort-awesome-api.js"
+  ],
+  "lib_edit_javascripts": [
+    "edit-cloudinary-mixin.js",
+    "edit-cloudinary-widget.js",
+    "edit-image-cropper.js"
+  ],
+  "lib_edit_stylesheets": [
+    "edit-cloudinary-mixin.css"
+  ],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "news_service_domain",
+      "default_value": "{{client_nae_url}}"
+    },
+    {
+      "name": "location_urn",
+      "default_value": "{{location_urn}}"
+    },
+    {
+      "name": "number_of_posts",
+      "default_value": "5"
+    },
+    {
+      "name": "heading_text",
+      "default_value": ""
+    },
+    {
+      "name": "return_to_list_text",
+      "default_value": "Return To Blog"
+    },
+    {
+      "name": "ui_type",
+      "default_value": "full-page"
+    },
+    {
+      "name": "share_buttons",
+      "default_value": "true"
+    },
+    {
+      "name": "background_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "read_more_background_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "display_photos",
+      "default_value": "true"
+    },
+    {
+      "name": "default_image",
+      "default_value": "https://widgets.g5dxm.com/blog-feed/news-widget-default-image.jpg"
+    },
+    {
+      "name": "pagination_text_color",
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "pagination_background_color",
+      "default_value": "{{theme_secondary_color}}"
+    },
+    {
+      "name": "pagination_active_background_color",
+      "default_value": "{{ theme_secondary_color | lighten: '15%'; }}"
+    },
+    {
+      "name": "design",
+      "default_value": "legacy"
+    }
+  ],
+  "aliases": [
+    "news-feed"
+  ]
+}

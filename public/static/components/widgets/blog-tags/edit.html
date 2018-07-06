@@ -1,0 +1,44 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>News Tags Settings</legend>
+    <!-- News Service Domain -->
+    {{ widget.news_service_domain | edit_url_field: "News Service Domain", "client_nae_url", "best_value", "", true }}
+
+    <!-- Location URN -->
+    {{ widget.location_urn | edit_text_field: "Location URN", "location_urn", "best_value", "", true }}
+
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    <fieldset>
+      <legend>Style Settings</legend>
+      <!-- Heading Text -->
+      {{ widget.heading_text | edit_text_field: "Heading Text", "Tags", "value_or_default" }}
+
+      <!-- Subtitle Text -->
+      {{ widget.subtitle | edit_text_field: "Subtitle Text" }}
+
+      <!-- Heading Align -->
+      {% assign alignment_options = '{"left":"left","center":"center","right":"right"}' %}
+      {{ widget.heading_alignment | edit_radio_field: "Text Alignment", alignment_options, "value_or_default" }}
+      <!-- Button Background Color - Tag Button -->
+      {{ widget.background_color | edit_color_field: "Tag Background Color", "theme_tertiary_color", "value_or_default", "", true }}
+
+      <!-- Button Background Color - Active Tag Button -->
+      {{ widget.active_background_color | edit_color_field: "Active Tag Background Color", "theme_secondary_color", "value_or_default", "", true }}
+
+      <!-- Tag Text Color -->
+      {{ widget.text_color | edit_text_field: "Tag Text Color", "#ffffff", "value_or_default" }}
+    </fieldset>
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+</form>

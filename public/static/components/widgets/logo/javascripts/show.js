@@ -1,0 +1,1 @@
+(function(){var n;n=function(){function n(n){var i;this.configs=n,i=new HomeUrl(this.configs)}return n}(),G5.loadWidgetConfigs(".logo .config",n)}).call(this);

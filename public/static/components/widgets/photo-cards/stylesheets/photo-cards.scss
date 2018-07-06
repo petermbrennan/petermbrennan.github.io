@@ -1,0 +1,311 @@
+// ---------------------------------------
+// Photo Cards Widget
+// ---------------------------------------
+%vert-center {
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+%no-transform {
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+// Common styles for all animation options
+.photo-cards {
+  a,
+  a:hover,
+  a:focus { color: inherit; }
+
+  p, h3 { margin: 0; }
+
+  a { display: block; }
+
+  .photo-cards-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .photo-card-wrapper {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    box-flex: 0;
+    -webkit-flex: 0 1 auto;
+    -moz-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    margin-bottom: 0;
+  }
+
+  .photo-card-wrapper {
+    text-align: center;
+    margin-bottom: 2em;
+    min-width: 15px;
+    max-width: 100%;
+  }
+
+  .photo-card,
+  .photo-card-front {
+    position: relative;
+  }
+
+  .photo-card { overflow: hidden; }
+
+  .photo-card-front {
+    display: inline-block;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .photo-card-title,
+  .photo-card-caption {
+    width: 100%;
+    padding: 1em;
+  }
+
+  .photo-card-title {
+    @extend %vert-center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: #fff; // CONFIG OPTION
+    z-index: 2;
+
+    h3 {
+      font-size: 21px;
+    }
+  }
+
+  // CONFIG FOR TITLE POSITION
+  // adds class to .photo-card-title
+  &.title-top .photo-card-title ,
+  &.title-bottom .photo-card-title {
+    @extend %no-transform;
+  }
+
+  &.title-top .photo-card-title { top: 0; }
+
+  &.title-bottom .photo-card-title {
+    top: auto;
+    bottom: 0;
+  }
+
+  &.title-left .photo-card-title h3 { text-align: left; }
+  &.title-center .photo-card-title h3 { text-align: center; }
+  &.title-right .photo-card-title h3 { text-align: right; }
+
+  .photo-card-caption {
+    @extend %vert-center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    &.has-image {
+      padding: 0;
+    }
+  }
+
+  .photo-card-back {
+    position: absolute;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &.has-overlay .photo-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+
+.a-overlay {
+  .photo-card { display: inline-block; }
+
+  .photo-card-title {
+    transition: opacity 500ms ease;
+  }
+
+  .photo-card-back {
+    transition: opacity 500ms ease;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .photo-card-wrapper.hover .photo-card-title,
+  .photo-card-wrapper:hover .photo-card-title {
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .photo-card-wrapper.hover .photo-card-back,
+  .photo-card-wrapper:hover .photo-card-back { opacity: 1; }
+}
+
+
+.a-flip {
+  opacity: 0;
+
+  img { width: 100%; }
+
+  .photo-card { overflow: visible; }
+
+  .photo-card-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+  }
+
+  &.photo-cards-loaded {
+    .photo-card-wrapper,
+    .photo-card {
+      -webkit-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    .photo-card-wrapper {
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      width: 100%;
+
+      &.hover .photo-card-front,
+      &:hover .photo-card-front {
+        -webkit-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+
+      &.hover .photo-card-back,
+      &:hover .photo-card-back {
+        -webkit-transform: rotateY(0deg);
+        -ms-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+      }
+    }
+
+    .photo-card {
+      transition: transform 600ms ease;
+      position: relative;
+    }
+
+    .photo-card-front,
+    .photo-card-back {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transition: transform 600ms ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .photo-card-front {
+      -webkit-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    .photo-card-back {
+      -webkit-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+    }
+  }
+}
+
+
+.a-popup {
+  .photo-card { display: inline-block; }
+
+  .photo-card-back {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    transition: transform 250ms ease;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .photo-card-title { transition: opacity 250ms ease; }
+
+  .photo-card-wrapper.hover .photo-card-title,
+  .photo-card-wrapper:hover .photo-card-title { opacity: 0; }
+
+  .photo-card-wrapper.hover .photo-card-back,
+  .photo-card-wrapper:hover .photo-card-back {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  .photo-card-caption {
+    @extend %no-transform;
+    position: relative;
+  }
+}
+
+
+.a-slidedown {
+  .photo-card { display: inline-block; }
+
+  .photo-card-front {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    transition: transform 500ms ease;
+    z-index: 2;
+  }
+
+  .photo-card-back {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .photo-card-wrapper.hover .photo-card-front,
+  .photo-card-wrapper:hover .photo-card-front {
+    -webkit-transform: translateY(90%);
+    -ms-transform: translateY(90%);
+    transform: translateY(90%);
+  }
+}

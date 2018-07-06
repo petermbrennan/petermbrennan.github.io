@@ -1,0 +1,163 @@
+// *************************************
+//
+//  Mixins
+//
+// *************************************
+
+// -------------------------------------
+//  Media Queries
+// -------------------------------------
+
+// Use these with the breakpoint variables or custom breakpoint
+@mixin at-least($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin until($query) {
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+@mixin between($min-query, $max-query) {
+  @media screen and (min-width: $min-query) and (max-width: $max-query) {
+    @content;
+  }
+}
+
+// EXAMPLE:
+// header {
+//   @include at-least($min-medium) {
+//     background: white;
+//   }
+// }
+
+
+// -------------------------------------
+//  Functions
+// -------------------------------------
+
+// Create a percent value using target/context formula
+// Target = the px value of the size you want
+// Context = the px value of the parent element
+@function percent($target, $context: $site-width) {
+  @return #{$target / $context * 100}#{"%"};
+}
+
+
+// -------------------------------------
+//  Layout
+// -------------------------------------
+
+// Set new breakpoint for grid
+// Use on the row you want this to affect
+@mixin delay-grid($breakpoint) {
+  @include until($breakpoint) {
+    .row-grid,
+    .col {
+      display: block;
+    }
+
+    .col {
+      width: 100%;
+    }
+  }
+}
+
+// Creates a table layout with equal height columns
+// Put this inside .col
+@mixin table-row {
+  @include at-least($min-small, $align: top) {
+    display: table-cell;
+    float: none;
+    vertical-align: $align;
+  }
+}
+
+
+// Centers an element horizontally and vertically
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el {
+  @include transform(translate(-50%, -50%));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+// Centers an element vertically
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el-y {
+  @include transform(translateY(-50%));
+  position: absolute;
+  top: 50%;
+}
+
+// Centers an element horizontally
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el-x {
+  @include transform(translateX(-50%));
+  position: absolute;
+  left: 50%;
+}
+
+
+// Positions element centered on bottom
+@mixin pos-bottom {
+  @include center-el-x;
+  bottom: 0;
+}
+
+// Positions element right on bottom
+@mixin pos-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+// Hero Image: Positions element right on bottom with a lil somethin hangin off the edge
+// assumes hero mixin is used
+@mixin neg-bttm-right {
+  @include at-least($min-hero) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include between($min-medium, ($site-width + $base-whitespace)) {
+    right: $base-whitespace;
+  }
+
+  @include at-least($site-width + ($double-whitespace * 2)) {
+    right: -($double-whitespace);
+    bottom: -($half-whitespace);
+  }
+}
+
+// Positions element left on bottom
+@mixin pos-bottom-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+// Hero Image: Positions element right on bottom with a lil somethin hangin off the edge
+// assumes hero mixin is used
+@mixin neg-bttm-left {
+  @include at-least($min-hero) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  @include between($min-medium, ($site-width + $base-whitespace)) {
+    left: $base-whitespace;
+  }
+
+  @include at-least($site-width + ($double-whitespace * 2)) {
+    left: -($double-whitespace);
+    bottom: -($half-whitespace);
+  }
+}
+

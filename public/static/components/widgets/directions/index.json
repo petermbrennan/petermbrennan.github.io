@@ -1,0 +1,54 @@
+{
+  "name": "Directions",
+  "widget_id": 14,
+  "widget_type": null,
+  "summary": "Step by step directions to business",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468987-Directions-Widget' target='_blank'>Directions Documentation</a>",
+  "lib_javascripts": [
+    "google-maps-api.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "location_street_address",
+      "default_value": "{{location_street_address}}"
+    },
+    {
+      "name": "location_city",
+      "default_value": "{{location_city}}"
+    },
+    {
+      "name": "location_state",
+      "default_value": "{{location_state}}"
+    },
+    {
+      "name": "location_postal_code",
+      "default_value": "{{location_postal_code}}"
+    },
+    {
+      "name": "override_api_settings",
+      "default_value": "false"
+    },
+    {
+      "name": "location_latitude",
+      "default_value": "{{location_latitude}}"
+    },
+    {
+      "name": "location_longitude",
+      "default_value": "{{location_longitude}}"
+    },
+    {
+      "name": "suppress_info_windows",
+      "default_value": "false"
+    }
+  ]
+}

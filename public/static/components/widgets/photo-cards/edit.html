@@ -1,0 +1,77 @@
+<form>
+  {{ widget | start_tab: "fa fa-cogs", "Configs", true }}
+    <fieldset>
+      <legend>Photo Settings</legend>
+
+      {{ widget.max_width | edit_integer_field: "Max Width", "667", "value_or_default", "gallery-image-max-width", 1, 100000 }}
+
+      {{ widget.max_height | edit_integer_field: "Max Height", "1000", "value_or_default", "gallery-image-max-height", 1, 100000 }}
+
+      <a href="#" data-tags="gallery" data-location-urn='{{ widget.location_urn.value }}' data-client-urn='{{ widget.client_urn.value }}' class="publish-button cloudinary-asset-btn cloudinary-bulk-asset btn confirm cloudinary-upload">Quick Image Upload <i class="fa fa-upload" aria-hidden="true"></i></a>
+
+    </fieldset>
+
+    {{ widget.photo_cards_heading | edit_text_field: "Heading" }}
+
+    {% assign photo_opts = "url,alt,title,large_caption,link,link_target" %}
+    {{ widget | edit_photo_fields: 6, photo_opts, "value", "", "photo_cards_", "photo-cards" }}
+
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-tint", "Styles" }}
+    {% assign animation_opts = '{"a-overlay":"Overlay", "a-flip":"Flip", "a-popup":"Popup", "a-slidedown":"Slide Down"}' %}
+    {{ widget.photo_cards_animation | edit_radio_field: "Hover Animation", animation_opts, "value_or_default" }}
+
+    <div class="form-field">
+      {% assign heading_alignment_opts = '{"left":"Left", "center":"Center", "right":"Right"}' %}
+      {{ widget.photo_cards_heading_alignment | edit_radio_field: "Heading Alignment", heading_alignment_opts, , "value_or_default" }}
+
+      {{ widget.photo_cards_mobile_breakpoint.id_hidden_field }}
+      <label for="{{ widget.photo_cards_mobile_breakpoint.value_field_id }}" >
+        Mobile breakpoint in px
+      </label>
+      <p class="note">Below this screen size the photo cards will switch to the mobile layout</p>
+      <input type="text"
+        id="{{ widget.photo_cards_mobile_breakpoint.value_field_id }}"
+        name="{{ widget.photo_cards_mobile_breakpoint.value_field_name }}"
+        placeholder="740px"
+        value="{{ widget.photo_cards_mobile_breakpoint.value_or_default }}"
+      />
+    </div>
+
+    {{ widget.photo_cards_spacing | edit_text_field: "Photo Card Spacing", "Example: 5px" }}
+
+    {% assign title_position_opts = '{"title-top":"Top", "title-middle":"Middle", "title-bottom":"Bottom"}' %}
+    {{ widget.photo_cards_title_position | edit_radio_field: "Title Vertical Position", title_position_opts, , "value_or_default" }}
+
+    {% assign title_alignment_opts = '{"title-left":"Left", "title-center":"Center", "title-right":"Right"}' %}
+    {{ widget.photo_cards_title_alignment | edit_radio_field: "Title Horizontal Position", title_alignment_opts, , "value_or_default" }}
+
+    {{ widget.photo_cards_title_size | edit_text_field: "Title Size", "21px" }}
+
+    {{ widget.photo_cards_title_color | edit_color_field: "Title Color", "#fff or white" }}
+
+    {{ widget.photo_cards_title_background | edit_color_field: "Title Background", "#fff or rgba(255, 255, 255, 0.5)" }}
+
+    {{ widget.photo_cards_caption_color | edit_color_field: "Caption Color", "#000 or black" }}
+
+    {{ widget.photo_cards_caption_background | edit_color_field: "Caption Background", "#fff or white" }}
+
+    {% assign caption_opacity_opts = '{"0.1":"10%", "0.25":"25%", "0.5":"50%", "0.75":"75%", "1":"100%"}' %}
+    {{ widget.photo_cards_caption_background_opacity | edit_radio_field: "Photo Caption Background Opacity", caption_opacity_opts, "value_or_default" }}
+
+    {{ widget.photo_cards_img_overlay_background | edit_color_field: "Photo Overlay Background", "#fff or white" }}
+
+    {% assign title_opacity_opts = '{"0.1":"10%", "0.25":"25%", "0.5":"50%", "0.75":"75%"}' %}
+    {{ widget.photo_cards_img_overlay_opacity | edit_radio_field: "Photo Overlay Opacity", title_opacity_opts, "value_or_default" }}
+  {{ widget | end_tab }}
+
+
+  {{ widget | start_tab: "fa fa-files-o", "Docs"}}
+    <h1>G5 Widget Document</h1>
+    <p>{{ widget.widget_documentation_link }}</p>
+  {{ widget | end_tab: true }}
+
+
+</form>

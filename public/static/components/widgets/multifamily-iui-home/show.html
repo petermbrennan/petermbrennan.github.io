@@ -1,0 +1,48 @@
+{% capture widgetId %}home-iui-{{ widget.id }}{% endcapture %}
+
+<div class="home-multifamily-iui home-multifamily-iui-v1 {{widgetId}} widget" id="{{widgetId}}">
+  <!-- This needs to be hooked up to the edit form -->
+  <script class="config" type="application/json">
+    {
+      "core_store_id": "{{ widget.core_store_id.value }}",
+      "floorplan_page_url": "{{ widget.floorplan_page_url.value }}",
+      "floorplans_service_host": "{{ widget.floorplans_service_host.value }}",
+      "widgetId": "{{widgetId}}"
+    }
+  </script>
+
+  <style>
+    {% if widget.btn_bg.value != blank %}
+      .{{widgetId}} .btn { background-color: {{widget.btn_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.view_all_btn_bg.value != blank %}
+      .{{widgetId}} .iui-view-all .btn { background-color: {{widget.view_all_btn_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.btn_hover_bg.value != blank %}
+      .{{widgetId}} .btn:hover { background-color: {{widget.btn_hover_bg.value}} !important; }
+    {% endif %}
+
+    {% if widget.btn_text_color.value != blank %}
+      .{{widgetId}} .btn { color: {{widget.btn_text_color.value}} !important; }
+    {% endif %}
+  </style>
+
+  {% if widget.mf_iui_home_heading.value != blank %}
+    <h2 class="mf-iui-home-heading" style="text-align: {{widget.mf_iui_home_heading_position.value_or_default}}">{{ widget.mf_iui_home_heading.value }}</h2>
+  {% endif %}
+
+  <div class="iui-steps">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </div>
+
+  <p class="iui-title">Select Size</p>
+
+  <div class="iui-container">
+    <p>Loading Floorplan Options</p>
+  </div>
+</div>

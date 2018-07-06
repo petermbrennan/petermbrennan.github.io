@@ -1,0 +1,5068 @@
+// ********************************************
+//
+//  StorQuest Theme
+//
+// ********************************************
+
+// ---------------------
+// Available Row Classes
+// ---------------------
+
+// ALL SITES
+// ---------------------
+
+// .phone-row
+//   - primary color background with large centered text
+
+// .align-with-heading
+//   - makes 2nd column line up under 1st column heading
+
+// .collapse-html
+//   - added automatically with javascript
+//   - makes row with only 2 html widgets stack better on mobile
+
+// .no-padding
+//   - removes top/bottom column padding
+
+// .full-width
+//   - makes single column full width of browser
+
+// .bordered-text
+//   - adds border to paragraph text in html widget
+
+// .custom-background
+//   - grungy grey dotted background
+
+// .custom-background-3
+//   - Corporate Site
+//   - White grungy background
+
+
+// LOCATION
+// ---------------------
+
+// .hero
+//   - primary color
+
+
+// CORPORATE SITE
+// ---------------------
+
+// .hero-corp
+//   - primary color
+
+// .row-separator
+//   - adds a down arrow to the bottom of the row
+
+// .gallery-row
+//   - full width gallery with button
+
+
+// @@@ BOILERPLATE
+// ********************************************
+//
+//  Boilerplate Setup
+//
+// ********************************************
+
+// ============================================
+//  Collection of mixins, variables, and extends
+// ============================================
+
+// *** denotes useful for widget and web builders
+
+// Mixins
+// bourbon.io
+@import 'boilerplate/setup/bourbon/bourbon.scss';
+
+// Custom color and font variables
+
+// Icon font ***
+// *****************************************************
+//
+//  Icons
+//
+// *****************************************************
+
+// =====================================================
+//  Font icon system
+//  Go here for list of icons:
+//  http://g5-theme-garden.herokuapp.com/static/g5-icons
+// =====================================================
+
+@font-face {
+  font-family: 'g5-icomoon';
+  src:url('https://themes.g5dxm.com/shared/fonts/g5-icomoon.eot?o6u9vb');
+  src:url('https://themes.g5dxm.com/shared/fonts/g5-icomoon.eot?#iefixo6u9vb') format('embedded-opentype'),
+    url('https://themes.g5dxm.com/shared/fonts/g5-icomoon.woff?o6u9vb') format('woff'),
+    url('https://themes.g5dxm.com/shared/fonts/g5-icomoon.ttf?o6u9vb') format('truetype'),
+    url('https://themes.g5dxm.com/shared/fonts/g5-icomoon.svg?o6u9vb#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Extend %icon and the icon class
+//
+// EXAMPLE:
+// @extend %icon;
+// @extend .icn-home;
+
+%icon:before,
+[class^="icn-"],
+[class*=" icn-"] {
+  font-family: 'g5-icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon {
+  font-family: 'g5-icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icn-handicap:before {
+  content: "\e60b";
+}
+
+.icn-housing:before {
+  content: "\e60c";
+}
+
+.icn-facebook:before {
+  content: "\e600";
+}
+
+.icn-foursquare:before {
+  content: "\e601";
+}
+
+.icn-google-plus:before {
+  content: "\e602";
+}
+
+.icn-instagram:before {
+  content: "\e603";
+}
+
+.icn-linked-in:before {
+  content: "\e604";
+}
+
+.icn-pinterest:before {
+  content: "\e605";
+}
+
+.icn-tumblr:before {
+  content: "\e606";
+}
+
+.icn-twitter:before {
+  content: "\e607";
+}
+
+.icn-vimeo:before {
+  content: "\e608";
+}
+
+.icn-yelp:before {
+  content: "\e609";
+}
+
+.icn-youtube:before {
+  content: "\e60a";
+}
+
+.icn-search:before {
+  content: "\f002";
+}
+
+.icn-envelope-o:before {
+  content: "\f003";
+}
+
+.icn-check:before {
+  content: "\f00c";
+}
+
+.icn-close:before {
+  content: "\f00d";
+}
+
+.icn-cog:before {
+  content: "\f013";
+}
+
+.icn-home:before {
+  content: "\f015";
+}
+
+.icn-play-circle-o:before {
+  content: "\f01d";
+}
+
+.icn-camera:before {
+  content: "\f030";
+}
+
+.icn-chevron-left:before {
+  content: "\f053";
+}
+
+.icn-chevron-right:before {
+  content: "\f054";
+}
+
+.icn-question-circle:before {
+  content: "\f059";
+}
+
+.icn-info-circle:before {
+  content: "\f05a";
+}
+
+.icn-calendar:before {
+  content: "\f073";
+}
+
+.icn-comment:before {
+  content: "\f075";
+}
+
+.icn-envelope:before {
+  content: "\f0e0";
+}
+
+.icn-angle-left:before {
+  content: "\f104";
+}
+
+.icn-angle-right:before {
+  content: "\f105";
+}
+
+.icn-angle-up:before {
+  content: "\f106";
+}
+
+.icn-angle-down:before {
+  content: "\f107";
+}
+
+.icn-quote-left:before {
+  content: "\f10d";
+}
+
+.icn-quote-right:before {
+  content: "\f10e";
+}
+
+.icn-dollar:before {
+  content: "\f155";
+}
+
+.icn-youtube-play:before {
+  content: "\f16a";
+}
+
+.icn-long-arrow-down:before {
+  content: "\f175";
+}
+
+.icn-long-arrow-up:before {
+  content: "\f176";
+}
+
+.icn-long-arrow-left:before {
+  content: "\f177";
+}
+
+.icn-long-arrow-right:before {
+  content: "\f178";
+}
+
+.icn-phone:before {
+  content: "\e942";
+}
+
+.icn-location:before {
+  content: "\e947";
+}
+
+.icn-location2:before {
+  content: "\e948";
+}
+
+.icn-spinner:before {
+  content: "\e97a";
+}
+
+.icn-spinner2:before {
+  content: "\e97b";
+}
+
+.icn-spinner3:before {
+  content: "\e97c";
+}
+
+.icn-envelope2:before {
+  content: "\e60d";
+}
+
+.icn-comment2:before {
+  content: "\f02b";
+}
+
+
+// Theme variables. These can be overridden in your theme
+// *******************************************************
+//
+//  Variables
+//
+// *******************************************************
+
+// =======================================================
+//  Theme variables. These can be overridden in your theme
+// =======================================================
+
+// -------------------------------------
+//  Colors
+// -------------------------------------
+
+// Base Colors
+$white: #fff;
+$black: #000;
+$grey: #aeaeac;
+
+// Custom Colors
+$primary-light: lighten($primaryColor, 10%);
+$primary-dark: darken($primaryColor, 10%);
+$secondary-light: lighten($secondaryColor, 10%);
+$secondary-dark: darken($secondaryColor, 10%);
+$tertiary-light: lighten($tertiaryColor, 10%);
+$tertiary-dark: darken($tertiaryColor, 10%);
+
+// Text Colors
+$base-color: #444;
+$base-link-color: $secondaryColor;
+$base-hover-color: $secondary-light;
+
+// Background Colors
+$base-background: $white;
+
+
+// -------------------------------------
+//  Typography
+// -------------------------------------
+
+// Typography
+// Use base font family for body text
+$base-font-family: $helvetica;
+
+// Use a fallback with the custom fonts
+$primary-font: $primaryFont, $base-font-family;
+$secondary-font: $secondaryFont, $georgia;
+
+$base-font-weight: 400;
+$bold-font-weight: 700;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+
+
+// -------------------------------------
+//  Layout
+// -------------------------------------
+
+// Whitespace
+$base-whitespace: 30px;
+$half-whitespace: $base-whitespace / 2;
+$double-whitespace: $base-whitespace * 2;
+
+// Site width
+$site-width: 1170px;
+
+
+// -------------------------------------
+//  Breakpoints
+// -------------------------------------
+
+// Use breakpoints that work for the design
+
+// Used to make hero image position absolute
+$max-hero: 699px;
+$min-hero: 700px;
+
+// Used for mobile and normal nav
+$max-nav: 989px;
+$min-nav: 990px;
+
+$max-xsmall: 479px;
+$min-xsmall: 480px;
+$max-small: 699px;
+$min-small: 700px;
+$max-medium: 989px;
+$min-medium: 990px;
+$max-large: 1169px;
+$min-large: 1170px;
+$max-xlarge: 1599px;
+$min-xlarge: 1600px;
+
+// Additional mixins
+// *************************************
+//
+//  Mixins
+//
+// *************************************
+
+// -------------------------------------
+//  Media Queries
+// -------------------------------------
+
+// Use these with the breakpoint variables or custom breakpoint
+@mixin at-least($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin until($query) {
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+@mixin between($min-query, $max-query) {
+  @media screen and (min-width: $min-query) and (max-width: $max-query) {
+    @content;
+  }
+}
+
+// EXAMPLE:
+// header {
+//   @include at-least($min-medium) {
+//     background: white;
+//   }
+// }
+
+// -------------------------------------
+//   404 Styles
+// -------------------------------------
+
+@import 'boilerplate/defaults/404.scss';
+
+@include at-least($min-medium) {
+  .not-found-404 {
+    .row {
+      padding-top: 150px;
+    }
+  }
+}
+
+// -------------------------------------
+//  Functions
+// -------------------------------------
+
+// Create a percent value using target/context formula
+// Target = the px value of the size you want
+// Context = the px value of the parent element
+@function percent($target, $context: $site-width) {
+  @return #{$target / $context * 100}#{"%"};
+}
+
+
+// -------------------------------------
+//  Layout
+// -------------------------------------
+
+// Set new breakpoint for grid
+// Use on the row you want this to affect
+@mixin delay-grid($breakpoint) {
+  @include until($breakpoint) {
+    .row-grid,
+    .col {
+      display: block;
+    }
+
+    .col {
+      width: 100%;
+    }
+  }
+}
+
+// Creates a table layout with equal height columns
+// Put this inside .col
+@mixin table-row {
+  @include at-least($min-small) {
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+    // to center content
+    // vertical-align: middle;
+  }
+}
+
+// Centers an element horizontally and vertically
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el {
+  @include transform(translate(-50%, -50%));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+// Centers an element vertically
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el-y {
+  @include transform(translateY(-50%));
+  position: absolute;
+  top: 50%;
+}
+
+// Centers an element horizontally
+// PARENT MUST HAVE POSITION: RELATIVE
+@mixin center-el-x {
+  @include transform(translateX(-50%));
+  position: absolute;
+  left: 50%;
+}
+
+
+
+// SASS extends and classes for common styles ***
+// *************************************
+//
+//  Helpers
+//
+// *************************************
+
+// =======================================
+//  Classes and extends for common styles
+// =======================================
+
+// =====================================
+//  http://sass-lang.com/guide#topic-7
+//
+//  HOW TO USE:
+//  @extend %name-of-extend;
+//
+//  Do not extend within a media query
+// =====================================
+
+// -------------------------------------
+//  Hiding elements
+// -------------------------------------
+
+.clearfix, %clearfix {
+  @include clearfix;
+}
+
+.hidden, %hidden {
+  display: none !important;
+}
+
+// For hiding but keeping available for screen readers
+.visually-hidden, %visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+// For replacing text with an image
+.image-replace, %image-replace {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+%no-selection { @include user-select(none); }
+
+%overflow { overflow: hidden; }
+
+
+// -------------------------------------
+//  Positioning
+// -------------------------------------
+
+%relative { position: relative; }
+
+%absolute { position: absolute; }
+
+%block { display: block; }
+
+%inline { display: inline-block; }
+
+.center, %center { margin: 0 auto; }
+
+.float-none, %float-none { float: none; }
+
+.clear-right, %clear-right { clear: right; }
+
+.clear-left, %clear-left { clear: left; }
+
+.clear-both, %clear-both { clear: both; }
+
+.clear-none, %clear-none { clear: none; }
+
+
+// -------------------------------------
+//  Typography
+// -------------------------------------
+
+%text-shout { text-transform: uppercase; }
+
+%text-whisper { text-transform: lowercase; }
+
+.text-center, %text-center { text-align: center; }
+
+.text-left, %text-left { text-align: left; }
+
+.text-right, %text-right { text-align: right; }
+
+.float-left, %float-left { float: left; }
+
+.float-right, %float-right { float: right; }
+
+
+// -------------------------------------
+//  Behavior
+// -------------------------------------
+
+%no-transition { @include transition(none); }
+
+%transition { @include transition(0.2s all ease); }
+
+%hover { background-color: $secondary-light; }
+
+%focus { background-color: $secondary-light; }
+
+
+// -------------------------------------
+//  Colors and Fonts
+// -------------------------------------
+
+%primary-color, .primary-color {
+  color: $primaryColor;
+}
+
+%primary-bg, .primary-bg {
+  background-color: $primaryColor;
+}
+
+%secondary-color, .secondary-color {
+  color: $secondaryColor;
+}
+
+%secondary-bg, .secondary-bg {
+  background-color: $secondaryColor;
+}
+
+%tertiary-color, .tertiary-color {
+  color: $tertiaryColor;
+}
+
+%tertiary-bg, .tertiary-bg {
+  background-color: $tertiaryColor;
+}
+
+%primary-font, .primary-font {
+  font-family: $primaryFont;
+}
+
+%secondary-font, .secondary-font {
+  font-family: $secondaryFont;
+}
+
+
+// -------------------------------------
+//  Spacing
+// -------------------------------------
+
+.no-padding, %no-padding {
+  padding: 0;
+}
+
+.no-vertical-padding, %no-vertical-padding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.no-horizontal-padding, %no-horizontal-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.no-margin, %no-margin {
+  margin: 0;
+}
+
+.no-vertical-margin, %no-vertical-margin {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.no-horizontal-margin, %no-horizontal-margin {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.less-padding .col {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+
+// Mixins for various button styles
+// *************************************
+//
+//  Buttons
+//
+// *************************************
+
+// Standard buttons with white text on 2nd custom color
+@mixin btn-standard {
+  @include transition(background-color 0.2s ease);
+  background-color: transparent;
+  border: none;
+  color: $white;
+  font-family: $primary-font;
+  font-size: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  outline: none;
+  padding: .5em 1em;
+
+  &:focus,
+  &:hover {
+    background-color: $secondary-light;
+    color: $white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+// Adds right arrow icon to button
+@mixin btn-arrow {
+  @extend %icon;
+  @extend .icn-angle-right;
+  padding-right: 2em;
+  position: relative;
+
+  &:before {
+    font-size: 1.5em;
+    position: absolute;
+    right: $half-whitespace;
+    top: .3em;
+  }
+}
+
+
+
+
+// +++ THEME
+// Boilerplate variable overrides
+// ------------------------------
+
+$grey: #3c3d3e;
+$light-grey: #bebebe;
+$storquest-grey: #63656A;
+$black-transparent: rgba($black, 0.75);
+
+$base-color: #fff;
+$base-link-color: $primaryColor;
+$base-hover-color: $primary-light;
+
+$base-background: $secondaryColor;
+
+// Changes default footer color
+@if $footerColor == $primaryColor {
+  $footerColor: #232323;
+}
+
+$base-font-family: $primary-font;
+$light-font-weight: 300;
+$base-font-weight: 500;
+$semi-bold-font-weight: 700;
+$bold-font-weight: 900;
+
+$site-width: em(980);
+
+$max-xsmall: em(489);
+$min-xsmall: em(490);
+$max-small: em(624);
+$min-small: em(625);
+$max-medium: em(909);
+$min-medium: em(910);
+$max-large: $site-width;
+$min-large: $site-width;
+$max-xlarge: em(1599);
+$min-xlarge: em(1600);
+
+$max-hero: $max-small;
+$min-hero: $min-small;
+
+$max-nav: em(979);
+$min-nav: em(980);
+
+$stripes: 'https://themes.g5dxm.com/storquest/stripes.png';
+$stripes-red: 'https://themes.g5dxm.com/storquest/stripes-red.png';
+$dollar: 'https://themes.g5dxm.com/storquest/dollar.png';
+$corp-hero-border: 'https://themes.g5dxm.com/storquest/corp-hero-border.png';
+$custom-bg-image: 'https://themes.g5dxm.com/storquest/custom-background.png';
+
+$custom-bg-color: #63656a;
+$custom-bg-3-image: 'https://themes.g5dxm.com/storquest/custom-background-3.jpg';
+
+$fa-var-comment-2: "\f0b1";
+$fa-var-angle-up-bts: "\f0cf";
+$fa-var-angle-down-bts: "\f0d0";
+$fa-var-angle-right-bts: "\f0cc";
+$fa-var-angle-left-bts: "\f0d1";
+
+// @@@ BOILERPLATE
+// *************************************
+//
+//  Grid
+//
+// *************************************
+
+// =====================================
+//  Simple 12 column grid system
+// =====================================
+
+// Sets grid row styles
+// Use on container of columns
+@mixin grid-row {
+  @include clearfix;
+  clear: both;
+  margin-left: -$half-whitespace;
+  margin-right: -$half-whitespace;
+  overflow: hidden;
+}
+
+// Use on row to create flexbox layout
+// http://css-tricks.com/snippets/css/a-guide-to-flexbox
+@mixin grid-row-flex {
+  @include display(flex);
+  @include flex-wrap(wrap);
+}
+
+// Use on row to create table layout
+@mixin grid-table-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+// Use on columns within table row
+@mixin grid-table-col {
+  display: table-cell;
+}
+
+// Sets grid column defaults
+@mixin grid-col-defaults {
+  float: left;
+  padding-left: $half-whitespace;
+  padding-right: $half-whitespace;
+}
+
+// When you want inline elements not floated
+@mixin grid-col-inline {
+  float: none;
+  display: inline-block;
+  margin-left: -4px; // Takes care of extra space added to inline elements
+  padding-left: $half-whitespace - 4;
+}
+
+// Sets grid column size; based on 12 columns
+@mixin grid-col($n: 1) {
+  width: #{$n/12*100}#{"%"};
+}
+
+// sets column offset size; based on 12 columns
+@mixin grid-offset($n: 1) {
+  margin-left: #{$n/12*100}#{"%"};
+}
+
+// 12 Column Grid.
+// col-# indicates number of columns
+@mixin grid-col-1 {
+  width: 8.3333333%;
+}
+
+// Sixths
+@mixin grid-col-2 {
+  width: 16.66666667%;
+}
+
+// Exception to col-# rule
+// Fifths
+@mixin grid-col-fifth {
+  width: 20%;
+}
+
+// Quarters
+@mixin grid-col-3 {
+  width: 25%;
+}
+
+// Thirds
+@mixin grid-col-4 {
+  width: 33.33333333%;
+}
+
+// Halves
+@mixin grid-col-6 {
+  width: 50%;
+}
+
+// Two thirds
+@mixin grid-col-8 {
+  width: 66.66666667%;
+}
+
+// Full width
+@mixin grid-col-12 {
+  width: 100%;
+}
+
+@mixin grid-offset-1 {
+  margin-left: 8.3333333%;
+}
+
+@mixin grid-offset-2 {
+  margin-left: 16.66666667%;
+}
+
+@mixin grid-offset-fifth {
+  margin-left: 20%;
+}
+
+@mixin grid-offset-3 {
+  margin-left: 25%;
+}
+
+@mixin grid-offset-4 {
+  margin-left: 33.33333333%;
+}
+
+@mixin grid-offset-6 {
+  margin-left: 50%;
+}
+
+@mixin grid-offset-8 {
+  margin-left: 66.66666667%;
+}
+
+
+@import 'boilerplate/defaults/normalize';
+
+
+// *************************************
+//
+//  Base
+//
+// *************************************
+
+// =====================================
+//  General top level styles
+// =====================================
+
+// Set on all elements
+// Width now equals width
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: $base-font-size;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: $base-background;
+  color: $base-color;
+  font-family: $base-font-family;
+  font-size: 100%;
+  line-height: $base-line-height;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+}
+
+hr { border: 1px solid #e1261c; }
+
+
+// -------------------------------------
+// Images
+// -------------------------------------
+
+// Needed for responsive images
+video,
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+
+// -------------------------------------
+// Headings
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+
+// -------------------------------------
+//  Text
+// -------------------------------------
+
+strong {
+  font-weight: $bold-font-weight;
+}
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+// -------------------------------------
+//  Links
+// -------------------------------------
+
+a {
+  @include transition(color 0.2s ease, background-color 0.2s ease);
+  color: $base-link-color;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $base-hover-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.html a:not(.appended-phone) {
+  color: $base-link-color !important;
+  font-weight: bold;
+}
+
+.phone-row a { color: #fff; }
+
+
+
+// -------------------------------------
+//  Lists
+// -------------------------------------
+
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Use default list styles
+.html {
+  ul, ol {
+    padding-left: $base-whitespace;
+    margin-bottom: 1em;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  li {
+    display: list-item;
+  }
+}
+
+
+// This is the DXM logo in the footer
+.dxm {
+  @extend %inline;
+  background: url(https://themes.g5dxm.com/shared/dxm.png) no-repeat;
+  height: 23px;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 100px;
+}
+
+
+// *************************************
+//
+//  Forms
+//
+// *************************************
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+label {
+  display: block;
+}
+
+legend,
+label {
+  margin-bottom: .5em;
+}
+
+// Needed for inline groups of radio/checkbox and lables
+label {
+  margin-right: $half-whitespace;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  @extend %inline;
+  width: auto;
+}
+
+textarea,
+#{$all-text-inputs} {
+  border: 1px solid #aaa;
+  font-family: $base-font-family;
+  font-size: 1em;
+  padding: .75em;
+  width: 100%;
+}
+
+textarea {
+  height: 10em;
+  resize: vertical;
+}
+
+input[type=submit] {
+  font-weight: $bold-font-weight;
+  padding: .5em 2em;
+}
+
+// Wrapper of label/input group
+.form-field {
+  margin-bottom: .75em;
+}
+
+// Placed on form label
+.required:after {
+  content: '*';
+  color: red;
+  margin-left: .25em;
+}
+
+// for end of form with required fields
+.form-instruction {
+  @extend %inline;
+  color: red;
+  font-style: italic;
+  margin: .5em 0 0 25px;
+}
+
+
+// *************************************
+//
+//  Layout
+//
+// *************************************
+
+// =====================================
+//  Basic site layout
+// =====================================
+
+// Rows come from the Content Stripe widget
+// .row is used for setting full width backgrounds
+.row,
+.row-grid {
+  @extend %clearfix;
+}
+
+// .row-grid sets the width of the content to site-width
+.row-grid {
+  @include grid-row;
+
+  @include at-least($min-small) {
+    @include display(flex);
+
+    .vert-align & {
+      @include align-items(center);
+    }
+  }
+}
+
+.col {
+  @include grid-col-defaults;
+  @include grid-col-12;
+
+  // Stack columns on small screens
+  //
+  // TODO:
+  // Remove this when content-stripe widget css
+  // is removed from the widget
+  @include until($max-small) {
+    width: 100% !important;
+  }
+
+  // Columns are 100% until this breakpoint
+  @include at-least($min-small) {
+    .row-halves & {
+      @include grid-col-6;
+    }
+
+    .row-thirds &,
+    .row-uneven-thirds-1 &.col-1,
+    .row-uneven-thirds-2 &.col-2 {
+      @include grid-col-4;
+    }
+
+    .row-uneven-thirds-1 &.col-2,
+    .row-uneven-thirds-2 &.col-1 {
+      @include grid-col-8;
+    }
+
+    .row-quarters & {
+      @include grid-col-3;
+    }
+  }
+}
+
+// Container
+// Sets the site width and centers it
+.content {
+  @extend %clearfix;
+  @extend %center;
+  @extend %relative;
+  @include box-sizing(content-box);
+  max-width: $site-width;
+  padding: 0 $half-whitespace;
+}
+
+
+// *************************************
+//
+//  Mobile Navigation
+//
+// *************************************
+
+// This controls the showing/hiding of mobile navigation
+.collapsable-content {
+  clear:both;
+
+  &, &.collapse {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &.collapse {
+    @include transition(height 0.35s ease);
+  }
+
+  &.collapse.in {
+    height: auto;
+  }
+
+  @include at-least($min-nav) {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+// Button to show/hide navigation
+.collapsable-btn {
+  @extend %float-right;
+  background-color: transparent;
+  color: $base-color;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+    color: $base-color;
+  }
+
+  .text,
+  .bars {
+    @extend %inline;
+    vertical-align: middle;
+  }
+
+  .text {
+    @extend %text-shout;
+    margin-right: .5em;
+  }
+
+  .bars {
+    span {
+      @extend %block;
+      @include backface-visibility(hidden);
+      @include transition-property(transform);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease);
+      border-bottom: 4px solid $base-color;
+      margin: 4px 0;
+      width: $base-whitespace;
+    }
+  }
+
+  &.on .bars span {
+    &:nth-child(2) {
+      border-color: transparent;
+    }
+
+    &:first-child {
+      @include transform(rotate(45deg) translate(5px, 5px));
+    }
+
+    &:last-child {
+      @include transform(rotate(-45deg) translate(6px, -7px));
+    }
+  }
+
+  @include at-least($min-nav) {
+    display: none !important;
+  }
+}
+
+
+// *************************************
+//
+//  Content Stripe Overrides
+//
+// *************************************
+
+// Client has the option to change content stripe background to anything
+// If the default text color doesn't work with the new background
+// these classes on .content-stripe can be used to change text color
+// This is an option in the widget settings
+.text-light {
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend, span,
+  .mini-blog-feed,
+  .blog-feed {
+    color: $white !important;
+  }
+
+  a {
+    color: rgba($base-color, .8);
+
+    &:hover {
+      color: rgba($white, .6) !important;
+    }
+  }
+}
+
+.text-dark {
+  h1, h2, h3,
+  h4, h5, h6,
+  p, li, label,
+  blockquote,
+  legend, span,
+  .mini-blog-feed,
+  .blog-feed {
+    color: #000 !important;
+  }
+
+  .mini-blog-feed .post-details {
+    border-bottom-color: #000;
+  }
+
+  .mini-blog-feed .news-item-link {
+    background-color: $primaryColor;
+    color: $white;
+
+    &:hover {
+      background-color: $primary-light;
+      color: $white !important;
+    }
+  }
+
+  .mini-blog-feed .all-news-link {
+    background-color: $secondaryColor;
+    color: $white !important;
+  }
+
+  .contact-info a {
+    color: $black !important;
+
+    &:hover {
+      color: rgba(#000, .5) !important;
+    }
+  }
+
+  .ratings-summary-outer {
+    border-color: $black;
+  }
+
+  .social-links .icon {
+    background-color: $grey;
+  }
+}
+
+
+
+// *************************************
+//
+//  Standard Calls to Action
+//
+// *************************************
+
+.action-calls {
+  a {
+    background-color: $tertiaryColor;
+    color: $white;
+    font-size: em(21);
+    display: block;
+    padding: .5em $base-whitespace .4em $half-whitespace;
+    position: relative;
+
+    &:focus,
+    &:hover {
+      background-color: $tertiary-light;
+    }
+  }
+
+  li {
+    margin-top: .5em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    @include at-least($min-medium) {
+      margin-top: 1em;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Standard Contact Info
+//
+// *************************************
+
+.contact-info {
+  @extend %clearfix;
+}
+
+// Styling within main to leave footer styles alone
+[role=main] .contact-info {
+  a {
+    color: $base-color;
+  }
+
+  .p-name {
+    border-bottom: 1px solid $base-color;
+    font-family: $secondary-font;
+    font-size: em(18);
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+  }
+
+  .adr-ret,
+  .p-tel,
+  .tel,
+  .adr,
+  .email,
+  .chat {
+    @extend %icon;
+
+    &:before {
+      @extend %inline;
+      margin-right: .5em;
+      padding-left: 1px;
+      vertical-align: middle;
+    }
+  }
+
+  .p-tel, .tel { @extend .icn-phone; }
+  .email { @extend .icn-envelope; }
+  .chat { @extend .icn-comment; }
+  .adr-ret, .adr {
+    @extend .icn-location;
+
+    a {
+      @extend %inline;
+      vertical-align: middle;
+    }
+  }
+}
+
+// leave this name
+.horizontal-h-card {
+  .col {
+    padding-top: 1em;
+    padding-bottom: 0em;
+  }
+
+  .button { margin-top: -1em; }
+
+  .contact-info {
+    text-align: center;
+
+    .p-street-address { display: inline; }
+    .ratings-summary-outer,
+    .g5-chat { display: none; }
+
+    @include at-least(1180px) {
+      h4, p {
+        display: inline-block;
+        padding-left: 1em;
+        padding-right: 1em;
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+
+
+// *************************************
+//
+//  Standard Contact Info Sheet
+//
+// *************************************
+
+.contact-info-sheet {
+  font-family: $primary-font;
+  z-index: 999;
+
+  textarea,
+  #{$all-text-inputs} {
+    padding: 0.5em;
+  }
+
+  textarea {
+    height: 4em;
+  }
+}
+
+
+// *************************************
+//
+//  Standard Footer Info
+//
+// *************************************
+
+.footer-info {
+  .social-links a {
+    @extend %float-none;
+    margin: 0 0 0 (em(11));
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  // Once widgets can use icon-font, update this css
+  .access {
+    @extend %icon;
+    background: transparent;
+
+    &:before {
+      @extend %block;
+      @extend %relative;
+      font-size: 21px;
+    }
+  }
+
+  .handicap-icon {
+    @extend .icn-handicap;
+    width: 21px;
+
+    &:before {
+      left: -21px
+    }
+  }
+
+  .housing-icon {
+    @extend .icn-housing;
+    width: 32px;
+
+    &:before {
+      left: -32px;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Standard Galleries
+//
+// *************************************
+
+.gallery h2 {
+  @extend %text-center;
+}
+
+// Normal default gallery or carousel
+.full-gallery {
+  .flex-control-nav {
+    padding-top: 1em;
+  }
+
+  .flex-control-thumbs {
+    margin-left: -5px;
+    margin-right: -5px;
+    width: auto;
+
+    li {
+      float: none;
+      padding: 0 5px 10px;
+    }
+  }
+
+  .flex-caption {
+    @extend %text-center;
+    color: $black;
+    padding: 1em $half-whitespace;
+    width: 100%;
+  }
+
+  .slides li {
+    @extend %relative;
+  }
+}
+
+// Gallery with large photo on left, captions/thumbs on right
+.mini-gallery {
+  .flex-direction-nav {
+    a {
+      background-size: auto;
+    }
+  }
+
+  .flex-prev {
+    background-position: -12px center;
+  }
+
+  .flex-next {
+    background-position: -64px center;
+  }
+
+  // This breakpoint is in the widget css
+  @include until(909px) {
+    .flex-title,
+    .flex-caption {
+      margin: .5em 15px 1em;
+    }
+  }
+
+  @include until($max-small) {
+
+    .flex-control-thumbs {
+      display: none;
+    }
+  }
+
+  @include at-least(910px) {
+    .flex-title,
+    .flex-caption {
+      padding: 0 15px;
+    }
+
+    .flex-prev {
+      background-position: left center;
+    }
+
+    .flex-next {
+      background-position: right center;
+    }
+
+    .flex-control-thumbs {
+      margin: 0;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Standard Social Feed
+//
+// *************************************
+
+.social-feed {
+  background-color: $white;
+  border: 1px solid $grey;
+  color: $base-color;
+  font-family: $primary-font;
+  font-size: em(14);
+  line-height: 1.25;
+
+  .feed-switcher {
+    @include display(flex);
+    border-bottom: 1px solid $grey;
+  }
+
+  .feed-switch {
+    background-color: $white;
+    border-right-color: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    margin-top: -1px;
+    top: 1px;
+
+    svg {
+      opacity: 0.5;
+    }
+
+    &.active {
+      bottom: auto;
+      border-bottom-color: $white;
+
+      svg {
+        opacity: 1;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  li a {
+    color: $black;
+  }
+
+  .p-summary,
+  .tweet-name,
+  .tweet-text {
+    font-style: italic;
+  }
+
+  .p-name,
+  .tweet-name {
+    font-weight: $bold-font-weight;
+  }
+
+  .btn {
+    width: 50%;
+  }
+}
+
+
+// *************************************
+//
+//  Standard Social Links
+//
+// *************************************
+
+.social-links {
+  @extend %clearfix;
+
+  a {
+    @extend %float-left;
+    margin: 0 $half-whitespace $half-whitespace 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .icon {
+    @include transition(background-color .2s ease);
+    background-color: $base-link-color;
+    // Add border radius to create circle icons
+    // border-radius: 50%;
+    height: 35px;
+    width: 35px;
+
+    &:hover {
+      background-color: $base-hover-color;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Home Multifamily IUI
+//
+// *************************************
+
+
+// Taken from the Berkshire Urban theme
+
+.home-multifamily-iui {
+  @extend %clearfix;
+  padding: 0;
+
+  .iui-steps {
+    @extend %hidden;
+  }
+
+  .iui-title {
+    @extend %text-center;
+    font-family: $primary-font;
+    font-size: em(21);
+    margin-bottom: .5em;
+  }
+
+  .iui-size {
+    @extend %block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
+  .btn {
+    @extend %relative;
+    @extend %block;
+    background-color: rgba($black, .2);
+    color: $base-color;
+    font-size: em(18);
+    margin: em(5) em(5) .5em;
+    padding: .5em 1em;
+  }
+
+  .iui-view-all .btn {
+    @extend %block;
+    background-color: $primaryColor;
+    color: $white;
+  }
+
+  .btn {
+    &:focus,
+    &:hover {
+      background-color: $secondaryColor;
+
+      &,
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  // Adds line between # and text
+  .btn-beds {
+    strong {
+      @extend %absolute;
+      border-right: 1px solid $base-color;
+      font-size: em(32, 18);
+      line-height: 1;
+      left: 0;
+      top: 0;
+      height: 100%;
+      padding: .2em .25em;
+      width: 1.25em;
+    }
+
+    &:hover {
+      strong {
+        border-right-color: $base-hover-color;
+      }
+    }
+  }
+
+  @include at-least($min-hero) {
+    .iui-container {
+      display: table;
+      width: 100%;
+    }
+
+    .iui-size {
+      display: table-cell;
+    }
+
+    .iui-view-all .btn {
+      margin-right: 0;
+    }
+  }
+
+  @include at-least($min-hero) {
+    .iui-title {
+      text-align: left;
+    }
+
+    // Overrides widget css widths for old design
+    .iui-size:nth-child(3):last-child,
+    .iui-size:nth-child(5) {
+      width: auto;
+    }
+
+    .btn {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: .5em;
+    }
+
+    .btn-beds {
+      padding: .5em .5em .5em 2.5em;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-container {
+      width: 100%;
+    }
+
+    .btn {
+      font-size: em(24);
+    }
+  }
+
+  @include at-least($min-large) {
+    .iui-title,
+    .iui-container {
+      float: left;
+    }
+
+    .iui-title {
+      margin-bottom: 0;
+      width: 20%;
+    }
+
+    .iui-container {
+      width: 80%;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Standard Multifamily IUI Cards
+//
+// *************************************
+
+// Lots of widget overrides for better mobile styles
+
+.multifamily-iui-cards {
+  padding: 0;
+
+  // Step 1
+  .iui-cards-unit-categories {
+    @include until($max-medium) {
+      $iui-card: 175px;
+      $iui-card-inner: $iui-card - 20px;
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: 10px;
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: 5px;
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span {
+          font-weight: $bold-font-weight;
+        }
+
+        span:nth-of-type(1) {
+          font-size: 2em;
+          line-height: 1;
+          padding-top: .75em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.5em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.5em;
+          padding-top: 2em;
+        }
+      }
+    }
+
+    @include until(730px) {
+      $iui-card: 130px;
+      $iui-card-inner: $iui-card - 10px;
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: 5px;
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: 5px;
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span {
+          font-weight: $bold-font-weight;
+        }
+
+        span:nth-of-type(1) {
+          font-size: 1.5em;
+          line-height: 1;
+          padding-top: .5em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.125em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.125em;
+          padding-top: 1.5em;
+        }
+      }
+    }
+  }
+
+  // Step 2
+  .floorplan-card-cta {
+    background-color: $primaryColor;
+
+    &:hover {
+      background-color: $primary-light;
+    }
+  }
+
+  // Step 3
+  // need tons of classes for specificity :(
+  .iui-cards-wrapper .iui-cards-step .iui-cards-floorplan-details {
+    .iui-cards-unit-card {
+      width: 200px;
+    }
+
+    @include until(800px) {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+
+      .iui-cards-unit-card {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Full Width Stripe Layout
+//
+// *************************************
+
+.row {
+  padding: 2em 0;
+
+  .widget {
+    margin-bottom: 2em;
+  }
+
+  // No bottom margin for last widget in column
+  .col > .widget,
+  .column [class*=row-]:last-child .widget {
+    @include at-least($min-medium) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// *************************************
+//
+//  Standard Storage Size Guide
+//
+// *************************************
+
+.storage-size-guide {
+  .resp-tabs-list li {
+    padding: 13px 2%;
+    font-size: 20px;
+  }
+  .resp-tab-active {
+    padding: 12px 25px 14px 25px !important;
+  }
+}
+
+
+// *************************************
+//
+//  Footer
+//
+// *************************************
+
+// =====================================
+//  Standard version. Address left,
+//  everything else right
+// =====================================
+
+[role=contentinfo] {
+  @extend %clearfix;
+  font-size: em(14);
+  padding: 2em 0;
+
+  .widget {
+    margin-bottom: 2em;
+  }
+
+  &,
+  a {
+    color: $base-color;
+  }
+
+  .contact-info {
+    .p-name,
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  @include at-least($min-small) {
+    .contact-info {
+      float: left;
+    }
+  }
+}
+
+// This widget contains social icons,
+// links, copyright, logo, housing icons
+.footer-info {
+  @include until($max-small) {
+    float: none;
+    text-align: left;
+  }
+
+  .nav a {
+    padding: .5em 0;
+  }
+}
+
+
+
+// +++ THEME
+// Mixins and Extends
+// ------------------
+
+@mixin transition-transform {
+  @include transition-property(transform);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease);
+}
+
+@mixin dollar-icon {
+  background-image: url($dollar);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+  padding-left: 1em;
+}
+
+@mixin push-out {
+  margin-left: -($half-whitespace);
+  margin-right: -($half-whitespace);
+}
+
+@mixin btn {
+  @include btn-standard;
+  background-color: $primaryColor;
+  font-weight: $base-font-weight;
+  padding-left: 2em;
+  padding-right: 2em;
+
+  &:focus,
+  &:hover {
+    background-color: $primary-light;
+  }
+}
+
+@mixin btn-alt {
+  background-color: $white;
+  color: $grey;
+  font-size: em(13);
+  padding: .5em 2em;
+
+  &:focus,
+  &:hover {
+    background-color: $primaryColor;
+    color: $white;
+  }
+}
+
+@mixin btn-outline {
+  background-color: transparent;
+  border: 3px solid $white;
+  color: $white;
+  padding: .5em 2em;
+}
+
+%heading {
+  border-bottom: 2px solid $primaryColor;
+  padding-bottom: .5em;
+}
+
+
+// -------------------------------------
+//  Base
+// -------------------------------------
+
+.layout {
+  position: relative;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %text-shout;
+  font-weight: $base-font-weight;
+  line-height: 1.2;
+
+  strong,
+  em {
+    font-weight: $bold-font-weight;
+  }
+
+  em {
+    font-style: normal;
+    color: $primaryColor;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.site-location {
+  h1, h2, %h2 {
+    @extend %heading;
+    font-size: em(26);
+  }
+}
+
+.site-corporate {
+  h1, h2, %h2 {
+    font-size: em(26);
+  }
+
+  h3 {
+    font-size: em(21);
+  }
+
+  @include at-least($min-small) {
+    h1, h2 {
+      font-size: em(32);
+    }
+  }
+
+  @include at-least($min-medium) {
+    h1, h2 {
+      font-size: em(48);
+    }
+
+    h3 {
+      font-size: em(28);
+    }
+  }
+}
+
+.html {
+  .html-content { max-width: 100% }
+
+  ul {
+    padding-left: 0;
+
+    li {
+      list-style-type: none;
+
+      &:before {
+        background-color: $primaryColor;
+        content: '';
+        display: inline-block;
+        height: .5em;
+        width: .5em;
+        margin-right: 1em;
+      }
+    }
+  }
+}
+
+.form-field {
+  margin-bottom: 1em;
+}
+
+.row {
+  padding: 0;
+
+  @include between(737px, 1110px) {
+    padding-left: 50px;
+  }
+}
+
+.col {
+  padding-top: 1em;
+  padding-bottom: 1em;
+
+  @include until($max-small) {
+    &:first-child {
+      padding-top: 2em;
+    }
+
+    &:last-child {
+      padding-bottom: 2em;
+    }
+  }
+
+  @include at-least($min-small) {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+}
+
+.col,
+[role=contentinfo] {
+  @include at-least($min-medium) {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+}
+
+.row-halves,
+[class*=row-uneven-thirds] {
+  @include at-least($min-medium) {
+    .col-1 {
+      padding-right: $base-whitespace;
+    }
+
+    .col-2 {
+      padding-left: $base-whitespace;
+    }
+  }
+
+  @include at-least($min-large) {
+    .col-1 {
+      padding-right: $double-whitespace;
+    }
+
+    .col-2 {
+      padding-left: $double-whitespace;
+    }
+  }
+}
+
+.row-uneven-thirds-2 .col.col-2,
+.row-uneven-thirds-1 .col.col-1 {
+  @include at-least($min-small) {
+    width: ((em(380)) / $site-width) * 100%;
+  }
+}
+
+.row-uneven-thirds-2 .col.col-1,
+.row-uneven-thirds-1 .col.col-2 {
+  @include at-least($min-small) {
+    width: (($site-width - em(380)) / $site-width) * 100%;
+  }
+}
+
+.row .col > .widget,
+.column [class*=row-]:last-of-type .widget {
+  margin-bottom: 0;
+}
+
+.button-large .btn { font-size: 1.5em; }
+
+
+
+// -------------------------------------
+//  Buttons
+// -------------------------------------
+
+[role=main] {
+  .btn,
+  button,
+  input[type=submit] {
+    @include btn;
+  }
+}
+
+input[type=submit] {
+  text-transform: uppercase;
+}
+
+.button {text-align: center; }
+
+.row .button .btn {
+  width: 15em;
+  background: transparent;
+  text-transform: uppercase;
+  border: 3px solid #fff;
+
+  .not-found-404 & {
+    background-color: $primaryColor;
+  }
+
+  &:hover { background-color: #e85048; }
+
+  .text-dark &,
+  .text-dark &:hover { color: $white; }
+}
+
+.row .button-display-block .btn { width: 100%; }
+
+
+// -------------------------------------
+//  Call Out Widget
+// -------------------------------------
+
+.call-outs {
+  .call-out a {
+    display: block;
+  }
+
+  .label {
+    color: $base-color;
+    font-size: em(14);
+    font-weight: $semi-bold-font-weight;
+  }
+}
+
+.site-corporate {
+  .call-outs {
+    display: block;
+  }
+
+  .call-out {
+    @include flex(none);
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+
+    a {
+      position: relative;
+    }
+  }
+
+  @include at-least($min-xsmall) {
+    .call-outs {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+
+    .call-out {
+      padding-left: 5px;
+      padding-right: 5px;
+      width: 50%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  @include at-least($min-small) {
+    .call-out {
+      width: 33.3333333%;
+    }
+  }
+}
+
+// -------------------------------------
+//  Calls to Action
+// -------------------------------------
+
+.action-calls {
+  @extend %text-center;
+
+  li {
+    margin-bottom: $half-whitespace;
+  }
+
+  a {
+    @extend %text-center;
+    @extend %text-shout;
+    border: 3px solid $white;
+    font-weight: $semi-bold-font-weight;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: $half-whitespace;
+    max-width: 300px;
+
+    .hero & {
+      background-color: transparent;
+
+      &:focus,
+      &:hover {
+        background-color: $tertiaryColor;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Contact Info
+// -------------------------------------
+
+[role=main] .contact-info {
+  p {
+    font-size: em(13);
+    margin-bottom: .5em;
+
+    @include at-least($min-medium) {
+      font-size: 1em;
+    }
+  }
+
+  .p-name {
+    border-bottom: none;
+    font-size: em(21);
+    margin-bottom: 1em;
+    padding-bottom: 0;
+  }
+
+  .p-tel,
+  .tel,
+  .email {
+    &:before {
+      vertical-align: baseline;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Contact Info Sheet
+// -------------------------------------
+
+.contact-info-sheet {
+  background-color: transparent;
+  font-size: em(14);
+  z-index: 5000;
+
+  .info-sheet-nav {
+    background-color: $black-transparent;
+  }
+
+  .info-sheet-content {
+    border: none;
+    box-shadow: 0 4px 0 rgba($black, .2);
+    color: $white;
+    min-height: 60px;
+  }
+
+  .info-sheet-phone {
+    font-size: 2em;
+  }
+
+  label {
+    @extend %inline;
+    margin-bottom: .25em;
+  }
+
+  textarea,
+  #{$all-text-inputs} {
+    border: none;
+    padding: 0.5em;
+  }
+
+  textarea {
+    height: 4em;
+  }
+
+
+  .info-sheet-chat-btn i:before {
+    content: $fa-var-comment-2;
+    color: $primaryColor;
+  }
+
+  .info-sheet-page-up i:before {
+    content: $fa-var-angle-up-bts;
+  }
+
+  .info-sheet-page-down i:before {
+    content: $fa-var-angle-down-bts;
+  }
+
+
+  @include until(736px) {
+    .info-sheet-nav {
+      padding: 0 $half-whitespace;
+    }
+
+    .info-sheet-toggle {
+      color: $white;
+    }
+  }
+
+  @include until($max-xsmall) {
+    .info-sheet-toggle {
+      min-width: 0;
+    }
+  }
+
+  @include at-least(737px) {
+    margin-top: 4em;
+
+    .info-sheet-nav { font-size: 21px; }
+
+    .cis-btn {
+      @include transition-property(transform);
+      @include transition-duration(200ms);
+      @include transition-timing-function(ease);
+      height: 60px;
+      width: 60px;
+
+      .fa-angle-up,
+      .fa-angle-down {
+        font-size: 1.5em;
+      }
+
+      &:hover {
+        @include transform(scale(1.2));
+      }
+    }
+
+    .info-sheet-chat-btn {
+      position: relative;
+      z-index: 1;
+
+      i { font-size: 38px; }
+
+      span {
+        color: $white;
+        font-size: 11px;
+        font-weight: $semi-bold-font-weight;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        // Unhide text
+        height: auto;
+        width: auto;
+        clip: auto;
+        margin: 0;
+      }
+    }
+
+    .active i {
+      color: $primaryColor;
+    }
+
+    .info-sheet-content {
+      background-color: $black-transparent;
+    }
+
+    &.default,
+    &.left {
+      &.opened .info-sheet-content {
+        margin-left: 60px;
+      }
+    }
+
+    &.right.opened .info-sheet-content {
+      margin-right: 60px;
+    }
+
+    &.b-left,
+    &.b-right {
+      .info-sheet-content {
+        bottom: 64px;
+        max-height: calc(100vh - 64px);
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Hours
+// -------------------------------------
+
+.hours {
+  @include clearfix;
+
+  .office-hours {
+    margin-bottom: 1em;
+  }
+
+  hr {
+    @extend %hidden;
+  }
+
+  .p-name {
+    @extend %heading;
+    @extend %inline;
+    margin-bottom: .5em;
+  }
+
+  @include at-least($min-xsmall) {
+    .office-hours {
+      padding-right: $half-whitespace;
+    }
+    .office-hours-list p, .office-hours-condensed p {
+      display: none;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Reviews
+// -------------------------------------
+
+.ratings-summary-outer {
+  border: 1px solid $white;
+  line-height: 1;
+  margin-top: 1em;
+  padding: 1em $half-whitespace;
+  max-width: 300px;
+
+  .ratings-summary {
+    width: auto;
+  }
+
+  .average-rating {
+    vertical-align: top;
+  }
+
+  .average-rating {
+    @extend %inline;
+    background-position: 0 -17px;
+  }
+
+  .total-reviews {
+    @extend %relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    [role=contentinfo] & {
+      vertical-align: bottom;
+    }
+  }
+
+}
+
+
+// -------------------------------------
+//  Social Links
+// -------------------------------------
+
+.social-links {
+  margin-top: 1em;
+
+  a {
+    margin-right: 5px;
+  }
+
+  .icon {
+    @include transition-transform;
+    background-color: transparent;
+
+    &:hover {
+      @include transform(scale(1.2));
+      background-color: transparent;
+    }
+  }
+}
+
+.site-corporate {
+  .footer-info,
+  .social-links {
+    path {
+      fill: $primaryColor;
+    }
+
+    .svg:hover path {
+      fill: $white;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Social Feed
+// -------------------------------------
+
+.social-feed {
+  border-color: $light-grey;
+  color: #85888b;
+
+  .feed-switch {
+    left: -1px;
+  }
+
+  .active {
+    &#feed-switch-blog circle,
+    &#feed-switch-twitter,
+    &#feed-switch-google,
+    &#feed-switch-facebook {
+      fill: $primaryColor;
+    }
+
+    &#feed-switch-blog path {
+      stroke: $primaryColor;
+    }
+  }
+
+  li {
+    font-size: em(13);
+
+    a {
+      color: #252b32;
+    }
+  }
+
+  .p-name,
+  .tweet-name {
+    font-weight: $semi-bold-font-weight;
+  }
+
+  .google-name {
+    float: left;
+    margin-right: .5em;
+  }
+}
+
+
+// -------------------------------------
+//   News Feed
+// -------------------------------------
+
+.nav-bling {
+  @extend %hidden;
+}
+
+.blog-feed {
+  .news-feed-post {
+    padding: 0 0 2em;
+    margin: 0 0 2em;
+
+    &:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .post-title {
+    line-height: 1.2;
+  }
+  .post-date,
+  .post-author {
+    font-style: italic;
+  }
+
+  .posts-nav {
+    padding-top: 4em;
+
+    .post-toggle {
+      color: $base-color;
+      font-size: em(14);
+    }
+  }
+
+  .post-nav-top {
+    @include btn;
+  }
+
+  .all-posts {
+    top: -1em;
+    padding: .5em;
+  }
+
+  .post-toggle.toggle-button {
+    @include btn;
+    float: none;
+    margin-bottom: 0;
+  }
+
+  @include at-least($min-xsmall) {
+    .post-toggle.toggle-button {
+      width: 50%;
+    }
+  }
+
+  @include at-least(600px) {
+    .post-toggle.toggle-button {
+      display: block;
+    }
+  }
+
+  @include at-least($min-large) {
+    .post-toggle.toggle-button {
+      width: 33%;
+    }
+  }
+}
+
+.blog-feed-v2 {
+  h1.post-title {
+    font-size: 2em;
+    border: 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  .posts-nav .post-title {
+    font-size: 1.25em;
+    line-height: 1.2;
+    margin-bottom: 1em;
+  }
+
+  .news-feed-post img { margin-bottom: 1em; }
+}
+
+
+// -------------------------------------
+//   Mini News Feed
+// -------------------------------------
+
+.mini-blog-feed {
+  h2 {
+    font-size: 3.5em;
+    padding-bottom: .25em;
+  }
+
+  .post-image-wrapper {
+    > div {
+      position: static;
+    }
+
+    img {
+      @include center-el;
+    }
+  }
+
+  .post-title {
+    font-weight: $bold-font-weight;
+    line-height: 1.2;
+  }
+
+  .post-details {
+    border-bottom-color: $white;
+  }
+
+  .post-date,
+  .post-author {
+    font-style: italic;
+  }
+
+  .news-item-link {
+    @include btn;
+
+    &:hover { color: $black; }
+  }
+
+  .all-news {
+    border-bottom-color: $storquest-grey;
+  }
+
+  .all-news-link {
+    background-color: $storquest-grey;
+    border: none;
+    font-weight: $semi-bold-font-weight;
+    bottom: -1em;
+    left: 25%;
+    padding: .5em;
+    width: 50%;
+
+    &:hover {
+      background-color: lighten($storquest-grey, 5%);
+      color: $black;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Photo
+// -------------------------------------
+
+.site-corporate {
+  .photo {
+    // Not sure why this was here originally
+    // Removing so photo alignment works
+    //display: inline-block;
+    position: relative;
+  }
+
+  .photo .p-name,
+  .call-out .label {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: em(28);
+    font-weight: $light-font-weight;
+    line-height: 1;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0.5em 10px;
+
+    &,
+    a {
+      color: $white;
+    }
+
+    &:empty {
+      display: none;
+    }
+
+    @include until($max-xsmall) {
+      @include transform(translateX(-50%));
+      left: 50%;
+      text-align: center;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Photo Cards
+// -------------------------------------
+
+.photo-cards {
+  .photo-card-wrapper {
+    margin-bottom: 0;
+    padding: 0.25em;
+  }
+
+  .photo-card-title {
+    background-color: rgba(0, 0, 0, .75);
+    padding: .3em;
+  }
+
+  h3 {
+    color: $white;
+    font-size: 2em;
+    font-weight: 900;
+    letter-spacing: .1em;
+
+    span { font-weight: 300; }
+
+    .custom-photo-cards & {
+      font-size: 1.25em;
+      line-height: 0.9;
+    }
+  }
+
+  .short-callouts & {
+    @include between(480px, 740px) {
+      width: 75%;
+    }
+
+    @include until(1110px) {
+      .photo-card-caption {
+        font-size: .75em;
+
+        img {
+          height: 25px !important;
+          width: 25px !important;
+        }
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Map and Directions
+// -------------------------------------
+
+.directions.widget {
+  .canvas {
+    width: 100%;
+  }
+}
+
+.map .canvas {
+  padding: 0;
+  margin-bottom: 1.5em;
+}
+
+
+// -------------------------------------
+//   Gallery
+// -------------------------------------
+
+.gallery {
+  .flex-control-paging {
+    li a {
+      background-color: $white;
+
+      &:hover {
+        background-color: $light-grey;
+      }
+
+      &.flex-active {
+        background-color: $primaryColor;
+      }
+    }
+  }
+
+  // Slideshow nav arrows
+  .flex-direction-nav {
+    a {
+      background-image: none;
+      text-indent: 100%;
+      overflow: hidden;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        color: $white;
+      }
+    }
+  }
+
+  // Slideshow thumbnails
+  .flex-control-nav {
+    li {
+      position: relative;
+
+      img {
+        @include transition(opacity 0.2s ease);
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      &:hover img,
+      .flex-active {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .flexslider {
+    &:hover {
+      .flex-prev {
+        left: $half-whitespace;
+      }
+
+      .flex-next {
+        right: $half-whitespace;
+      }
+    }
+
+    // gallery widget override
+    @include until(860px) {
+      &:hover .flex-prev,
+      .flex-prev {
+        left: 5px;
+      }
+
+      &:hover .flex-next,
+      .flex-next {
+        right: 5px;
+      }
+    }
+  }
+}
+
+// Gallery in half col
+.row-halves {
+  .full-gallery {
+    .slides {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+.site-location {
+  .gallery {
+    @extend %text-center;
+
+    h2 {
+      @extend %inline;
+    }
+
+    img {
+      box-shadow: 0 0 5px rgba($black, 0.5);
+    }
+  }
+
+  // Slideshow nav arrows
+  .flex-direction-nav {
+    a {
+      @extend %icon;
+      width: 32px;
+      height: 48px;
+      margin-top: -24px;
+
+      &:before {
+        left: -24px;
+        font-size: 48px;
+      }
+    }
+
+    .flex-prev {
+      @extend .icn-angle-left;
+    }
+
+    .flex-next {
+      @extend .icn-angle-right;
+    }
+  }
+
+  // Normal slideshow styles
+  .full-gallery {
+    .flex-control-nav {
+      padding-top: 1em;
+    }
+
+    .flex-control-thumbs {
+      margin-left: -5px;
+      margin-right: -5px;
+      width: auto;
+
+      li {
+        float: none;
+        padding: 0 5px 10px;
+        width: 20%;
+      }
+    }
+
+    &.gallery-slideshow {
+      .slide-wrapper {
+        display: inline-block;
+        position: relative;
+
+        .csstransforms .loaded & img {
+          @include transform(none);
+          top: 0;
+        }
+      }
+    }
+  }
+
+  // Full width gallery
+  .row-single {
+    .full-gallery {
+      .flex-control-thumbs {
+
+        @include at-least($min-xsmall) {
+          margin-left: 0;
+          margin-right: 0;
+          width: 100%;
+
+          li {
+            float: none;
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.site-corporate {
+  .gallery {
+    .slides {
+      li {
+        height: auto !important;
+      }
+
+      img {
+        max-height: none !important;
+        min-width: 100%;
+      }
+    }
+  }
+
+  // Slideshow nav arrows
+  .flex-direction-nav {
+    a {
+      width: 35px;
+      height: 42px;
+      margin-top: -20px;
+
+      &:before {
+        @include transform-origin(left center);
+        content: '\221F';
+        font-size: em(48);
+        line-height: 1;
+      }
+    }
+
+    .flex-prev:before {
+      @include transform(rotate(45deg));
+      left: -19px;
+      top: -45px;
+    }
+
+    .flex-next:before {
+      @include transform(rotate(225deg));
+      left: 54px;
+      top: 39px;
+    }
+  }
+
+  .full-gallery {
+    .flex-caption {
+      background-color: transparent;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .flex-control-thumbs {
+      margin: 0;
+      width: 100%;
+
+      li {
+        max-width: 200px;
+      }
+    }
+
+    @include until($max-small) {
+      .flex-caption {
+        color: $grey;
+        position: static;
+        padding-bottom: 0;
+      }
+    }
+
+    @include at-least($min-small) {
+      .flex-caption {
+        @include transform(translateY(50%));
+        background-color: transparent;
+        color: $white;
+        font-size: 2em;
+        line-height: 1;
+        text-align: right;
+        padding: 0 75px 0 25px;
+        bottom: 50%;
+        right: 0;
+        width: 44%;
+      }
+
+      .flex-control-thumbs li {
+        padding-left: 10px;
+        padding-right: 10px;
+
+        &:before {
+          left: 10px;
+          right: 10px;
+        }
+      }
+    }
+
+    @include at-least($min-nav) {
+      .flex-caption {
+        font-size: em(60);
+      }
+
+      .flex-control-thumbs li {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        &:before {
+          left: 15px;
+          right: 15px;
+        }
+      }
+    }
+
+    @include at-least($min-large) {
+      .flex-caption {
+        padding-left: 50px;
+        padding-right: 100px;
+      }
+    }
+  }
+}
+
+
+// ---------------------------------------
+//  Self Storage Featured Unit Categories
+// ---------------------------------------
+
+.ss-featured-unit-categories {
+  background-color: transparent;
+  padding: 0;
+
+  .iui-steps {
+    @extend %hidden;
+  }
+
+  .iui-title {
+    @extend %h2;
+    margin-bottom: 1em;
+  }
+
+  .iui-size {
+    float: left;
+    &,
+    &:nth-child(odd):last-child,
+    &:nth-last-child(2):nth-child(odd) {
+      width: 50%;
+    }
+
+    .btn {
+      @include btn-alt;
+      font-size: 1em;
+      padding: .5em;
+    }
+  }
+
+  .iui-view-all .btn {
+    background-color: $light-grey;
+  }
+
+  @include at-least($min-small) {
+    .iui-size {
+      &,
+      &:nth-child(odd):last-child,
+      &:nth-last-child(2):nth-child(odd) {
+        width: 33%;
+      }
+
+      .btn {
+        font-size: em(21);
+        padding: 1em;
+      }
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-size {
+      &,
+      &:nth-child(odd):last-child,
+      &:nth-last-child(2):nth-child(odd) {
+        width: 25%;
+      }
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Self Storage IUI Cards
+// -------------------------------------
+
+body .self-storage-iui-cards {
+  .iui-cards-nav-outer {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  h3 {
+    @extend %text-center;
+    color: $white !important; // overridden
+  }
+
+  .iui-cards-nav {
+    height: 2em;
+    margin: 0 auto;
+
+    span {
+      @extend %hidden;
+    }
+
+    a {
+      background-color: $secondaryColor;
+    }
+
+    .active ~ a,
+    .disabled {
+      background-color: $secondaryColor;
+    }
+    .active {
+      background-color: $primaryColor; // overridden
+    }
+  }
+
+  .iui-cards-unit {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .iui-cards-unit-header {
+    .iui-cards-online-price {
+      color: $primaryColor; // overridden
+    }
+
+    .iui-cards-header-arrow {
+      background-color: $primaryColor; // overridden
+    }
+  }
+
+  .iui-cards-unit-actions {
+    a {
+      background-color: $primaryColor; // overridden
+      border-radius: 0;
+
+      &:focus,
+      &:hover {
+        background-color: $primary-light;
+      }
+    }
+  }
+
+  .iui-cards-unit-details {
+    float: left;
+    width: 100%;
+  }
+
+  .hold-leads-form {
+    form {
+      span {
+        color: red;
+      }
+
+      legend,
+      label {
+        padding: 0;
+      }
+
+      input {
+        height: auto;
+        padding: .5em;
+      }
+    }
+  }
+
+  @include until($max-small) {
+    h3 {
+      float: none;
+    }
+  }
+
+  @include at-least($min-small) {
+    .iui-cards-nav-outer {
+      float: right;
+      width: auto;
+    }
+
+    .iui-cards-nav-outer {
+      margin: 0 0 2em;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .iui-cards-nav-outer {
+      margin-bottom: 3em;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Self Storage Search
+// -------------------------------------
+
+body .self-storage-search {
+  @include clearfix;
+
+  h2 {
+    font-size: em(28);
+  }
+
+  .search-input .sss-search-input {
+    font-size: em(14);
+
+    @include placeholder {
+      font-style: italic;
+    }
+  }
+
+  .sss-search-storage-categories-select {
+    font-size: em(14);
+    font-style: italic;
+  }
+
+  .search-input,
+  .sss-search-select {
+    max-width: 20em;
+  }
+
+  .sss-search-btn {
+    display: inline-block;
+    width: auto;
+  }
+
+  .large .sss-locations-matrix {
+    width: 100%;
+    max-width: none;
+  }
+
+  .sss-location-identifier {
+    color: $white;
+  }
+}
+
+
+// -------------------------------------
+//  Self Storage Search Home
+// -------------------------------------
+
+.self-storage-search-home {
+  .hero-corp & .sss-search-criteria {
+    background-color: transparent !important;
+  }
+
+  .sss-search-criteria {
+    @include clearfix;
+    position: relative;
+
+    h2 {
+      color: $white;
+      font-size: em(18);
+
+      @include at-least($min-nav) {
+        font-size: em(21);
+      }
+    }
+  }
+
+  .search-input input,
+  .sss-search-storage-categories-select { font-size: em(14); }
+
+  .search-input input {
+    @include placeholder {
+      font-style: italic;
+    }
+  }
+
+  .sss-search-storage-categories-select {
+    font-style: italic;
+  }
+
+  .sss-search-btn {
+    @extend %icon;
+    @extend .icn-search;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    padding: 0;
+    float: right;
+
+    &:before {
+      font-size: 24px;
+      position: absolute;
+      top: 7px;
+      left: -32px;
+    }
+  }
+
+  @include until($max-xsmall) {
+    h2 strong { display: block; }
+  }
+
+  @include at-least($min-xsmall) {
+    .row-single &,
+    .row-uneven-thirds-2 .col-1 &,
+    .row-uneven-thirds-1 .col-2 & {
+      .sss-search-criteria {
+        padding-right: 65px;
+        max-width: 650px;
+        width: 100%;
+      }
+
+      .sss-search-btn {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+      }
+
+      .search-input,
+      .sss-search-select {
+        float: left;
+        width: 49%;
+      }
+
+      .sss-search-select {
+        margin-left: 2%;
+      }
+
+      .sss-search-select select,
+      .search-input input { margin-bottom: 0; }
+    }
+  }
+
+  @include at-least($min-hero) {
+    .row-single &,
+    .row-uneven-thirds-2 .col-1 &,
+    .row-uneven-thirds-1 .col-2 & {
+      .sss-search-criteria {
+        padding: 10px 70px 20px 20px;
+      }
+
+      .sss-search-btn {
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+
+    .hero-corp & .sss-search-criteria {
+      background-color: rgba(0, 0, 0, .75) !important;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Self Storage Filtered
+// -------------------------------------
+
+.self-storage-filtered {
+  .sss-cat.view-all a,
+  .sss-search-btn,
+  .unit-cta,
+  .phoneCTAText { background-color: #c13630; }
+
+  .sss-cat {
+    background-color: $storquest-grey;
+
+    a { color: $white; }
+  }
+
+  .sss-location { background-color: #3C3D3E; }
+
+  .sss-unit-matrix,
+  .sss-unit-matrix select,
+  .sss-unit-matrix input,
+  .unit-info { color: #000; }
+
+  .unit-special-offer { color: $tertiaryColor; }
+
+  .cat-special { background-color: $tertiaryColor; }
+
+  .cat-special:after { border-right-color: $tertiaryColor; }
+
+  .disabled,
+  .disabled a,
+  .sss-cat.disabled a,
+  .sss-cat.searched-category .disabled,
+  .location-archive .sss-cat.searched-category.disabled a,
+  .popover-content .disabled,
+  .popover-content .disabled a,
+  .popover-content .disabled:hover { color: #777; }
+}
+
+
+// -------------------------------------
+//  City State Zip Search
+// -------------------------------------
+
+.city-state-zip-search {
+  .zip-search-top {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .zip-search-heading {
+    font-size: em(32);
+    line-height: 0.875;
+    text-transform: uppercase;
+    padding-bottom: 0.5em;
+    position: relative;
+
+    .web-page-template & {
+      overflow: hidden;
+    }
+
+    strong {
+      display: block;
+    }
+  }
+
+  .zip-search-input,
+  .zip-search-button {
+    padding: 0;
+  }
+
+  .zip-search-input {
+    margin-bottom: 1.5em;
+
+    @include until($max-xsmall) {
+      width: 100%;
+    }
+  }
+
+  input {
+    font-size: em(14);
+
+    @include placeholder {
+      font-style: italic;
+    }
+  }
+
+  .zip-search-button {
+    background-color: transparent;
+    width: auto;
+  }
+
+  button {
+    @include btn-outline;
+  }
+
+  @include at-least($min-nav) {
+    .zip-search-heading {
+      font-size: em(60);
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Header
+// -------------------------------------
+
+$nav-height: em(44);
+
+[role=banner] {
+  background-color: $black;
+  padding: 0;
+
+  a {
+    color: $white;
+    font-weight: $semi-bold-font-weight;
+  }
+
+  @include until($max-nav) {
+    .navigation-container {
+      position: fixed;
+      top: 0;
+      z-index: 9000;
+      width: 100%;
+    }
+  }
+
+  @include at-least($min-small) {
+    .navigation {
+      width: 50%;
+      float: right;
+    }
+  }
+
+  @include at-least($min-nav) {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9000;
+    padding-bottom: 10px;
+  }
+}
+
+
+// -------------------------------------
+//  Logo
+// -------------------------------------
+
+.logo-container {
+  h1 {
+    @extend %text-center;
+    border-bottom: none;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .logo {
+    @extend %block;
+    @extend %text-center;
+    @include box-sizing(content-box);
+    max-width: em(285);
+    max-height: em(60);
+    margin: $nav-height auto 0;
+    padding: 1em 0;
+
+    img {
+      max-height: em(65) - .5em;
+    }
+  }
+
+  @include at-least($min-small) {
+    .logo {
+      text-align: left;
+      float: left;
+      margin-top: 0;
+      padding: .5em 0;
+      position: relative;
+      z-index: 9000;
+    }
+  }
+
+  @include at-least($min-nav) {
+    .content {
+      position: static;
+    }
+
+    .logo {
+      margin: 0;
+      position: absolute;
+      top: 0;
+      z-index: 9000;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Header Buttons
+// -------------------------------------
+
+[role=banner] .buttons {
+  @extend %clearfix;
+  @include push-out;
+  background-color: $primaryColor;
+  padding: .5em $half-whitespace;
+
+  a:hover,
+  a:focus {
+    color: rgba($white, .8);
+  }
+
+  .button {
+    float: left;
+    margin-right: 1em;
+  }
+
+  .button .btn {
+    @include dollar-icon;
+  }
+
+  .appended-phone {
+    @extend %inline;
+    @extend %icon;
+    @extend .icn-phone;
+    vertical-align: middle;
+
+    &:before {
+      font-size: .875em;
+      opacity: 0.5;
+    }
+
+    @include until($max-small) {
+      display: none;
+    }
+  }
+
+  @include at-least($min-small) {
+    background-color: rgba($black, 0.75);
+    text-align: right;
+    padding-left: 54%;
+    position: relative;
+    z-index: 8001;
+
+    #drop-target-btn {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  @include at-least($min-nav) {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+// -------------------------------------
+//  Navigation
+// -------------------------------------
+
+.collapsable-content {
+  @include until($max-nav) {
+    @include push-out;
+  }
+}
+
+.collapsable-btn {
+  margin-left: 1em;
+
+  .text {
+    @extend %hidden;
+  }
+}
+
+.navigation-container {
+  .top-nav {
+    margin-bottom: 0;
+  }
+
+  [class*=navigation] {
+    a {
+      @extend %block;
+      @extend %text-center;
+      @extend %text-shout;
+      font-family: $secondary-font;
+      font-weight: $semi-bold-font-weight;
+    }
+  }
+
+
+  .navigation {
+    a {
+      @include transition(all 0.2s ease);
+      background-color: rgba($black, 0.75);
+      border-bottom: 1px solid $grey;
+      padding: .5em;
+
+      &:active {
+        color: $primaryColor;
+      }
+
+      &:before { background: rgba(0, 0, 0, 0.25); }
+    }
+  }
+
+  .has-subnav > a:after {
+    @include icon;
+    content: "\f107";
+    margin-left: .5em;
+  }
+
+  .subnav {
+    margin-bottom: 0;
+
+    a {
+      background-color: rgba($white, 0.8);
+      color: $black;
+    }
+  }
+
+  @include at-least($min-nav) {
+    [class*=navigation] {
+      overflow-y: visible;
+      text-align: right;
+
+      li,
+      a {
+        display: inline-block;
+      }
+
+      a {
+        background-color: transparent;
+      }
+    }
+
+    .navigation {
+      border-top: 1px solid $white;
+      padding-top: 0.25em;
+      margin-top: 0.25em;
+      width: auto;
+
+      .top-nav {
+        > li {
+          margin-left: -4px;
+        }
+      }
+
+      .corporate-home {
+        display: none !important;
+      }
+
+      a:active {
+        color: $white;
+      }
+
+      .top-nav {
+        margin-right: -1em;
+
+        > li {
+          padding: 0 1em;
+          position: relative;
+
+          &:first-child {
+            padding-left: 0;
+
+            &:before {
+              background-color: transparent;
+            }
+          }
+
+          > a {
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            padding: .25em 0;
+
+            &:focus,
+            &:hover {
+              border-bottom-color: $primaryColor;
+            }
+
+            &.active {
+              border-bottom-color: $primaryColor;
+            }
+          }
+        }
+      }
+    }
+
+    .subnav {
+      @include center-el-x;
+      text-align: left;
+      position: absolute;
+      left: 50%;
+      top: auto;
+      max-height: 0;
+      margin-top: 10px;
+      z-index: 9000;
+
+      li,
+      a {
+        display: block;
+      }
+
+      a {
+        background-color: $black-transparent;
+        color: $base-color;
+
+        &:hover {
+          background-color: $primaryColor;
+        }
+      }
+    }
+
+    // This is needed for mobile when the menu
+    // is taller than the screen to create scroll
+    .show-subnav {
+      max-height: 1000px;
+    }
+
+    .navigation .subnav {
+      width: 100%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Footer
+// -------------------------------------
+
+[role=contentinfo] {
+  background: $footerColor;
+
+  h4, p, a {
+    color: $white;
+  }
+
+  @include until($max-medium) {
+    .contact-info,
+    .social-links {
+      margin-bottom: 2em;
+    }
+  }
+}
+
+.footer-info {
+  @include clearfix;
+
+  .social-links {
+    margin-top: 0;
+
+    .icon {
+      border: 2px solid $primaryColor;
+
+      &:hover {
+        border-color: $white;
+      }
+    }
+  }
+
+  .nav {
+    a {
+      font-weight: $semi-bold-font-weight;
+      display: inline-block;
+
+      & + a {
+        border-left: 1px solid $white;
+        margin-left: .5em;
+        padding-left: .5em;
+      }
+    }
+  }
+
+  .corporate-logo {
+    @include transform-style(flat);
+    clear: left;
+    float: left;
+
+
+    &:before {
+      @extend %absolute;
+      content: '';
+      background-color: rgba($white, 0.2);
+      border-left: em(15, 14) solid $grey;
+      border-right: em(15, 14) solid $grey;
+      left: 0;
+      height: 1px;
+      width: 100%;
+    }
+
+    img {
+      margin-top: 1em;
+    }
+  }
+
+  @include at-least($min-small) {
+    float: none;
+
+    .social-links,
+    .nav,
+    .copyright,
+    .housing-icons {
+      clear: right;
+      float: right;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Hero
+// -------------------------------------
+
+%hero {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+
+  @include between($min-nav, 1105px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: $site-width;
+    position: static;
+  }
+
+  .col {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+
+  .col-1:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  .widget {
+    position: relative;
+    z-index: 2000;
+  }
+
+  .photo {
+    margin-bottom: 0;
+    position: static;
+
+    img {
+      @include transform(translate(-50%, -50%));
+      position: absolute;
+      max-width: 200%;
+      top: 45%;
+      left: 30%;
+      z-index: 20;
+    }
+  }
+
+  .contact-info {
+    margin-bottom: 0;
+  }
+
+  .html {
+    overflow: visible;
+  }
+
+  h1, h2 {
+    border-bottom: none;
+    font-size: 2.3em;
+    line-height: 1.2;
+    padding-bottom: 0;
+
+    strong {
+      display: block;
+    }
+  }
+
+  @include until($max-hero) {
+    .col {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .web-page-template & {
+      .content,
+      .col {
+        padding: 0;
+      }
+    }
+
+    .html { margin-top: 15px; }
+
+    h1, h2 { text-align: center; }
+  }
+
+  @include at-least($min-xsmall) {
+    .photo img {
+      max-width: 140%;
+      left: 50%;
+    }
+  }
+
+  @include at-least($min-small) {
+    .col-1 {
+      padding-right: $base-whitespace;
+    }
+
+    h2 {
+      white-space: nowrap;
+    }
+  }
+
+  @include at-least($min-hero) {
+    .col {
+      padding-top: 3em;
+      padding-bottom: 7vw;
+    }
+
+    .web-page-template & {
+      .col {
+        padding-top: 9vw;
+      }
+
+      .col-1:before {
+        right: 0;
+      }
+    }
+
+    .col-1:before {
+      left: 0;
+      right: 50%;
+    }
+
+    .photo img {
+      min-width: 100%;
+      max-width: 160%;
+      top: 50%;
+    }
+  }
+
+  @include at-least($min-nav) {
+    padding-top: em(50);
+
+    h1, h2 {
+      text-align: left;
+      margin-bottom: .5em;
+    }
+
+    .action-calls {
+      float: left;
+    }
+
+    .photo img { max-width: 130%; }
+  }
+
+  @include at-least($min-large) {
+    .action-calls li {
+      display: inline-block;
+
+      &:first-child {
+        margin-right: $half-whitespace;
+      }
+    }
+  }
+
+  @include at-least(1120px) {
+    h1, h2 { font-size: 3.8em; }
+  }
+
+  @include at-least($min-xlarge) {
+    .photo img { width: 100%; }
+  }
+}
+
+
+// StorQuest Hero Styles
+.hero {
+  @extend %hero;
+  background-color: $white;
+  max-height: 11.5em;
+
+  h2 {
+    font-weight: $light-font-weight;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-weight: 900;
+    font-size: 21px;
+
+    em {
+      font-style: italic;
+      color: #fff;
+    }
+  }
+
+  hr { border: 1px solid #fff; }
+
+  .col-1:before {
+    background: rgba(33, 33, 33, 0.33);
+  }
+
+  @include until($max-hero) {
+    background-color: #272727;
+
+    .col {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .col-2 { display: none; }
+
+    h3 { text-align: center; }
+  }
+
+  @include at-least($min-xsmall) {
+    h3 { font-size: 1.5em; }
+  }
+
+  @include at-least($min-hero) {
+    max-height: 22em;
+  }
+
+  @include at-least($min-nav) {
+    max-height: 24em;
+    padding-top: 80px;
+  }
+
+  @include at-least(1230px) {
+    .col { padding-top: 2vw; }
+  }
+}
+
+
+// StorQuest Corporate Hero Styles
+.hero-corp {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+
+  .row-grid { overflow: visible; }
+
+  .content { max-width: 100%; }
+
+  .col { padding-top: 0; }
+
+  .photo {
+    margin-bottom: 0;
+    margin-left: -$half-whitespace;
+    margin-right: -$half-whitespace;
+
+    img { width: 100%; }
+  }
+
+  h1, h2 {
+    text-align: center;
+    border-bottom: none;
+    font-size: em(42);
+    line-height: 1.2;
+    padding-bottom: 0;
+  }
+
+  @include until($max-hero) {
+    .web-page-template & {
+      .content,
+      .col {
+        padding: 0;
+      }
+
+      .photo { margin: 0; }
+    }
+  }
+
+  @include at-least($min-hero) {
+    .col { padding-bottom: 0; }
+
+    .self-storage-search-home,
+    .self-storage-search-home-v2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    h1, h2 { font-size: em(48); }
+
+    .web-page-template & {
+      .col {
+        padding-top: 9vw;
+      }
+    }
+
+    .web-home-template &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      z-index: 1000;
+      height: 83px;
+      width: 100%;
+      background: url($corp-hero-border) center bottom no-repeat;
+    }
+  }
+
+  @include at-least(750px) {
+    .self-storage-search-home,
+    .self-storage-search-home-v2 {
+      bottom: 10%;
+    }
+  }
+
+  @include at-least($min-nav) {
+    h1, h2 {
+      font-size: em(70);
+      text-align: left;
+      margin-bottom: .5em;
+    }
+
+    .self-storage-search-home,
+    .self-storage-search-home-v2 {
+      bottom: 20%;
+    }
+  }
+
+  @include at-least($min-large) {
+    .action-calls li {
+      display: inline-block;
+
+      &:first-child {
+        margin-right: $half-whitespace;
+      }
+    }
+  }
+
+  @include at-least(1280px) {
+    .web-home-template &::before {
+      background-size: 100% 100%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Custom Background
+// -------------------------------------
+
+.custom-background,
+.custom-background-3 {
+  @include at-least($min-small) {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.custom-background {
+  background-color: $custom-bg-color;
+
+  @include at-least($min-small) {
+    background-image: url($custom-bg-image);
+  }
+}
+
+// Change News Feed Colors
+.custom-background-3 {
+  background-color: $white;
+  color: $grey;
+
+  .post-details {
+    border-bottom-color: $grey;
+  }
+
+  .news-item-link {
+    background-color: $primaryColor;
+    color: $white;
+
+    &:focus,
+    &:hover {
+      background-color: $primary-light;
+    }
+  }
+
+  .all-news {
+    border-bottom-color: $grey;
+  }
+
+  .all-news-link {
+    background-color: $grey;
+  }
+
+  @include at-least($min-small) {
+    background-image: url($custom-bg-3-image);
+  }
+}
+
+
+// -------------------------------------
+//  Phone Number Row
+// -------------------------------------
+
+.phone-row {
+  @extend %text-center;
+  background-color: $primaryColor;
+
+  .col {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .html,
+  .appended-phone {
+    margin: 0;
+  }
+
+  h1, h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: .5em;
+  }
+
+  h1, h2, .appended-phone {
+    @extend %inline;
+    font-weight: $base-font-weight;
+  }
+
+  .appended-phone {
+    color: $white;
+    font-size: 2em;
+    font-weight: $bold-font-weight;
+    margin-left: 0.5em;
+  }
+
+  @include at-least($min-medium) {
+    h1, h2, .appended-phone {
+      font-size: em(40);
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// ----------------------------------------
+//  No Padding
+// ----------------------------------------
+
+.no-padding {
+  .col {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+// ----------------------------------------
+//  Collapse HTML Row (set with javascript)
+// ----------------------------------------
+
+.collapse-html {
+  @include until($max-small) {
+
+    .col-1 {
+      padding-bottom: 0;
+    }
+
+    .col-2 {
+      padding-top: 0;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+// ----------------------------------------
+//  Align with Heading
+// ----------------------------------------
+
+// Makes 2nd column line up under first column heading
+.align-with-heading {
+  .col-2 {
+    @include at-least($min-small) {
+      padding-top: em(100);
+    }
+
+    @include at-least($min-medium) {
+      padding-top: em(132);
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Full Width Row
+// -------------------------------------
+
+.full-width {
+  .content {
+    max-width: none;
+    padding: 0;
+  }
+
+  .col {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+// -------------------------------------
+//  Wide Rows
+// -------------------------------------
+
+.wide-row {
+  .content {
+    max-width: 1170px;
+  }
+}
+
+
+
+// -------------------------------------
+//  Bordered Text Row
+// -------------------------------------
+
+.bordered-text {
+  .html p {
+    @include at-least($min-small) {
+      border: 5px solid $primaryColor;
+      padding: 1em $base-whitespace;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Big Heading
+// -------------------------------------
+
+.big-heading {
+  h1, h2 {
+    margin: 0;
+  }
+
+  h1 {
+    border-bottom: 1px solid $primaryColor;
+    font-size: em(48);
+  }
+
+  h2 {
+    color: $primaryColor;
+  }
+
+  @include until($max-small) {
+    background: url($stripes-red) -10px bottom repeat-x;
+    padding-bottom: 20px;
+  }
+
+  @include at-least($min-small) {
+    position: relative;
+
+    &:before {
+      content: '';
+      background: url($stripes-red) right top repeat-x;
+      height: 22px;
+      width: 100%;
+      position: absolute;
+      right: 70%;
+      top: 7em;
+      display: block;
+    }
+
+    .html-content {
+      margin-left: 30%;
+    }
+
+    h1, h2 {
+      padding-left: 10px;
+    }
+
+    h1 {
+      font-size: em(60);
+    }
+  }
+
+  @include at-least(769px) {
+  }
+
+  @include at-least($min-medium) {
+    &:before {
+      top: 9em;
+    }
+  }
+
+  @include at-least($min-large) {
+    &:before {
+      //right: 66%;
+      top: 12em;
+    }
+
+    h1 {
+      font-size: em(100);
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Arrow Row
+// -------------------------------------
+
+.row-separator {
+  position: relative;
+
+  .col {
+    padding-bottom: 3em;
+  }
+
+  &:before {
+    @include transform(rotate(-45deg) translateX(-50%));
+    content: '\221F';
+    display: block;
+    color: $white;
+    font-size: em(32);
+    position: absolute;
+    bottom: em(16, 32);
+    left: 50%;
+  }
+
+  @include at-least($min-medium) {
+    .col {
+      padding: 2em 0 4em;
+    }
+
+    &:before {
+      font-size: em(48);
+      bottom: em(16, 48);
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Gallery Row
+// -------------------------------------
+
+.gallery-row {
+  @extend .full-width;
+
+  .widget {
+    margin-bottom: 0;
+  }
+
+  .button {
+    position: absolute;
+    right: 2vw;
+    bottom: 60vw;
+  }
+
+  .btn {
+    background-color: transparent;
+    border: 3px solid $white;
+    color: $white;
+    font-size: em(14);
+    font-weight: $semi-bold-font-weight;
+    text-transform: uppercase;
+    padding: .25em 1em;
+  }
+
+  @include at-least($min-xsmall) {
+    .button {
+      bottom: 27vw;
+    }
+  }
+
+  @include at-least($min-small) {
+    .button {
+      right: 75px;
+      bottom: 15vw;
+    }
+  }
+
+  @include at-least($min-medium) {
+    .btn {
+      font-size: em(18);
+    }
+  }
+
+  @include at-least($min-nav) {
+    .button {
+      bottom: 12vw;
+      right: 100px;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Misc Classes
+// -------------------------------------
+
+.no-horizontal-rule h2 { border-bottom: none; }
+
+@include until($max-small) {
+  .html h3 {
+    .h3-mobile & { text-transform: none; }
+    .hide-h3-mobile & { opacity: 0; }
+  }
+}
+
+.custom-social-less-padding {
+  p, .html {
+    margin-bottom: 0;
+  }
+}
+
+.custom-angle-short-bottom .content {
+  margin-bottom: -4em !important;
+  margin-top: 4em !important;
+}
+
+.row-divider { max-width: 100%; }
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+.directions-stripe {
+  .hours { margin-bottom: 0; }
+
+  .html {
+    margin-bottom: 1em;
+
+    h3 {
+      padding-bottom: 0;
+      font-weight: bold;
+    }
+  }
+}
+
+.callouts-row .col { padding-bottom: 0; }
+
+
+
+// -------------------------------------
+//  Area Pages
+// -------------------------------------
+
+.area {
+  .area-page-locations .h-adr {
+    background-color: #222;
+  }
+
+  .area-page-locations a.number,
+  .area-page-locations a.number:hover {
+    color: $white !important;
+  }
+
+  @include at-least($min-nav) {
+    [role=banner] {
+      position: static;
+    }
+  }
+}
+
+
+// -------------------------------------
+//  Search Page
+// -------------------------------------
+
+.page-search {
+  .row .content {
+    max-width: em(1170);
+  }
+}
+
+
+// -------------------------------------
+//  Nearby Locations Page
+// -------------------------------------
+
+.nearby-locations {
+  .widget { margin-bottom: 0 !important; }
+
+  .col { padding-bottom: 0; }
+
+  .button { padding: 1em; }
+}

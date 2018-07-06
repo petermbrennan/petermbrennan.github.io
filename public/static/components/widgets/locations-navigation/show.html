@@ -1,0 +1,54 @@
+{% capture widgetId %}locations-navigation-{{ widget.id }}{% endcapture %}
+{% if widget.show_pending.value_or_default == 'true' %}
+  {% assign all_locations = widget.live_or_pending_locations_by_state_and_city %}
+{% else %}
+  {% assign all_locations = widget.live_locations_by_state_and_city %}
+{% endif %}
+<nav class="widget locations-navigation {{ widgetId }}" id="{{ widgetId }}">
+  <script class="config locations-navigation-config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}"
+    }
+  </script>
+
+  <style type="text/css">
+  .locations-navigation.{{ widgetId }} h3.locations-navigation-title { background-color: {{ widget.button_background_color.value_or_default }}; }
+  .locations-navigation.{{ widgetId }} h3.locations-navigation-title:hover,
+  .locations-navigation.{{ widgetId }} h3.locations-navigation-title.open {
+    background-color: {{ widget.button_background_color.value_or_default_parsed | darken: '10%'; }}; }
+  .locations-navigation.{{ widgetId }} .locations-navigation-state { background-color: {{ widget.state_background_color.value_or_default }}; }
+  .locations-navigation.{{ widgetId }} .locations-navigation-state:hover,
+  .locations-navigation.{{ widgetId }} .locations-navigation-state.open {
+    background-color: {{ widget.state_background_color.value_or_default_parsed | darken: '10%'; }}; }
+  .locations-navigation.{{ widgetId }} .locations-navigation-city { background-color: {{ widget.city_background_color.value_or_default }}; }
+  .locations-navigation.{{ widgetId }} .locations-navigation-city:hover {
+    background-color: {{ widget.city_background_color.value_or_default_parsed | darken: '10%'; }}; }
+  </style>
+
+  {% capture arrow %}<span class="littleArrow"></span>{% endcapture %}
+
+  <h3 class="locations-navigation-title">
+    {{ arrow }}<span class="locations-navigation-title-text">{{ widget.locations_label.value_or_default }}</span>
+  </h3>
+
+  <ul class="locations-navigation-list locations-navigation-state-list">
+    {% for location_set in all_locations %}
+      {% assign state_name = location_set[0] %}
+      {% assign state_data = location_set[1] %}
+
+      <li class="locations-navigation-heading locations-navigation-state">
+        <a href="#">{{ arrow }}</span>{{ state_name | google_no_translate }}</a>
+        <ul class="locations-navigation-list locations-navigation-city-list">
+        {% for city_set in state_data %}
+          {% assign city_name = city_set[0] %}
+          {% assign city_url = city_set[1] %}
+
+          <li class="locations-navigation-city">
+            <a href="{{ city_url }}">{{ city_name | google_no_translate }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

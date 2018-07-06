@@ -1,0 +1,79 @@
+// *************************************
+//
+//  Forms
+//
+// *************************************
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+label {
+  display: block;
+}
+
+legend,
+label {
+  margin-bottom: .5em;
+}
+
+// Needed for inline groups of radio/checkbox and lables
+label {
+  margin-right: $half-whitespace;
+}
+
+input[type=radio],
+input[type=checkbox] {
+  @extend %inline;
+  width: auto;
+}
+
+textarea,
+#{$all-text-inputs} {
+  border: 1px solid #aaa;
+  font-size: 1em;
+  padding: .75em;
+  width: 100%;
+}
+
+textarea {
+  height: 10em;
+  resize: vertical;
+}
+
+input,
+#{$all-text-inputs},
+textarea,
+select,
+legend {
+  font-family: $primary-font;
+}
+
+input[type=submit] {
+  font-weight: $bold-font-weight;
+  padding: .5em 2em;
+}
+
+// Wrapper of label/input group
+.form-field {
+  margin-bottom: .75em;
+}
+
+// Placed on form label
+.required:after {
+  content: '*';
+  color: red;
+  margin-left: .25em;
+}
+
+// for end of form with required fields
+.form-instruction {
+  @extend %inline;
+  color: red;
+  font-style: italic;
+  margin: .5em 0 0 25px;
+}
+

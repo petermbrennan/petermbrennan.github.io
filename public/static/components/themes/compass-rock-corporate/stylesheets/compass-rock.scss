@@ -1,0 +1,1949 @@
+@import 'old_boilerplate/bourbon/bourbon.scss';
+@import 'global-classes.scss';
+
+// *************************************
+//
+//   Settings
+//
+// *************************************
+
+// ----- Fonts ----- //
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
+
+// ----- Base Colors ----- //
+$white: #fff;
+$black: #2a2a2a;
+$grey: #40413d;
+$light-grey: #d4d4d4;
+$medium-grey: #666;
+
+// ----- Text Colors ----- //
+$base-color: #010101;
+$inverse-color: $white;
+$base-link-color: $primaryColor;
+$base-hover-color: $grey;
+
+// ----- Background Colors ----- //
+$base-background: $white;
+$alt-background: #eae9e9;
+
+// ----- Borders ----- //
+$base-border: 1px solid $light-grey;
+
+// ----- Typography ----- //
+$base-fontFamily: 'Open Sans', sans-serif;
+$base-fontWeight: 300;
+$base-fontSize: 16px;
+$base-lineHeight: 1.5;
+$regular-fontWeight: 400;
+$bold-fontWeight: 600;
+
+
+// ----- Whitespace ----- //
+$base-whitespace: 30px;
+$half-whitespace: $base-whitespace / 2;
+$double-whitespace: $base-whitespace * 2;
+
+// ----- Contexts ----- //
+$site-width: 1170px;
+
+// ----- Layout ----- //
+$maxWidth: $site-width;
+$max-xsmall: em(479);
+$min-xsmall: em(480);
+$max-small: em(640);
+$min-small: em(641);
+$max-medium: em(909);
+$min-medium: em(910);
+$max-large: em(1168);
+$min-large: em(1170);
+$max-xlarge: em(1599);
+$min-xlarge: em(1600);
+
+// *************************************
+//
+//   Helpers
+//
+// *************************************
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+@mixin at-least($query) {
+  @media screen and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin until($query) {
+  @media screen and (max-width: $query) {
+    @content;
+  }
+}
+
+@mixin between($min-query, $max-query) {
+  @media screen and (min-width: $min-query) and (max-width: $max-query) {
+    @content;
+  }
+}
+
+@mixin grid-row {
+  @include clearfix;
+  clear: both;
+  margin-left: -$half-whitespace;
+  margin-right: -$half-whitespace;
+}
+
+@mixin grid-defaults {
+  float: left;
+  padding-left: $half-whitespace;
+  padding-right: $half-whitespace;
+}
+
+@mixin grid-column($n: 1) {
+  width: #{$n/12*100}#{"%"};
+}
+
+@mixin text-light {
+  &,
+  p,
+  h1,
+  h2,
+  .form label{
+    color: $white;
+  }
+  a {
+    color: $light-grey;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: 1px solid $white;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons-light.png');
+    }
+  }
+}
+
+@mixin text-dark {
+  &,
+  p,
+  h2,
+  .form label {
+    color: $base-color;
+  }
+  h1,
+  a {
+    color: $primaryColor;
+  }
+  .contact-info {
+    .p-name {
+      border-bottom: $base-border;
+    }
+    .adr-ret,
+    .p-tel,
+    .adr,
+    .tel,
+    .email {
+      background-image: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') !important;
+    }
+  }
+}
+
+// -------------------------------------
+//   404 Styles
+// -------------------------------------
+
+@import 'boilerplate/defaults/404.scss';
+
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+@function percent($target, $context: $maxWidth) {
+  @return #{$target / $context * 100}#{"%"};
+}
+
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+%clearfix {
+  @include clearfix;
+}
+
+%hidden {
+  display: none !important;
+}
+
+%visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+}
+
+%ir {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+%overflow {
+  overflow: hidden;
+}
+
+%relative {
+  position: relative;
+}
+
+%absolute {
+  position: absolute;
+}
+
+%shout {
+  text-transform: uppercase;
+}
+
+%inline {
+  display: inline-block;
+}
+
+%inverse {
+  color: $inverse-color;
+}
+
+%center {
+  text-align: center;
+}
+
+%lead {
+  font-size: 131.25%;
+}
+
+%pullLeft {
+  float: left;
+}
+
+%pullRight {
+  float: right;
+}
+
+%hide-mobile {
+  @include at-least($min-medium) {
+    display: none !important;
+  }
+}
+
+%show-desktop {
+  @include until($max-medium) {
+    display: none !important;
+  }
+}
+
+
+// *************************************
+//
+//   Base
+//
+// *************************************
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html {
+  font-size: $base-fontSize;
+  height: 100%;
+  @include until($max-small) {
+    font-size: $base-fontSize - 2;
+  }
+  @include between($min-small, $max-medium) {
+    font-size: $base-fontSize - 1;
+  }
+}
+
+body {
+  background: $base-background;
+  color: $base-color;
+  font-family: $base-fontFamily;
+  font-size: 100%;
+  font-weight: $base-fontWeight;
+  line-height: $base-lineHeight;
+  min-height: 100%;
+}
+
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+// *************************************
+//
+//   Layout
+//
+// *************************************
+
+// -------------------------------------
+//   Container
+// -------------------------------------
+
+.content {
+  @extend %clearfix;
+  @extend %relative;
+  @include box-sizing(content-box);
+  margin: 0 auto;
+  max-width: $maxWidth;
+  padding: 0 $half-whitespace;
+}
+
+
+// -------------------------------------
+//   Rows
+// -------------------------------------
+
+.row:before,
+.row:after,
+.row-grid:before,
+.row-grid:after {
+  content: " ";
+  display: table;
+}
+.row:after,
+.row-grid:after {
+  clear: both;
+}
+
+.row-grid {
+  margin: 0 -15px;
+}
+
+.col {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.row-halves .col,
+.row-uneven-thirds-1 .col,
+.row-uneven-thirds-2 .col,
+.row-thirds .col,
+.row-quarters .col {
+  float: left;
+}
+
+.row-halves .col {
+  width: 50%;
+}
+
+.row-thirds .col {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-1 {
+  width: 33.33333%;
+}
+
+.row-uneven-thirds-1 .col-2 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-1 {
+  width: 66.66667%;
+}
+
+.row-uneven-thirds-2 .col-2 {
+  width: 33.33333%;
+}
+
+.row-quarters .col {
+  width: 25%;
+}
+
+
+.row {
+  padding: 2em 0;
+  overflow: hidden;
+  @include until($max-medium) {
+    .col {
+      margin-bottom: 1em;
+      width: 100%;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    padding: 3em 0;
+    .row-grid {
+      margin-left: -$base-whitespace;
+      margin-right: -$base-whitespace;
+    }
+    .col {
+      padding-right: $base-whitespace;
+      padding-left: $base-whitespace;
+    }
+  }
+  .row-single .col {
+    margin-bottom: 0;
+  }
+  &:first-of-type {
+    .first-col {
+      @include at-least($min-medium) {
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+// Content stripe divider image spacing
+@media screen and (min-width: 910px) {
+  .row-divider-padding .content {
+    padding-top: 1.75em;
+    padding-bottom: 1.75em;
+  }
+}
+
+
+// *************************************
+//
+//   Typography
+//
+// *************************************
+
+// -------------------------------------
+//   Headings
+// -------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $bold-fontWeight;
+  margin-top: 0;
+  .widget &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  color: $primaryColor;
+  font-size: em(26);
+  font-style: italic;
+  font-weight: $regular-fontWeight;
+  margin-bottom: .25em;
+  @include at-least($min-medium) {
+    font-size: em(32);
+  }
+}
+
+h2 {
+  font-size: em(18);
+  @include at-least($min-medium) {
+    font-size: em(24);
+  }
+}
+
+
+// -------------------------------------
+//   Text
+// -------------------------------------
+
+strong {
+  font-weight: $bold-fontWeight;
+}
+
+.html {
+  @extend %clearfix;
+  ul,
+  ol {
+    padding-left: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin-bottom: 1em;
+    li:before {
+      content: '>';
+      font-size: .75em;
+      margin-right: 1em;
+      position: relative;
+      top: -.25em;
+    }
+  }
+  li {
+    position: relative;
+  }
+}
+
+
+// -------------------------------------
+//   Links
+// -------------------------------------
+
+a {
+  color: $base-link-color;
+}
+
+
+// -------------------------------------
+//   Forms
+// -------------------------------------
+
+input[type=checkbox],
+input[type=radio] {
+  display: inline-block;
+  margin-right: .5em;
+  width: auto;
+}
+
+
+
+// -------------------------------------
+//   Buttons
+// -------------------------------------
+
+input[type=submit],
+.btn {
+  background: $primaryColor;
+  border: none;
+  color: $white;
+  font-size: em(14);
+  font-weight: $regular-fontWeight;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  padding: 1em $half-whitespace;
+}
+
+
+
+// *************************************
+//
+//   Main Sections
+//
+// *************************************
+
+// -------------------------------------
+//   Header
+// -------------------------------------
+
+.logo {
+  display: inline-block;
+  width: 50%;
+  @include until($max-medium) {
+    width: auto;
+    &,
+    img {
+      height: 34px;
+    }
+    img {
+      vertical-align: top;
+    }
+  }
+}
+#drop-target-logo {
+  @include until($max-medium) {
+    position: fixed;
+    top: 5px;
+    left: $half-whitespace;
+    z-index: 1000;
+  }
+}
+
+.page-commercial-search header[role=banner],
+.area header[role=banner] {
+  &:after {
+    background: none;
+  }
+}
+
+header[role=banner] {
+  @extend %relative;
+  background: rgba($white, .65);
+  &:after {
+    background: url(https://themes.g5dxm.com/compass-rock-corp/header-arrow.png) center top no-repeat;
+    background-size: cover;
+    content: '';
+    height: 25px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+    z-index: 500;
+    @include at-least($min-small) {
+      height: 50px;
+      bottom: -50px;
+    }
+    @include at-least($min-medium) {
+      height: 75px;
+      bottom: -75px;
+    }
+    @include at-least($min-xlarge) {
+      height: 85px;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+  .navigation {
+    text-align: center;
+    font-size: em(15);
+    a {
+      border-bottom: 3px solid $base-background;
+      color: $base-color;
+      font-weight: $bold-fontWeight;
+      display: block;
+    }
+  }
+  .has-subnav > a:after {
+    content: ">";
+    margin-left: .5em;
+  }
+  .subnav {
+    li {
+      border-top: 1px solid $light-grey;
+      &:first-child {
+        border: none;
+      }
+    }
+    a {
+      color: $medium-grey;
+      font-weight: normal;
+      line-height: 1.2;
+    }
+  }
+  @include until($max-medium) {
+    padding-top: 44px;
+    .navigation-container {
+      background: $white;
+      padding-bottom: .5em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .collapsable-content {
+      width: 100%;
+    }
+    .navigation {
+      font-size: em(21);
+      padding: 1em 0;
+      li {
+        border-top: 1px solid $light-grey;
+      }
+      a {
+        padding: .5em;
+      }
+    }
+    .top-nav > li > a {
+      background: #efefef;
+    }
+  }
+  @include at-least($min-medium) {
+    .logo {
+      position: absolute;
+      bottom: .8em;
+      left: $half-whitespace;
+      width: 20%;
+    }
+    .navigation-container {
+      padding: 1em 0;
+    }
+    .navigation {
+      float: right;
+      width: 70%;
+      overflow-y: visible;
+      .top-nav {
+        @include display(flex);
+        @include justify-content(space-between);
+        > li {
+          padding: 0 5px;
+          vertical-align: bottom;
+        }
+      }
+      a:hover,
+      a:focus {
+        color: $primaryColor;
+        border-color: $primaryColor;
+      }
+      .no-flexbox & {
+        display: table;
+        .top-nav {
+          display: table-row;
+          > li {
+            display: table-cell;
+          }
+        }
+      }
+      a {
+        padding: 1em 0;
+      }
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    .subnav {
+      background-color: $base-background;
+      text-align: left;
+      width: 200px;
+      max-height: 0;
+      position: absolute;
+      z-index: 9999;
+      left: -5px;
+      top: 3.7em;
+
+      a {
+        padding: .5em 10px;
+
+        &:hover,
+        &:focus {
+          background-color: $primaryColor;
+          color: $white;
+        }
+      }
+    }
+    .show-subnav {
+      max-height: 1000px;
+    }
+  }
+  @include at-least($min-large) {
+    .logo {
+      bottom: 0.6em;
+      width: 25%;
+    }
+    .navigation-container {
+      padding-top: 2em;
+    }
+    .navigation li {
+      padding: 0 10px;
+    }
+    .subnav li {
+      padding: 0;
+    }
+  }
+}
+
+.collapsable-btn {
+  display: inline-block;
+  cursor: pointer; }
+.collapsable-content,
+.collapsable-content.collapse {
+  height: 0;
+  overflow: hidden; }
+.collapse {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.35s ease;
+  -moz-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease; }
+.collapse.in {
+  height: auto; }
+
+@media (min-width: $min-medium) {
+  .collapsable-btn {
+    display: none !important;
+  }
+  .collapsable-content {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+.collapsable-btn {
+  background-color: transparent;
+  border-left-color: $secondaryColor;
+  color: $base-color;
+  float: right;
+  margin: .5em 0;
+  padding: 2px 6px !important;
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+  .text {
+    @extend %visuallyhidden;
+  }
+  .bars {
+    display: inline-block;
+  }
+  .text {
+    @extend %shout;
+    font-size: em(21);
+    margin-right: 10px;
+    vertical-align: top;
+  }
+  .bars {
+    span {
+      border-bottom: 3px solid $base-color;
+      display: block;
+      margin: 3px 0;
+      width: $half-whitespace;
+    }
+  }
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+
+// -------------------------------------
+//   Footer
+// -------------------------------------
+
+[role=contentinfo] {
+  @extend %clearfix;
+  background-color: #d4d4d4;
+  font-size: em(14);
+  padding: 2em 0;
+  .contact-info {
+    @extend %shout;
+  }
+  .social-links {
+    margin-bottom: .5em;
+  }
+
+  @include until($max-small) {
+    background-color: $primaryColor;
+    border-top: 70px solid $grey;
+    padding-bottom: 6em;
+    &,
+    a {
+      color: $grey;
+    }
+    .contact-info,
+    .social-links {
+      background-color: $secondaryColor;
+      padding: 1em $base-whitespace;
+    }
+    .contact-info {
+      margin-top: -4em;
+      .p-name {
+        color: $base-color;
+      }
+    }
+  }
+  @include at-least($min-small) {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: '';
+      background-color: $primaryColor;
+      background-image: url(https://themes.g5dxm.com/compass-rock-corp/footer-arrow.png);
+      background-position: right center;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      display: block;
+      position: absolute;
+      width: 35%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .contact-info {
+      border-left: 7px solid $white;
+      font-size: em(12);
+      font-weight: $base-fontWeight;
+      float: left;
+      margin-right: 2em;
+      padding-left: $half-whitespace;
+      position: relative;
+      &,
+      a {
+        color: $white;
+      }
+      h4,
+      p {
+        margin: 0 0 .5em;
+        padding: 0;
+      }
+      .p-name {
+        border-bottom: none;
+        color: $inverse-color;
+        font-family: $base-fontFamily;
+        font-weight: $base-fontWeight;
+        font-size: em(21);
+      }
+      .adr-ret,
+      .p-tel,
+      .adr,
+      .tel,
+      .email,
+      .chat {
+        background: none;
+        min-height: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Footer Info
+//
+// *************************************
+
+.footer-info {
+  @extend %shout;
+  .nav,
+  .housing-icons {
+    display: inline;
+  }
+  .nav {
+    margin-bottom: 0;
+    a {
+      float: left;
+      padding: 0 $half-whitespace;
+      &:last-child {
+        border-left: 1px solid $white;
+      }
+    }
+  }
+  .access {
+    background-image: url("//themes.g5dxm.com/shared/access-icons-light.png");
+  }
+  a {
+    color: $white;
+  }
+  @include until($max-small) {
+    float: none;
+    text-align: left;
+  }
+  @include at-least($min-small) {
+    .nav a {
+      color: $grey;
+      &:last-child {
+        border-color: $grey;
+      }
+    }
+    .access {
+      background-image: url(https://themes.g5dxm.com/shared/access-icons.png);
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Widgets
+//
+// *************************************
+
+// -------------------------------------
+//   Photo
+// -------------------------------------
+
+.photo {
+  img {
+    display: block;
+  }
+  &.thumb img {
+    @include until($max-medium) {
+      max-width: 120px;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Gallery
+// -------------------------------------
+
+.gallery {
+  @extend %overflow;
+
+  .gallery-slideshow {
+    .slides img {
+      width: 100%;
+    }
+  }
+
+  .mini-gallery {
+    @extend %clearfix;
+    .flex-title,
+    .flex-caption {
+      font-size: em(21);
+      line-height: 1.2;
+    }
+    .flex-title {
+      font-weight: $bold-fontWeight;
+    }
+    .flex-caption {
+      color: $primaryColor;
+      margin-top: 0;
+    }
+    .flex-control-thumbs {
+      padding: 0 $half-whitespace;
+      margin: 0 -5px;
+      li {
+        padding: 5px;
+      }
+
+    }
+    .flex-direction-nav {
+      a {
+        @include transition(none);
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-full-nav.png);
+        background-size: 50px auto;
+        background-position: left center;
+        top: 0;
+        height: 51px;
+        width: 25px;
+        opacity: 1 !important;
+        z-index: 100;
+      }
+      .flex-prev {
+        left: 0;
+      }
+      .flex-next {
+        background-position: -25px center;
+        right: 0;
+      }
+    }
+    @include until($max-medium) {
+      .flex-direction-nav {
+        a {
+          background-size: 32px auto;
+        }
+        .flex-prev {
+          background-position: 9px center;
+        }
+        .flex-next {
+          background-position: -16px center;
+        }
+      }
+      .flex-title,
+      .flex-caption {
+        text-align: center;
+      }
+      .slides {
+        margin: 0 35px;
+      }
+      .flex-control-thumbs {
+        padding: 0;
+      }
+    }
+    @include between(655px, $max-medium) {
+      .slides img {
+        max-width: 545px;
+      }
+    }
+    @include at-least($min-medium) {
+      .slides img {
+        width: 50%;
+        float: left;
+        border-right: 1px solid transparent;
+      }
+      .flex-title,
+      .flex-caption {
+        padding-right: 60px;
+        padding-left: $base-whitespace;
+      }
+      .flex-title {
+        font-size: em(24);
+      }
+      .flex-control-thumbs {
+        padding-right: 100px;
+        width: 50%;
+        position: absolute;
+        bottom: 2em;
+        right: 0;
+      }
+      .flex-direction-nav {
+        a {
+          background-size: cover;
+          width: 58px;
+          height: 100% !important;
+          top: 0;
+          margin: 0;
+        }
+        .flex-prev {
+          background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-prev-dark.png);
+          background-position: left center;
+          left: 45%;
+          &:hover {
+            background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-prev-hover.png);
+          }
+        }
+        .flex-next {
+          background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-next-dark.png);
+          background-position: left center;
+          &:hover {
+            background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-next-hover.png);
+          }
+        }
+      }
+    }
+    @include between($min-medium, $max-large) {
+      .flex-title,
+      .flex-caption {
+        font-size: 1em;
+      }
+      .flex-title {
+        margin-top: 0;
+        margin-bottom: .25em;
+      }
+      .flex-control-thumbs {
+        bottom: 0;
+      }
+    }
+    @include at-least($min-large) {
+      h2 {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 50%;
+        padding: 0 90px 0 30px;
+      }
+      .flex-control-thumbs li {
+        width: 20%;
+        &:nth-child(4n+1) {
+          clear: none;
+        }
+      }
+    }
+  }
+
+  .full-gallery {
+
+    &.gallery-slideshow {
+      .flex-caption {
+          padding: 1em $base-whitespace;
+          position: absolute;
+          bottom: 0;
+          @include until($max-small) {
+            display: none;
+          }
+        }
+      .slides {
+        padding: 0 40px;
+      }
+    }
+
+    .flex-viewport {
+      margin: 0 40px;
+    }
+    .flex-control-thumbs {
+      margin-left: -5px;
+      margin-right: -5px;
+      padding: 0 40px;
+      width: auto;
+      li {
+        padding: $half-whitespace 5px 0;
+        &:nth-child(4n+1) {
+          clear: none;
+        }
+      }
+      @include at-least($min-medium) {
+        li {
+          padding: $base-whitespace -5px 0;
+          width: 20%;
+        }
+      }
+      @include at-least($min-large) {
+        li {
+          width: 10%;
+        }
+      }
+    }
+    .flex-direction-nav {
+      a {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/gallery-full-nav.png);
+        background-position: 0 0;
+        top: 50%;
+        height: 51px;
+        width: 25px;
+        margin: -25px 0 0;
+        opacity: 1 !important;
+      }
+      .flex-prev {
+        left: 0;
+      }
+      .flex-next {
+        background-position: -25px 0;
+        right: 0;
+      }
+    }
+  }
+
+  .gallery-carousel {
+    .flex-control-nav {
+      padding: 0 40px;
+      text-align: right;
+    }
+    .slides li {
+      @extend %relative;
+    }
+    .flex-caption {
+      @extend %shout;
+      background-color: rgba($black, .50);
+      color: $white;
+      font-weight: $regular-fontWeight;
+      text-align: left;
+      padding: .25em 1em;
+    }
+  }
+}
+
+.gallery-basic {
+  @include at-least($min-medium) {
+    overflow: visible;
+    figure:first-child {
+      position: absolute;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Quote
+// -------------------------------------
+.quote {
+  margin-top: 1em;
+  @include at-least($min-large) {
+    margin-top: 3em;
+  }
+}
+blockquote {
+  margin: 0;
+  padding-left: 2em;
+  position: relative;
+  p {
+    color: $primaryColor;
+    font-size: em(28);
+    line-height: 1.2;
+    margin-top: 0;
+  }
+  p:before {
+    font-family: $georgia;
+    font-size: em(36);
+    position: absolute;
+    left: 0;
+    top: -.15em;
+  }
+  p:after {
+    content: '';
+  }
+  cite {
+    font-size: em(18);
+    font-style: normal;
+  }
+}
+
+// -------------------------------------
+//   Forms
+// -------------------------------------
+
+.form {
+  label {
+    margin-bottom: .5em;
+  }
+  .required:after {
+    content: '*';
+    color: red;
+    margin-left: .25em;
+  }
+  textarea,
+  #{$all-text-inputs} {
+    background: #f8f8f9;
+    border: 1px solid #c2c2c2;
+    outline: none;
+    padding: .5em $half-whitespace;
+    width: 100%;
+    &:focus {
+      border-color: $primaryColor;
+      box-shadow: 0 0 10px $primaryColor;
+    }
+  }
+  textarea {
+  }
+  .form-field {
+    margin-bottom: 1em;
+  }
+  .form-instruction {
+    color: red;
+    font-style: italic;
+    font-weight: $regular-fontWeight;
+    display: inline-block;
+    margin: .5em 0 0 25px;
+  }
+}
+
+
+// -------------------------------------
+//   Contact Info
+// -------------------------------------
+
+.contact-info {
+  p {
+    font-size: em(21);
+    line-height: 1;
+  }
+  .p-name {
+    @extend %shout;
+    border-bottom: $base-border;
+    color: $secondaryColor;
+    font-size: em(21);
+    font-weight: $base-fontWeight;
+    padding-bottom: .5em;
+  }
+  .adr-ret,
+  .p-tel,
+  .adr,
+  .tel,
+  .email,
+  .chat {
+    background: url('https://widgets.g5dxm.com/contact-info/contact-icons.png') no-repeat;
+    min-height: 35px;
+    padding-left: 40px;
+  }
+  .p-tel,
+  .tel {
+    background-position: 0 0;
+  }
+  .adr-ret,
+  .adr {
+    background-position: 0 -65px;
+  }
+  .email {
+    background-position: 0 -146px;
+  }
+  .chat {
+    background-position: 0 -225px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  [role=main] & {
+    @include between($min-small, $max-medium) {
+      p {
+        display: inline-block;
+        margin-right: $base-whitespace;
+        vertical-align: top;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .p-name {
+      font-size: em(28);
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Coupon
+// -------------------------------------
+.coupon {
+  .coupon-title {
+    @extend %shout;
+    font-size: em(24);
+    margin-bottom: .5em;
+  }
+  .coupon-offer {
+    @extend %shout;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
+    font-size: em(18);
+    padding: .5em 0;
+    strong {
+      font-weight: $bold-fontWeight;
+    }
+  }
+  @include at-least($min-medium) {
+    .coupon-title {
+      font-size: em(42);
+    }
+    .coupon-offer {
+      font-size: em(21);
+    }
+  }
+}
+
+
+
+// -------------------------------------
+//   Social Feed
+// -------------------------------------
+
+.social-feed {
+  color: $base-color;
+  font-size: em(14);
+  line-height: 1.25;
+  .feed-switch {
+    background-color: $white;
+    border-right-color: 1px solid $grey;
+  }
+  .p-name,
+  .tweet-name {
+    font-weight: $bold-fontWeight;
+  }
+  .p-summary,
+  .tweet-text {
+    a {
+      color: $secondaryColor;
+    }
+  }
+  .btn {
+    width: 50%;
+  }
+}
+
+
+// -------------------------------------
+//   Social Links
+// -------------------------------------
+
+.social-links {
+  a {
+    margin-left: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .icon {
+    @include transition(background-color .2s ease);
+    background-color: $primaryColor;
+    height: 45px;
+    width: 45px;
+     &:hover {
+      background-color: $black;
+     }
+  }
+}
+
+
+// -------------------------------------
+//   Map and Directions
+// -------------------------------------
+/*
+.directions {
+  @extend %clearfix;
+  position: relative;
+  .text {
+    input {
+      @extend %inline;
+    }
+  }
+}
+*/
+
+
+// -------------------------------------
+//   Map and Directions
+// -------------------------------------
+
+.info-sheet-nav {
+  a {
+    @include until($max-medium) {
+      color: $white;
+    }
+  }
+}
+
+
+// *************************************
+//
+//   Flush photos on rows
+//
+// *************************************
+
+.row {
+  &:first-of-type {
+    padding: 0;
+
+    .col {
+      position: static;
+    }
+
+    .html {
+      background-color: $primaryColor;
+      margin-left: -15px;
+      margin-right: -15px;
+      h1 {
+        color: $inverse-color;
+      }
+    }
+    .html-content {
+      padding: 1em $base-whitespace;
+    }
+
+    @include until($max-medium) {
+      .photo,
+      .gallery-basic {
+        margin-left: -15px;
+        margin-right: -15px;
+        position: relative;
+      }
+    }
+
+    @include at-least($min-small) {
+      position: relative;
+      .html {
+        position: relative;
+        z-index: 100;
+      }
+    }
+
+    @include at-least($min-medium) {
+      .photo,
+      .gallery-basic {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          min-height: 100%;
+          min-width: 100%;
+          max-width: none;
+          width: auto;
+          .csstransforms & {
+            @include transform(translateX(-50%) translateY(-50%));
+            left: 50%;
+            top: 50%;
+          }
+        }
+      }
+      .html {
+        background-color: rgba($primaryColor, .80);
+        display: inline-block;
+        margin: 15em 0 0;
+        h2 {
+          font-size: em(28);
+        }
+      }
+    }
+  }
+  .col {
+    position: relative;
+  }
+  .photo img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .photo:before {
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+  }
+  @include until($max-medium) {
+    .col:first-of-type .photo:before {
+      background-position: center bottom;
+    }
+    .col:last-of-type .photo:before {
+      background-position: center top;
+    }
+    &.dark-row {
+      .col:first-of-type .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-dark-up.png);
+      }
+      .col:last-of-type .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-dark-down.png);
+      }
+    }
+    &.light-row {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-light-up.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-light-down.png);
+      }
+    }
+    .photo {
+      margin-left: -$half-whitespace;
+      margin-right: -$half-whitespace;
+      position: relative;
+      &:before {
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+      &.thumb:before {
+        background: transparent !important;
+      }
+    }
+  }
+  @include at-least($min-medium) {
+    .col:first-of-type .photo:before {
+      background-position: right center;
+      right: $base-whitespace;
+    }
+    .col:last-of-type .photo:before {
+      background-position: left center;
+      left: $base-whitespace;
+    }
+    .photo:before {
+      top: 0;
+      bottom: 0;
+    }
+    &.dark-row {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-dark-left.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-dark-right.png);
+      }
+    }
+    &.light-row {
+      .first-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-light-left.png);
+      }
+      .last-col .photo:before {
+        background-image: url(https://themes.g5dxm.com/compass-rock-corp/arrow-light-right.png);
+      }
+    }
+  }
+}
+
+
+
+// *************************************
+//
+//   Home Page
+//
+// *************************************
+
+.web-home-template {
+  .row:nth-child(even) {
+    background-color: $alt-background;
+  }
+  .row:nth-child(2n+3) {
+    background-color: $base-background;
+  }
+  .row:first-of-type {
+
+    .corporate-search {
+      position: relative;
+      z-index: 100;
+
+      .neighborhood,
+      .bedrooms,
+      .bathrooms,
+      .square-feet-range,
+      .price-range {
+        display: none !important;
+      }
+
+      .search-form {
+        background: $primaryColor;
+        padding: 2em $base-whitespace;
+        h2,
+        span,
+        select {
+          font-family: $base-fontFamily;
+        }
+        h2 {
+          border-bottom: 2px solid $white;
+          color: $white;
+          font-size: em(24);
+          font-style: italic;
+          font-weight: $base-fontWeight;
+          line-height: 1.2;
+          margin-bottom: 1em;
+          padding-bottom: .5em;
+        }
+        .state,
+        .search-button {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .state {
+          width: 30%;
+        }
+        .city {
+          margin-right: 0;
+          margin-left: 2%;
+          width: 68%;
+        }
+      }
+      .search-form-center,
+      .search-form-inner {
+        width: 100%;
+      }
+
+      .search-button {
+        width: 100%;
+      }
+    }
+
+    @include until($max-medium) {
+      .corporate-search {
+        margin: 0 -15px;
+      }
+    }
+
+    @include at-least($min-medium) {
+      .corporate-search {
+        margin: 175px auto 5em;
+        width: 50%;
+        max-width: 450px;
+
+        .search-form {
+          background: rgba($primaryColor, .8);
+        }
+      }
+    }
+  }
+
+  .row:nth-child(2) {
+    @include text-light;
+    background: $primaryColor;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    .col-1 {
+      @include clearfix;
+      margin: 0 auto;
+    }
+    h1,
+    h2,
+    h3 {
+      border-bottom: 2px solid $white;
+      font-size: em(24);
+      margin-bottom: 1em;
+      padding-bottom: .5em;
+    }
+    .button {
+      font-size: em(14);
+      text-align: center;
+      float: left;
+      width: 33.3333333%;
+    }
+    .btn-img {
+      margin: 0 auto .5em;
+    }
+    @include at-least($min-small) {
+      .col-1 {
+        width: 75%;
+      }
+      .button {
+        width: 20%;
+      }
+    }
+    @include at-least($min-medium) {
+      .col-1 {
+        width: 60%;
+      }
+    }
+  }
+
+  // Multifamily Mini Search Radio Buttons
+  .corpSearchWrapper div.search-type-radio-buttons{
+    margin:0 0 10px 0;
+
+    label{
+      vertical-align:middle;
+      padding:0 10px 0 0;
+      font-size: em(16);
+      line-height: 1.25;
+    }
+    input{
+      width:15px;
+      height:15px;
+      margin:0 5px 0 10px;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+// =====================================
+//Multi Family Mini Search V2
+// =====================================
+
+.multifamily-mini-search-v2 {
+  position: relative;
+  z-index: 100;
+  margin: 175px auto 5em;
+  max-width: 450px;
+  .mf-search-input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 47px;
+  }
+  .mf-search-go-button {
+    height: 47px;
+  }
+  .city,
+  .state {
+    height: 47px;
+  }
+  .search-form {
+    padding: 10px;
+  }
+}
+
+
+// *************************************
+//
+//   Interior Pages
+//
+// *************************************
+
+.web-page-template {
+  .row:nth-child(odd) {
+    background-color: $alt-background;
+  }
+  .row:first-child {
+    .col .photo:before {
+      background: none;
+    }
+    @include at-least($min-medium) {
+      .html {
+        float: left;
+      }
+    }
+  }
+}
+
+.text-light {
+  @include text-light;
+}
+
+.text-dark {
+  @include text-dark;
+}
+
+// *************************************
+//
+//   Area Pages
+//
+// *************************************
+
+.area-page {
+  margin: 30px auto;
+  max-width: 1170px;
+  padding: 0 15px;
+
+  .canvas {
+    display:block;
+    padding-top: 30px;
+    width: 40%;
+    height: 377px;
+    position: relative;
+    float:left;
+
+    img {
+      max-width: none;
+    }
+
+    label {
+      width: auto;
+      display: inline;
+    }
+  }
+}
+
+.area-page-locations {
+  width:60%;
+  float:left;
+
+  .h-adr {
+    padding: 13px;
+    margin: 0 30px 10px 0;
+    background: #f3f3f3;
+  }
+
+  a {
+    color: #fff;
+    padding: 6px 10px;
+    background: #1772a2;
+    margin-top: 6px;
+    display: block;
+    text-align:center;
+  }
+}
+
+.area-page-footer {
+  clear:both;
+}
+
+@media (max-width: $min-medium) {
+  .area-page-locations, .area-page .canvas {
+    width:100%;
+    float:none;
+  }
+
+  .area-page-locations {
+    .h-adr {
+      margin-right:0;
+    }
+  }
+}
+
+// *************************************
+//
+//   Overrides
+//
+// *************************************
+
+.corpSearchWrapper .resultUnitInfo,
+.corpSearchWrapper .iconLegendToggle,
+.corpSearchWrapper .search-form span.neighborhood,
+.corpSearchWrapper .search-form span.bathrooms,
+.corpSearchWrapper .search-form span.bedrooms,
+.corpSearchWrapper .search-form span.square-feet-range,
+.corpSearchWrapper .search-form span.price-range {
+  display:none;
+}
+.web-page-template{
+  .corpSearchWrapper .search-form .city{
+    margin-left:4px;
+  }
+  .corpSearchWrapper .search-form .search-button button{
+    background-color: #40413C;
+  }
+}
+
+.page-apartment-search header[role=banner]:after {
+  display: none;
+}

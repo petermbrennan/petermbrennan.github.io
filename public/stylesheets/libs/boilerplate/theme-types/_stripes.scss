@@ -1,0 +1,28 @@
+// *************************************
+//
+//  Full Width Stripe Layout
+//
+// *************************************
+
+.row {
+  .col {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .widget {
+    margin-bottom: 2em;
+  }
+
+  // No bottom margin for last widget in column
+  .column [class*=row-]:last-child .widget,
+  .col > .widget { margin-bottom: 0; }
+
+  @include until($max-layout) {
+    // On mobile, if column is empty then remove padding
+    // Keep padding on large screen so column layout remains in tact
+    .col:empty { padding: 0; }
+
+    .col + .col { padding-top: 0; }
+  }
+}

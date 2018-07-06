@@ -1,0 +1,13 @@
+{% capture widgetId %}chat-olark-{{ widget.id }}{% endcapture %}
+
+<div class="chat-olark {{widgetId}} widget h-media" id="{{widgetId}}">
+
+  <script class="config chat-olark-config" type="application/json">
+    {
+      "widgetId": "{{ widgetId }}",
+      "olarkClientId" : "{{ widget.olark_client_id.value_or_default }}",
+      "olarkMobile" : "{{ widget.olark_mobile.value_or_default }}"
+    }
+  </script>
+
+</div>

@@ -1,0 +1,70 @@
+{
+  "name": "City State Zip Search",
+  "widget_id": 48,
+  "widget_type": null,
+  "summary": "Search for locations by City, ST, or by Zip.",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-7042' target='_blank'>City State Zip Search Documentation</a>",
+  "lib_javascripts": [
+    "google-maps-api.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "client_urn",
+      "default_value": "{{client_urn}}"
+    },
+    {
+      "name": "search_results_page",
+      "default_value": ""
+    },
+    {
+      "name": "service_url",
+      "default_value": "//g5-geo-service.herokuapp.com"
+    },
+    {
+      "name": "phone_service_url",
+      "default_value": "{{client_cpns_url}}"
+    },
+    {
+      "name": "search_radius",
+      "default_value": 20
+    },
+    {
+      "name": "form_background_color",
+      "default_value": ""
+    },
+    {
+      "name": "form_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "form_button_color",
+      "default_value": ""
+    },
+    {
+      "name": "form_text",
+      "default_value": ""
+    },
+    {
+      "name": "result_background_color",
+      "default_value": ""
+    },
+    {
+      "name": "result_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "result_button_color",
+      "default_value": ""
+    }
+  ]
+}

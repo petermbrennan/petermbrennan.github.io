@@ -1,0 +1,34 @@
+{
+  "name": "Video",
+  "widget_id": 47,
+  "widget_type": null,
+  "summary": "An embedded video",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/219468567-Video-Widget' target='_blank'>Video Documentation</a>",
+  "lib_javascripts": [
+    "jquery.fitvids.js"
+  ],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "video_id",
+      "default_value": ""
+    },
+    {
+      "name": "video_title",
+      "default_value": ""
+    },
+    {
+      "name": "source",
+      "default_value": "//www.youtube.com/embed/"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "Multifamily Mini Search",
+  "widget_id": 30,
+  "widget_type": null,
+  "summary": "Simplified multifamily search for home pages. Pairs with multifamily-search.",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5.jiveon.com/docs/DOC-6893' target='_blank'>Multi Family Mini Search Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "apartments",
+    "senior-living",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "eol": true,
+  "settings": [
+    {
+      "name": "core_client_id",
+      "default_value": ""
+    },
+    {
+      "name": "corp_search_page",
+      "default_value": ""
+    },
+    {
+      "name": "core_service_url",
+      "default_value": "//inventory.g5marketingcloud.com"
+    },
+    {
+      "name": "heading_text",
+      "default_value": "Find an Apartment"
+    },
+    {
+      "name": "alternate_core_client_id",
+      "default_value": ""
+    },
+    {
+      "name": "external_search_url",
+      "default_value": ""
+    },
+    {
+      "name": "default_search_option",
+      "default_value": ""
+    },
+    {
+      "name": "alternate_search_option",
+      "default_value": ""
+    },
+    {
+      "name": "alternate_search_button_text",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_text",
+      "default_value": "Search"
+    },
+    {
+      "name": "search_background",
+      "default_value": ""
+    },
+    {
+      "name": "text_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_color",
+      "default_value": ""
+    },
+    {
+      "name": "search_button_text_color",
+      "default_value": ""
+    },
+    {
+      "name": "city_state_button_bg_color",
+      "default_value": ""
+    },
+    {
+      "name": "city_state_button_text_color",
+      "default_value": ""
+    }
+  ]
+}

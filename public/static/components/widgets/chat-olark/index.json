@@ -1,0 +1,28 @@
+{
+  "name": "Chat - Olark",
+  "widget_id": 20,
+  "widget_type": null,
+  "summary": "Olark Live Chat Box",
+  "liquid": true,
+  "widget_popover": "<a href='https://g5search.zendesk.com/hc/en-us/articles/220919727' target='_blank'>Olark Chat Documentation</a>",
+  "lib_javascripts": [],
+  "lib_edit_javascripts": [],
+  "lib_edit_stylesheets": [],
+  "verticals": [
+    "senior-living",
+    "self-storage",
+    "apartments",
+    "veterinarian"
+  ],
+  "page_widget": true,
+  "settings": [
+    {
+      "name": "olark_client_id",
+      "default_value": ""
+    },
+    {
+      "name": "olark_mobile",
+      "default_value": "yes"
+    }
+  ]
+}

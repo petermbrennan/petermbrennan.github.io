@@ -1,0 +1,128 @@
+// *************************************
+//
+//  Standard Multifamily IUI Cards
+//
+// *************************************
+
+// Lots of widget overrides for better mobile styles
+
+.multifamily-iui-cards {
+  padding: 0;
+
+  // Step 1
+  .iui-cards-unit-categories {
+    @include until($max-medium) {
+      $iui-card: 175px;
+      $iui-card-inner: $iui-card - 20px;
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: 10px;
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: 5px;
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span {
+          font-weight: $bold-font-weight;
+        }
+
+        span:nth-of-type(1) {
+          font-size: 2em;
+          line-height: 1;
+          padding-top: .75em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.5em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.5em;
+          padding-top: 2em;
+        }
+      }
+    }
+
+    @include until(730px) {
+      $iui-card: 130px;
+      $iui-card-inner: $iui-card - 10px;
+      $iui-card-title: $iui-card-inner - $base-whitespace;
+
+      a {
+        padding: 5px;
+        height: $iui-card;
+        width: $iui-card;
+      }
+
+      .iui-cards-category-card {
+        padding: $half-whitespace;
+        height: $iui-card-inner;
+        width: $iui-card-inner;
+      }
+
+      .category-card-title {
+        padding: 5px;
+        height: $iui-card-title;
+        width: $iui-card-title;
+
+        span {
+          font-weight: $bold-font-weight;
+        }
+
+        span:nth-of-type(1) {
+          font-size: 1.5em;
+          line-height: 1;
+          padding-top: .5em;
+        }
+
+        span:nth-of-type(2) {
+          font-size: 1.125em;
+          line-height: 1.5;
+        }
+
+        span.is-studio {
+          font-size: 1.125em;
+          padding-top: 1.5em;
+        }
+      }
+    }
+  }
+
+  // Step 2
+  .floorplan-card-cta {
+    background-color: $primaryColor;
+
+    &:hover {
+      background-color: $primary-light;
+    }
+  }
+
+  // Step 3
+  // need tons of classes for specificity :(
+  .iui-cards-wrapper .iui-cards-step .iui-cards-floorplan-details {
+    .iui-cards-unit-card {
+      width: 200px;
+    }
+
+    @include until(800px) {
+      padding-left: $half-whitespace;
+      padding-right: $half-whitespace;
+
+      .iui-cards-unit-card {
+        width: 100%;
+      }
+    }
+  }
+}
