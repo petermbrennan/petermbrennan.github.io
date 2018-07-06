@@ -5,6 +5,12 @@
 	max-width: 500px;
 	margin: auto;
 }
-.h1{
+h1{
 	color: blue; 
+}
+h2{
+	color: purple;
+}
+h4{
+	color: green;
 }
